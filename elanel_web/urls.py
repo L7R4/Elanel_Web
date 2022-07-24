@@ -6,5 +6,5 @@ from .views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("",HomeView.as_view(), name= "home"),
-    path("m/", include("market.urls"), namespace="market"),
+    path("m/", include("market.urls"), name="market"),
 ]
