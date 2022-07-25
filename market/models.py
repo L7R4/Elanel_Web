@@ -1,8 +1,7 @@
-from distutils.command.upload import upload
+from email.policy import default
 from django.db import models
-from django.forms import ImageField
 
-class Producto:
+class Producto(models.Model):
     categorias = [
         ("motos", "Motos"),
         ("soluciones_dinerarias", "Soluciones dinerarias"),
@@ -20,22 +19,22 @@ class Producto:
     marca = models.CharField(max_length=80, blank = True)
     especificaciones = models.TextField()
     forma_de_pago = models.CharField(max_length= 255)
-    imagen_portada = ImageField(upload_to = "productos")
+    imagen_portada = models.ImageField(upload_to="images/productos/", default=None)
     usado = models.BooleanField()
-    cuotas = models.IntegerField(max_length= 3)
+    cuotas = models.PositiveSmallIntegerField()
 
 
     def __str__(self):
         return self.nombre
 
-class ImagenProducto(models.model):
-    imagen = models.ImageField(upload_to ="productos")
+class ImagenProducto(models.Model):
+    imagen = models.ImageField(upload_to ="images/productos/", default=None)
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE, related_name= "imagenes")
 
 
 class SolucionDineraria(models.Model):
     monto = models.DecimalField(max_digits=15, decimal_places=2)
-    cuotas = models.IntegerField(max_length=3)
+    cuotas = models.PositiveSmallIntegerField()
     monto_cuota = models.DecimalField(max_digits=6, decimal_places=2)
     descripcion = models.TextField(blank=True)
 
@@ -55,7 +54,7 @@ class Usuario(models.Model):
     fecha = models.DateTimeField(auto_now_add = True)
 
     def __str__(self):
-        return self.pk + self.nombre + self.apellido
+        return self.nombre + self.apellido
 
 
 class Post(models.Model):
@@ -63,14 +62,25 @@ class Post(models.Model):
     descripcion = models.TextField(blank=True)
     fecha = models.DateTimeField()
     fecha_limite = models.DateTimeField()
-    imagen_portada = models.ImageField(upload_to= "posts")
+    imagen_portada = models.ImageField(upload_to= "images/posts", default=None)
 
 
 
 class PostImagenes(models.Model):
-    imagen = models.ImageField(upload_to ="posts")
+    imagen = models.ImageField(upload_to="images/posts", default=None)
     descripcion = models.CharField(max_length=255, blank=True)
     producto = models.ForeignKey(Post, on_delete=models.CASCADE, related_name= "imagenes")
+
+
+class BeneficioParaCliente(models.Model):
+    asistencia = [
+        ("tecnica_para_electrodomesticos", "Técnica para Electromesticos"),
+        ("mecanica_de_motos", "Mecánica de Motos"),
+    ]
+
+    asistencia_titulo= models.CharField(max_length=50, choices=asistencia)
+    nombre_tecnico = models.CharField(max_length = 50)
+    num_contacto = models.CharField(max_length= 11)
 
 
 
