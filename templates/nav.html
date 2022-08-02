@@ -3,13 +3,13 @@
         <a href="" class="logo"> ELANEL</a>
         <ul class="menu">
             <li class="has-sub">
-                <a href="javascript:void(0)">Categorias</a>
+                <a href="#">Categorias</a>
                 <ul class="sub-menu">
-                    <li><a href="">Motos</a></li>
-                    <li><a href="">Soluciones dinerarias</a></li>
-                    <li><a href="">Electrodemesticos</a></li>
-                    <li><a href="">Usados</a></li>
-                    <li><a href="">Beneficios para clientes</a></li>
+                    <li><a href="{% url 'market:motos' %}">Motos</a></li>
+                    <li><a href="{%url 'market:soluciones_dinerarias'%}">Soluciones dinerarias</a></li>
+                    <li><a href="{%url 'market:electrodomesticos'%}">Electrodemesticos</a></li>
+                    {% comment %} <li><a href="">Usados</a></li> {% endcomment %}
+                    <li><a href="{%url 'market:beneficios'%}">Beneficios para clientes</a></li>
                 </ul>
             </li>
             <li class="scroll-to-section"><a href="" class="active">Sobre nosotros</a></li>
