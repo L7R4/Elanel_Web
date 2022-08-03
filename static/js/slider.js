@@ -15,6 +15,9 @@ function showNextItem() {
 
   items[count].classList.add('active');
   console.log(count);
+  // if (items[count].classList.contains("active") == true){
+
+  // }
 }
 
 function showPreviousItem() {
@@ -30,16 +33,7 @@ function showPreviousItem() {
   console.log(count);
 }
 
-function keyPress(e) {
-  e = e || window.event;
-  
-  if (e.keyCode == '37') {
-    showPreviousItem();
-  } else if (e.keyCode == '39') {
-    showNextItem();
-  }
-}
 
 nextItem.addEventListener('click', showNextItem);
 previousItem.addEventListener('click', showPreviousItem);
-document.addEventListener('keydown', keyPress);
+
