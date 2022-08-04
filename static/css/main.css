@@ -24,7 +24,7 @@ html{
     justify-content: space-between;
     align-items: center;
     transition: all .5s ease;
-    transform: translateX(-50%);
+    /* transform: translateX(-50%); */
   }
   
   .slider-nav ul {
