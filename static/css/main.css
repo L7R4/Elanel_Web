@@ -7,10 +7,20 @@ html{
     font-size: 62.5%;
     background-color: rgb(236, 231, 231);
 }
- 
-  .container {
+body{
+  overflow-x: hidden;
+}
+ .main__container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ }
+ .main__container h1{
+  width: 100%;
+  min-width: 40rem;
+ }
+  .wrapper {
     /* max-width: 800px; */
-    width: 100vw;
     height: 400px;
     position:relative;
     overflow: hidden;
@@ -35,7 +45,7 @@ html{
     display: flex;
     justify-content: space-between;
   }
-  button {
+  .arrow button {
     position: relative;
     display: inline-block;
     cursor: pointer;
@@ -83,3 +93,299 @@ html{
     display: flex;
     align-items: center;
   }
+
+
+  /*
+---------------------------------------
+Popular Categories
+---------------------------------------
+*/
+
+  .categoria {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+  }
+  .categoria h2{
+    font-size: 2.8rem;
+    font-family: raleway;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  
+  .naccs {
+    position: relative;
+    background-color: #2b2d42;
+    border-radius: 7px;
+    width: 85%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-areas: "menu detalle";
+    overflow: hidden;
+  }
+
+
+  .menu{
+    grid-area: menu;
+  }
+
+  .detalle{
+    grid-area: detalle;
+    position: relative
+  }
+
+  .detalle> div{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .detalle > div:not(.active){
+    left: -20%;
+    transform: scale(0.7);
+    opacity: 0;
+    transition: all 1s ease;
+    
+  }
+  .detalle > div.active{
+    opacity: 1;
+    left: 0;
+    transition: all 1s ease;
+  }
+  /* .detalle >div.active{
+
+  } */
+
+
+  .detalle > div .text{
+    width: 50%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .text h5{
+    text-align: center;
+    color: white;
+    font-family: raleway;
+    font-weight: 500;
+    font-size: 2rem;
+    margin-bottom:1.4rem ;
+  }
+
+  .text p{
+    text-align: center;
+    color: white;
+    font-family: raleway;
+    font-size: 1.6rem;
+  }
+
+  .text button{
+    margin-top: 2rem;
+    width: 10rem;
+    height: 3rem;
+    border-radius: 3px;
+    border-color: transparent;
+  }
+
+  .container_slider_motos{
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    position: relative; 
+  }
+
+  
+
+.thumb img{
+  width: 4rem;
+  height: 4rem;
+}
+.thumb h6{
+  color: #fff;
+  font-size: 1.6rem;
+  font-family: raleway;
+  font-weight: bolder;
+  margin-left: 1rem;
+}
+
+/* ------------- SLIDER MOTOS --------------- */
+.list {
+  height: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%)
+}
+
+.list li {
+  list-style-type: none;
+  
+  width: 200px;
+  height: 200px;
+  opacity: .25;
+  position: absolute;
+  left: 50%;
+  margin-left: -100px;
+  border-radius: 2px;
+  background: #9C89B8;
+  transition: transform 1s, opacity 1s;
+}
+
+.list .act {
+  opacity: 1;
+}
+
+.list .prev,
+.list .next {
+  cursor: pointer;
+}
+
+.list .prev {
+  transform: translateY(-220px) scale(.85);
+}
+
+.list .next {
+  transform: translateY(220px) scale(.85);
+}
+
+.list .hide {
+  transform: translateY(-420px) scale(.85);
+}
+
+.list .new-next {
+  transform: translateY(420px) scale(.85);
+}
+
+.list .hide,
+.list .new-next {
+  opacity: 0;
+  transition: opacity .5s, transform .5s;
+}
+
+.swipe {
+  width: 100px !important;
+  height: 200px !important;
+  position: absolute;
+  background-color: green;
+  border-radius: 2px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  opacity: 0;
+}
+
+
+
+/* -------------END SLIDER MOTOS------------------ */
+  .categoria .icon {
+    display: inline-block;
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 62px;
+    color: #8d99af;
+    background-color: #fff;
+    margin-right: 15px;
+  }
+  
+  .categoria .icon img {
+    max-width: 27px;
+  }
+  
+  .categoria .naccs .menu div.first-thumb {
+    border-top-left-radius: 7px;
+  }
+  
+  .categoria .naccs .menu div.last-thumb {
+    margin-bottom: 0px;
+    border-bottom-left-radius: 7px;
+  }
+  
+  .categoria .naccs .menu div {
+    display: flex;
+    align-items: center;
+    background-color: #8d99af;
+    margin-bottom: 1px;
+    text-align: left;
+    padding: 0px 15px;
+    line-height: 126px;
+    cursor: pointer;
+    position: relative;
+    transition: 5s all cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+  
+  .categoria .naccs .menu div.active,
+  .categoria .naccs .menu div.active .thumb {
+    background-color: #2b2d42;
+  }
+  
+  .categoria ul.nacc {
+    position: relative;
+    min-height: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    transition: 0.5s all cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+  
+  .categoria ul.nacc li {
+    opacity: 0;
+    transform: translateX(-50px);
+    position: absolute;
+    list-style: none;
+    transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+  
+  .categoria ul.nacc li.active {
+    transition-delay: 0.3s;
+    position: relative;
+    z-index: 2;
+    opacity: 1;
+    transform: translateX(0px);
+  }
+  
+  .categoria ul.nacc li {
+    width: 100%;
+  }
+  
+  .categoria .nacc .thumb .left-text {
+    margin-left: 30px;
+  }
+  
+  .categoria .nacc .thumb .left-text h4 {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 35px;
+    margin-bottom: 30px;
+  }
+  
+  .categoria .nacc .thumb .left-text p {
+    color: #fff;
+    margin-bottom: 30px;
+  }
+  
+  .categoria .nacc .thumb .right-image {
+    padding: 60px;
+    display: inline-flex;
+  } 
+  
+  .categoria .nacc .thumb img {
+    border-radius: 7px;
+  }
+  
+  .categoria .nacc .thumb .left-text .main-white-button a{
+    width: 100%;
+    text-align: center;
+  }
+  
+  

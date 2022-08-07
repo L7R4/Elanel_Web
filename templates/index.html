@@ -5,36 +5,126 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="60">
+    {% comment %} <meta http-equiv="refresh" content="60"> {% endcomment %}
     <link rel="stylesheet" href="{% static 'css/navStyles.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <title>Document</title>
 </head>
 <body>
     {% include "nav.html" %}
-    <section class="container">
-        <div class="slider">
-          {% for image in posts %}
-            <img src="{{image.imagen_portada.url}}">
-          {% endfor %}
-          {% comment %} <img class="active" src="https://source.unsplash.com/gKk9rpyDryU">
-          <img src="https://source.unsplash.com/VFGEhLznjPU"> {% endcomment %}
+    <div class="main__container">
+      <h1>Todo lo que necesitas<br/> en un solo lugar</h1>
+      <section class="wrapper">
+          <div class="slider">
+            {% for image in posts %}
+              <img src="{{image.imagen_portada.url}}">
+            {% endfor %}
+          </div>
+          <nav class="slider-nav">
+            <ul>
+              <li class="arrow">
+                <button class="previous">
+                    <img src="{% static 'images/previous.png' %}" class="previous__img">
+                </button>
+              </li>
+              <li class="arrow">
+                <button class="next">
+                  <img src="{% static 'images/forward.png' %}" class="forward__img">
+                </button>
+              </li>
+            </ul>
+          </nav>
+          
+        </section>  
+    </div>
+      
+      <section class="categoria">
+        <h2>¡Elige lo que deseas!</h2>
+        <div class="naccs">
+            <div class="menu">
+                <div class="motos active">
+                          <div class="thumb">
+                            <img src="{% static 'images/seccion_categorias/moto.svg' %}" alt="Moto">
+                            <h6>Motos</h6>
+                          </div>
+                </div>
+                
+                <div class="soluciones_dinerarias">
+                          <div class="thumb">                 
+                            {% comment %} <span class="icon"><img src="assets/images/search-icon-02.png" alt=""></span> {% endcomment %}
+                            <img src="{% static 'images/seccion_categorias/soluciones_dinerarias.svg' %}" alt="bolsa_de_dinero">
+                            <h6>Soluciones Dinerarias</h6>
+                            
+
+                          </div>
+                </div>
+
+                <div class= "electrodomesticos">
+                          <div class="thumb">                 
+                            {% comment %} <span class="icon"><img src="assets/images/search-icon-03.png" alt=""></span> {% endcomment %}
+                            <img src="{% static 'images/seccion_categorias/electrodomesticos.svg' %}" alt="lavarropa/heladera">
+                            <h6>Electrodomesticos</h6>
+                          </div>
+                </div>
+
+                <div class="beneficios">
+                          <div class="thumb">                 
+                            {% comment %} <span class="icon"><img src="assets/images/search-icon-05.png" alt=""></span> {% endcomment %}
+                            <img src="{% static 'images/seccion_categorias/beneficios.svg' %}" alt="hombre_del_servicio_tecnico">
+                            <h6>                            Beneficios de Cliente
+                            </h6>
+                          </div>
+                </div>       
+            </div>
+            <div class="detalle">
+
+              <div class="detalle__motos_contenido active">
+                <div class="text">
+                  <h5>Encabezado de Motos</h5>
+                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae rerum amet ullam odit iure autem sequi temporibus voluptate. Velit officiis quam molestiae dolores animi quas quis obcaecati ab facere rem?</p>
+                  <button> Ver mas</button>
+                </div>
+                <div class="container_slider_motos">
+                    {% comment %} {%for moto in motos%}
+                      <img src="{{moto.imagen_portada.url}}">
+                    {%endfor%} {% endcomment %}
+                    <ul class="list">
+                      <li class="hide"></li>
+                      <li class="prev"></li>
+                      <li class="act"></li>
+                      <li class="next"></li>
+                      <li class="next new-next"></li>
+                    </ul>
+                    <div class="swipe"></div>
+                </div>
+                
+              </div>
+
+              <div class="detalle__soluciones_dinerarias_contenido">
+                <h5>Encabezado de Soluciones Dinerarias</h5>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae rerum amet ullam odit iure autem sequi temporibus voluptate. Velit officiis quam molestiae dolores animi quas quis obcaecati ab facere rem?</p>
+                <button> Ver mas</button>
+              </div>
+
+              <div class="detalle__electrodomesticos_contenido">
+                <h5>Encabezado de Electrodomesticos</h5>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae rerum amet ullam odit iure autem sequi temporibus voluptate. Velit officiis quam molestiae dolores animi quas quis obcaecati ab facere rem?</p>
+                <button> Ver mas</button>
+              </div>
+
+              <div class="detalle__beneficios_contenido">
+                <h5>Encabezado de Beneficios de Cliente</h5>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae rerum amet ullam odit iure autem sequi temporibus voluptate. Velit officiis quam molestiae dolores animi quas quis obcaecati ab facere rem?</p>
+                <button> Ver mas</button>
+              </div>
+
+
+            </div>
         </div>
-        <nav class="slider-nav">
-          <ul>
-            <li class="arrow">
-              <button class="previous">
-                  <img src="{% static 'images/previous.png' %}" class="previous__img">
-              </button>
-            </li>
-            <li class="arrow">
-              <button class="next">
-                <img src="{% static 'images/forward.png' %}" class="forward__img">
-              </button>
-            </li>
-          </ul>
-        </nav>
       </section>
+<script src ="{%static "js/categoria.js"%}"></script>
 <script src="{% static 'js/slider.js' %}"></script>
-</body>
+{% comment %} <script src ="{%static "js/slider_motos.js"%}"></script> {% endcomment %}
+
+
 </html>

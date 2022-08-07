@@ -3,16 +3,16 @@ const itemCount = items.length;
 const nextItem = document.querySelector('.next');
 const previousItem = document.querySelector('.previous');
 let slider = document.querySelector(".slider");
-alert(itemCount)
 var img = document.querySelectorAll(".slider img");
 let count = 1;
 let operacion =0;
 calcDisplaySlider = 100/itemCount;
 let clicked = false;
+console.log({slider});
+slider.setAttribute("style","min-width:calc(100%/" + itemCount + ")");
 
 img.forEach(function(image){
   image.setAttribute("style","width:calc(100%/" + itemCount + ")");
-  
 })
 previousItem.classList.add("disable");
 
