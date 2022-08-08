@@ -1,83 +1,44 @@
-const $ = selector => {
-  return document.querySelector(selector);
-};
+const images = document.querySelectorAll(".list > li");
+const btn_prev = document.querySelector(".btn-prev")
+const btn_next = document.querySelector(".btn-next")
 
-function next() {
-  if ($(".hide")) {
-    $(".hide").remove(); 
-  }
+let slider = document.querySelector(".list");
+var item = document.querySelectorAll(".list > li");
 
-  /* Step */
 
-  if ($(".prev")) {
-    $(".prev").classList.add("hide");
-    $(".prev").classList.remove("prev");
-  }
 
-  $(".act").classList.add("prev");
-  $(".act").classList.remove("act");
 
-  $(".next").classList.add("act");
-  $(".next").classList.remove("next");
-
-  /* New Next */
-
-  $(".new-next").classList.remove("new-next");
-
-  const addedEl = document.createElement('li');
-
-  $(".list").appendChild(addedEl);
-  addedEl.classList.add("next","new-next");
-}
-
-function prev() {
-  $(".new-next").remove();
-    
-  /* Step */
-
-  $(".next").classList.add("new-next");
-
-  $(".act").classList.add("next");
-  $(".act").classList.remove("act");
-
-  $(".prev").classList.add("act");
-  $(".prev").classList.remove("prev");
-
-  /* New Prev */
-
-  $(".hide").classList.add("prev");
-  $(".hide").classList.remove("hide");
-
-  const addedEl = document.createElement('li');
-
-  $(".list").insertBefore(addedEl, $(".list").firstChild);
-  addedEl.classList.add("hide");
-}
-
-slide = element => {
-  /* Next slide */
-  
-  if (element.classList.contains('next')) {
-    next();
-    
-  /* Previous slide */
-    
-  } else if (element.classList.contains('prev')) {
-    prev();
-  }
-}
-
-const slider = $(".list"),
-      swipe = new Hammer($(".swipe"));
-
-slider.onclick = event => {
-  slide(event.target);
-}
-
-swipe.on("swipeleft", (ev) => {
-  next();
-});
-
-swipe.on("swiperight", (ev) => {
-  prev();
-});
+// images.forEach(function(image,i){
+//   image.addEventListener("click",function(){
+//     if(image.classList.contains("next")){
+//       image.classList.remove("next");
+//       images.forEach(e =>{
+//         if(e.classList.contains("prev")){
+//           e.classList.replace("prev", "next")
+//         }
+//       });
+//       images.forEach(e =>{
+//         if(e.classList.contains("act")){
+//           e.classList.replace("act","prev");
+//         }
+        
+//       });
+//     }
+      
+//     if(image.classList.contains("prev")){
+//       image.classList.remove("prev");
+//       images.forEach(e =>{
+//         if(e.classList.contains("next")){
+//           e.classList.replace("next", "prev")
+//         }
+//       });
+//       images.forEach(e =>{
+//         if(e.classList.contains("act")){
+//           e.classList.replace("act","next");
+//         }
+        
+//       });
+      
+//     }
+// })
+// });

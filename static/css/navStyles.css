@@ -1,7 +1,6 @@
 .header-area.header-sticky {
     min-height: 68px;
-    background: rgb(33,36,54);
-    /* background: linear-gradient(180deg, rgba(33,36,54,0.5861695019804797) 0%, rgba(33,36,54,0.4321078773306197) 26%, rgba(33,36,54,0.342472022988883) 53%, rgba(33,36,54,0.26684177088804273) 78%, rgba(33,36,54,0.16600143475358897) 100%); */
+    background: #212436;
     height: 6.8rem;
   }
 .header-area {
@@ -97,8 +96,7 @@
  
 .sub-menu {
     position: absolute;
-    width: 100vw;
-    /* box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06); */
+    width: 100%;
     overflow: hidden;
     top: 5.3rem;
     left: 0;

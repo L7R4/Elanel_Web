@@ -8,7 +8,7 @@ let count = 1;
 let operacion =0;
 calcDisplaySlider = 100/itemCount;
 let clicked = false;
-console.log({slider});
+
 slider.setAttribute("style","min-width:calc(100%/" + itemCount + ")");
 
 img.forEach(function(image){

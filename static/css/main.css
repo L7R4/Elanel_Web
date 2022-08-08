@@ -7,28 +7,30 @@ html{
     font-size: 62.5%;
     background-color: rgb(236, 231, 231);
 }
-body{
-  overflow-x: hidden;
-}
+
  .main__container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: #12131b;
  }
  .main__container h1{
-  width: 100%;
+  width: 35%;
   min-width: 40rem;
- }
+  text-align: center;
+  font-size: 4rem;
+  font-family: babapro font;
+  color: #027cf1;
+  padding: 0 0.5rem;
+}
   .wrapper {
-    /* max-width: 800px; */
-    height: 400px;
-    position:relative;
+    height: 600px;
+    position: relative;
     overflow: hidden;
+    width: 60%;
   }
   
-
   .slider{
-    /* width: 100%; */
     height: 100%;
     display: flex;
     flex-flow: row nowrap;
@@ -102,23 +104,28 @@ Popular Categories
 */
 
   .categoria {
-    margin-top: 2rem;
     margin-bottom: 3rem;
+    background-color: #12131b;
+    padding-bottom: 4rem;
   }
   .categoria h2{
-    font-size: 2.8rem;
+    font-size: 4rem;
     font-family: raleway;
     font-weight: 700;
-    text-align: center;
-    margin-bottom: 2rem;
+    padding-bottom: 4rem;
+    padding-left: 8rem;
+    padding-top: 4rem;
+    color: #f4f4f4;
+    background-color: #12131b;
   }
   
   
   .naccs {
     position: relative;
-    background-color: #2b2d42;
-    border-radius: 7px;
-    width: 85%;
+    height: 500px;
+    background-color: #212436;
+    border-radius: 20px;
+    width: 95%;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 30% 70%;
@@ -200,6 +207,8 @@ Popular Categories
     height: 100%;
     overflow: hidden;
     position: relative; 
+    display: flex;
+    justify-content: center;
   }
 
   
@@ -217,72 +226,49 @@ Popular Categories
 }
 
 /* ------------- SLIDER MOTOS --------------- */
+.slider__motos{
+  height: 100%;
+  width: 20rem;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.slider__motos__nav{
+  position: absolute;
+      width: 35rem;
+      top: 42%;
+
+}
+.slider__motos__nav ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
 .list {
   height: 200px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%)
+  width: 500%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  transition: all .5s ease;
 }
 
 .list li {
   list-style-type: none;
-  
+  margin-right: 20px;
   width: 200px;
   height: 200px;
   opacity: .25;
-  position: absolute;
-  left: 50%;
-  margin-left: -100px;
   border-radius: 2px;
   background: #9C89B8;
   transition: transform 1s, opacity 1s;
 }
-
-.list .act {
-  opacity: 1;
-}
-
-.list .prev,
-.list .next {
-  cursor: pointer;
-}
-
-.list .prev {
-  transform: translateY(-220px) scale(.85);
-}
-
-.list .next {
-  transform: translateY(220px) scale(.85);
-}
-
-.list .hide {
-  transform: translateY(-420px) scale(.85);
-}
-
-.list .new-next {
-  transform: translateY(420px) scale(.85);
-}
-
-.list .hide,
-.list .new-next {
-  opacity: 0;
-  transition: opacity .5s, transform .5s;
-}
-
-.swipe {
-  width: 100px !important;
-  height: 200px !important;
-  position: absolute;
-  background-color: green;
-  border-radius: 2px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  opacity: 0;
-}
-
-
 
 /* -------------END SLIDER MOTOS------------------ */
   .categoria .icon {
@@ -320,7 +306,7 @@ Popular Categories
     line-height: 126px;
     cursor: pointer;
     position: relative;
-    transition: 5s all cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: 0.6s all cubic-bezier(0.075, 0.82, 0.165, 1);
   }
   
   .categoria .naccs .menu div.active,
@@ -387,5 +373,90 @@ Popular Categories
     width: 100%;
     text-align: center;
   }
+
+
+  /* slider de marcas */
+  @import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+
+:root {
+  --marquee-width: 100vw;
+  --marquee-height: 10vh;
+  /* --marquee-elements: 12; */ /* defined with JavaScript */
+  --marquee-elements-displayed: 5;
+  --marquee-element-width: calc(var(--marquee-width) / var(--marquee-elements-displayed));
+  --marquee-animation-duration: calc(var(--marquee-elements) * 3s);
+}
+.marcas{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #eee;
+  color: #111;
+}
+.marquee {
+  width: var(--marquee-width);
+  height: var(--marquee-height);
+  background-color: #212436;
+  color: #eee;
+  overflow: hidden;
+  position: relative;
+}
+.marquee:before, .marquee:after {
+  position: absolute;
+  top: 0;
+  width: 10rem;
+  height: 100%;
+  content: "";
+  z-index: 1;
+}
+.marquee:before {
+  left: 0;
+  background: linear-gradient(to right, #111 0%, transparent 100%);
+}
+.marquee:after {
+  right: 0;
+  background: linear-gradient(to left, #111 0%, transparent 100%);
+}
+.marquee-content {
+  list-style: none;
+  height: 100%;
+  display: flex;
+  animation: scrolling var(--marquee-animation-duration) linear infinite;
+}
+/* .marquee-content:hover {
+  animation-play-state: paused;
+} */
+@keyframes scrolling {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-1 * var(--marquee-element-width) * var(--marquee-elements))); }
+}
+.marquee-content li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* text-align: center; */
+  flex-shrink: 0;
+  width: var(--marquee-element-width);
+  max-height: 100%;
+  font-size: calc(var(--marquee-height)*3/4); /* 5rem; */
+  white-space: nowrap;
+}
+
+.marquee-content li img {
+  width: 100%;
+  /* height: 100%; */
+  border: 2px solid #eee;
+}
+
+@media (max-width: 600px) {
+  html { font-size: 12px; }
+  :root {
+    --marquee-width: 100vw;
+    --marquee-height: 16vh;
+    --marquee-elements-displayed: 3;
+  }
+  .marquee:before, .marquee:after { width: 5rem; }
+}
   
   
