@@ -43,8 +43,7 @@ class SolucionDineraria(models.Model):
 
 
 class Usuario(models.Model):
-    nombre = models.CharField(max_length= 50)
-    apellido = models.CharField(max_length=100)
+    nombre_completo = models.CharField(max_length= 120, default="")
     dni = models.CharField(max_length=8)
     provincia = models.CharField(max_length=50)  
     localidad = models.CharField(max_length=50)  
@@ -79,8 +78,8 @@ class BeneficioParaCliente(models.Model):
     ]
 
     asistencia_titulo= models.CharField(max_length=50, choices=asistencia)
-    nombre_tecnico = models.CharField(max_length = 50)
-    num_contacto = models.CharField(max_length= 11)
+    nombre_tecnico = models.CharField(max_length = 50, default="")
+    num_contacto = models.CharField(max_length= 11, default="")
 
 
 

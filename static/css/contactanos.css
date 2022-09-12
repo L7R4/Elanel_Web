@@ -1,0 +1,42 @@
+:root {
+    --slide-transform: 0;
+    --transition: transform 1s;
+    --slide-transform_moto: 0;
+    --transition_moto: transform 1s;
+  
+    --bgColor : #12131b;
+    --secondBgColor: #e8e8e8;
+    --pColor: #212436;
+    --sColor: #027cf1;
+    --tColor: #02e3f5;
+    
+    
+  }
+  @font-face {
+    font-family: babapro;
+    src: url("../fonts/Babapro-Ea4rr.otf");
+  }
+  
+  @font-face{
+    font-family: raleway;
+    src: url("../fonts/Raleway-Regular.ttf")
+  }
+  @font-face{
+    font-family: raleway-bold;
+    src: url("../fonts/Raleway-Bold.ttf")
+  }
+  @font-face{
+    font-family: raleway-semibold;
+    src: url("../fonts/Raleway-SemiBold.ttf")
+  }
+  
+  *{
+      margin: 0;
+      padding: 0;
+      
+    }
+    html{
+      box-sizing: border-box;
+      font-size: 62.5%; 
+      background-color: var(--secondBgColor);
+  }

@@ -1,0 +1,232 @@
+:root{
+    --bgColor : #12131b;
+    --secondBgColor: #e8e8e8;
+    --pColor: rgb(33, 36, 54);
+    --sColor: rgb(2, 124, 241);
+    --tColor: #02e3f5;
+
+    --slide-transform: 0;
+    --transition: transform 1s;
+    --slide-transform_moto: 0;
+    --transition_moto: transform 1s;
+}
+@font-face{
+    font-family: raleway;
+    src: url("../fonts/Raleway-Regular.ttf")
+  }
+  @font-face{
+    font-family: raleway-bold;
+    src: url("../fonts/Raleway-Bold.ttf")
+  }
+  @font-face{
+    font-family: raleway-semibold;
+    src: url("../fonts/Raleway-SemiBold.ttf")
+  }
+  @font-face{
+    font-family: raleway-extrabold;
+    src: url("../fonts/Raleway-ExtraBold.ttf")
+  }
+
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    box-sizing: border-box;
+    font-size: 62.5%;
+    background-color: var(--secondBgColor);
+}
+
+.espace_header_categories{
+    width: 100%;
+    height: 65px;
+}
+.wrapper_catalogo_aside{
+    height:calc((100vh - 65px));
+    display: flex;
+    min-height: 100%;
+}
+.filters_container{
+    height: 100%;
+    width: 22%;
+    overflow-y: scroll;
+    min-width: 160px;
+}
+.filters_container::-webkit-scrollbar{
+    background-color: transparent;
+    
+}
+
+
+.filters_container form > h1{
+    font-size: 2rem;
+    font-family: raleway-semibold;
+    color:var(--bgColor);
+    margin-bottom: 5px ;
+    margin-left: 4%;
+    margin-top: 5%;
+}
+
+.filters_container form .marcas{
+    display: grid;
+    grid-auto-rows:auto;
+    grid-template-columns: repeat(auto-fit, minmax(10rem,1fr));    
+}
+
+.filters_container form .estado{
+    display: grid;
+    grid-auto-rows:auto;
+    grid-template-columns: repeat(auto-fit, minmax(10rem,1fr));
+}
+
+.filters_container form .marcas > input[type="radio"]{
+    display: none;
+}
+
+.filters_container form .estado > input[type="radio"]{
+    display: none;
+}
+
+.filters_container form .marcas >label img{
+    width: 90%;
+    /* height: 100%; */
+    position: absolute;
+    z-index:1;
+    opacity: .3;
+}
+.filters_container form .marcas >label >h3{
+    position: relative;
+    z-index: 2;
+    font-family: raleway-extrabold;
+    font-size: 1.7rem;
+    color: var(--bgColor);
+}
+
+.filters_container form .marcas >label{
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    height: 4rem;
+    min-height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    margin: 3% 8% 3% 8%;
+}
+
+.filters_container form .marcas > input[type="radio"]:checked + label{
+   transition: all .2s ease;
+   background-color: var(--sColor);
+   /* transform: scale(107%,107%); */
+}
+
+
+.filters_container form .estado >label >h3{
+    position: relative;
+    z-index: 2;
+    font-family: raleway-extrabold;
+    font-size: 1.7rem;
+    color: var(--bgColor);
+}
+
+.filters_container form .estado >label{
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    min-height: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    margin: 3% 8% 3% 8%;
+}
+
+.filters_container form .estado > input[type="radio"]:checked + label{
+   transition: all .2s ease;
+   background-color: var(--sColor);
+   /* transform: scale(107%,107%); */
+}
+
+.filters_container form .precio{
+    display: grid;
+    grid-auto-rows:auto;
+    grid-template-columns: repeat(auto-fit, minmax(10rem,1fr));
+}
+.filters_container form .precio > input{
+    border-radius: 5px;
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    margin: 3% 8% 3% 8%;
+    font-family: raleway;
+    padding-left: 3%;
+}
+
+#button_filter{
+    display: block;
+    width: 46%;
+    height: 2vw;
+    min-height: 32px;
+    border-radius: 5px;
+    border-color: transparent;
+    outline: none;
+    cursor: pointer;
+    background-color: var(--sColor);
+    font-size: 1vw;
+    font-family: raleway-semibold;
+    margin: 3% auto;
+}
+#button_filter:hover{
+    transition: all .2s ease;
+    background-color: #fff;
+}
+
+
+
+
+.catalogo{
+    display: grid;
+    width: 80%;
+    grid-template-columns: repeat(auto-fill, minmax(20rem,1fr));
+    grid-auto-rows: auto;
+    row-gap: 3rem;
+    column-gap: 6rem;
+    overflow-y: scroll;
+    padding: 2rem 6rem;
+} 
+
+.catalogo > a{
+    text-decoration: none;
+}
+
+.catalogo a > article{
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+    /* justify-content: center; */
+    background-color: #f4f4f7b9;
+    position: relative;
+    border-radius: 10px;
+}
+.catalogo a > article > img{
+    max-width: 100%;
+    width: 100%;
+    
+}
+.catalogo a > article > h3{
+    font-family: raleway-bold;
+    font-size: 1.7rem;
+    color: var(--bgColor);
+    margin-bottom: 3%;
+}
+.catalogo a > article > h2{
+    font-family: raleway-bold;
+    color: var(--sColor);
+    font-size: 2rem;
+}
+

@@ -1,0 +1,240 @@
+:root{
+
+--bgColor : #12131b;
+--secondBgColor: #e8e8e8;
+--pColor: #212436;
+--sColor: #027cf1;
+--tColor: #02e3f5;
+}
+*{
+    margin: 0;
+    padding: 0;
+    
+  }
+  html{
+    box-sizing: border-box;
+    font-size: 62.5%; 
+    background-color: var(--secondBgColor);
+}
+
+@font-face {
+font-family: babapro;
+src: url("../fonts/Babapro-Ea4rr.otf");
+}
+
+@font-face{
+font-family: raleway;
+src: url("../fonts/Raleway-Regular.ttf")
+}
+@font-face{
+font-family: raleway-bold;
+src: url("../fonts/Raleway-Bold.ttf")
+}
+@font-face{
+font-family: raleway-semibold;
+src: url("../fonts/Raleway-SemiBold.ttf")
+}
+
+.espace_header_categories{
+    width: 100%;
+    height: 65px;
+}
+.wrapper{
+    /* height:calc((90vh - 65px)); */
+    display: grid;
+    grid-template-columns: 10% 50% 25%;
+    justify-content: space-between;
+    margin: 1% 5%;
+    background-color: #fff;
+    border-radius: 20px;
+    row-gap: 2rem;
+    align-items: center;
+    position: relative;
+}
+.nav__images{
+    height: 70%;
+    max-height: 400px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    overflow-y:scroll;
+}
+.nav__images::-webkit-scrollbar{
+    width: 4px;
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+
+.nav__images > figure{
+    width: 80%;
+    cursor: pointer;
+    margin-top: 1.4rem;
+}
+.nav__images > figure>img{
+    width: 100%;
+}
+.complete__image{
+    display: flex;
+    align-items: center;
+    min-height: 400px;
+}
+
+.complete__image > img{
+    width: 100%;
+    max-width: 600px;
+    max-height: 400px;
+    object-fit: contain;
+}
+
+.resumen{
+    grid-row: 1 / 3;
+    grid-column: 3/4;
+    background-color: #21243610;
+    height: 100%;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-auto-rows: min-content;
+    
+}
+
+.resumen__detalle{
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    /* grid-auto-rows: 3rem; */
+    row-gap: 2rem;
+    align-items: center;
+    margin-top: 8%;
+    margin-right: 15%;
+    padding-left: 8%;
+}
+
+#title_product{
+    font-size: 3rem;
+    font-family: raleway-bold;
+    grid-column: span 2;
+    padding-left: 8%;
+    margin-top: 18%;
+    height: fit-content;
+    color: var(--pColor);
+}
+#precio_product{
+    font-size: 2.5rem;
+    font-family: raleway-semibold;
+    grid-column: span 2;
+    padding-left: 8%;
+    margin-top: 2%;
+    height: fit-content;
+}
+.resumen > .resumen__detalle> div{
+    display: flex;
+    grid-column: span 2;
+    justify-content: space-between;
+    background-color: #027df19f;
+    padding: 3% 5%;
+    border-radius: 5px;
+}
+.resumen > .resumen__detalle> div>h2{
+    font-size: 1.6rem;
+    font-family: raleway;
+    height: fit-content;
+}
+
+.resumen .contact {
+    grid-column: span 2;
+    margin-top: 9%;
+    padding-left: 8%;
+    margin-right: 10%;
+}
+.resumen .contact > h3:first-child{
+    font-size: 1.6rem;
+    font-family: raleway-bold;
+}
+.resumen .contact > h3{
+    font-size: 1.4rem;
+    font-family: raleway;
+    margin-bottom: 2%;
+}
+
+#form_product{
+    margin-top: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 10rem;
+    align-items: center;
+}
+
+#form_product > input{
+    width: 80%;
+    height: 30px;
+    font-size: 1.4rem;
+    font-family: raleway-semibold;
+    padding: 0 2%;
+    border-radius: 6px;
+    margin-top:1%;
+    margin-bottom: 3%;
+    border-color:transparent;
+    transition: all .4s ease;
+}
+#form_product > input:focus{
+    outline: none;
+    transition: all 2 ease;
+    box-shadow: 0px 0px 20px 2px #027cf130;
+    border-color: #027df15d;
+}
+
+#form_product > button{
+    margin-top: 3%;
+    width: 50%;
+    height: 32px;
+    border-radius: 6px;
+    border-color: transparent;
+    outline: none;
+    cursor: pointer;
+    background-color: #1c2457;
+    color: white;
+    font-size: 1.7rem;
+    font-family: raleway-semibold;
+    transition: all .4s ease;
+}
+#form_product > button:hover{
+    transition: all .4s ease;
+    background-color: #fff;
+    color: #12131b;
+    box-shadow: 0px 0px 20px 2px #027cf130;
+    border-color: #027df15d;
+}
+
+.detalles{
+    grid-column: span 2;
+    margin-left: 10%;
+    /* padding-bottom: 8%; */
+}
+.detalles p{
+    font-size: 1.4rem;
+    font-family: raleway-semibold;
+}
+#swal2-title{
+    font-size: 2.5rem;
+    font-family: raleway-bold;
+}
+#swal2-html-container{
+    font-size: 1.7rem;
+    font-family: raleway;
+    margin: 4% 0;
+}
+.swal2-styled.swal2-confirm{
+    width: 14rem;
+    /* height: 3rem; */
+    background-color: #027df1;
+    border-radius: 5px;
+    font-size: 1.4rem !important;
+    font-family: raleway-bold;
+}
+
+

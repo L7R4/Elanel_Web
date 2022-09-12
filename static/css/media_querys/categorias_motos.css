@@ -1,0 +1,34 @@
+@media screen and (max-width: 740px) {
+    .catalogo{
+        max-width: 290px;
+        margin: 0 auto;
+        margin-top: 4rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .catalogo{
+        padding: 2rem 3rem;
+    }
+    .filters_container{
+        min-width: 140px;
+    }
+    
+    .filters_container form .marcas >label{
+        height: 3rem;
+        min-height: 3rem;
+    }
+
+    .filters_container form .marcas >label >h3{
+        font-size: 1.4rem;
+    }
+}
+@media screen and (max-width: 400px) {
+    .catalogo{
+        padding: 2rem 1rem;
+        padding-left: 0;
+    }
+    .filters_container{
+        min-width: 110px;
+    }
+}

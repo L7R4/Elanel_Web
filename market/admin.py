@@ -11,7 +11,7 @@ class UsuarioResource(resources.ModelResource):
 
 @admin.register(Usuario) #decorador que significa que al registrar producto lo extendemos con ProductoAdmin
 class UsuarioAdmin(ImportExportModelAdmin,admin.ModelAdmin):
-    list_display= ["nombre", "apellido","email", "provincia","objetivo", ]
+    list_display= ["nombre_completo","email", "provincia","objetivo", ]
     # search_fields = ["nombre"]
     # list_filter=["titulo_de_categoria"]
     # list_editable = ["precio"]

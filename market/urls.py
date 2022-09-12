@@ -1,12 +1,15 @@
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from market.views import CategoriaMotos, CategoriaElectrodemesticos,CategoriaSolucionesDinerarias,CategoriaBeneficiosCliente
+from market.views import  TrabajaConNosotros, CategoriaMotos,CategoriaElectrodemesticos,CategoriaSolucionesDinerarias, CategoriaBeneficiosCliente, Categorias
 app_name="market"
 
 urlpatterns = [
-    path("motos/",CategoriaMotos.as_view(),name="motos"),
-    path("elec/",CategoriaElectrodemesticos.as_view(), name="electrodomesticos"),
-    path("beneficios/", CategoriaBeneficiosCliente.as_view(), name="beneficios"),
-    path("soluciones_dinerarias/", CategoriaSolucionesDinerarias.as_view(),name="soluciones_dinerarias")
-]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+    path("categorias/",Categorias.as_view(),name="categorias"),
+    path("categorias/motos/",CategoriaMotos.as_view(),name="motos"),
+    path("categorias/elec/",CategoriaElectrodemesticos.as_view(), name="electrodomesticos"),
+    path("categorias/beneficios/", CategoriaBeneficiosCliente.as_view(), name="beneficios"),
+    path("categorias/soluciones_dinerarias/", CategoriaSolucionesDinerarias.as_view(),name="soluciones_dinerarias"),
+    path("trabaja_con_nosotros/", TrabajaConNosotros.as_view(),name="trabaja"),
+]
+# + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

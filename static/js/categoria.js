@@ -30,6 +30,11 @@ menu.forEach(function(item){
             const detalleBeneficios = document.querySelector(".detalle__beneficios_contenido");
             detalleBeneficios.classList.add("active");
          }
+         else if(item.classList.contains("usados")){
+            desactiveDetalle();
+            const detalleBeneficios = document.querySelector(".detalle__usados");
+            detalleBeneficios.classList.add("active");
+         }
     });
 });
 function desactiveMenu() {

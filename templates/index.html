@@ -5,172 +5,414 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% comment %} <meta http-equiv="refresh" content="60"> {% endcomment %}
     <link rel="stylesheet" href="{% static 'css/navStyles.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/media_querys/nav_bar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/media_querys/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/media_querys/footer.css' %}">
+    <title>Elanel Servicios y Soluciones</title>
+    <link rel="shortcut icon" href="images/logo_solo.png">
 </head>
 <body>
-    {% include "nav.html" %}
-    <div class="main__container">
-      <h1>Todo lo que necesitas<br/> en un solo lugar</h1>
-      <section class="wrapper">
-          <div class="slider">
-            {% for image in posts %}
-              <img src="{{image.imagen_portada.url}}">
-            {% endfor %}
-          </div>
-          <nav class="slider-nav">
-            <ul>
-              <li class="arrow">
-                <button class="previous">
-                    <img src="{% static 'images/previous.png' %}" class="previous__img">
-                </button>
-              </li>
-              <li class="arrow">
-                <button class="next">
-                  <img src="{% static 'images/forward.png' %}" class="forward__img">
-                </button>
-              </li>
-            </ul>
-          </nav>
-          
-        </section>  
+  <figure class="logo__background">
+    <img src="{% static 'images/fwd/icono.sinfondo.png' %}" alt="">
+  </figure> 
+  <header>
+    <nav class="header__nav">
+      <ol>
+        <a class="logo_container"href="{% url 'index' %}">
+          <img src="{% static 'images/icons/icono_header_blanco_arreglado.png' %}" alt="" class="logo">
+        </a>
+        <label for="check">
+          <input type="checkbox" id="check"/> 
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+        
+        <div class="nav__items">
+          <li class="items__menu">
+              <a href="{% url 'market:categorias' %}">Categorias</a>
+              <img src="{% static 'images/icons8-flecha-ampliar-24.png' %}" alt=""> 
+              <ul class="menu_categoria">
+                  <li>
+                    <a href="{% url 'market:motos' %}">Motos</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'market:soluciones_dinerarias' %}">Soluciones dinerias</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'market:electrodomesticos' %}">Electrodomesticos</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'market:beneficios' %}">Beneficios para clientes</a>
+                  </li>
+                  <li>
+                    <a href="/templates_categorias/categoria_usado.html">Usados</a>
+                  </li>
+              </ul>
+          </li>
+          <li class="items">
+              <a href="{% url 'nosotros' %}">Sobre Nosotros</a>
+          </li>
+          <li class="items">
+              <a href="{% url 'market:trabaja' %}">Trabaja con nosotros</a>
+          </li>
+          <li class="items">
+              <a href="{% url 'contactanos' %}">Contactanos</a>
+          </li>
+        </div>
+      </ol>
+    </nav>
+  </header>
+  <div class="espace_header_categories"></div>
+
+  <div class="wrapper__slider__botones">
+    <div id="slider-container" class="slider-container">
+      <div class="slider" id="slider">
+        <div class="slider__element">
+          <img
+            src="{% static 'images/uno.webp' %}"
+            alt=""
+          />
+        </div>
+        <div class="slider__element">
+          <img
+            src="{% static 'images/dos.jpg' %}"
+            alt=""
+          />
+        </div>
+        <div class="slider__element">
+          <img
+            src="{% static 'images/uno.webp' %}"
+            alt=""
+          />
+        </div>
+        <div class="slider__element">
+          <img
+            src="{% static 'images/dos.jpg' %}"
+            alt=""
+          />
+        </div>
+      </div>
     </div>
-      
-      <section class="categoria">
-        <h2>¡Elige lo que deseas!</h2>
-        <div class="naccs">
-            <div class="menu">
-                <div class="motos active">
-                          <div class="thumb">
-                            <img src="{% static 'images/seccion_categorias/moto.svg' %}" alt="Moto">
-                            <h6>Motos</h6>
-                          </div>
-                </div>
-                
-                <div class="soluciones_dinerarias">
-                          <div class="thumb">                 
-                            {% comment %} <span class="icon"><img src="assets/images/search-icon-02.png" alt=""></span> {% endcomment %}
-                            <img src="{% static 'images/seccion_categorias/soluciones_dinerarias.svg' %}" alt="bolsa_de_dinero">
-                            <h6>Soluciones Dinerarias</h6>
-                            
+    <div class="slider-buttons">
+      <button id="button-left" class="button">
+        <img src="{% static 'images/icons/previous.svg' %}" alt="">
+      </button>
+      <button id="button-right" class="button">
+        <img src="{% static 'images/icons/next.svg' %}" alt="">
+      </button>
+    </div>
+  </div>
 
-                          </div>
-                </div>
-
-                <div class= "electrodomesticos">
-                          <div class="thumb">                 
-                            {% comment %} <span class="icon"><img src="assets/images/search-icon-03.png" alt=""></span> {% endcomment %}
-                            <img src="{% static 'images/seccion_categorias/electrodomesticos.svg' %}" alt="lavarropa/heladera">
-                            <h6>Electrodomesticos</h6>
-                          </div>
-                </div>
-
-                <div class="beneficios">
-                          <div class="thumb">                 
-                            {% comment %} <span class="icon"><img src="assets/images/search-icon-05.png" alt=""></span> {% endcomment %}
-                            <img src="{% static 'images/seccion_categorias/beneficios.svg' %}" alt="hombre_del_servicio_tecnico">
-                            <h6>                            Beneficios de Cliente
-                            </h6>
-                          </div>
-                </div>       
+  <section class="categoria">
+    <h2>¡Elige lo que deseas!</h2>
+    <div class="naccs">
+        <div class="menu">
+            <div class="motos active">
+              <img src="{% static 'images/seccion_categorias/moto.svg' %}" alt="Moto">
+              <h6>Motos</h6>     
             </div>
-            <div class="detalle">
+            
+            <div class="soluciones_dinerarias">                   
+              <img src="{% static 'images/seccion_categorias/soluciones_dinerarias.svg' %}" alt="bolsa_de_dinero">
+              <h6>Soluciones Dinerarias</h6>
+            </div>
 
-              <div class="detalle__motos_contenido active">
-                <div class="text">
-                  <h5>Encabezado de Motos</h5>
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae rerum amet ullam odit iure autem sequi temporibus voluptate. Velit officiis quam molestiae dolores animi quas quis obcaecati ab facere rem?</p>
-                  <button> Ver mas</button>
-                </div>
-                <div class="container_slider_motos">
-                    {% comment %} {%for moto in motos%}
-                      <img src="{{moto.imagen_portada.url}}">
-                    {%endfor%} {% endcomment %}
-                    <div class="slider__motos">
-                      <ul class="list">
-                        <li>
-                          <h1>Hola</h1>
-                        </li>
-                        <li>
-                          <h1>que</h1>
-                        </li>
-                        <li>
-                          <h1>hace</h1>
-                        </li>
-                      </ul>
+            <div class= "electrodomesticos">                
+              <img src="{% static 'images/seccion_categorias/electrodomesticos.svg' %}" alt="lavarropa/heladera">
+              <h6>Electrodomesticos</h6>
+            </div>
+
+            <div class="beneficios">        
+              <img src="{% static 'images/seccion_categorias/beneficios.svg' %}" alt="hombre_del_servicio_tecnico">
+              <h6>Beneficios de Cliente</h6>
+            </div>   
+
+            <div class="usados">   
+              <img src="{% static 'images/seccion_categorias/beneficios.svg' %}" alt="hombre_del_servicio_tecnico">
+              <h6>Usados</h6>
+            </div>       
+        </div>
+        <div class="detalle">
+          <div class="detalle__motos_contenido active">
+            <div class="text">
+              <h5>Encabezado de Motos</h5>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae rerum amet ullam odit iure autem sequi temporibus voluptate. Velit officiis quam molestiae dolores animi quas quis obcaecati ab facere rem?</p>
+              <button> <span>Ver mas</span></button>
+            </div>
+            <div class="container_sliderMotos_buttons">
+              <div class="container_slider_motos">
+                <div class="slider__motos">
+                    <div class="item">
+                      <img
+                        src="{% static 'images/moto__example.png' %}"
+                        alt=""
+                      />
+                      <div class="item--hover"></div>
+                      <div class="item--detail">
+                        <h2>Moto picada</h2>
+                        <h3>$100.000</h3>
+                      </div>
                     </div>
-                    <nav class="slider__motos__nav">
-                      <ul>
-                        <li class="arrow">
-                          <button class="btn-prev">
-                              <img src="{% static 'images/previous.png' %}" class="previous__img">
-                          </button>
-                        </li>
-                        <li class="arrow">
-                          <button class="btn-next">
-                            <img src="{% static 'images/forward.png' %}" class="forward__img">
-                          </button>
-                        </li>
-                      </ul>
-                    </nav>
-                </div>
-                
+                    <div class="item">
+                      <img
+                        src="{% static 'images/moto_example2.png' %}"
+                        alt="" 
+                      />
+                      <div class="item--hover"></div>
+                      <div class="item--detail">
+                        <h2>Moto picada</h2>
+                        <h3>$100.000</h3>    
+                      </div>
+                    </div>
+                    <div class="item">
+                      <img
+                        src="{% static 'images/moto__example3.png' %}"
+                        alt=""
+                      />
+                      <div class="item--hover"></div>
+                      <div class="item--detail">
+                        <h2>Moto picada</h2>
+                        <h3>$100.000</h3>     
+                      </div>
+  
+                    </div>
+                  </div>
               </div>
+              <nav class="slider__motos__nav">
+                  <button class="btn-prev">
+                    <img src="{% static 'images/arrow_icon_slider_motos.png' %}" alt="">
+                  </button>
+                  <button class="btn-next">
+                    <img src="{% static 'images/arrow_icon_slider_motos.png' %}" alt="">
+                  </button>
+              </nav>
+            </div>
+          </div>
 
-              <div class="detalle__soluciones_dinerarias_contenido">
-                <div class="text">
-                  <h5>Encabezado de Soluciones Dinerarias</h5>
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae rerum amet ullam odit iure autem sequi temporibus voluptate. Velit officiis quam molestiae dolores animi quas quis obcaecati ab facere rem?</p>
-                  <button> Ver mas</button>
-
-                </div>
-              </div>
-
-              <div class="detalle__electrodomesticos_contenido">
-                <div class="text">
-                  <h5>Encabezado de Electrodomesticos</h5>
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae rerum amet ullam odit iure autem sequi temporibus voluptate. Velit officiis quam molestiae dolores animi quas quis obcaecati ab facere rem?</p>
-                  <button> Ver mas</button>
-                </div>
-                
-              </div>
-
-              <div class="detalle__beneficios_contenido">
-                <div class="text">
-                  <h5>Encabezado de Beneficios de Cliente</h5>
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae rerum amet ullam odit iure autem sequi temporibus voluptate. Velit officiis quam molestiae dolores animi quas quis obcaecati ab facere rem?</p>
-                  <button> Ver mas</button>
-
-                </div>
-
-              </div>
-
+          <div class="detalle__soluciones_dinerarias_contenido">
+            <div class="text">
+              <h5>Encabezado de Soluciones Dinerarias</h5>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae rerum amet ullam odit iure autem sequi temporibus voluptate. Velit officiis quam molestiae dolores animi quas quis obcaecati ab facere rem?</p>
+              <button> <span>Ver mas</span></button>
 
             </div>
+          </div>
+
+          <div class="detalle__electrodomesticos_contenido">
+            <div class="text">
+              <h5>Encabezado de Electrodomesticos</h5>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae rerum amet ullam odit iure autem sequi temporibus voluptate. Velit officiis quam molestiae dolores animi quas quis obcaecati ab facere rem?</p>
+              <button> <span>Ver mas</span></button>
+            </div>
+            
+          </div>
+
+          <div class="detalle__beneficios_contenido">
+            <div class="text">
+              <h5>Encabezado de Beneficios de Cliente</h5>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae rerum amet ullam odit iure autem sequi temporibus voluptate. Velit officiis quam molestiae dolores animi quas quis obcaecati ab facere rem?</p>
+              <button> <span>Ver mas</span></button>
+
+            </div>
+
+          </div>
+
+          <div class="detalle__usados">
+            <div class="text">
+              <h5>Encabezado de Usados</h5>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae rerum amet ullam odit iure autem sequi temporibus voluptate. Velit officiis quam molestiae dolores animi quas quis obcaecati ab facere rem?</p>
+              <button> <span>Ver mas</span></button>
+
+            </div>
+
+          </div>
+
+
         </div>
-      </section>
-      <section class="marcas">
-        <div class="marquee">
-          <ul class="marquee-content">
-            <li>Hola</li>
-            <li>Hola</li>
-            <li>Hola</li>
-            <li>Hola</li>
-            <li>Hola</li>
-            <li>Hola</li>
-            <li>Hola</li>
-            <li>Hola</li>
-            <li>Hola</li>
-            <li>Hola</li>
-          </ul>
+    </div>
+  </section>
+
+  <section class="formulario">
+    <h1 class="formulario__eslogan">Todo lo que <strong class="style__palabra__eslogan">necesitas</strong><br> en un solo <strong class="style__palabra__eslogan">lugar</strong></h1>
+    <div class="barra">
+    </div>
+    <form action="" method="post"> 
+     {% csrf_token %}
+      <h5>Envianos un correo contándonos lo que quieres</h5>
+      <input type="text" id="mail" placeholder="Mail">
+      <input type="text" id="nameSurname" placeholder="Nombre y Apellido">
+      <input type="text" id="telefono" placeholder="Telefono">
+      <input type="text" id="objetivo"placeholder="Que buscas">
+      <input type="text" id="provincia"placeholder="Provincia">
+      <input type="text" id="localidad" placeholder="Localidad">
+      <input type="submit" value="Enviar" id="enviar">
+    </form>
+    
+  </section>
+
+  <section class="ubicacion">
+    <article class="mapa__container" id="mapa__container">
+      <div id="ubicacion__direccion">
+        <h1>Encuentranos en</h1>
+        <h4 >Obligado 841</h4>
+      </div>
+      <iframe id="mapa"src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3540.298199016263!2d-58.983624984976636!3d-27.459974282894965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94450ceee646f275%3A0x77559d941a7c7581!2sC.%20Obligado%20841%2C%20H3504APB%20Resistencia%2C%20Chaco!5e0!3m2!1ses!2sar!4v1660695784285!5m2!1ses!2sar" width="60%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      
+      <div class="ubicacion__text">
+        <div class="ubicacion__text_container">
+          <h5 id="ubicacion__text__title"> Nuestras oficinas se encuentran abiertas</h5>
+          <h6 id="ubicacion__horarios">
+            <strong class="horarios-decoration">Lunes a Viernes</strong>
+            8:00 a 13:00hs <br>
+            15:30 a 21:00hs <br>
+            <strong class="horarios-decoration">Sabados</strong> 8:00 a 13:00hs
+          </h6>
         </div>
-      </section>
-<script src ="{%static "js/categoria.js"%}"></script>
+        
+        <div class="locales">
+          <h4>Nuestros locales</h4>
+          <button id="resistencia">Resistencia, Chaco</button>
+          <button id="corrientes">Corrientes Capital</button>
+        </div>
+      </div>
+    </article>
+    
+    <article class="ubicacion__redes">
+      <div class="ubicacion__redes__text">
+        <h3>Ademas puedes encontrarnos en nuestras redes</h5>
+        <h6>Siguenos para mas informacion</h6>
+      </div>
+      <div class="wrapper__icons__social">
+        <ol>
+          <li id="ubicacion__facebook">
+            <a href="" class="ubicacion__icon"><img src="{% static 'images/face_icon.svg' %}" alt="">
+            </a>
+          </li>
+          <li id="ubicacion__twitter">
+            <a href="" class="ubicacion__icon"><img src="{% static 'images/twitter_icon.svg' %}" alt="">
+            </a>
+          </li>
+          <li id="ubicacion__instagram">
+            <a href="instagram.com" class="ubicacion__icon"><img src="{% static 'images/insta_icon.svg' %}" alt="">
+            </a>
+          </li>
+          <li id="ubicacion__whatsapp">
+            <!-- <p>¡Escribenos!</p> -->
+            <a href="whatsapp.com" class="ubicacion__icon"><img src="{% static 'images/whatsapp_icon.svg' %}" alt="">
+            </a>
+          </li>
+        </ol>
+      </div>
+    </article>
+  </section>
+
+  <section class="marcas">
+    <div class="marquee">
+      <ul class="marquee-content">
+        <li>
+          <img src="{% static 'images/yamaha-Logo.png' %}" alt="">
+        </li>
+        <li id="marcar_honda">
+          <img src="{% static 'images/honda.png' %}" alt="">
+        </li>
+        <li id="marcar_lg">
+          <img src="{% static 'images/lg.png' %}" alt="">
+        </li>
+        <li>
+          <img src="{% static 'images/samsung.png' %}" alt="">
+        </li>  
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer__encuentranos">
+      <h3>Encuentranos</h3>
+      <ul>
+        <li class="footer__direccion"> 
+          <p><strong>Corrientes:</strong> la direccion</p>
+          <p><strong>Resistencia:</strong> Obligado 841</p>
+        </li>
+        <li class="footer__social-media"> 
+          <a href="#">
+            <img src="{% static 'images/icons/social_face.png' %}" alt="">
+          </a>
+          <a href="#">
+            <img src="{% static 'images/icons/social_insta.png' %}" alt="">
+          </a>
+          <a href="#">
+            <img src="{% static 'images/icons/social_twitter.png' %}" alt="">
+          </a>
+          <a href="#">
+            <img src="{% static 'images/icons/social_whatsapp.png' %}" alt="">
+          </a>
+        </li>
+      </ul>
+    </div>
+      <div class="footer__categorias">
+        <ul>
+          <li class="footer__motos"> 
+            <a href="#">Motos</a>
+          </li>
+          <li class="footer__soluciones-dinerarias"> 
+            <a href="#">Soluciones Dinerarias</a>
+          </li>
+          <li class="footer__electrodomesticos"> 
+            <a href="#">Electrodomesticos</a>
+          </li>
+          <li class="footer__beneficios-para-cliente"> 
+            <a href="#">Beneficios para cliente</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer__quienes-somos">
+        <h3>Quienes Somos</h3>
+        <ul>
+          <li class="footer__mision"> 
+            <a href="">Mision</a>
+          </li>
+          <li class="footer__vision"> 
+            <a href="">Vision</a>
+          </li>
+          <li class="footer__adjudicados"> 
+            <a href="">Adjudicados</a>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="footer__contactanos">
+        <h3>Contactanos</h3>
+        <ul>
+          <li class="footer__num-telefono"> 
+            <img src="{% static 'images/icons/social_tel.png' %}" alt="">
+            <p>3624646474</p> 
+          </li>
+          <li class="footer__correo-resistencia"> 
+            <img src="{% static 'images/icons/social_mail.png' %}" alt="">
+            <p>agenciachacoelanel@gmail.com</p>
+          </li>
+          <li class="footer__correo-corrientes"> 
+            <img src="{% static 'images/icons/social_mail.png' %}" alt="">
+            <p>agenciacorrienteselanel@gmail.com</p>
+          </li>
+        </ul>
+      </div>
+      <div class="footer__logo">
+          <img src="{% static 'images/icons/icono_arreglado_blanco.png' %}" alt="">
+      </div>
+  </footer>
+
+</body>
+
+<script src="{% static 'js/scrollreveal_librery.js' %}"></script>
+<script src ="{% static 'js/categoria.js' %}"></script>
 <script src="{% static 'js/slider.js' %}"></script>
-<script src ="{%static "js/slider_marcas.js"%}"></script>
-<script src ="{%static "js/slider_motos.js"%}"></script> 
-
-
+<script src="{% static 'js/header.js' %}"></script>
+<script src ="{% static 'js/slider_marcas.js' %}"></script>
+<script src ="{% static 'js/slider_motos.js' %}"></script>
+<script src="{% static 'js/animation.js' %}"></script>
+<script src="{% static 'js/menu_hamburguer.js' %}"></script>
 </html>
