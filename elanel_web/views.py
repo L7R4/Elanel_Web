@@ -2,25 +2,40 @@ from django.views.generic import View
 from django.shortcuts import render,redirect, HttpResponseRedirect
 from market.models import Post, Producto
 from django.views import generic
-
-# class IndexView(generic.ListView):
-#     model= Post
-#     template_name = "index.html"
-#     context_object_name = "posts"
-
-    
-#     def get_context_data(self, *args, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['motos'] = Producto.objects.filter(titulo_de_categoria = "motos")
-#         context["electrodomesticos"] = Producto.objects.filter(titulo_de_categoria= "electrodomesticos")
-#         return context
+from .forms import FormIndex
+from market.models import Usuario,Post
 
 class IndexView2(View):
     template_name="index.html"
 
-    def get(self, request, *args, **kwargs):
+    def post(self,request,*args, **kwargs):
+        form = FormIndex()
+        if request.method == "POST":
+            form = FormIndex(request.POST)
+            if form.is_valid():
+                user = Usuario()
+                user.nombre_completo = form.cleaned_data['nombre_completo']
+                user.provincia = form.cleaned_data['provincia']
+                user.localidad = form.cleaned_data['localidad']
+                user.email = form.cleaned_data['email']
+                user.objetivo = form.cleaned_data['objetivo']
+                user.num_telefono = form.cleaned_data['num_telefono']
+                user.save()
+
         return(render(request,self.template_name))
-    
+
+
+    def get(self, request, *args, **kwargs):
+        posts = Post.objects.all() 
+        motos_slider = Producto.objects.all()
+
+        context = {
+            "posts": posts,
+            "motos_slider": motos_slider,
+        }
+        return(render(request,self.template_name,context))
+
+
 
 
 class SobreNosotros(View):

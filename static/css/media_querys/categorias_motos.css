@@ -6,11 +6,58 @@
     }
 }
 
+@media screen and (max-width: 500px) {
+    .filters_container{
+        position: absolute;
+        left: -100%;
+        z-index: 4;
+        height: 100vh;
+        padding-left: 12%;
+        padding-right:4%;
+        background-color: var(--pColor);
+        min-width: 230px;
+    }
+
+    .filters_container form{
+        margin-top: 5rem;
+    }
+
+    #filter_button{
+        display: block;
+        
+    }
+
+    .filters_container form > h1{
+        color: #e8e8e8;
+    }
+
+    .filters_container form .marcas >label >h3{
+        color: #c6c4c4;
+    }
+    .filters_container form .marcas > label:hover h3{
+        color: white;
+    }
+    .filters_container form .estado >label >h3{
+        color: #c6c4c4;
+    }
+    .filters_container form .estado > label:hover h3{
+        color: white;
+    }
+    .filters_container form .precio > input:hover{
+        border-color:var(--sColor);
+    }
+    .filters_container form .precio > input[type="text"]:focus{
+        border-color:var(--sColor);
+    }
+    
+
+}
+
 @media screen and (max-width: 480px) {
     .catalogo{
         padding: 2rem 3rem;
     }
-    .filters_container{
+    /* .filters_container{
         min-width: 140px;
     }
     
@@ -21,14 +68,14 @@
 
     .filters_container form .marcas >label >h3{
         font-size: 1.4rem;
-    }
+    } */
 }
 @media screen and (max-width: 400px) {
     .catalogo{
         padding: 2rem 1rem;
         padding-left: 0;
     }
-    .filters_container{
+    /* .filters_container{
         min-width: 110px;
-    }
+    } */
 }

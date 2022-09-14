@@ -53,7 +53,7 @@ class Usuario(models.Model):
     fecha = models.DateTimeField(auto_now_add = True)
 
     def __str__(self):
-        return self.nombre + self.apellido
+        return self.nombre_completo
 
 
 class Post(models.Model):

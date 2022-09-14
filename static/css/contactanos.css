@@ -40,3 +40,144 @@
       font-size: 62.5%; 
       background-color: var(--secondBgColor);
   }
+
+.wrapper_comunicate{
+    display: flex;
+    height: calc(100vh - 65px);
+}
+.contactanos{
+    width: 60%;
+    height: 100%;
+}
+.contactanos >h1{
+    font-family: raleway-bold;
+    font-size: 5rem;
+    color: var(--sColor);
+    margin-left: 4rem;
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+}
+.preguntas_frecuentes > h1
+{
+    font-family: raleway-bold;
+    font-size: 3rem;
+    color: var(--sColor);
+    margin-left: 4rem;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+}
+
+.contactanos > div{
+    width: 80%;
+    height: 23rem;
+    background-color: #cececea6;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    margin-left: 4rem;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+}
+
+.contactanos > div > h1{
+    font-family: raleway-bold;
+    font-size: 1.9rem;
+    text-align: center;
+}
+
+.secciones ol
+{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+.secciones > ol > .sector > h3
+{
+    font-family: raleway-semibold;
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: 2%;
+    color: #1d5890;
+}
+.secciones > ol > .sector > .number_phone
+{
+    font-family: raleway;
+    font-size: 1.2rem;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    text-align: center;
+}
+
+.secciones > ol > .sector > .correo
+{
+    font-family: raleway;
+    font-size: 1.2rem;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    text-align: center;
+}
+
+
+
+.preguntas_frecuentes{
+    background-color: #212436;
+    width: 40%;
+    height: 100%;
+}
+
+.preguntas_frecuentes > ul{
+    list-style: none;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin-top: 4rem;
+}
+
+.preguntas_frecuentes > ul > li
+{
+    width: 80%;
+    /* margin-top: 4rem; */
+    cursor: pointer;
+    position: relative;
+    height: auto;
+ 
+}
+
+.preguntas_frecuentes > ul > li > h2
+{
+    background-color: #e8e8e8;
+    font-family: raleway-bold;
+    font-size: 1.8rem;
+    color: var(--pColor);
+    padding: .7rem 2rem .7rem 2rem;
+    vertical-align:middle;
+    border-radius: 8px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    display: flex;
+    align-items: center;
+}
+
+.preguntas_frecuentes > ul > li > h2::after{
+    content: '+';
+    font-family: raleway;
+    font-size: 2.4rem;
+    margin-left: auto;
+}
+.question h2.active::after{
+    content: '-';
+    font-family: raleway;
+    font-size: 2.4rem;
+    margin-left: auto;
+}
+
+.preguntas_frecuentes > ul > li > .texts
+{
+    font-family: raleway;
+    position: relative;
+    font-size: 1.4rem;
+    color: white;
+    width: 98%;
+    margin: 2% 1%;
+    /* padding: 3% 0; */
+    max-height: 0;
+    overflow: hidden;
+    transition: all .4s ease;
+}

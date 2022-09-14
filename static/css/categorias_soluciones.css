@@ -1,0 +1,26 @@
+.catalogo{
+    grid-auto-rows: 25rem;
+}
+.catalogo a > article > h2{
+    position: absolute;
+    font-size: 3rem;
+    top: 40%;
+    color: var(--sColor);
+    font-feature-settings: 'pnum' on, 'lnum' on;
+}
+.catalogo a > article > h3{
+    position: absolute;
+    top: 53%;
+    font-size: 2rem;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+}
+.catalogo a > article{
+    height: 25rem;
+    justify-content: center;
+}
+.catalogo a > article > img{
+    max-width: 75%;
+    /* width: 90%; */
+    opacity: .1;
+    filter: drop-shadow(2px 4px 6px black);
+}

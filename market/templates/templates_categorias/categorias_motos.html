@@ -17,7 +17,7 @@
     <nav class="header__nav">
       <ol>
         <a class="logo_container"href="{% url 'index' %}">
-          <img src="{% static 'images/icons/icono_arregla_negro.png' %}" alt="" class="logo">
+          <img src="{% static 'images/icons/icono_header_blanco_arreglado.png' %}" alt="" class="logo">
         </a>
         <label for="check">
           <input type="checkbox" id="check"/> 
@@ -71,37 +71,31 @@
                 <input type="radio" name="marca" id="yamaha" value="yamaha">
                 <label for="yamaha">
                   <h3>Yamaha</h3>
-                  <img src="{% static 'images/honda.png' %}" alt="">
                 </label>
   
                 <input type="radio" name="marca" id="honda" value="honda">
                 <label for="honda">
                   <h3>Honda</h3>
-                  <img src="{% static 'images/honda.png' %}" alt="">
                 </label>
   
                 <input type="radio" name="marca" id="motomel" value="motomel">
                 <label for="motomel">
                   <h3>Motomel</h3>
-                  <img src="{% static 'images/honda.png' %}" alt="">
                 </label>
   
                 <input type="radio" name="marca" id="rouser" value="rouser">
                 <label for="rouser">
                   <h3>Rouser</h3>
-                  <img src="{% static 'images/honda.png' %}" alt="">
                 </label>
   
                 <input type="radio" name="marca" id="corven" value="corven">
                 <label for="corven">
                   <h3>Corven</h3>
-                  <img src="{% static 'images/honda.png' %}" alt="">
                 </label>
   
                 <input type="radio" name="marca" id="zanella" value="zanella">
                 <label for="zanella">
                   <h3>Zanella</h3>
-                  <img src="{% static 'images/honda.png' %}" alt="">
                 </label>
 
               </div>
@@ -123,6 +117,9 @@
               <button type="submit" id="button_filter">Buscar</button>
             </form>
         </aside>
+        <button type="button" id="filter_button">
+          Filtrar
+        </button>
         <section class="catalogo">
           <a href="">
             <article>
@@ -206,5 +203,6 @@
     
 </body>
 <script src="{% static 'js/header.js' %}"></script>
+<script src="{% static 'js/filter_button.js' %}"></script>
 <script src="{% static 'js/menu_hamburguer.js' %}"></script>
 </html>

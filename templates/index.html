@@ -70,30 +70,14 @@
   <div class="wrapper__slider__botones">
     <div id="slider-container" class="slider-container">
       <div class="slider" id="slider">
-        <div class="slider__element">
-          <img
-            src="{% static 'images/uno.webp' %}"
-            alt=""
-          />
-        </div>
-        <div class="slider__element">
-          <img
-            src="{% static 'images/dos.jpg' %}"
-            alt=""
-          />
-        </div>
-        <div class="slider__element">
-          <img
-            src="{% static 'images/uno.webp' %}"
-            alt=""
-          />
-        </div>
-        <div class="slider__element">
-          <img
-            src="{% static 'images/dos.jpg' %}"
-            alt=""
-          />
-        </div>
+        {% for post in posts %}
+          <div class="slider__element">
+            <img
+              src="{{post.imagen_portada.url}}"
+              alt=""
+            />
+          </div>
+        {%endfor%}
       </div>
     </div>
     <div class="slider-buttons">
@@ -105,6 +89,8 @@
       </button>
     </div>
   </div>
+
+  
 
   <section class="categoria">
     <h2>¡Elige lo que deseas!</h2>
@@ -239,15 +225,15 @@
     <h1 class="formulario__eslogan">Todo lo que <strong class="style__palabra__eslogan">necesitas</strong><br> en un solo <strong class="style__palabra__eslogan">lugar</strong></h1>
     <div class="barra">
     </div>
-    <form action="" method="post"> 
+    <form method="POST"> 
      {% csrf_token %}
       <h5>Envianos un correo contándonos lo que quieres</h5>
-      <input type="text" id="mail" placeholder="Mail">
-      <input type="text" id="nameSurname" placeholder="Nombre y Apellido">
-      <input type="text" id="telefono" placeholder="Telefono">
-      <input type="text" id="objetivo"placeholder="Que buscas">
-      <input type="text" id="provincia"placeholder="Provincia">
-      <input type="text" id="localidad" placeholder="Localidad">
+      <input type="text" name="email" id="email" placeholder="Mail">
+      <input type="text" name="nombre_completo" id="nombre_completo" placeholder="Nombre y Apellido">
+      <input type="text" name="num_telefono" id="num_telefono" placeholder="Telefono">
+      <input type="text" name="objetivo" id="objetivo"placeholder="Que buscas">
+      <input type="text" name="provincia" id="provincia"placeholder="Provincia">
+      <input type="text" name="localidad" id="localidad" placeholder="Localidad">
       <input type="submit" value="Enviar" id="enviar">
     </form>
     
