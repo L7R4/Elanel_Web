@@ -1,0 +1,14 @@
+.catalogo{
+    grid-auto-rows: 22rem;
+   
+} 
+.catalogo a > article{
+    height: 22rem;
+    overflow: hidden;
+}
+.catalogo a > article > img{
+    height: 70%;
+}
+.catalogo a > article > h2{
+    margin-top: 1rem;
+}

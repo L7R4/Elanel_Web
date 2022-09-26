@@ -31,7 +31,6 @@ header{
 .header__nav{
   width: 100%;
   height: 65px;
-  /* position: fixed; */
   z-index: 100;
   background-color: #21243a;
 }
@@ -123,9 +122,7 @@ header{
    transform: translate(14px,-7px) rotatez(47deg);
  }
 
-/* .items{
-  padding-bottom: 2rem;
-} */
+
 .items a{
     font-family: raleway;
     font-weight: 700;
@@ -152,7 +149,7 @@ header{
 }
 
 
-.items__menu a{
+.items__menu > a{
     font-family: raleway;
     font-weight: 700;
     text-decoration: none;
@@ -161,6 +158,12 @@ header{
     position: relative;
     height: fit-content;
     top: 33%;
+}
+.items__menu > ul > li > a{
+  font-family: raleway;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1.5rem;
 }
 
 
@@ -188,7 +191,8 @@ header{
   text-align: center;
   display: flex;
   justify-content: center;
-  padding: 2% 0;
+  height: inherit;
+    align-items: center;
 }
 
 .menu_contactanos li{
@@ -207,7 +211,7 @@ header{
 
 .menu_categoria li a,.menu_contactanos li a{
     text-decoration: none;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     color: var(--bgsecondColor);
 }
 
@@ -219,10 +223,9 @@ header{
   top: 6.2rem;
   list-style: none;
   display: flex;
-  /* flex-flow: column; */
   justify-content: space-around;
   align-items: center;
   z-index: 1;
   visibility: hidden;
-  
+  height: 6rem;
 }

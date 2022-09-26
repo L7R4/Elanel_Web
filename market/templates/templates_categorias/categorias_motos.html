@@ -64,7 +64,7 @@
     <div class="espace_header_categories"></div>
     <div class="wrapper_catalogo_aside">
         <aside class="filters_container">
-            <form action="" method="get">
+            <form action="" method="GET">
               
               <h1>Marcas</h1>
               <div class="marcas">
@@ -121,83 +121,15 @@
           Filtrar
         </button>
         <section class="catalogo">
-          <a href="">
-            <article>
-              <img src="{% static 'images/images_motos/moto1.png' %}" alt="">
-              <h2>Moto picada</h2>
-              <h3>$100.000</h3>
-            </article>
-          </a>
-          <a href="">
-            <article>
-              <img src="{% static 'images/images_motos/moto1.png' %}" alt="">
-              <h2>Moto picada</h2>
-              <h3>$100.000</h3>
-            </article>
-          </a>
-          <a href="">
-            <article>
-              <img src="{% static 'images/images_motos/moto1.png' %}" alt="">
-              <h2>Moto picada</h2>
-              <h3>$100.000</h3>
-            </article>
-          </a>
-          <a href="">
-            <article>
-              <img src="{% static 'images/images_motos/moto1.png' %}" alt="">
-              <h2>Moto picada</h2>
-              <h3>$100.000</h3>
-            </article>
-          </a>
-          <a href="">
-            <article>
-              <img src="{% static 'images/images_motos/moto1.png' %}" alt="">
-              <h2>Moto picada</h2>
-              <h3>$100.000</h3>
-            </article>
-          </a>
-          <a href="">
-            <article>
-              <img src="{% static 'images/images_motos/moto1.png' %}" alt="">
-              <h2>Moto picada</h2>
-              <h3>$100.000</h3>
-            </article>
-          </a>
-          <a href="">
-            <article>
-              <img src="{% static 'images/images_motos/moto1.png' %}" alt="">
-              <h2>Moto picada</h2>
-              <h3>$100.000</h3>
-            </article>
-          </a>
-          <a href="">
-            <article>
-              <img src="{% static 'images/images_motos/moto1.png' %}" alt="">
-              <h2>Moto picada</h2>
-              <h3>$100.000</h3>
-            </article>
-          </a>
-          <a href="">
-            <article>
-              <img src="{% static 'images/images_motos/moto1.png' %}" alt="">
-              <h2>Moto picada</h2>
-              <h3>$100.000</h3>
-            </article>
-          </a>
-          <a href="">
-            <article>
-              <img src="{% static 'images/images_motos/moto1.png' %}" alt="">
-              <h2>Moto picada</h2>
-              <h3>$100.000</h3>
-            </article>
-          </a>
-          <a href="">
-            <article>
-              <img src="{% static 'images/images_motos/moto1.png' %}" alt="">
-              <h2>Moto picada</h2>
-              <h3>$100.000</h3>
-            </article>
-          </a>
+          {% for moto in motos %}
+            <a href="{{moto.get_absolute_url}}">
+              <article>
+                <img src="{{moto.imagen_portada.url}}" alt="">
+                <h2>{{moto.nombre}}</h2>
+                <h3>${{moto.precio|floatformat }}</h3>
+              </article>
+            </a>
+          {% endfor %}
         </section>
     </div>
     

@@ -45,20 +45,41 @@
   position: fixed;
   z-index: -1;
   width: 100%;
-  /* height: 100%; */
-  /* left: 8%;
-  top: 0; */
   transform: translate(0%,-30%);
 } 
 
 .logo__background img{
   height: 100%;
   width: 100%;
-  /* filter: blur(9px); */
   opacity: .3;
-  /* border-radius: 50px; */
 }  
 
+
+.whatsapp_contact{
+  display: flex;
+  align-items: center;
+  background-color: #40c351;
+  width: 22rem;
+  height: 4rem;
+  outline: none;
+  border-color: transparent;
+  border-radius: 10px;
+  position: fixed;
+  z-index: 10;
+  left: 3%;
+  bottom: 4%;
+  cursor: pointer;
+}
+
+.whatsapp_contact > .icon_whap{
+  width: 40%;
+  height: 100%;
+}
+
+.whatsapp_contact > h6{
+  font-family: raleway-semibold;
+  font-size: 1.5rem;
+}
 
 .wrapper__slider__botones{
   position: relative;
@@ -70,7 +91,7 @@
 
 .slider-container {
   width: 80%;
-  height: 500px;
+  height: 470px;
   margin-left: auto;
   margin-right: auto;
   border-radius: 10px;
@@ -94,7 +115,6 @@
 
 
 .slider__element {
-  /* min-width: 100%; */
   font-size: 3rem;
   text-align: center;
   line-height: 300px;
@@ -271,8 +291,14 @@
 
 
   .menu > div > img{
-  width: 4rem;
+  width: 7rem;
   margin-left: 2rem;
+  
+}
+
+.categoria .naccs .menu div.active > img
+{
+  filter: brightness(100) grayscale(100%);
 }
 
 
@@ -317,7 +343,7 @@
   .categoria .naccs .menu div {
     display: flex;
     align-items: center;
-    background-color: #077ae5;
+    background-color: #212436;
     text-align: center;
     height: 120px;
     cursor: pointer;
@@ -328,7 +354,7 @@
 
   .categoria .naccs .menu div.active,
   .categoria .naccs .menu div.active .thumb {
-    background-color: #212436;
+    background-color: #077ae5;
   }
   
 
@@ -402,6 +428,7 @@
  }
 
 
+
 /* ------------------------------------SLIDER DE MOTOS------------------------------------- */
 .container_sliderMotos_buttons{
   position: relative;
@@ -426,7 +453,6 @@
   display: flex;
   transform: translateX(var(--slide-transform_moto));
   transition: var(--transition_moto);
-  /* height: 100%; */
 }
 .slider__motos .item{
   position: relative;
@@ -480,44 +506,14 @@
   font-family: raleway-bold;
 }
 
-/* .item:hover .item--detail{
-  transition: all .6s ease-in-out;
-  top: 70%;
-  opacity: 1;
-}
-.item:not(:hover) .item--detail{
-  transition: all .6s ease-in-out;
-  top: 100%;
-
-}
-
-.item:hover .item--hover{
-  transition: all .5s ease-in-out;
-  bottom: 60%;
-  cursor: pointer;
-  opacity: 1;
-} 
-.item:not(:hover)  .item--hover{
-  transition: all .6s ease-in-out;
-  bottom: 100%;
-}  */
 
 .slider__motos .item img{
   width: 100%;
-  /* height: 100%; */
   max-height: 100%;
   max-width: 100%;
 }
-/* .item:hover img{
-  transition: all .6s ease-in-out;
-  transform: scale(70%) translateY(-20%);
-  
-}
-.item:not(:hover) img{
-  transition: all .6s ease-in-out;
-  width: 100%;
-  transition-delay: .2s;
-} */
+
+
 .slider__motos__nav{
   position: absolute;
   width: 96%;
@@ -525,10 +521,12 @@
   justify-content: space-between;
 
 }
+
 .slider__motos__nav button{
   background: none;
   border: none;
 }
+
 .slider__motos__nav button >img{
   /* filter: invert(1); */
   width: 3rem;
@@ -574,7 +572,6 @@
 :root {
   --marquee-width: 100vw;
   --marquee-height: 12vh;
-  /* --marquee-elements: 12; */ /* defined with JavaScript */
   --marquee-elements-displayed: 5;
   --marquee-element-width: calc(var(--marquee-width) / var(--marquee-elements-displayed));
   --marquee-animation-duration: calc(var(--marquee-elements) * 18s);
@@ -616,18 +613,16 @@
   display: flex;
   animation: scrolling var(--marquee-animation-duration) linear infinite;
 }
-/* .marquee-content:hover {
-  animation-play-state: paused;
-} */
+
 @keyframes scrolling {
   0% { transform: translateX(0); }
   100% { transform: translateX(calc(-1 * var(--marquee-element-width) * var(--marquee-elements))); }
 }
+
 .marquee-content li {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* text-align: center; */
   flex-shrink: 0;
   width: var(--marquee-element-width);
   max-height: 100%;
@@ -647,15 +642,7 @@
   width: 43%;
 }
 
-/* @media (max-width: 600px) {
-  html { font-size: 12px; }
-  :root {
-    --marquee-width: 100vw;
-    --marquee-height: 16vh;
-    --marquee-elements-displayed: 3;
-  }
-  .marquee:before, .marquee:after { width: 5rem; }
-} */
+
 
 /* ------------------------------------SECCION DE FORMULARIO------------------------------------- */
 .formulario{
@@ -684,7 +671,7 @@
 .formulario__eslogan{
   position: relative;
   font-family: babapro;
-  font-size: 4rem;
+  font-size: 3.6rem;
   width: 40%;
   max-width: 550px;
   text-align: center;
@@ -782,30 +769,32 @@
   position: relative;
   display: flex;
   align-items: center;
-  /* padding-top: 14rem; */
 }
 
-#ubicacion__direccion{
-  position: absolute;
-  top: 5%;
+.ubicacion__direccion{
+  position: absolute; 
+  top: 0; 
   font-size: 2vw;
   font-family: raleway;
   color: var(--bgColor);
+  transition: all 1.6s ease;
+  transform: translateX(-100rem);
 }
 
-#ubicacion__direccion h1{
+.ubicacion__direccion h1{
   font-size: 2.6rem;
   font-family: raleway-bold;
   color: var(--secondBgColor);
 }
 
-#ubicacion__direccion h4{
+.ubicacion__direccion h4{
   color: var(--sColor);
   font-feature-settings: 'pnum' on, 'lnum' on;
   font-family: raleway-bold;
   font-size: 2.4rem;
 
 }
+
 
 #mapa__container{
   height: 80%;
@@ -815,12 +804,37 @@
   margin-left: 5%;
   width: 62%;
 }
-#mapa{
-  border-radius: 8px;
-  max-height: 280px;
+
+.wrapper_ubicacion{
+  position: relative;
+  width: 100%;
+  height: 100%;
   max-width: 400px;
 }
 
+
+.mapa{
+  border-radius: 8px;
+  max-height: 280px;
+  max-width: 400px;
+  transform: translateX(-100rem);
+  transition: all 1.6s ease;
+  position: absolute;
+  bottom: 24%;
+  width: 100%;
+  height: 100%;
+
+}
+
+
+.mapa.active_provincia{
+  opacity: 1;
+  transform: translateX(0);
+}
+.ubicacion__direccion.active_provincia{
+  opacity: 1;
+  transform: translateX(0);
+}
 
 
 .locales{
@@ -839,6 +853,7 @@
   font-size: 1.5rem;
   font-weight: 700;
   font-family: raleway;
+  cursor: pointer;
 }
 
 .locales > h4{
@@ -849,9 +864,10 @@
   color: var(--secondBgColor);
 }
 
-button#resistencia{
+button.active_ubication{
   background-color:var(--sColor) ;
 }
+
 
 .ubicacion__text{
   max-width: 300px;
@@ -987,9 +1003,6 @@ footer{
   align-items: center;
 }
 
-footer > div{
-  min-width: 175px;
-}
 
 .footer__contactanos{
   font-family: raleway;
@@ -1117,7 +1130,6 @@ footer > div{
 .footer__encuentranos ul{
   list-style:none;
   margin-top: 1rem;
-  /* padding-left: 0.5rem; */
 }
 
 .footer__social-media{
@@ -1146,7 +1158,6 @@ footer > div{
 }
 
 .footer__logo{
-  /* width: 20%; */
   display: flex;
   justify-content: center;
   height: fit-content;
@@ -1156,4 +1167,110 @@ footer > div{
 
 .footer__logo img{
   width: 80%;
+}
+
+/* MODAL WHATSAPP */
+
+.modal_whatsapp_container{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #111111bd;
+  z-index: 10;
+  top: 65px;
+  opacity: 0;
+  pointer-events: none;
+  transition: .4s all ease;
+}
+.modal_whatsapp_container.active_modal{
+  opacity: 1;
+  pointer-events: unset;
+}
+
+.wrapper_windown_whatsapp{
+  position: relative;
+  height: 70%;
+  width: 35%;
+  margin: 0 auto;
+  top: -100%;
+  transition: .4s all ease;
+  z-index: 10;
+}
+.wrapper_windown_whatsapp.active_modal{
+  top: 10%
+}
+
+
+.window_whatsapp{
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  border: #027cf1 2px solid;
+  box-shadow: 0px 0px 20px 2px #027cf130;
+  margin: auto;
+  position: absolute;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  border-radius: 10px;
+  overflow-y: auto;
+}
+.window_whatsapp > .contacto
+{
+  list-style: none;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  border-bottom: 1px rgba(0, 0, 0, 0.437) solid;
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  background-color: #33333430;
+  height:auto;
+  border-radius: 8px;
+}
+.window_whatsapp > .contacto:first-child{
+  margin-top: 4rem;
+
+}
+
+.contacto > h2{
+  font-size: 2rem;
+  font-family: raleway-bold;
+  color: var(--sColor);
+  padding: 1rem 0;
+  padding-left: 2rem;
+  cursor: pointer;
+}
+.contacto > .numbers
+{
+  font-size: 1.3rem;
+  font-family: raleway;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  /* margin-top: 1rem; */
+  max-height: 0;
+  overflow: hidden;
+  transition: all .4s ease;
+}
+
+.contacto > .numbers > p{
+  
+  margin-bottom: 1rem;
+  margin-left: 2rem;
+}
+
+#close_modal{
+   border-color: transparent;
+    width: 30%;
+    font-weight: 600;
+    background-color: #1c2457;
+    font-size: 1.7rem;
+    color: #ece7e7;
+    cursor: pointer;
+    margin-top: auto;
+    margin-bottom: 4rem;
+    height: 3.4rem;
+    min-height: 3.4rem;
+    border-radius: 10px;
+    min-width: 105px;
 }

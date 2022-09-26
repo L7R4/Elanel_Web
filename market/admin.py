@@ -30,6 +30,7 @@ class ProductoAdmin(admin.ModelAdmin):
     list_filter=["titulo_de_categoria"]
     list_editable = ["precio"]
     inlines = [ImagenProductoAdmin]
+    prepopulated_fields = { 'slug': ['nombre'] }
 
 
 class ImagenPostsAdmin(admin.TabularInline):
@@ -41,6 +42,9 @@ class ProductoAdmin(admin.ModelAdmin):
     list_display= ["titulo","descripcion","imagen_portada"]
     inlines = [ImagenPostsAdmin]
 
+
+
+    
 
 # admin.site.register(Producto, ProductoAdmin)
 admin.site.register(SolucionDineraria)

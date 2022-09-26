@@ -45,21 +45,22 @@
 .trabaja_con_nosotros{
     display: grid;
     grid-template-columns: 1.5fr 2fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr;
     height: calc(100vh - 65px);
 }
 
 .trabaja__title{
-    grid-column: 1/2;
-    grid-row: 1/2;
-    background-color: #212436;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 11%;
 }
 
 .trabaja__title h1{
-    font-size: 6rem;
+    font-size: 7rem;
     font-family: raleway-bold;
     text-align: center;
-    color: white;
+    color: var(--pColor);
 }
 
 .trabaja__title h1 #nosotros_decoration{
@@ -69,33 +70,42 @@
 
 .trabaja__texto{
     grid-column: 1/2;
-    grid-row: 2/3;
-    background-color: #212436;
-    color: white;
+    grid-row: 1/2;
+    background-color: #e8e8e8;
+    color: rgb(33, 36, 54);
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .trabaja__texto p{
-    font-size: 2rem;
-    font-family: raleway-bold;
+    font-size: 1.7rem;
+    font-family: raleway;
+    font-weight: 500;
     text-align: center;
+    width: 80%;
 }
 
 
 .formulario-wrapper{
     grid-column: 2/3;
     grid-row: 1/3;
-    margin-left: 8%;
-    margin-right: 8%;
     display: flex;
     align-items: center;
+    background-color: #212436;
 }
 
 .formulario-wrapper form{
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(4,1fr);
+    background-color: #e8e8e8;
+    padding: 5rem;
+    margin: 3rem;
+    border-radius: 10px;
+    box-shadow: rgb(34 145 199 / 79%) 0px 0px 29px 3px;
 }
-
 .formulario-wrapper form > div > label{
     font-size: 1.7rem;
     font-family: raleway-bold;
@@ -106,34 +116,102 @@
     height: 3.2rem;
     width: 90%;
     outline: none;
-    border-radius: 1rem;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px 0px #23252647;
     border-color: transparent;
+    background-color: #f6f2f2;
     margin-top: 1rem;
+    padding-left: 6%;
+    font-family: raleway-semibold;
+    font-size: 1.3rem
+}
+.formulario-wrapper form > div > input::placeholder{
+    font-size: 1.3rem
 }
 
 .name_field{
     grid-column: 1/2;
     grid-row: 1/2;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
+    min-width: 165px;
 }
 .mail_field{
     grid-column: 1/2;
     grid-row: 2/3;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 }
 .number_field{
     grid-column: 1/2;
     grid-row: 3/4;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 }
-
+#cv_input{
+    border-radius: 5px;
+    border-color: var(--sColor);
+    outline: none;
+    cursor: pointer;
+    background-color: #fff;
+    font-family: raleway-semibold;
+    padding: 2.5% 4rem;
+    margin-top: .5rem;
+}
+#cv_input:active{
+    transition: all .2s ease;
+    background-color: var(--sColor);
+    border-color: transparent;
+    box-shadow: 0px 0px 10px 3px #2a87e0c2;
+}
 .cv_field{
     grid-column: 2/3;
     grid-row: 1/4;
+    /* background-color: #12131b; */
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 2rem;
 }
+.cv_field h2{
+    font-size: 1.8rem;
+    font-family: raleway-bold;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #212436;
+}
+.cv_field .image_url{
+    font-size: 1.2rem;
+    font-family: raleway;
+    text-align: center;
+    /* margin: 1rem 0;  */
+    color: #5d5d60;
+    /* display: flex; */
+}
+
+.cv_field input{
+    display: none;
+}
+.cv_field label{
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+.cv_field label img{
+    width: 100%;
+}
+
 
 
 #send-cv{
     grid-column: 1/3;
     grid-row: 4/5; 
+    width: 14rem;
+    height: 40px;
+    margin-top: 2rem;
+    justify-self: center;
+    border-color: transparent;
+    font-weight: 600;
+    background-color: #1c2457;
+    font-size: 1.7rem;
+    color: #ece7e7;
+    border-radius: 10px;
+    justify-self: flex-start;
 }

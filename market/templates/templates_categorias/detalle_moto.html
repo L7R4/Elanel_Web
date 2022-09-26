@@ -1,12 +1,14 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/detail_moto.css">
-    <link rel="stylesheet" href="../css/navStyles.css">
-    <link rel="stylesheet" href="../css/media_querys/nav_bar.css">
+    <link rel="stylesheet" href="{% static 'css/detail_moto.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navStyles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/media_querys/nav_bar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/media_querys/detalle_producto.css' %}">
     <script src="../js/sweetalert2.all.js"></script>
     <title>Document</title>
 </head>
@@ -61,34 +63,33 @@
       </header>
     <div class="espace_header_categories"></div>
     <div class="wrapper">
+        <div class="title_producto_responsive">
+            <h1 id="title_product">Zanella Zb 110</h1>
+            <h1 id="precio_product"> $100.000</h1>
+        </div>
         <aside class="nav__images">
-            <figure>
-                <img src="../images/moto__example.png" alt="">
-            </figure>
-            <figure>
-                <img src="../images/moto__example3.png" alt="">
-            </figure>
-            <figure>
-                <img src="../images/moto_example2.png" alt="">
-            </figure>
-            <figure>
-                <img src="../images/moto_example2.png" alt="">
-            </figure>
+            {% for moto_image in moto_images %}
+                <figure>
+                    <img src="{{moto_image.imagen.url}}" alt="">
+                </figure>
+            {% endfor %}
         </aside>
         <article class="complete__image">
             <img src="" alt="">
         </article>
         <aside class="resumen">
-            <h1 id="title_product">Zanella Zb 110</h1>
-            <h1 id="precio_product"> $100.000</h1>
+            <div class="detalle_producto">
+                <h1 id="title_product">{{object.nombre}}</h1>
+                <h1 id="precio_product"> ${{object.precio|floatformat }}</h1>
+            </div>
             <div class="resumen__detalle">
                 <div id="marca">
                     <h2>Marca</h2> 
-                    <h2>Zanella</h2>
+                    <h2>{{object.marca}}</h2>
                 </div>
                 <div id="modelo">
                     <h2>Modelo</h2> 
-                    <h2>ZB 110</h2>
+                    <h2>{{object.modelo}}</h2>
                 </div>
                 <div id="año">
                     <h2>Año</h2> 
@@ -106,22 +107,23 @@
                     
                     <input type="text"name="nombre" id="nombre" placeholder="Nombre y apeliido" autocomplete="off">
                     
+                    <input type="text" name="numero" id="numero" pattern="[0-9]*" placeholder="Telefono" autocomplete="off">
+
                     <input type="email" name="correo" id="correo" placeholder="Email" autocomplete="off">
                     
-                    <input type="text" name="numero" id="numero" pattern="[0-9]*" placeholder="Telefono" autocomplete="off">
                     <button id="form_product_button">Enviar</button>
                 </form>
             </div>
         </aside>
         <div class="detalles">
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius, repellat in dolorem ad tempora provident hic iusto facere rerum dolor. Quisquam enim blanditiis quo laborum magnam commodi officia error ullam?</p>
+            <p>{{object.especificaciones}}</p>
         </div>
     </div>
     
-    <script src="../js/detail_product.js"></script>
-    <script src="../js/header.js"></script>
-    <script src="../js/message_form.js"></script>
-    <script src="../js/menu_hamburguer.js"></script> 
+    <script src="{% static 'js/detail_product.js' %}"></script>
+    <script src="{% static 'js/header.js' %}"></script>
+    <script src="{% static 'js/message_form.js' %}"></script>
+    <script src="{% static 'js/menu_hamburguer.js' %}"></script> 
     
 </body>
 </html>

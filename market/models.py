@@ -1,5 +1,8 @@
+from asyncio.windows_events import NULL
+from django.urls import reverse
 from email.policy import default
 from django.db import models
+from django.template.defaultfilters import slugify
 
 class Producto(models.Model):
     categorias = [
@@ -11,6 +14,7 @@ class Producto(models.Model):
     ]
     titulo_de_categoria = models.CharField(max_length=30, choices= categorias)
     nombre = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=100,unique=True,primary_key=True)
     precio = models.DecimalField(max_digits=15, decimal_places=2)
     url_instagram = models.URLField(max_length=255, blank=True)
     url_facebook = models.URLField(max_length=255, blank=True)
@@ -23,13 +27,20 @@ class Producto(models.Model):
     usado = models.BooleanField()
     cuotas = models.PositiveSmallIntegerField()
 
+    class Meta:
+        unique_together = ('nombre', 'slug')
 
     def __str__(self):
         return self.nombre
+    
+
+    def get_absolute_url(self):
+        return reverse('market:moto', kwargs={'slug':self.slug})
+
 
 class ImagenProducto(models.Model):
-    imagen = models.ImageField(upload_to ="images/productos/", default=None)
-    producto = models.ForeignKey(Producto, on_delete=models.CASCADE, related_name= "imagenes")
+    imagen = models.ImageField(upload_to ="images/productos/")
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE, related_name= "imagenes", db_constraint=False)
 
 
 class SolucionDineraria(models.Model):
@@ -62,7 +73,6 @@ class Post(models.Model):
     fecha = models.DateTimeField()
     fecha_limite = models.DateTimeField()
     imagen_portada = models.ImageField(upload_to= "images/posts", default=None)
-
 
 
 class PostImagenes(models.Model):

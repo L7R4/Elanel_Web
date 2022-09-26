@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/navStyles.css' %}">
     <link rel="stylesheet" href="{% static 'css/trabaja_con_nosotros.css' %}">
     <link rel="stylesheet" href="{% static 'css/media_querys/nav_bar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/media_querys/trabaja_con_nosotros.css' %}">
     <title>Document</title>
 </head>
 <body>
@@ -29,21 +30,21 @@
                   <a href="templates_categorias/categorias.html">Categorias</a>
                   <img src="{% static 'images/icons8-flecha-ampliar-24.png' %}" alt=""> 
                   <ul class="menu_categoria">
-                    <li>
-                      <a href="{% url 'market:motos' %}">Motos</a>
-                    </li>
-                    <li>
-                      <a href="{% url 'market:soluciones_dinerarias' %}">Soluciones dinerias</a>
-                    </li>
-                    <li>
-                      <a href="{% url 'market:electrodomesticos' %}">Electrodomesticos</a>
-                    </li>
-                    <li>
-                      <a href="{% url 'market:beneficios' %}">Beneficios para clientes</a>
-                    </li>
-                    <li>
-                      <a href="/templates_categorias/categoria_usado.html">Usados</a>
-                    </li>
+                      <li>
+                        <a href="/templates_categorias/categorias_motos.html">Motos</a>
+                      </li>
+                      <li>
+                        <a href="/templates_categorias/categorias_soluciones_dinerarias.html">Soluciones dinerias</a>
+                      </li>
+                      <li>
+                        <a href="/templates_categorias/categorias_electrodomesticos.html">Electrodomesticos</a>
+                      </li>
+                      <li>
+                        <a href="/templates_categorias/categorias_beneficios_cliente.html">Beneficios para clientes</a>
+                      </li>
+                      <li>
+                        <a href="/templates_categorias/categoria_usado.html">Usados</a>
+                      </li>
                   </ul>
               </li>
               <li class="items">
@@ -53,7 +54,7 @@
                 <a href="{% url 'market:trabaja' %}">Trabaja con nosotros</a>
               </li>
               <li class="items">
-                  <a href="contactanos.html">Contactanos</a>
+                <a href="{% url 'contactanos' %}l">Contactanos</a>
               </li>
             </div>
           </ol>
@@ -61,35 +62,41 @@
     </header>
     <div class="espace_header_categories"></div>
     <section class="trabaja_con_nosotros">
-        <div class="trabaja__title">
+        <div class="trabaja__texto">
+          <div class="trabaja__title">
             <h1>
                 Trabajá<br> 
                 con<br> 
                 <strong id="nosotros_decoration">Nosotros</strong>
             </h1>
-        </div>
-        <div class="trabaja__texto">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos sed amet officia modi dicta omnis minima, beatae quae nesciunt aliquam officiis voluptatibus! Non accusamus perspiciatis ipsa consequatur voluptatibus doloribus nulla.</p>
+          </div>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos sed amet officia modi dicta omnis minima, beatae quae nesciunt aliquam officiis voluptatibus! Non accusamus perspiciatis ipsa consequatur voluptatibus doloribus nulla.</p>
         </div>
         <div class="formulario-wrapper">
             <form method="POST">
                 <div class="name_field">
                     <label for="name">Nombre completo</label>
-                    <input type="text" name="nombre" id="name" required>
+                    <input type="text" name="nombre" placeholder="Ej: Lima Matias Ezequiel" id="name" required>
                 </div>
 
                 <div class="mail_field">
                     <label for="mail">Correo electrónico</label>
-                    <input type="email" name="correo" id="mail" required>
+                    <input type="email" name="correo" placeholder="Ej: micorreo@gmail.com" id="mail" required>
                 </div>
 
                 <div class="number_field">
                     <label for="number">Número de telefono</label>
-                    <input type="text" name="telefono" id="number" required>
+                    <input type="text" name="telefono" placeholder="Ej: 8922909090" id="number" required>
                 </div>
 
                 <div class="cv_field">
-                    <input type="file" name="cv" id="cv">
+                    <h2>¡Compartenos tu CV!</h2>
+                    <label for="cv"><img src="{% static 'images/in_file.svg' %}" alt=""></label>
+                    <input type="file" name="cv" id="cv" accept=".png, .jpg, .jpeg, .pdf, .doc, .docx" >
+                    <div class="image_url">
+
+                    </div>
+                    <button type="button" id="cv_input">Subir</button>
                 </div>
                 
                 <button type="submit" id="send-cv">Enviar</button>
@@ -98,6 +105,7 @@
     </section>
     <script src="{% static 'js/header.js' %}"></script>
     <script src="{% static 'js/menu_hamburguer.js' %}"></script>
+    <script src="{% static 'js/cv_detect.js' %}"></script>
 
 </body>
 </html>

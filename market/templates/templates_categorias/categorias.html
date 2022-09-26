@@ -15,7 +15,7 @@
     <nav class="header__nav">
       <ol>
         <a class="logo_container" href="{% url 'index' %}">
-          <img src="{% static 'images/icons/icono_arregla_negro.png' %}" alt="" class="logo">
+          <img src="{% static 'images/icons/icono_header_blanco_arreglado.png' %}" alt="" class="logo">
         </a>
         <label for="check">
           <input type="checkbox" id="check"/> 
@@ -66,11 +66,11 @@
         <figure><img src="{% static 'images/icons/moto_icon.png' %}" alt=""></figure>
         <a href="{% url 'market:motos' %}"><h1>Motos</h1></a>
         <ul>
-          <li><a href=""><h2>Scooter</h2></a></li>
-          <li><a href=""><h2>Street</h2></a></li>
-          <li><a href=""><h2>Supersport</h2></a></li>
-          <li><a href=""><h2>Hyper Naked</h2></a></li>
-          <li><a href=""><h2>Mas...</h2> </a></li>
+          <li><a href=""><h2>Yamaha</h2></a></li>
+          <li><a href=""><h2>Honda</h2></a></li>
+          <li><a href=""><h2>Motomel</h2></a></li>
+          <li><a href=""><h2>Rouser</h2></a></li>
+          <li><a href=""><h2>Ver más...</h2> </a></li>
         </ul>
 
       </article>
@@ -79,11 +79,11 @@
         <figure><img src="{% static 'images/icons/icon_electrodo_relleno.png' %}" alt=""></figure>
         <a href="{% url 'market:electrodomesticos' %}"><h1>Electrodomesticos</h1></a>
         <ul>
-          <li><a href=""><h2>Lavarropas</h2></a></li>
-          <li><a href=""><h2>Secarropas</h2></a></li>
-          <li><a href=""><h2>Cocinas</h2></a></li>
-          <li><a href=""><h2>Estufas</h2></a></li>
-          <li><a href=""><h2>Mas...</h2> </a></li>
+          <li><a href=""><h2>Combo cocina </h2></a></li>
+          <li><a href=""><h2>Combo gamer</h2></a></li>
+          <li><a href=""><h2>Combo música</h2></a></li>
+          <li><a href=""><h2>Combo TV</h2></a></li>
+          <li><a href=""><h2>Ver más...</h2> </a></li>
         </ul>
       </article>
 
@@ -91,11 +91,11 @@
         <figure><img src="{% static 'images/icons/icon_solu_dineraria.png' %}" alt=""></figure>
         <a href="{% url 'market:soluciones_dinerarias' %}"><h1>Soluciones Dinerarias</h1></a>
         <ul>
+          <li><a href=""><h2>80 Mil</h2></a></li>
+          <li><a href=""><h2>200 Mil</h2></a></li>
           <li><a href=""><h2>400 Mil</h2></a></li>
-          <li><a href=""><h2>600 Mil</h2></a></li>
-          <li><a href=""><h2>800 Mil</h2></a></li>
-          <li><a href=""><h2>1 Millon</h2> </a></li>
-          <li><a href=""><h2>Mas...</h2> </a></li>
+          <li><a href=""><h2>800 Mil</h2> </a></li>
+          <li><a href=""><h2>Ver más...</h2> </a></li>
           
         </ul>
       </article>
@@ -106,13 +106,11 @@
         <ul>
           <li><a href=""><h2>Soperte Tecnico</h2></a></li>
           <li><a href=""><h2>Descuentos</h2></a></li>
-          <li><a href=""><h2>Mas...</h2> </a></li>
-          <!-- <li><a href="">Supersport</a></li>
-          <li><a href="">Hyper Naked</a></li> -->
+          <li><a href=""><h2>Ver más...</h2> </a></li>
         </ul>
       </article>
 
-      <article class="usados" >
+      {% comment %} <article class="usados" >
         <figure><img src="{% static 'images/icons/icon_moto.png' %}" alt=""></figure>
         <a href="categoria_usado.html"><h1>Usados</h1></a>
         <ul>
@@ -120,7 +118,7 @@
           <li><a href=""><h2>Street</h2></a></li>
           <li><a href=""><h2>Mas...</h2></a></li>
         </ul>
-      </article>
+      </article> {% endcomment %}
 
     </section>
     <script src="{% static 'js/header.js' %}"></script>

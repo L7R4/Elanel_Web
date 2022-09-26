@@ -1,4 +1,18 @@
+@media screen and (max-width: 960px){
+    .slider-container{
+        height: 440px;
+    }
+    .formulario__eslogan{
+        font-size: 3rem;
+    }
+    .wrapper_windown_whatsapp{
+        width: 42%;
+    }
+}
+
+
 @media screen and (max-width: 900px) {
+    
     .naccs{
         display: flex;
         flex-flow: column;
@@ -6,7 +20,6 @@
     }
     .detalle > div:not(.active){
         left: auto;
-        /* top: -20%; */
     }
 
     .menu{
@@ -28,12 +41,13 @@
     }
 
     .menu > div > img{
-        width: 3rem;
+        width: 20%;
+        min-width: 4.5rem;
         margin-left: 2%;
     }
 
     .menu > div > h6{
-        margin-left: 1rem;
+        margin-left: 0;
         font-size: 1.2rem;
     }
 
@@ -177,6 +191,14 @@
         width: 54%;
     }
 
+    .wrapper_windown_whatsapp{
+        width: 48%;
+    }
+
+    .contacto > h2{
+        font-size: 1.7rem;
+    }
+
 }
 
 @media screen and (max-width:650px){
@@ -230,15 +252,20 @@
         margin-top: .5rem;
     }
 
-    #mapa{
-        max-width: none;
+    .wrapper_ubicacion
+    {
         width: 100%;
-        min-height:280px;
+        min-height:380px; 
+        max-width: none;
     }
 
-    #ubicacion__direccion{
+    .mapa{
+        max-width: none;
+        bottom: 3%;
+    }
+
+    .ubicacion__direccion{
         margin: 1.3rem 0;
-        position: static;
         margin-left: 3%;
     }
     .ubicacion__text{
@@ -271,6 +298,9 @@
     }
     #marcar_lg img{
         width: 70%;
+    }
+    .wrapper_windown_whatsapp{
+        width: 65%;
     }
 
 }

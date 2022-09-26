@@ -9,6 +9,10 @@
     .items a{
         font-size: 1.5rem;
     }
+    .menu_categoria li a,.menu_contactanos li a{
+        font-size: 1.3rem;
+    }
+    
 }
 @media screen and (max-width:750px){
 
