@@ -73,26 +73,27 @@
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos sed amet officia modi dicta omnis minima, beatae quae nesciunt aliquam officiis voluptatibus! Non accusamus perspiciatis ipsa consequatur voluptatibus doloribus nulla.</p>
         </div>
         <div class="formulario-wrapper">
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
                 <div class="name_field">
                     <label for="name">Nombre completo</label>
-                    <input type="text" name="nombre" placeholder="Ej: Lima Matias Ezequiel" id="name" required>
+                    <input type="text" name="nombre_completo" placeholder="Ej: Lima Matias Ezequiel" id="name" required>
                 </div>
 
                 <div class="mail_field">
                     <label for="mail">Correo electrónico</label>
-                    <input type="email" name="correo" placeholder="Ej: micorreo@gmail.com" id="mail" required>
+                    <input type="email" name="email" placeholder="Ej: micorreo@gmail.com" id="mail" required>
                 </div>
 
                 <div class="number_field">
                     <label for="number">Número de telefono</label>
-                    <input type="text" name="telefono" placeholder="Ej: 8922909090" id="number" required>
+                    <input type="text" name="num_telefono" placeholder="Ej: 8922909090" id="number" required>
                 </div>
 
                 <div class="cv_field">
                     <h2>¡Compartenos tu CV!</h2>
                     <label for="cv"><img src="{% static 'images/in_file.svg' %}" alt=""></label>
-                    <input type="file" name="cv" id="cv" accept=".png, .jpg, .jpeg, .pdf, .doc, .docx" >
+                    <input type="file" name="cv" id="cv" accept=".png, .jpg, .jpeg, .pdf, .doc, .docx">
                     <div class="image_url">
 
                     </div>

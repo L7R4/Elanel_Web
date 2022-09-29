@@ -53,7 +53,7 @@ class SolucionDineraria(models.Model):
         return self.monto
 
 
-class Usuario(models.Model):
+class Cliente(models.Model):
     nombre_completo = models.CharField(max_length= 120, default="")
     dni = models.CharField(max_length=8)
     provincia = models.CharField(max_length=50)  
@@ -66,6 +66,12 @@ class Usuario(models.Model):
     def __str__(self):
         return self.nombre_completo
 
+class Personal(models.Model):
+    nombre_completo = models.CharField(max_length= 120, default="")
+    email = models.EmailField(max_length=200) 
+    num_telefono = models.CharField(max_length=15)
+    fecha = models.DateTimeField(auto_now_add = True)
+    cv = models.FileField(upload_to="archivos/cv/", default=None, blank=False)
 
 class Post(models.Model):
     titulo = models.CharField(max_length=60,blank=True)

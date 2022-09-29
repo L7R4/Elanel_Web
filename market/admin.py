@@ -1,21 +1,31 @@
 from django.contrib import admin
-from .models import BeneficioParaCliente, ImagenProducto, PostImagenes, Producto, SolucionDineraria, Usuario, Post
+from .models import BeneficioParaCliente, Cliente, ImagenProducto, PostImagenes, Producto, SolucionDineraria, Personal, Post
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 
 
-class UsuarioResource(resources.ModelResource):
+class ClienteResource(resources.ModelResource):
     class Meta:
-        model = Usuario
+        model = Cliente
 
 
-@admin.register(Usuario) #decorador que significa que al registrar producto lo extendemos con ProductoAdmin
-class UsuarioAdmin(ImportExportModelAdmin,admin.ModelAdmin):
+@admin.register(Cliente) #decorador que significa que al registrar producto lo extendemos con ProductoAdmin
+class ClienteAdmin(ImportExportModelAdmin,admin.ModelAdmin):
     list_display= ["nombre_completo","email", "provincia","objetivo", ]
     # search_fields = ["nombre"]
     # list_filter=["titulo_de_categoria"]
     # list_editable = ["precio"]
-    resource_class = UsuarioResource
+    resource_class = ClienteResource
+
+class PersonalResource(resources.ModelResource):
+    class Meta:
+        model = Personal
+
+
+@admin.register(Personal) 
+class PersonalAdmin(ImportExportModelAdmin,admin.ModelAdmin):
+    list_display= ["nombre_completo","email", "num_telefono","cv",]
+    resource_class = PersonalResource
 
 
 class ImagenProductoAdmin(admin.TabularInline):

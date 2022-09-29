@@ -3,7 +3,7 @@ from django.shortcuts import render,redirect, HttpResponseRedirect
 from market.models import Post, Producto
 from django.views import generic
 from .forms import FormIndex
-from market.models import Usuario,Post
+from market.models import Cliente,Post
 
 class IndexView2(View):
     template_name="index.html"
@@ -13,7 +13,7 @@ class IndexView2(View):
         if request.method == "POST":
             form = FormIndex(request.POST)
             if form.is_valid():
-                user = Usuario()
+                user = Cliente()
                 user.nombre_completo = form.cleaned_data['nombre_completo']
                 user.provincia = form.cleaned_data['provincia']
                 user.localidad = form.cleaned_data['localidad']
