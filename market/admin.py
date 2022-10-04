@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import BeneficioParaCliente, Cliente, ImagenProducto, PostImagenes, Producto, SolucionDineraria, Personal, Post
+from .models import BeneficioParaCliente, Cliente, ImagenMoto, PostImagenes, Moto, SolucionDineraria, Personal, Post
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 
@@ -30,14 +30,14 @@ class PersonalAdmin(ImportExportModelAdmin,admin.ModelAdmin):
 
 class ImagenProductoAdmin(admin.TabularInline):
     extra = 3
-    model = ImagenProducto
+    model = ImagenMoto
 
 
-@admin.register(Producto) #decorador que significa que al registrar producto lo extendemos con ProductoAdmin
+@admin.register(Moto) #decorador que significa que al registrar producto lo extendemos con ProductoAdmin
 class ProductoAdmin(admin.ModelAdmin):
-    list_display= ["nombre", "precio","titulo_de_categoria", "modelo","marca"]
+    list_display= ["nombre", "precio", "modelo","marca"]
     search_fields = ["nombre"]
-    list_filter=["titulo_de_categoria"]
+    # list_filter=["titulo_de_categoria"]
     list_editable = ["precio"]
     inlines = [ImagenProductoAdmin]
     prepopulated_fields = { 'slug': ['nombre'] }

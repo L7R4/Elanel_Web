@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/categorias.css' %}">
     <link rel="stylesheet" href="{% static 'css/navStyles.css' %}">
     <link rel="stylesheet" href="{% static 'css/media_querys/nav_bar.css' %}">
-    <title>categorias</title>
+    <title>Elanel Servicios y Soluciones</title>
 </head>
 <body>
   <header>
@@ -66,11 +66,11 @@
         <figure><img src="{% static 'images/icons/moto_icon.png' %}" alt=""></figure>
         <a href="{% url 'market:motos' %}"><h1>Motos</h1></a>
         <ul>
-          <li><a href=""><h2>Yamaha</h2></a></li>
-          <li><a href=""><h2>Honda</h2></a></li>
-          <li><a href=""><h2>Motomel</h2></a></li>
-          <li><a href=""><h2>Rouser</h2></a></li>
-          <li><a href=""><h2>Ver más...</h2> </a></li>
+          <li><a href="" id="moto_yamaha"><h2>Yamaha</h2></a></li>
+          <li><a href="" id="moto_honda"><h2>Honda</h2></a></li>
+          <li><a href="" id="moto_motomel"><h2>Motomel</h2></a></li>
+          <li><a href="" id="moto_rouser"><h2>Rouser</h2></a></li>
+          <li><a href="{% url 'market:motos' %}"><h2>Ver más...</h2> </a></li>
         </ul>
 
       </article>
@@ -110,18 +110,9 @@
         </ul>
       </article>
 
-      {% comment %} <article class="usados" >
-        <figure><img src="{% static 'images/icons/icon_moto.png' %}" alt=""></figure>
-        <a href="categoria_usado.html"><h1>Usados</h1></a>
-        <ul>
-          <li><a href=""><h2>Scooter</h2></a></li>
-          <li><a href=""><h2>Street</h2></a></li>
-          <li><a href=""><h2>Mas...</h2></a></li>
-        </ul>
-      </article> {% endcomment %}
-
     </section>
     <script src="{% static 'js/header.js' %}"></script>
     <script src="{% static 'js/menu_hamburguer.js' %}"></script>
+    <script src="{% static 'js/redirect_alternative.js' %}"></script>
 </body>
 </html>

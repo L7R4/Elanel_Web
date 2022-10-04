@@ -2,7 +2,7 @@ from configparser import NoSectionError
 from django.shortcuts import render
 from django.views.generic import View
 from django.views import generic
-from market.models import ImagenProducto, Post, Producto, Personal
+from market.models import ImagenMoto, Post, Moto, Personal
 from .forms import FormPersonal
 
 
@@ -17,29 +17,27 @@ def is_valid_query(param):
 
 class CategoriaMotos(generic.ListView):
     template_name = "templates_categorias/categorias_motos.html"
-    model = Producto
+    model = Moto
     context_object_name ="motos"
 
     def get_queryset(self):
         qs = super().get_queryset()
-        qs = qs.filter(titulo_de_categoria = "motos")
         marca = self.request.GET.get("marca")
         status = self.request.GET.get("status")
+        minimo = self.request.GET.get("minimo")
+        maximo = self.request.GET.get("maximo")
         # status = self.request.GET.get("status")
         if is_valid_query(marca):
             qs = qs.filter(marca = marca)
-            print("hola")
-            print(marca)
         if is_valid_query(status):
             qs = qs.filter(usado = status)
-            print("hola")
-            print(status)
-        # if is_valid_query(marca):
-        #     pass
-        
+        if is_valid_query(minimo):
+            qs = qs.filter(precio__gte = minimo)
+        if is_valid_query(maximo):
+            qs = qs.filter(precio__lte = maximo)
+            
         return qs
-
-
+    
 
 class CategoriaElectrodemesticos(generic.ListView):
     template_name = "templates_categorias/categorias_electrodomesticos.html"
@@ -62,16 +60,14 @@ class CategoriaBeneficiosCliente(generic.ListView):
         return None
 
 class DetalleMoto(generic.DetailView):
-    model = Producto
+    model = Moto
     template_name = "templates_categorias/detalle_moto.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         # context["moto_single"] = Producto.objects.get(producto = self.kwargs['slug'])
-        context["moto_images"] = ImagenProducto.objects.filter(producto = self.kwargs['slug'])
+        context["moto_images"] = ImagenMoto.objects.filter(producto = self.kwargs['slug'])
         return context
-    
-
     
 
 class TrabajaConNosotros(View):
