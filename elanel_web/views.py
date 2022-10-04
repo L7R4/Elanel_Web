@@ -1,9 +1,9 @@
 from django.views.generic import View
 from django.shortcuts import render,redirect, HttpResponseRedirect
-from market.models import Post, Producto
+from market.models import Post, Moto
 from django.views import generic
 from .forms import FormIndex
-from market.models import Usuario,Post
+from market.models import Cliente,Post
 
 class IndexView2(View):
     template_name="index.html"
@@ -13,7 +13,7 @@ class IndexView2(View):
         if request.method == "POST":
             form = FormIndex(request.POST)
             if form.is_valid():
-                user = Usuario()
+                user = Cliente()
                 user.nombre_completo = form.cleaned_data['nombre_completo']
                 user.provincia = form.cleaned_data['provincia']
                 user.localidad = form.cleaned_data['localidad']
@@ -27,15 +27,13 @@ class IndexView2(View):
 
     def get(self, request, *args, **kwargs):
         posts = Post.objects.all() 
-        motos_slider = Producto.objects.all()
+        motos_slider = Moto.objects.all()
 
         context = {
             "posts": posts,
             "motos_slider": motos_slider,
         }
         return(render(request,self.template_name,context))
-
-
 
 
 class SobreNosotros(View):

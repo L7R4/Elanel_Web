@@ -90,34 +90,67 @@
     </div>
   </div>
 
-  
+  <button type="button" class="whatsapp_contact" id="whatsapp_contact">
+    <img class="icon_whap" src="{% static 'images/whatsapp_icon.svg' %}" alt="">
+    <h6>¡Escribenos!</h6> 
+  </button>
+
+  <div class="modal_whatsapp_container">
+    <div class="wrapper_windown_whatsapp">
+
+      <div class="window_whatsapp">
+        <li class="contacto">
+          <h2>Administracion</h2>
+          <div class="numbers">
+            <p>54654456654</p>
+          </div>
+        </li>
+        <li class="contacto">
+          <h2>Cobranzas</h2>
+          <div class="numbers">
+              <p>8291738129</p>
+              <p>8291738129</p>
+              <p>8291738129</p>
+          </div>
+        </li>
+        <li class="contacto">
+          <h2>Ventas</h2>
+          <div class="numbers">
+            <p>123456789</p>
+            <p>123456789</p>
+          </div>
+        </li>
+        <button type ="button" id="close_modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
 
   <section class="categoria">
     <h2>¡Elige lo que deseas!</h2>
     <div class="naccs">
         <div class="menu">
             <div class="motos active">
-              <img src="{% static 'images/seccion_categorias/moto.svg' %}" alt="Moto">
+              <img src="{% static 'images/icons/moto_icon.png' %}" alt="Moto">
               <h6>Motos</h6>     
             </div>
             
             <div class="soluciones_dinerarias">                   
-              <img src="{% static 'images/seccion_categorias/soluciones_dinerarias.svg' %}" alt="bolsa_de_dinero">
+              <img src="{% static 'images/icons/icon_solu_dineraria.png' %}" alt="bolsa_de_dinero">
               <h6>Soluciones Dinerarias</h6>
             </div>
 
             <div class= "electrodomesticos">                
-              <img src="{% static 'images/seccion_categorias/electrodomesticos.svg' %}" alt="lavarropa/heladera">
+              <img src="{% static 'images/icons/icon_electrodo_relleno.png' %}" alt="lavarropa/heladera">
               <h6>Electrodomesticos</h6>
             </div>
 
             <div class="beneficios">        
-              <img src="{% static 'images/seccion_categorias/beneficios.svg' %}" alt="hombre_del_servicio_tecnico">
+              <img src="{% static 'images/icons/icon_beneficios.png' %}" alt="hombre_del_servicio_tecnico">
               <h6>Beneficios de Cliente</h6>
             </div>   
 
             <div class="usados">   
-              <img src="{% static 'images/seccion_categorias/beneficios.svg' %}" alt="hombre_del_servicio_tecnico">
+              <img src="{% static 'images/icons/icon_moto.png' %}" alt="hombre_del_servicio_tecnico">
               <h6>Usados</h6>
             </div>       
         </div>
@@ -131,7 +164,7 @@
             <div class="container_sliderMotos_buttons">
               <div class="container_slider_motos">
                 <div class="slider__motos">
-                    <div class="item">
+                    <a class="item" href="">
                       <img
                         src="{% static 'images/moto__example.png' %}"
                         alt=""
@@ -141,8 +174,8 @@
                         <h2>Moto picada</h2>
                         <h3>$100.000</h3>
                       </div>
-                    </div>
-                    <div class="item">
+                    </a>
+                    <a class="item" href="">
                       <img
                         src="{% static 'images/moto_example2.png' %}"
                         alt="" 
@@ -152,8 +185,8 @@
                         <h2>Moto picada</h2>
                         <h3>$100.000</h3>    
                       </div>
-                    </div>
-                    <div class="item">
+                    </a>
+                    <a class="item" href="">
                       <img
                         src="{% static 'images/moto__example3.png' %}"
                         alt=""
@@ -164,7 +197,7 @@
                         <h3>$100.000</h3>     
                       </div>
   
-                    </div>
+                    </a>
                   </div>
               </div>
               <nav class="slider__motos__nav">
@@ -241,11 +274,19 @@
 
   <section class="ubicacion">
     <article class="mapa__container" id="mapa__container">
-      <div id="ubicacion__direccion">
-        <h1>Encuentranos en</h1>
-        <h4 >Obligado 841</h4>
+     <div class="wrapper_ubicacion">
+       <div class="ubicacion__direccion active_provincia" id="ubicacion__direccion_resistencia">
+         <h1>Encuentranos en</h1>
+         <h4 >Obligado 841</h4>
+       </div>
+       <iframe class="mapa active_provincia" id="mapa_resistencia" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3540.298199016263!2d-58.983624984976636!3d-27.459974282894965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94450ceee646f275%3A0x77559d941a7c7581!2sC.%20Obligado%20841%2C%20H3504APB%20Resistencia%2C%20Chaco!5e0!3m2!1ses!2sar!4v1660695784285!5m2!1ses!2sar" width="60%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+       
+       <div class="ubicacion__direccion " id="ubicacion__direccion_corrientes">
+         <h1>Encuentranos en</h1>
+         <h4 >Otro lado</h4>
+       </div>
+       <iframe class="mapa" id="mapa_corrientes" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12169.729087973736!2d-58.99652312416893!3d-27.45200271330547!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94450c625d68ef2d%3A0x5adee180c69bb98a!2sParrilla%20la%20Chimenea!5e0!3m2!1ses!2sar!4v1663223469539!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
-      <iframe id="mapa"src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3540.298199016263!2d-58.983624984976636!3d-27.459974282894965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94450ceee646f275%3A0x77559d941a7c7581!2sC.%20Obligado%20841%2C%20H3504APB%20Resistencia%2C%20Chaco!5e0!3m2!1ses!2sar!4v1660695784285!5m2!1ses!2sar" width="60%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       
       <div class="ubicacion__text">
         <div class="ubicacion__text_container">
@@ -260,8 +301,8 @@
         
         <div class="locales">
           <h4>Nuestros locales</h4>
-          <button id="resistencia">Resistencia, Chaco</button>
-          <button id="corrientes">Corrientes Capital</button>
+          <button id="resistencia" class="resistencia active_ubication">Resistencia, Chaco</button>
+          <button id="corrientes" class="corrientes">Corrientes Capital</button>
         </div>
       </div>
     </article>
@@ -394,6 +435,8 @@
 </body>
 
 <script src="{% static 'js/scrollreveal_librery.js' %}"></script>
+<script src="{% static 'js/modal_whatsapp.js' %}"></script>
+<script src="{% static 'js/ubicacion.js' %}"></script>
 <script src ="{% static 'js/categoria.js' %}"></script>
 <script src="{% static 'js/slider.js' %}"></script>
 <script src="{% static 'js/header.js' %}"></script>

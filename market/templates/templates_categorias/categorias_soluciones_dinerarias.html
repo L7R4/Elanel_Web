@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{% static 'css/media_querys/nav_bar.css' %}">
     <link rel="stylesheet" href="{% static 'css/media_querys/categorias_motos.css' %}">
 
-    <title>Elanel</title>
+    <title>Elanel Servicios y Soluciones</title>
 </head>
 <body>
   <header>
@@ -53,10 +53,10 @@
               <a href="{% url 'nosotros' %}">Sobre Nosotros</a>
           </li>
           <li class="items">
-              <a href="../trabaja_con_nosotros.html">Trabaja con nosotros</a>
+              <a href="{% url 'market:trabaja' %}">Trabaja con nosotros</a>
           </li>
           <li class="items">
-              <a href="../contactanos.html">Contactanos</a>
+              <a href="{% url 'contactanos' %}">Contactanos</a>
           </li>
         </div>
       </ol>

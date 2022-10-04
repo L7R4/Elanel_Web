@@ -6,9 +6,7 @@ menu.forEach(function(item){
     item.addEventListener("click",function(){
         desactiveMenu();
         let menuActive= item.classList.add("active");
-        console.log({item})
-        // let sd= item.classList.contains("soluciones_dinerarias")
-        // console.log(sd)
+
 
         if(item.classList.contains("soluciones_dinerarias")){
             desactiveDetalle();

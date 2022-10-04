@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="{% static 'css/navStyles.css' %}">
     <link rel="stylesheet" href="{% static 'css/media_querys/nav_bar.css' %}">
     <link rel="stylesheet" href="{% static 'css/media_querys/categorias_motos.css' %}">
-
-    <title>Elanel</title>
+    <title>Elanel Servicios y Soluciones</title>
 </head>
 <body>
   <header>
@@ -64,7 +63,7 @@
     <div class="espace_header_categories"></div>
     <div class="wrapper_catalogo_aside">
         <aside class="filters_container">
-            <form action="" method="get">
+            <form action="" method="GET">
               
               <h1>Marcas</h1>
               <div class="marcas">
@@ -102,102 +101,40 @@
 
               <h1>Condición</h1>
               <div class="estado">
-                <input type="radio" name="status" id="nuevo" value="nuevo">
+                <input type="radio" name="status" id="nuevo" value="False">
                 <label for="nuevo"><h3>Nuevo</h3></label>
 
-                <input type="radio" name="status" id="usado" value="usado">
+                <input type="radio" name="status" id="usado" value="True">
                 <label for="usado"><h3>Usado</h3></label>
               </div>
 
               <h1>Precio</h1>
               <div class="precio">
                 <input type="text" pattern="[0-9]*" name="minimo" id="minimo" placeholder="Minimo">
-                <input type="text" pattern="[0-9]*" name="Maximo" id="maximo" placeholder="Maximo">
+                <input type="text" pattern="[0-9]*" name="maximo" id="maximo" placeholder="Maximo">
               </div>
               <button type="submit" id="button_filter">Buscar</button>
             </form>
+              <a id="clear" href="{%  url 'market:clear' %}">Limpiar filtros</a>
         </aside>
-        <button type="button" id="filter_button">
+        <button type="button" id="filter_button" >
           Filtrar
         </button>
+        
         <section class="catalogo">
-          <a href="">
-            <article>
-              <img src="{% static 'images/images_motos/moto1.png' %}" alt="">
-              <h2>Moto picada</h2>
-              <h3>$100.000</h3>
-            </article>
-          </a>
-          <a href="">
-            <article>
-              <img src="{% static 'images/images_motos/moto1.png' %}" alt="">
-              <h2>Moto picada</h2>
-              <h3>$100.000</h3>
-            </article>
-          </a>
-          <a href="">
-            <article>
-              <img src="{% static 'images/images_motos/moto1.png' %}" alt="">
-              <h2>Moto picada</h2>
-              <h3>$100.000</h3>
-            </article>
-          </a>
-          <a href="">
-            <article>
-              <img src="{% static 'images/images_motos/moto1.png' %}" alt="">
-              <h2>Moto picada</h2>
-              <h3>$100.000</h3>
-            </article>
-          </a>
-          <a href="">
-            <article>
-              <img src="{% static 'images/images_motos/moto1.png' %}" alt="">
-              <h2>Moto picada</h2>
-              <h3>$100.000</h3>
-            </article>
-          </a>
-          <a href="">
-            <article>
-              <img src="{% static 'images/images_motos/moto1.png' %}" alt="">
-              <h2>Moto picada</h2>
-              <h3>$100.000</h3>
-            </article>
-          </a>
-          <a href="">
-            <article>
-              <img src="{% static 'images/images_motos/moto1.png' %}" alt="">
-              <h2>Moto picada</h2>
-              <h3>$100.000</h3>
-            </article>
-          </a>
-          <a href="">
-            <article>
-              <img src="{% static 'images/images_motos/moto1.png' %}" alt="">
-              <h2>Moto picada</h2>
-              <h3>$100.000</h3>
-            </article>
-          </a>
-          <a href="">
-            <article>
-              <img src="{% static 'images/images_motos/moto1.png' %}" alt="">
-              <h2>Moto picada</h2>
-              <h3>$100.000</h3>
-            </article>
-          </a>
-          <a href="">
-            <article>
-              <img src="{% static 'images/images_motos/moto1.png' %}" alt="">
-              <h2>Moto picada</h2>
-              <h3>$100.000</h3>
-            </article>
-          </a>
-          <a href="">
-            <article>
-              <img src="{% static 'images/images_motos/moto1.png' %}" alt="">
-              <h2>Moto picada</h2>
-              <h3>$100.000</h3>
-            </article>
-          </a>
+          {% if  motos.count != 0 %}
+            {% for moto in motos %}
+              <a href="{{moto.get_absolute_url}}">
+                <article>
+                  <img src="{{moto.imagen_portada.url}}" alt="">
+                  <h2>{{moto.nombre}}</h2>
+                  <h3>${{moto.precio|floatformat }}</h3>
+                </article>
+              </a>
+            {% endfor %}
+            {% elif motos.count == 0 %}
+              <h1>No hay productos</h1>
+          {% endif %}
         </section>
     </div>
     
@@ -205,4 +142,5 @@
 <script src="{% static 'js/header.js' %}"></script>
 <script src="{% static 'js/filter_button.js' %}"></script>
 <script src="{% static 'js/menu_hamburguer.js' %}"></script>
+<script src="{% static 'js/clear_filters.js' %}"></script>
 </html>

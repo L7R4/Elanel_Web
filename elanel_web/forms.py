@@ -1,9 +1,10 @@
 from django import forms
-from market.models import Usuario
+from market.models import Cliente
+
 
 class FormIndex(forms.ModelForm):
     class Meta:
-        model = Usuario
+        model = Cliente
         fields =[
             'nombre_completo',
             'provincia',
@@ -12,3 +13,4 @@ class FormIndex(forms.ModelForm):
             'objetivo',
             'num_telefono',
         ]
+
