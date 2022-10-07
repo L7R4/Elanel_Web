@@ -252,6 +252,7 @@ html{
 
 .catalogo > a{
     text-decoration: none;
+    height: fit-content;
 }
 
 .catalogo a > article{
@@ -273,10 +274,12 @@ html{
     font-size: 1.7rem;
     color: var(--bgColor);
     margin-bottom: 3%;
+    font-feature-settings: 'pnum' on, 'lnum' on;
 }
 .catalogo a > article > h2{
     font-family: raleway-bold;
     color: var(--sColor);
     font-size: 2rem;
+    font-feature-settings: 'pnum' on, 'lnum' on;
 }
 

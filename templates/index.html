@@ -258,7 +258,7 @@
     <h1 class="formulario__eslogan">Todo lo que <strong class="style__palabra__eslogan">necesitas</strong><br> en un solo <strong class="style__palabra__eslogan">lugar</strong></h1>
     <div class="barra">
     </div>
-    <form method="POST"> 
+    <form method="POST" autocomplete="off"> 
      {% csrf_token %}
       <h5>Envianos un correo contándonos lo que quieres</h5>
       <input type="text" name="email" id="email" placeholder="Mail">

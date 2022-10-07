@@ -241,52 +241,31 @@
   }
 
   .text button{
-    border: none;
     text-align: center;
-    width: 30%;
     min-width: 120px;
-    height: 5vh;
     cursor: pointer;
-    text-transform: uppercase;
-    outline: none;
-    overflow: hidden;
-    position: relative;
-    color: var(--sColor);
-    font-weight: 600;
-    font-size: 1.3rem;
-    background-color: var(--bgColor);
+    color: var(--bgColor);
     margin-top: 3rem;
-    border-radius: 8px;
+    border-radius: 7px;
+    border-color: var(--sColor);
+    outline: none;
+    background-color: #fff;
+    font-family: raleway-semibold;
+    padding: .7rem 2%;
   }
+
+
+  
   .text button span {
     position: relative; 
     z-index: 1;
   }
 
   .text button:hover {
-    transition: all .2s ease-in-out;
-    color: var(--bgColor);
-  }
-  
-  .text button:after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 490%;
-    width: 140%;
-    background: var(--sColor);
-    
-    -webkit-transition: all .5s ease-in-out;
-    transition: all .2s ease-in-out;
-    -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
-    transform: translateX(-20%) translateY(24%) rotate(180deg);
-  }
-  
-  .text button:hover:after {
-    -webkit-transform: translateX(-100%) translateY(-25%) rotate(45deg);
-    transform: translateX(-20%) translateY(-30%) rotate(180deg);
-    
+    transition: all .2s ease;
+    background-color: var(--sColor);
+    border-color: transparent;
+    box-shadow: 0px 0px 10px 3px #2a87e0c2;
   }
 
 
@@ -740,6 +719,15 @@
   cursor: pointer;
   padding: 0;
 }
+.formulario form #enviar:hover{
+  transition: all .4s ease;
+  background-color: #fff;
+  color: #12131b;
+  box-shadow: 0px 0px 20px 2px #027cf130;
+  border-color: #027df15d
+}
+
+
 
 .formulario form >input{
   border-radius: 8px;

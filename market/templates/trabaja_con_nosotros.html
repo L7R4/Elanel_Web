@@ -15,7 +15,7 @@
     <header>
         <nav class="header__nav">
           <ol>
-            <a class="logo_container"href="">
+            <a class="logo_container" href="{% url 'index' %}">
               <img src="{% static 'images/icons/icono_header_blanco_arreglado.png' %}" alt="" class="logo">
             </a>
             <label for="check">
@@ -27,24 +27,24 @@
             
             <div class="nav__items">
               <li class="items__menu">
-                  <a href="templates_categorias/categorias.html">Categorias</a>
+                  <a href="{% url 'market:categorias' %}">Categorias</a>
                   <img src="{% static 'images/icons8-flecha-ampliar-24.png' %}" alt=""> 
                   <ul class="menu_categoria">
-                      <li>
-                        <a href="/templates_categorias/categorias_motos.html">Motos</a>
-                      </li>
-                      <li>
-                        <a href="/templates_categorias/categorias_soluciones_dinerarias.html">Soluciones dinerias</a>
-                      </li>
-                      <li>
-                        <a href="/templates_categorias/categorias_electrodomesticos.html">Electrodomesticos</a>
-                      </li>
-                      <li>
-                        <a href="/templates_categorias/categorias_beneficios_cliente.html">Beneficios para clientes</a>
-                      </li>
-                      <li>
-                        <a href="/templates_categorias/categoria_usado.html">Usados</a>
-                      </li>
+                    <li>
+                      <a href="{% url 'market:motos' %}">Motos</a>
+                    </li>
+                    <li>
+                      <a href="{% url 'market:soluciones_dinerarias' %}">Soluciones dinerias</a>
+                    </li>
+                    <li>
+                      <a href="{% url 'market:electrodomesticos' %}">Electrodomesticos</a>
+                    </li>
+                    <li>
+                      <a href="{% url 'market:beneficios' %}">Beneficios para clientes</a>
+                    </li>
+                    <li>
+                      <a href="/templates_categorias/categoria_usado.html">Usados</a>
+                    </li>
                   </ul>
               </li>
               <li class="items">

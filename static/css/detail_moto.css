@@ -120,6 +120,7 @@ src: url("../fonts/Raleway-SemiBold.ttf")
     margin-top: 15%;
     height: fit-content;
     color: var(--pColor);
+    font-feature-settings: 'pnum' on, 'lnum' on;
 }
 #precio_product{
     font-size: 2.2rem;
@@ -128,6 +129,7 @@ src: url("../fonts/Raleway-SemiBold.ttf")
     padding-left: 8%;
     margin-top: 2%;
     height: fit-content;
+    font-feature-settings: 'pnum' on, 'lnum' on;
 }
 .resumen > .resumen__detalle> div{
     display: flex;
@@ -142,6 +144,7 @@ src: url("../fonts/Raleway-SemiBold.ttf")
     font-size: 1.4rem;
     font-family: raleway;
     height: fit-content;
+    font-feature-settings: 'pnum' on, 'lnum' on;
 }
 
 .resumen .contact {

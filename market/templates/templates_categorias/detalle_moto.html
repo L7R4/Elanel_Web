@@ -79,13 +79,13 @@
         </article>
         <aside class="resumen">
             <div class="detalle_producto">
-                <h1 id="title_product">{{object.nombre}}</h1>
+                <h1 id="title_product">{{object.nombre|title}}</h1>
                 <h1 id="precio_product"> ${{object.precio|floatformat }}</h1>
             </div>
             <div class="resumen__detalle">
                 <div id="marca">
                     <h2>Marca</h2> 
-                    <h2>{{object.marca}}</h2>
+                    <h2>{{object.marca|title}}</h2>
                 </div>
                 <div id="modelo">
                     <h2>Modelo</h2> 
