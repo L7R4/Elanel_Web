@@ -9,3 +9,13 @@ class FormPersonal(forms.ModelForm):
             'num_telefono',
             'cv',
         ]
+
+class FormBeneficios(forms.ModelForm):
+    class Meta:
+        model = Personal
+        fields =[
+            'nombre_completo',
+            'email',
+            'num_telefono',
+            'cv',
+        ]

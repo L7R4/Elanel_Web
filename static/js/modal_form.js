@@ -4,12 +4,14 @@ const open_modal = document.querySelectorAll(".beneficios__table__item__buttton"
 const background_modal = document.querySelector(".modal_form_container")
 const modal_window = document.querySelector(".wrapper_windown_form")
 const close_modal = document.querySelector("#close_modal");
+const plan_value = document.querySelector("#plan");
 
 
 open_modal.forEach(element => {
     element.addEventListener("click",()=>{
         background_modal.classList.add("active_modal");
         modal_window.classList.add("active_modal");
+        plan.value = element.parentElement.childNodes[1].textContent
     })
 });
 

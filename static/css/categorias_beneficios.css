@@ -55,20 +55,25 @@
 .image_logo{
   width: 35%;
   height: 100%;
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .image_logo img{
-  height: 100%;
-  /* width: 100%; */
+  /* height: 100%; */
+  width: 83%;
+  opacity: .8;
 }
 
 .image_tenico{
   width: 35%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 .image_tenico img{
-  /* width: 50%; */
-  height: 100%;
+  width: 100%;
 }
 
 
@@ -87,15 +92,18 @@
 .portada_description h1
 {
   font-family: raleway-bold;
-  font-size: 4rem;
+  font-size: 5rem;
   color: var(--sColor);
   margin-bottom: 2rem;
+  text-align: center;
+  filter: drop-shadow(0px 0px 11px #02e3f5);
 }
 .portada_description h3
 {
   font-family: raleway-semibold;
   font-size: 1.9rem;
   color: white;
+  text-align: center;
   /* margin-bottom: 2rem; */
 }
 
@@ -114,7 +122,7 @@
   width: 23%;
   /* height: 50rem; */
   max-width: 30rem;
-  min-width: 26rem;
+  min-width: 28rem;
   padding: 5rem 2%;
   margin: 1rem 1rem;
   box-shadow: 0 0 16px rgb(0 0 0 / 20%);
@@ -223,13 +231,65 @@
   height: 0rem;
   width: 0rem;
   margin: 0 auto;
-  top: 10%;
+  top: calc(16% - 65px);
   transition: .4s all ease;
   z-index: 10;
 }
 .wrapper_windown_form.active_modal{
   height: 50rem;
   width: 40rem;
+}
+
+.window_form form{
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.window_form form > input{
+  width: 70%;
+  height: 30px;
+  font-size: 1.2rem;
+  font-family: raleway-semibold;
+  padding: 0 2%;
+  border-radius: 6px;
+  margin-top: 1%;
+  margin-bottom: 3%;
+  border-color: #0000002e;
+  transition: all .4s ease;
+}
+.window_form form > input:focus{
+
+  outline: none;
+  transition: all 1 ease;
+  box-shadow: 0px 0px 20px 2px #027cf130;
+  border-color: #027df15d;
+}
+
+#form_product_button{
+  border-radius: 5px;
+  border-color: var(--sColor);
+  outline: none;
+  cursor: pointer;
+  background-color: #fff;
+  font-family: raleway-semibold;
+  padding: 2.5% 3rem;
+  margin: 2rem auto;
+  display: block;
+  width: 60%;
+}
+#form_product_button:hover{
+  transition: all .2s ease;
+  background-color: var(--sColor);
+  border-color: transparent;
+  box-shadow: 0px 0px 10px 3px #2a87e0c2;
+
+}
+.window_form form > input:nth-child(2)
+{
+  margin-top: 2rem;
 }
 
 

@@ -56,8 +56,26 @@ class CategoriaSolucionesDinerarias(generic.ListView):
 class CategoriaBeneficiosCliente(generic.ListView):
     template_name = "templates_categorias/categorias_beneficios_cliente.html"
 
-    def get_queryset(self):
-        return None
+    def post(self,request,*args, **kwargs):
+        form = FormPersonal()
+        if request.method == "POST":
+            print("Entre POST")
+            form = FormPersonal(request.POST)
+            if form.is_valid():
+                print("es valido")
+                personal = Personal()
+                personal.nombre_completo = form.cleaned_data['nombre_completo']
+                personal.email = form.cleaned_data['email']
+                personal.num_telefono = form.cleaned_data['num_telefono']
+                personal.cv = form.cleaned_data['cv']
+                personal.save()
+            else:
+                print(form)
+
+        return(render(request,self.template_name))
+
+    def get(self, request, *args, **kwargs):
+        return(render(request,self.template_name))
 
 class DetalleMoto(generic.DetailView):
     model = Moto

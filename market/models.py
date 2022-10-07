@@ -61,14 +61,11 @@ class SolucionDineraria(models.Model):
         return self.monto
 
 class BeneficioParaCliente(models.Model):
-    asistencia = [
-        ("tecnica_para_electrodomesticos", "Técnica para Electromesticos"),
-        ("mecanica_de_motos", "Mecánica de Motos"),
-    ]
-
-    asistencia_titulo= models.CharField(max_length=50, choices=asistencia)
-    nombre_tecnico = models.CharField(max_length = 50, default="")
-    num_contacto = models.CharField(max_length= 11, default="")
+    nombre_completo = models.CharField(max_length= 120, default="")
+    email = models.EmailField(max_length=200,  default="") 
+    servicio = models.CharField(max_length=254)
+    num_telefono = models.CharField(max_length=15)
+    fecha = models.DateTimeField(auto_now_add = True)
 
 
 class Cliente(models.Model):
