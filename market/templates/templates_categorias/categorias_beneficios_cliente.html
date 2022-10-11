@@ -79,13 +79,13 @@
               <div class="window_form">
                 <form action="" method="post">
                     {% csrf_token %}
-                    <input type="text" name="plan" id="plan" value="Valor por defecto" disabled="True">
+                    <input type="text" name="servicio" id="servicio" value=""  readonly>
 
-                    <input type="text"name="nombre" id="nombre" placeholder="Nombre y apeliido" autocomplete="off">
+                    <input type="text"name="nombre_completo" id="nombre_completo" placeholder="Nombre y apeliido" autocomplete="off">
                     
-                    <input type="text" name="numero" id="numero" pattern="[0-9]*" placeholder="Telefono" autocomplete="off">
+                    <input type="text" name="num_telefono" id="num_telefono" pattern="[0-9]*" placeholder="Telefono" autocomplete="off">
 
-                    <input type="email" name="correo" id="correo" placeholder="Email" autocomplete="off">
+                    <input type="email" name="email" id="email" placeholder="Email" autocomplete="off">
                     
                     <button type="submit" id="form_product_button">Enviar</button>
                 </form>

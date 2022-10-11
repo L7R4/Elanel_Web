@@ -68,73 +68,54 @@
             <form action="" method="get">
               
               <h1>Coutas</h1>
-              <div class="marcas">
-                <input type="radio" name="marca" id="yamaha" value="yamaha">
-                <label for="yamaha">
+              <div class="cuotas">
+                <input type="radio" name="cuota" id="tres" value="3">
+                <label for="tres">
                   <h3>3</h3>
                 </label>
   
-                <input type="radio" name="marca" id="honda" value="honda">
-                <label for="honda">
+                <input type="radio" name="cuota" id="seis" value="6">
+                <label for="seis">
                   <h3>6</h3>
                 </label>
   
-                <input type="radio" name="marca" id="motomel" value="motomel">
-                <label for="motomel">
+                <input type="radio" name="cuota" id="doce" value="12">
+                <label for="doce">
                   <h3>12</h3>
                 </label>
   
-                <input type="radio" name="marca" id="rouser" value="rouser">
-                <label for="rouser">
+                <input type="radio" name="cuota" id="venticuatro" value="24">
+                <label for="venticuatro">
                   <h3>24</h3>
-                </label>
-  
-                <input type="radio" name="marca" id="corven" value="corven">
-                <label for="corven">
-                  <h3>36</h3>
-                </label>
-  
-                <input type="radio" name="marca" id="zanella" value="zanella">
-                <label for="zanella">
-                  <h3>48</h3>
                 </label>
 
               </div>
               <button type="submit" id="button_filter">Buscar</button>
             </form>
+              <a id="clear" href="{%  url 'market:clear_soluciones' %}">Limpiar filtros</a>
         </aside>
         <button type="button" id="filter_button">
           Filtrar
         </button>
         <section class="catalogo">
-          <a href="">
-            <article>
-              <img src="{% static 'images/dollar.svg' %}" alt="">
-              <h2>$100.000</h2>
-              <h3>3 Cuotas</h3>
-            </article>
-          </a>
-          <a href="">
-            <article>
-              <img src="{% static 'images/dollar.svg' %}" alt="">
-              <h2>$400.000</h2>
-              <h3>6 Cuotas</h3>
-            </article>
-          </a>
-          <a href="">
-            <article>
-              <img src="{% static 'images/dollar.svg' %}" alt="">
-              <h2>$800.000</h2>
-              <h3>12 Cuotas</h3>
-            </article>
-          </a>
-          <a href="">
-            <article>
-              <img src="{% static 'images/dollar.svg' %}" alt="">
-              <h2>$1.000.000</h2>
-              <h3>24 Cuotas</h3>
-            </article>
-          </a>
+          {% if  dineros.count != 0 %}
+            {% for monto in dineros %}
+              <a href="{% url 'market:solucione_detail' monto.id %}">
+                <article>
+                  <img src="{% static 'images/dollar.svg' %}" alt="">
+                  <h2>{{monto.monto}}</h2>
+                  <h3>{{monto.cuotas}} Cuotas</h3>
+                </article>
+              </a>
+            {% endfor %}
+          {% elif dineros.count == 0 %}
+              <div class="not_found">
+                <figure>
+                  <img src="{% static 'images/icons/nothing-found.png' %}" alt="">
+                </figure>
+                <h1>¡Ups! Al parecer no se encuentran productos disponibles</h1>
+              </div>
+          {% endif %}
         </section>
     </div>
     
@@ -142,4 +123,5 @@
 <script src="{% static 'js/header.js' %}"></script>
 <script src="{% static 'js/filter_button.js' %}"></script>
 <script src="{% static 'js/menu_hamburguer.js' %}"></script>
+<script src="{% static 'js/clear_filter_dinero.js' %}"></script>
 </html>

@@ -1,0 +1,53 @@
+:root{
+
+    --bgColor : #12131b;
+    --secondBgColor: #e8e8e8;
+    --pColor: #212436;
+    --sColor: #027cf1;
+    --tColor: #02e3f5;
+    }
+    *{
+        margin: 0;
+        padding: 0;
+        
+      }
+      html{
+        box-sizing: border-box;
+        font-size: 62.5%; 
+        background-color: var(--secondBgColor);
+    }
+    
+    @font-face {
+    font-family: babapro;
+    src: url("../fonts/Babapro-Ea4rr.otf");
+    }
+    
+    @font-face{
+    font-family: raleway;
+    src: url("../fonts/Raleway-Regular.ttf")
+    }
+    @font-face{
+    font-family: raleway-bold;
+    src: url("../fonts/Raleway-Bold.ttf")
+    }
+    @font-face{
+    font-family: raleway-semibold;
+    src: url("../fonts/Raleway-SemiBold.ttf")
+    }
+
+    .espace_header_categories{
+        width: 100%;
+        height: 65px;
+    }
+    .wrapper{
+        display: grid;
+        grid-template-columns: 35% 65%;
+        /* grid-template-rows:2fr 1fr ; */
+        margin: 1% 5%;
+        background-color: #fff;
+        border-radius: 20px;
+        align-items: center;
+        position: relative;
+        justify-items: center;
+        overflow: hidden;
+    }

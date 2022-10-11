@@ -1,12 +1,14 @@
 from asyncio.windows_events import NULL
+from random import choices
 from django.urls import reverse
 from email.policy import default
 from django.db import models
-from django.template.defaultfilters import slugify
+# from django.template.defaultfilters import slugify
+from django.utils.text import slugify
 
 class Moto(models.Model):
     nombre = models.CharField(max_length=100)
-    slug = models.SlugField(max_length=100,unique=True,primary_key=True)
+    slug = models.SlugField(max_length=100,unique=True)
     precio = models.DecimalField(max_digits=15, decimal_places=2)
     descripcion = models.TextField(blank=True)
     modelo = models.CharField(max_length=80, blank = True)
@@ -16,20 +18,26 @@ class Moto(models.Model):
     usado = models.BooleanField()
     cuotas = models.PositiveSmallIntegerField()
 
-    class Meta:
-        unique_together = ('nombre', 'slug')
-
     def __str__(self):
         return self.nombre
     
-
-    def get_absolute_url(self):
-        return reverse('market:moto', kwargs={'slug':self.slug})
+    def save(self, *args, **kwargs):
+        self.url = slugify(self.nombre)
+        super(Moto, self).save(*args, **kwargs)
 class ImagenMoto(models.Model):
     imagen = models.ImageField(upload_to ="images/motos/")
     producto = models.ForeignKey(Moto, on_delete=models.CASCADE, related_name= "imagenes", db_constraint=False)
 
+
+
 class Electrodomestico(models.Model):
+    combos = (
+        ('cocina', 'cocina'),
+        ('gamer', 'gamer'),
+        ('musica', 'musica'),
+        ('tv', 'tv'),
+    )
+    combo = models.CharField(max_length=100, choices=combos)
     nombre = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100,unique=True,primary_key=True)
     precio = models.DecimalField(max_digits=15, decimal_places=2)
@@ -40,32 +48,36 @@ class Electrodomestico(models.Model):
     usado = models.BooleanField()
     cuotas = models.PositiveSmallIntegerField()
 
-    class Meta:
-        unique_together = ('nombre', 'slug')
-
     def __str__(self):
         return self.nombre
     
+    def save(self, *args, **kwargs):
+        self.url = slugify(self.nombre)
+        super(Electrodomestico, self).save(*args, **kwargs)
 
-    def get_absolute_url(self):
-        return reverse('market:electrodomesticos', kwargs={'slug':self.slug})
+class ImagenElectrodomestico(models.Model):
+    imagen = models.ImageField(upload_to ="images/electrodomesticos/")
+    producto = models.ForeignKey(Electrodomestico, on_delete=models.CASCADE, related_name= "imagenes", db_constraint=False)
+
 
 
 class SolucionDineraria(models.Model):
     monto = models.DecimalField(max_digits=15, decimal_places=2)
     cuotas = models.PositiveSmallIntegerField()
-    monto_cuota = models.DecimalField(max_digits=6, decimal_places=2)
+    monto_cuota = models.DecimalField(max_digits=15, decimal_places=2)
     descripcion = models.TextField(blank=True)
 
     def __str__(self):
-        return self.monto
+        return str(self.monto)
+
+    
 
 class BeneficioParaCliente(models.Model):
-    nombre_completo = models.CharField(max_length= 120, default="")
-    email = models.EmailField(max_length=200,  default="") 
+    fecha = models.DateTimeField(auto_now_add = True)
+    nombre_completo = models.CharField(max_length= 120)
+    email = models.EmailField(max_length=200) 
     servicio = models.CharField(max_length=254)
     num_telefono = models.CharField(max_length=15)
-    fecha = models.DateTimeField(auto_now_add = True)
 
 
 class Cliente(models.Model):

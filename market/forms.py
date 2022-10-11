@@ -1,4 +1,4 @@
-from market.models import Personal
+from market.models import Personal,BeneficioParaCliente
 from django import forms
 class FormPersonal(forms.ModelForm):
     class Meta:
@@ -12,10 +12,10 @@ class FormPersonal(forms.ModelForm):
 
 class FormBeneficios(forms.ModelForm):
     class Meta:
-        model = Personal
+        model = BeneficioParaCliente
         fields =[
             'nombre_completo',
             'email',
             'num_telefono',
-            'cv',
+            'servicio',
         ]

@@ -124,7 +124,7 @@
         <section class="catalogo">
           {% if  motos.count != 0 %}
             {% for moto in motos %}
-              <a href="{{moto.get_absolute_url}}">
+              <a href="{% url 'market:moto' moto.slug %}">
                 <article>
                   <img src="{{moto.imagen_portada.url}}" alt="">
                   <h2>{{moto.nombre}}</h2>
@@ -133,7 +133,12 @@
               </a>
             {% endfor %}
             {% elif motos.count == 0 %}
-              <h1>No hay productos</h1>
+              <div class="not_found">
+                <figure>
+                  <img src="{% static 'images/icons/nothing-found.png' %}" alt="">
+                </figure>
+                <h1>¡Ups! Al parecer no se encuentran productos disponibles</h1>
+              </div>
           {% endif %}
         </section>
     </div>
@@ -142,5 +147,5 @@
 <script src="{% static 'js/header.js' %}"></script>
 <script src="{% static 'js/filter_button.js' %}"></script>
 <script src="{% static 'js/menu_hamburguer.js' %}"></script>
-<script src="{% static 'js/clear_filters.js' %}"></script>
+<script src="{% static 'js/clear_filters_motos.js' %}"></script>
 </html>

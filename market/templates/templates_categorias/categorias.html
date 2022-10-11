@@ -79,35 +79,24 @@
         <figure><img src="{% static 'images/icons/icon_electrodo_relleno.png' %}" alt=""></figure>
         <a href="{% url 'market:electrodomesticos' %}"><h1>Electrodomesticos</h1></a>
         <ul>
-          <li><a href=""><h2>Combo cocina </h2></a></li>
-          <li><a href=""><h2>Combo gamer</h2></a></li>
-          <li><a href=""><h2>Combo música</h2></a></li>
-          <li><a href=""><h2>Combo TV</h2></a></li>
-          <li><a href=""><h2>Ver más...</h2> </a></li>
+          <li><a href="" id="combo_cocina"><h2>Combo cocina </h2></a></li>
+          <li><a href="" id="combo_gamer"><h2>Combo gamer</h2></a></li>
+          <li><a href="" id="combo_musica"><h2>Combo música</h2></a></li>
+          <li><a href="" id="combo_tv"><h2>Combo TV</h2></a></li>
+          <li><a href="{% url 'market:motos' %}"><h2>Ver más...</h2> </a></li>
         </ul>
       </article>
 
       <article class="soluciones_dinerarias" >
         <figure><img src="{% static 'images/icons/icon_solu_dineraria.png' %}" alt=""></figure>
         <a href="{% url 'market:soluciones_dinerarias' %}"><h1>Soluciones Dinerarias</h1></a>
-        <ul>
-          <li><a href=""><h2>80 Mil</h2></a></li>
-          <li><a href=""><h2>200 Mil</h2></a></li>
-          <li><a href=""><h2>400 Mil</h2></a></li>
-          <li><a href=""><h2>800 Mil</h2> </a></li>
-          <li><a href=""><h2>Ver más...</h2> </a></li>
-          
-        </ul>
+        
       </article>
 
       <article class="beneficios_cliente" >
         <figure><img src="{% static 'images/icons/icon_beneficios.png' %}" alt=""></figure>
         <a href="{% url 'market:beneficios' %}"><h1>Beneficios para el cliente</h1></a>
-        <ul>
-          <li><a href=""><h2>Soperte Tecnico</h2></a></li>
-          <li><a href=""><h2>Descuentos</h2></a></li>
-          <li><a href=""><h2>Ver más...</h2> </a></li>
-        </ul>
+        
       </article>
 
     </section>

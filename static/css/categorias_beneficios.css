@@ -52,18 +52,6 @@
 }
 
 
-.image_logo{
-  width: 35%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.image_logo img{
-  /* height: 100%; */
-  width: 83%;
-  opacity: .8;
-}
 
 .image_tenico{
   width: 35%;
@@ -74,6 +62,8 @@
 }
 .image_tenico img{
   width: 100%;
+  min-width: 400px;
+  max-width: 450px;
 }
 
 
@@ -81,7 +71,7 @@
 .portada_description
 {
   margin-left: 4rem;
-  width: 30%;
+  width: 40%;
   height: 100%;
   display: flex;
   flex-flow: column;

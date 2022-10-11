@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% comment %} <link rel="stylesheet" href="{% static 'css/detail_moto.css' %}"> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'css/detail_soluciones.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navStyles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/media_querys/nav_bar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/media_querys/detalle_producto.css' %}">
+    <script src="../js/sweetalert2.all.js"></script>
+    <title>Elanel Servicios y Soluciones</title>
+</head>
+<body>
+    <header>
+        <nav class="header__nav">
+          <ol>
+            <a class="logo_container"href="../index.html">
+              <img src="images/icons/icono_arregla_negro.png" alt="" class="logo">
+            </a>
+            <label for="check">
+              <input type="checkbox" id="check"/> 
+              <span></span>
+              <span></span>
+              <span></span>
+            </label>
+            
+            <div class="nav__items">
+              <li class="items__menu">
+                  <a href="categorias.html">Categorias</a>
+                  <img src="../images/icons8-flecha-ampliar-24.png" alt=""> 
+                  <ul class="menu_categoria">
+                      <li>
+                        <a href="categorias_motos.html">Motos</a>
+                      </li>
+                      <li>
+                        <a href="categorias_soluciones_dinerarias.html">Soluciones dinerias</a>
+                      </li>
+                      <li>
+                        <a href="categorias_electrodomesticos.html">Electrodomesticos</a>
+                      </li>
+                      <li>
+                        <a href="categorias_beneficios_cliente.html">Beneficios para clientes</a>
+                      </li>
+                      <li>
+                        <a href="categoria_usado.html">Usados</a>
+                      </li>
+                  </ul>
+              </li>
+              <li class="items">
+                  <a href="../sobre_nosotros.html">Sobre Nosotros</a>
+              </li>
+              <li class="items">
+                  <a href="../trabaja_con_nosotros.html">Trabaja con nosotros</a>
+              </li>
+              <li class="items">
+                  <a href="../contactanos.html">Contactanos</a>
+              </li>
+            </div>
+          </ol>
+        </nav>
+      </header>
+    <div class="espace_header_categories"></div>
+    <div class="wrapper">
+        {% comment %} <div class="title_producto_responsive">
+            <h1 id="title_product">Zanella Zb 110</h1>
+            <h1 id="precio_product"> $100.000</h1>
+        </div> {% endcomment %}
+        
+        <article>
+            <img src="{% static 'images/dollar.svg' %}" alt="">
+            <h2>{{object.monto}}</h2>
+            <h3>{{object.cuotas}} Cuotas</h3>
+        </article>
+        <aside class="resumen">
+            <div class="detalle_producto">
+                <h1 id="title_product">{{object.monto|title}}</h1>
+                <h1 id="precio_product"> ${{object.cuotas|floatformat }}</h1>
+            </div>
+            <div class="contact">
+                <h3>¿Te ha interesado este producto?</h3>
+                <h3>Completa el siguiente formulario para hacérnolo saber</h3>
+                <form id="form_product" name="form_product" >
+                    
+                    <input type="text"name="nombre" id="nombre" placeholder="Nombre y apeliido" autocomplete="off">
+                    
+                    <input type="text" name="numero" id="numero" pattern="[0-9]*" placeholder="Telefono" autocomplete="off">
+
+                    <input type="email" name="correo" id="correo" placeholder="Email" autocomplete="off">
+                    
+                    <button id="form_product_button">Enviar</button>
+                </form>
+            </div>
+        </aside>
+        {% comment %} <div class="detalles">
+            <p>{{object.especificaciones}}</p>
+        </div> {% endcomment %}
+    </div>
+    
+    <script src="{% static 'js/detail_product.js' %}"></script>
+    <script src="{% static 'js/header.js' %}"></script>
+    <script src="{% static 'js/message_form.js' %}"></script>
+    <script src="{% static 'js/menu_hamburguer.js' %}"></script> 
+    
+</body>
+</html>

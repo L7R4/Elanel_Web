@@ -64,50 +64,57 @@
     <div class="espace_header_categories"></div>
     <div class="wrapper_catalogo_aside">
         <aside class="filters_container">
+
             <form action="" method="get">
+              <h1>Combos</h1>
+              <div class="combos">
+                <input type="radio" name="combo" id="cocina" value="cocina">
+                <label for="cocina">
+                  <h3>Combos cocina</h3>
+                </label>
+  
+                <input type="radio" name="combo" id="gamer" value="gamer">
+                <label for="gamer">
+                  <h3>Combos gamer</h3>
+                </label>
+  
+                <input type="radio" name="combo" id="musica" value="musica">
+                <label for="musica">
+                  <h3>Combos musica</h3>
+                </label>
+  
+                <input type="radio" name="combo" id="tv" value="tv">
+                <label for="tv">
+                  <h3>Combos TV</h3>
+                </label>
+              </div>
+              
+
               
               <h1>Coutas</h1>
-              <div class="marcas">
-                <input type="radio" name="marca" id="yamaha" value="yamaha">
-                <label for="yamaha">
+              <div class="cuotas">
+                <input type="radio" name="cuota" id="tres" value="3">
+                <label for="tres">
                   <h3>3</h3>
                 </label>
   
-                <input type="radio" name="marca" id="honda" value="honda">
-                <label for="honda">
+                <input type="radio" name="cuota" id="seis" value="6">
+                <label for="seis">
                   <h3>6</h3>
                 </label>
   
-                <input type="radio" name="marca" id="motomel" value="motomel">
-                <label for="motomel">
+                <input type="radio" name="cuota" id="doce" value="12">
+                <label for="doce">
                   <h3>12</h3>
                 </label>
   
-                <input type="radio" name="marca" id="rouser" value="rouser">
-                <label for="rouser">
+                <input type="radio" name="cuota" id="venticuatro" value="24">
+                <label for="venticuatro">
                   <h3>24</h3>
-                </label>
-  
-                <input type="radio" name="marca" id="corven" value="corven">
-                <label for="corven">
-                  <h3>36</h3>
-                </label>
-  
-                <input type="radio" name="marca" id="zanella" value="zanella">
-                <label for="zanella">
-                  <h3>48</h3>
                 </label>
 
               </div>
 
-              {% comment %} <h1>Condición</h1>
-              <div class="estado">
-                <input type="radio" name="status" id="nuevo" value="nuevo">
-                <label for="nuevo"><h3>Nuevo</h3></label>
-
-                <input type="radio" name="status" id="usado" value="usado">
-                <label for="usado"><h3>Usado</h3></label>
-              </div> {% endcomment %}
 
               <h1>Precio</h1>
               <div class="precio">
@@ -115,89 +122,31 @@
                 <input type="text" pattern="[0-9]*" name="Maximo" id="maximo" placeholder="Maximo">
               </div>
               <button type="submit" id="button_filter">Buscar</button>
+                <a id="clear" href="{%  url 'market:clear_electrodomesticos' %}">Limpiar filtros</a>
             </form>
         </aside>
         <button type="button" id="filter_button">
           Filtrar
         </button>
         <section class="catalogo">
-          <a href="">
-            <article>
-              <img src="{% static 'images/combo_electrdomestico.png' %}" alt="">
-              <h2>Moto picada</h2>
-              <h3>$100.000</h3>
-            </article>
-          </a>
-          <a href="">
-            <article>
-              <img src="{% static 'images/combo_electrdomestico.png' %}" alt="">
-              <h2>Moto picada</h2>
-              <h3>$100.000</h3>
-            </article>
-          </a>
-          <a href="">
-            <article>
-              <img src="{% static 'images/combo_gamer.png' %}" alt="">
-              <h2>Moto picada</h2>
-              <h3>$100.000</h3>
-            </article>
-          </a>
-          <a href="">
-            <article>
-              <img src="{% static 'images/combo_electrdomestico.png' %}" alt="">
-              <h2>Moto picada</h2>
-              <h3>$100.000</h3>
-            </article>
-          </a>
-          <a href="">
-            <article>
-              <img src="{% static 'images/combo_electrdomestico.png' %}" alt="">
-              <h2>Moto picada</h2>
-              <h3>$100.000</h3>
-            </article>
-          </a>
-          <a href="">
-            <article>
-              <img src="{% static 'images/combo_gamer.png' %}" alt="">
-              <h2>Moto picada</h2>
-              <h3>$100.000</h3>
-            </article>
-          </a>
-          <a href="">
-            <article>
-              <img src="{% static 'images/combo_gamer.png' %}" alt="">
-              <h2>Moto picada</h2>
-              <h3>$100.000</h3>
-            </article>
-          </a>
-          <a href="">
-            <article>
-              <img src="{% static 'images/combo_electrdomestico.png' %}" alt="">
-              <h2>Moto picada</h2>
-              <h3>$100.000</h3>
-            </article>
-          </a>
-          <a href="">
-            <article>
-              <img src="{% static 'images/combo_electrdomestico.png' %}" alt="">
-              <h2>Moto picada</h2>
-              <h3>$100.000</h3>
-            </article>
-          </a>
-          <a href="">
-            <article>
-              <img src="{% static 'images/combo_gamer.png' %}" alt="">
-              <h2>Moto picada</h2>
-              <h3>$100.000</h3>
-            </article>
-          </a>
-          <a href="">
-            <article>
-              <img src="{% static 'images/combo_electrdomestico.png' %}" alt="">
-              <h2>Moto picada</h2>
-              <h3>$100.000</h3>
-            </article>
-          </a>
+          {% if  electrodomesticos.count != 0 %}
+            {% for electrodomestico in electrodomesticos %}
+              <a href="{% url 'market:electrodomestico' electrodomestico.slug %}">
+                <article>
+                  <img src="{{electrodomestico.imagen_portada.url}}" alt="">
+                  <h2>{{electrodomestico.nombre}}</h2>
+                  <h3>${{electrodomestico.precio|floatformat }}</h3>
+                </article>
+              </a>
+            {% endfor %}
+            {% elif electrodomesticos.count == 0 %}
+              <div class="not_found">
+                <figure>
+                  <img src="{% static 'images/icons/nothing-found.png' %}" alt="">
+                </figure>
+                <h1>¡Ups! Al parecer no se encuentran productos disponibles</h1>
+              </div>
+          {% endif %}
         </section>
     </div>
     
@@ -205,4 +154,5 @@
 <script src="{% static 'js/header.js' %}"></script>
 <script src="{% static 'js/filter_button.js' %}"></script>
 <script src="{% static 'js/menu_hamburguer.js' %}"></script>
+<script src="{% static 'js/clear_filter_elec.js' %}"></script>
 </html>

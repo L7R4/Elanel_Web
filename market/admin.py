@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import BeneficioParaCliente, Cliente, ImagenMoto, PostImagenes, Moto, SolucionDineraria, Personal, Post
+from .models import BeneficioParaCliente, Cliente, Electrodomestico, ImagenMoto, ImagenElectrodomestico, PostImagenes, Moto, SolucionDineraria, Personal, Post
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 
@@ -28,33 +28,42 @@ class PersonalAdmin(ImportExportModelAdmin,admin.ModelAdmin):
     resource_class = PersonalResource
 
 
-class ImagenProductoAdmin(admin.TabularInline):
+class ImagenMotoAdmin(admin.TabularInline):
     extra = 3
     model = ImagenMoto
-
-
 @admin.register(Moto) #decorador que significa que al registrar producto lo extendemos con ProductoAdmin
-class ProductoAdmin(admin.ModelAdmin):
+class MotoAdmin(admin.ModelAdmin):
     list_display= ["nombre", "precio", "modelo","marca"]
     search_fields = ["nombre"]
     # list_filter=["titulo_de_categoria"]
     list_editable = ["precio"]
-    inlines = [ImagenProductoAdmin]
+    inlines = [ImagenMotoAdmin]
     prepopulated_fields = { 'slug': ['nombre'] }
+
+class ImagenElectrodomesticoAdmin(admin.TabularInline):
+    extra = 3
+    model = ImagenElectrodomestico
+
+@admin.register(Electrodomestico) #decorador que significa que al registrar producto lo extendemos con ProductoAdmin
+class ElectrodomesticoAdmin(admin.ModelAdmin):
+    list_display= ["nombre", "precio","marca"]
+    search_fields = ["nombre"]
+    # list_filter=["titulo_de_categoria"]
+    list_editable = ["precio"]
+    inlines = [ImagenElectrodomesticoAdmin]
+    prepopulated_fields = { 'slug': ['nombre'] }
+
+
 
 
 class ImagenPostsAdmin(admin.TabularInline):
     extra = 3
     model = PostImagenes
-
 @admin.register(Post)
 class ProductoAdmin(admin.ModelAdmin):
     list_display= ["titulo","descripcion","imagen_portada"]
     inlines = [ImagenPostsAdmin]
 
-
-
-    
 
 # admin.site.register(Producto, ProductoAdmin)
 admin.site.register(SolucionDineraria)
