@@ -69,16 +69,19 @@
             <h1 id="precio_product"> $100.000</h1>
         </div> {% endcomment %}
         
-        <article>
+        <article class="monto_container">
             <img src="{% static 'images/dollar.svg' %}" alt="">
-            <h2>{{object.monto}}</h2>
-            <h3>{{object.cuotas}} Cuotas</h3>
+            <!-- <h2>{{object.monto}}</h2> -->
+            <div class="monto_text">
+              <h2>20000</h2>
+              <h3>12 Cuotas</h3>
+            </div>
         </article>
         <aside class="resumen">
-            <div class="detalle_producto">
+            <!-- <div class="detalle_producto">
                 <h1 id="title_product">{{object.monto|title}}</h1>
                 <h1 id="precio_product"> ${{object.cuotas|floatformat }}</h1>
-            </div>
+            </div> -->
             <div class="contact">
                 <h3>¿Te ha interesado este producto?</h3>
                 <h3>Completa el siguiente formulario para hacérnolo saber</h3>
