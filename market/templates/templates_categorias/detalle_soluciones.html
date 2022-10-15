@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="{% static 'css/detail_soluciones.css' %}">
     <link rel="stylesheet" href="{% static 'css/navStyles.css' %}">
     <link rel="stylesheet" href="{% static 'css/media_querys/nav_bar.css' %}">
-    <link rel="stylesheet" href="{% static 'css/media_querys/detalle_producto.css' %}">
-    <script src="../js/sweetalert2.all.js"></script>
+    <link rel="stylesheet" href="{% static 'css/media_querys/detalle_soluciones.css' %}">
     <title>Elanel Servicios y Soluciones</title>
 </head>
 <body>
@@ -63,49 +62,44 @@
         </nav>
       </header>
     <div class="espace_header_categories"></div>
-    <div class="wrapper">
-        {% comment %} <div class="title_producto_responsive">
-            <h1 id="title_product">Zanella Zb 110</h1>
-            <h1 id="precio_product"> $100.000</h1>
-        </div> {% endcomment %}
-        
-        <article class="monto_container">
-            <img src="{% static 'images/dollar.svg' %}" alt="">
-            <!-- <h2>{{object.monto}}</h2> -->
-            <div class="monto_text">
-              <h2>20000</h2>
-              <h3>12 Cuotas</h3>
-            </div>
-        </article>
-        <aside class="resumen">
-            <!-- <div class="detalle_producto">
-                <h1 id="title_product">{{object.monto|title}}</h1>
-                <h1 id="precio_product"> ${{object.cuotas|floatformat }}</h1>
-            </div> -->
-            <div class="contact">
-                <h3>¿Te ha interesado este producto?</h3>
-                <h3>Completa el siguiente formulario para hacérnolo saber</h3>
-                <form id="form_product" name="form_product" >
-                    
-                    <input type="text"name="nombre" id="nombre" placeholder="Nombre y apeliido" autocomplete="off">
-                    
-                    <input type="text" name="numero" id="numero" pattern="[0-9]*" placeholder="Telefono" autocomplete="off">
+    <div class="main_wrapper">
+      <div class="wrapper">
+          <!-- <div class="title_producto_responsive">
+              <h1 id="title_product">Zanella Zb 110</h1>
+              <h1 id="precio_product"> $100.000</h1>
+          </div> -->
+          
+          <article class="monto_container">
+              <img src="{% static 'images/dollar.svg' %}" alt="">
+              <div class="monto_text">
+                <h2>$20000</h2>
+                <h3>12 Cuotas</h3>
+              </div>
+          </article>
+          <aside class="resumen">
+              <div class="contact">
+                  <h3>¿Te ha interesado este producto?</h3>
+                  <h3>Completa el siguiente formulario para hacérnolo saber</h3>
+                  <form id="form_product" name="form_product" >
+                      
+                      <input type="text" name="objetivo" id="objetivo" value="" autocomplete="off">
 
-                    <input type="email" name="correo" id="correo" placeholder="Email" autocomplete="off">
-                    
-                    <button id="form_product_button">Enviar</button>
-                </form>
-            </div>
-        </aside>
-        {% comment %} <div class="detalles">
-            <p>{{object.especificaciones}}</p>
-        </div> {% endcomment %}
+                      <input type="text"name="nombre" id="nombre" placeholder="Nombre y apeliido" autocomplete="off">
+                      
+                      <input type="text" name="numero" id="numero" pattern="[0-9]*" placeholder="Telefono" autocomplete="off">
+  
+                      <input type="email" name="correo" id="correo" placeholder="Email" autocomplete="off">
+                      
+                      <button id="form_product_button">Enviar</button>
+                  </form>
+              </div>
+          </aside>
+      </div>
     </div>
     
     <script src="{% static 'js/detail_product.js' %}"></script>
     <script src="{% static 'js/header.js' %}"></script>
     <script src="{% static 'js/message_form.js' %}"></script>
     <script src="{% static 'js/menu_hamburguer.js' %}"></script> 
-    
 </body>
 </html>
