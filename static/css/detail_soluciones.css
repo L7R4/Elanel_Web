@@ -123,6 +123,10 @@
         align-items: center;
         width: 70%;
     }
+    #objetivo{
+        position: absolute;
+        visibility: hidden;
+    }
     #form_product >input
     {
         width: 80%;

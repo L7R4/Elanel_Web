@@ -84,7 +84,7 @@
 
 .contactanos > div > h1{
     font-family: raleway-bold;
-    font-size: 1.9rem;
+    font-size: 2rem;
     text-align: center;
     margin-top: 1.8rem;
 }
@@ -111,11 +111,22 @@
 .secciones .sector{
     margin-bottom: 3rem;
     display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
 }
+
+.sector_info {
+    text-align: center;
+    font-size: 1.7rem;
+    font-family: raleway;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+}
+
 .secciones > ol > .sector > h3
 {
-    font-family: raleway-semibold;
-    font-size: 1.6rem;
+    font-family: raleway-bold;
+    font-size: 1.8rem;
     text-align: center;
     margin-bottom: 2%;
     color: #1d5890;

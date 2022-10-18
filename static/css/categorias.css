@@ -120,5 +120,10 @@ html{
 .categorias article > ul > li > a:hover h2{
     color: var(--secondBgColor);
 }
+.soluciones_dinerarias> a > h1, .beneficios_cliente > a > h1
+{
+    text-align: center;
+    margin: 0 !important;
+}
 
 

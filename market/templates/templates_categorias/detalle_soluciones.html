@@ -17,7 +17,7 @@
         <nav class="header__nav">
           <ol>
             <a class="logo_container"href="../index.html">
-              <img src="images/icons/icono_arregla_negro.png" alt="" class="logo">
+              <img src="{% static 'images/icons/icono_header_blanco_arreglado.png' %}" alt="" class="logo">
             </a>
             <label for="check">
               <input type="checkbox" id="check"/> 
@@ -31,21 +31,21 @@
                   <a href="categorias.html">Categorias</a>
                   <img src="../images/icons8-flecha-ampliar-24.png" alt=""> 
                   <ul class="menu_categoria">
-                      <li>
-                        <a href="categorias_motos.html">Motos</a>
-                      </li>
-                      <li>
-                        <a href="categorias_soluciones_dinerarias.html">Soluciones dinerias</a>
-                      </li>
-                      <li>
-                        <a href="categorias_electrodomesticos.html">Electrodomesticos</a>
-                      </li>
-                      <li>
-                        <a href="categorias_beneficios_cliente.html">Beneficios para clientes</a>
-                      </li>
-                      <li>
-                        <a href="categoria_usado.html">Usados</a>
-                      </li>
+                    <li>
+                      <a href="{% url 'market:motos' %}">Motos</a>
+                    </li>
+                    <li>
+                      <a href="{% url 'market:soluciones_dinerarias' %}">Soluciones dinerias</a>
+                    </li>
+                    <li>
+                      <a href="{% url 'market:electrodomesticos' %}">Electrodomesticos</a>
+                    </li>
+                    <li>
+                      <a href="{% url 'market:beneficios' %}">Beneficios para clientes</a>
+                    </li>
+                    <li>
+                      <a href="/templates_categorias/categoria_usado.html">Usados</a>
+                    </li>
                   </ul>
               </li>
               <li class="items">
@@ -72,23 +72,23 @@
           <article class="monto_container">
               <img src="{% static 'images/dollar.svg' %}" alt="">
               <div class="monto_text">
-                <h2>$20000</h2>
-                <h3>12 Cuotas</h3>
+                <h2>${{object.monto}}</h2>
+                <h3>{{object.cuotas}} Cuotas</h3>
               </div>
           </article>
           <aside class="resumen">
               <div class="contact">
                   <h3>¿Te ha interesado este producto?</h3>
                   <h3>Completa el siguiente formulario para hacérnolo saber</h3>
-                  <form id="form_product" name="form_product" >
-                      
-                      <input type="text" name="objetivo" id="objetivo" value="" autocomplete="off">
+                  <form action="" method="POST" id="form_product" name="form_product" >
+                      {% csrf_token %}
+                      <input type="text" name="objetivo" id="objetivo" value="" autocomplete="off" readonly>
 
-                      <input type="text"name="nombre" id="nombre" placeholder="Nombre y apeliido" autocomplete="off">
+                      <input type="text"name="nombre_completo" id="nombre" placeholder="Nombre y apeliido" autocomplete="off">
                       
-                      <input type="text" name="numero" id="numero" pattern="[0-9]*" placeholder="Telefono" autocomplete="off">
+                      <input type="text" name="num_telefono" id="numero" pattern="[0-9]*" placeholder="Telefono" autocomplete="off">
   
-                      <input type="email" name="correo" id="correo" placeholder="Email" autocomplete="off">
+                      <input type="email" name="email" id="correo" placeholder="Email" autocomplete="off">
                       
                       <button id="form_product_button">Enviar</button>
                   </form>

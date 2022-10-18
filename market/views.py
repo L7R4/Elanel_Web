@@ -1,10 +1,10 @@
-from configparser import NoSectionError
-from math import comb
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from django.urls import reverse
 from django.views.generic import View
 from django.views import generic
-from market.models import Electrodomestico, ImagenMoto,ImagenElectrodomestico, Post, Moto, Personal,BeneficioParaCliente,SolucionDineraria
-from .forms import FormPersonal,FormBeneficios
+from django.http import HttpResponseRedirect
+from market.models import Electrodomestico,Cliente ,ImagenMoto,ImagenElectrodomestico, Post, Moto, Personal,BeneficioParaCliente,SolucionDineraria
+from .forms import FormPersonal,FormBeneficios,FormDinero,FormMotos,FormElec
 
 
 class Categorias(generic.ListView):
@@ -48,9 +48,26 @@ class DetalleMoto(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # context["moto_single"] = Producto.objects.get(producto = self.kwargs['slug'])
         context["moto_images"] = ImagenMoto.objects.filter(producto = self.object)
         return context
+    
+    def post(self,request,*args, **kwargs):
+        form = FormMotos()
+        if request.method == "POST":
+            form = FormMotos(request.POST)
+            if form.is_valid():
+                print("es valido")
+                form_moto = Cliente()
+                form_moto.nombre_completo = form.cleaned_data['nombre_completo']
+                form_moto.email = form.cleaned_data['email']
+                form_moto.num_telefono = form.cleaned_data['num_telefono']
+                form_moto.objetivo = form.cleaned_data['objetivo']
+                form_moto.save()
+
+        return redirect(request.META['HTTP_REFERER'])
+
+    
+
 
 
 
@@ -88,6 +105,21 @@ class DetalleElec(generic.DetailView):
         context = super().get_context_data(**kwargs)
         context["electrodomesticos_images"] = ImagenElectrodomestico.objects.filter(producto = self.object)
         return context
+    
+    def post(self,request,*args, **kwargs):
+        form = FormElec()
+        if request.method == "POST":
+            form = FormElec(request.POST)
+            if form.is_valid():
+                print("es valido")
+                form_elec = Cliente()
+                form_elec.nombre_completo = form.cleaned_data['nombre_completo']
+                form_elec.email = form.cleaned_data['email']
+                form_elec.num_telefono = form.cleaned_data['num_telefono']
+                form_elec.objetivo = form.cleaned_data['objetivo']
+                form_elec.save()
+
+        return redirect(request.META['HTTP_REFERER'])
 
 
 class CategoriaSolucionesDinerarias(generic.ListView):
@@ -103,16 +135,31 @@ class CategoriaSolucionesDinerarias(generic.ListView):
         return qs
 
 class DetalleSolucion(generic.DetailView):
-    model = Electrodomestico
+    model = SolucionDineraria
     template_name = "templates_categorias/detalle_soluciones.html"
 
-
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context["electrodomesticos_images"] = ImagenElectrodomestico.objects.filter(producto = self.object)
-    #     return context
-    def get(self, request, *args, **kwargs):
+    def post(self,request,*args, **kwargs):
+        form = FormDinero()
+        if request.method == "POST":
+            print("Entre POST")
+            form = FormDinero(request.POST)
+            if form.is_valid():
+                print("es valido")
+                solu_dine = Cliente()
+                solu_dine.nombre_completo = form.cleaned_data['nombre_completo']
+                solu_dine.email = form.cleaned_data['email']
+                solu_dine.num_telefono = form.cleaned_data['num_telefono']
+                solu_dine.objetivo = form.cleaned_data['objetivo']
+                solu_dine.save()
+            else:
+                print(form)
+        else:
+            ("no entre al post")
         return(render(request,self.template_name))
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
 
 
 class CategoriaBeneficiosCliente(generic.ListView):
