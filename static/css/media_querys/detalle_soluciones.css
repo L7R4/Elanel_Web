@@ -194,6 +194,7 @@
 
     #form_product{
         justify-content: center;
+        width: 100%;
     }
 
     #form_product > input{
@@ -203,5 +204,20 @@
     }
     #form_product > button{
         max-width: 180px;
+    }
+}
+
+@media screen and (max-width:440px){
+    .monto_text h2
+    {
+        font-size: 3rem;
+    }
+    .monto_text h3
+    {
+        font-size: 2.4rem;
+    }
+    .contact h3
+    {
+        font-size: 1.5rem;
     }
 }

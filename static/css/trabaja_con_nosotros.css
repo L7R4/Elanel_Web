@@ -217,6 +217,12 @@
     justify-self: flex-start;
     cursor: pointer;
 }
+#send-cv.desactive
+{
+    background-color: #111842bd;
+    pointer-events: none;
+}
+
 #send-cv:hover{
     transition: all .4s ease;
     background-color: #fff;

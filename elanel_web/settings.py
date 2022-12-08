@@ -19,12 +19,13 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG =os.environ.get("DEBUG")
 
-ALLOWED_HOSTS = ['192.168.1.105']
+ALLOWED_HOSTS = ['192.168.0.163']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -33,7 +34,17 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'import_export',
     'market',
+    'rangefilter',
 ]
+
+JAZZMIN_SETTINGS ={
+    "site_title": "ELANEL",
+    "login_logo": "images/fwd/icono.sinfondo_admin.png",
+    "site_logo": "images/fwd/icono.sinfondo_admin_site_logo.png",
+    "welcome_sign": "ELANEL",
+    # "hide_apps": ["auth"],
+    "site_brand": "Administración",
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

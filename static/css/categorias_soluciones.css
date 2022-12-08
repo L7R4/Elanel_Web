@@ -1,16 +1,17 @@
 .catalogo{
     grid-auto-rows: 25rem;
 }
-.catalogo a > article > h2{
-    position: absolute;
-    font-size: 3rem;
+.catalogo a > article > div
+{
+    position: absolute; 
     top: 40%;
+}
+.catalogo a > article > div > h2{
+    font-size: 3rem;
     color: var(--sColor);
     font-feature-settings: 'pnum' on, 'lnum' on;
 }
-.catalogo a > article > h3{
-    position: absolute;
-    top: 53%;
+.catalogo a > article >div> h3{
     font-size: 2rem;
     font-feature-settings: 'pnum' on, 'lnum' on;
 }

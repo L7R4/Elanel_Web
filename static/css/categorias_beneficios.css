@@ -51,7 +51,10 @@
     overflow: hidden;
 }
 
-
+.beneficios__table__item.color
+{
+  background-color: red;
+}
 
 .image_tenico{
   width: 35%;

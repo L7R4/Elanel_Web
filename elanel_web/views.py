@@ -1,6 +1,6 @@
 from django.views.generic import View
 from django.shortcuts import render,redirect, HttpResponseRedirect
-from market.models import Post, Moto
+from market.models import Post, Moto, NumAdjudicado
 from django.views import generic
 from .forms import FormIndex
 from market.models import Cliente,Post
@@ -22,16 +22,18 @@ class IndexView2(View):
                 user.num_telefono = form.cleaned_data['num_telefono']
                 user.save()
 
-        return(render(request,self.template_name))
+        return redirect('index')
 
 
     def get(self, request, *args, **kwargs):
         posts = Post.objects.all() 
-        motos_slider = Moto.objects.all()
+        motos_slider = Moto.objects.all()[:5]
+        num_adjudicado = NumAdjudicado.objects.all().last
 
         context = {
             "posts": posts,
             "motos_slider": motos_slider,
+            "num_adjudicado": num_adjudicado,
         }
         return(render(request,self.template_name,context))
 

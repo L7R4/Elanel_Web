@@ -5,7 +5,7 @@ from django.views import generic
 from django.http import HttpResponseRedirect
 from market.models import Electrodomestico,Cliente ,ImagenMoto,ImagenElectrodomestico, Post, Moto, Personal,BeneficioParaCliente,SolucionDineraria
 from .forms import FormPersonal,FormBeneficios,FormDinero,FormMotos,FormElec
-
+import os
 
 class Categorias(generic.ListView):
     template_name = "templates_categorias/categorias.html"
@@ -49,6 +49,12 @@ class DetalleMoto(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["moto_images"] = ImagenMoto.objects.filter(producto = self.object)
+        try:
+            model = Moto.objects.filter(slug = self.object.slug)
+            archivo =os.path.split(str(model[0].ficha_tecnica))[1]
+            context["ficha_tecnica"] = archivo
+        except ValueError:
+            print("No existe ficha tecnica")
         return context
     
     def post(self,request,*args, **kwargs):
@@ -68,9 +74,6 @@ class DetalleMoto(generic.DetailView):
 
     
 
-
-
-
 class CategoriaElectrodemesticos(generic.ListView):
     model = Electrodomestico
     template_name = "templates_categorias/categorias_electrodomesticos.html"
@@ -83,7 +86,7 @@ class CategoriaElectrodemesticos(generic.ListView):
         minimo = self.request.GET.get("minimo")
         maximo = self.request.GET.get("maximo")
         if is_valid_query(cuota):
-            qs = qs.filter(cuotas = cuota)
+            qs = qs.filter(cuota = cuota)
         if is_valid_query(combo):
             qs = qs.filter(combo = combo)
         if is_valid_query(minimo):
@@ -131,7 +134,7 @@ class CategoriaSolucionesDinerarias(generic.ListView):
         qs = super().get_queryset()
         cuota = self.request.GET.get("cuota")
         if is_valid_query(cuota):
-            qs = qs.filter(cuotas = cuota)
+            qs = qs.filter(cuota = cuota)
         return qs
 
 class DetalleSolucion(generic.DetailView):

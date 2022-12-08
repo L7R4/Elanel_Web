@@ -85,7 +85,8 @@
     }
     .detalles{
         grid-row: 3/4;
-        margin: 4% 8%;
+        /* margin: 4% 8%; */
+        margin-top: 2rem;
     }
 }
 
@@ -97,6 +98,31 @@
         grid-template-columns: 1fr 2fr;
         grid-template-rows: none;
         grid-auto-rows: auto;
+        padding-bottom: 6rem;
+    }
+    .ficha_tenica
+    {
+        padding: 0 1rem;
+    }
+    .detalles > .text
+    {
+        padding: 0;
+    }
+    .detalles > .text > h5
+    {
+        padding: .6rem 1rem;
+        font-size: 1.4rem;
+        text-align: center;
+        
+    }
+
+    .ficha_tenica a
+    {
+        font-size: 1.1rem;
+    }
+    .ficha_tenica > img
+    {
+        width: 2.3rem;
     }
 
     .detalle_producto
@@ -159,6 +185,7 @@
     .nav__images > figure
     {
         min-width: 110px;
+        margin-left: 2.7rem;
     }
 
     .nav__images

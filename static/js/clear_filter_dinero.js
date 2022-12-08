@@ -11,21 +11,21 @@ if(valores != ""){
     document.getElementById('clear').style.visibility = 'hidden';
 }
 
-if (valores.includes("cuota=3")){
-    document.getElementById("tres").checked = true;
-    document.getElementById("tres").nextElementSibling.classList.add("check")
-}
-else if(valores.includes("cuota=6")){
-    document.getElementById("seis").checked = true;
-    document.getElementById("seis").nextElementSibling.classList.add("check")
-}
-else if(valores.includes("cuota=12")){
-    document.getElementById("doce").checked = true;
-    document.getElementById("doce").nextElementSibling.classList.add("check")
-}
-else if(valores.includes("cuota=24")){
+if (valores.includes("cuota=24")){
     document.getElementById("venticuatro").checked = true;
     document.getElementById("venticuatro").nextElementSibling.classList.add("check")
+}
+else if(valores.includes("cuota=30")){
+    document.getElementById("treinta").checked = true;
+    document.getElementById("treinta").nextElementSibling.classList.add("check")
+}
+else if(valores.includes("cuota=48")){
+    document.getElementById("cuarentaocho").checked = true;
+    document.getElementById("cuarentaocho").nextElementSibling.classList.add("check")
+}
+else if(valores.includes("cuota=60")){
+    document.getElementById("sesenta").checked = true;
+    document.getElementById("sesenta").nextElementSibling.classList.add("check")
 }
 
 

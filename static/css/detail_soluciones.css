@@ -9,6 +9,7 @@
     *{
         margin: 0;
         padding: 0;
+        font-feature-settings: 'pnum' on, 'lnum' on;
         
       }
       html{
@@ -107,12 +108,12 @@
     }
     .monto_text h2
     {
-        font-size: 4rem;
+        font-size: 3.8rem;
         font-family: raleway-bold;
     }
     .monto_text h3 
     {
-        font-size: 3rem;
+        font-size: 2.6rem;
         font-family: raleway-bold;
     }
     #form_product
@@ -163,6 +164,12 @@
         font-size: 1.5rem;
         font-family: raleway-semibold;
         transition: all .4s ease;
+    }
+
+    #form_product_button.desactive
+    {
+        background-color: #111842bd;
+        pointer-events: none;
     }
 
     #form_product_button:hover{

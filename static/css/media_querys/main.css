@@ -215,8 +215,13 @@
         grid-column: span 2;
         margin: 2rem 0;
     }
+    .wrapper_adjudicado
+    {
+        position: static;
+        width: 80%;
+        margin: 0 auto;
 
-
+    }
     .wrapper__icons__social ol{
         max-width: none;
         display: flex;

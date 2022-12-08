@@ -10,8 +10,9 @@
     <link rel="stylesheet" href="{% static 'css/media_querys/nav_bar.css' %}">
     <link rel="stylesheet" href="{% static 'css/media_querys/main.css' %}">
     <link rel="stylesheet" href="{% static 'css/media_querys/footer.css' %}">
+    
     <title>Elanel Servicios y Soluciones</title>
-    <link rel="shortcut icon" href="images/logo_solo.png">
+    <link rel="shortcut icon" href="{% static 'images/fwd/icono.sinfondo_admin_site_logo.png' %}">
 </head>
 <body>
   <figure class="logo__background">
@@ -48,7 +49,7 @@
                     <a href="{% url 'market:beneficios' %}">Beneficios para clientes</a>
                   </li>
                   <li>
-                    <a href="/templates_categorias/categoria_usado.html">Usados</a>
+                    <a href="{% url 'market:motos'%}?status=True">Usados</a>
                   </li>
               </ul>
           </li>
@@ -124,7 +125,78 @@
       </div>
     </div>
   </div>
+  
+  {% comment %} <section class="marcas">
+    <div class="marquee">
+      <ul class="marquee-content">
+        <li>
+          <div class="item_adjudicado">
+            <h3>N° Adjudicado</h3>
+            <h1>158</h1>
+            <h2>Mayo</h2>
+          </div>
+        </li>
+        <li>
+          <div class="item_adjudicado">
+            <h3>N° Adjudicado</h3>
+            <h1>211</h1>
+            <h2>Junio</h2>
+          </div>
+        </li>
+        <li>
+          <div class="item_adjudicado">
+            <h3>N° Adjudicado</h3>
+            <h1>239</h1>
+            <h2>Julio</h2>
+          </div>
+        </li>
+        <li>
+          <div class="item_adjudicado">
+            <h3>N° Adjudicado</h3>
+            <h1>301</h1>
+            <h2>Agosto</h2>
+          </div>
+        </li>
+        <li id="marcar_honda">
+          <div class="item_adjudicado">
+            <h3>N° Adjudicado</h3>
+            <h1>339</h1>
+            <h2>Septiembre</h2>
+          </div>
+        </li>
+        <li id="marcar_lg">
+          <div class="item_adjudicado">
+            <h3>N° Adjudicado</h3>
+            <h1>411</h1>
+            <h2>Octubre</h2>
+          </div>
+        </li>
+        <li>
+          <div class="item_adjudicado">
+            <h3>N° Adjudicado</h3>
+            <h1>489</h1>
+            <h2>Noviembre</h2>
+          </div>
+        </li>  
+        <li>
+          <div class="item_adjudicado">
+            <h3>N° Adjudicado</h3>
+            <h1>517</h1>
+            <h2>Diciembre</h2>
+          </div>
+        </li>  
+      </ul>
+    </div>
+  </section> {% endcomment %}
 
+   <div class="wrapper_adjudicado">
+    <div class="item_adjudicado2">
+      <h3>N° Adjudicado</h3>
+      <h1>{{num_adjudicado.numero}}</h1>
+      <h2>{{num_adjudicado.mes}}</h2>
+    </div>
+  </div> 
+  
   <section class="categoria">
     <h2>¡Elige lo que deseas!</h2>
     <div class="naccs">
@@ -159,45 +231,22 @@
             <div class="text">
               <h5>Encabezado de Motos</h5>
               <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae rerum amet ullam odit iure autem sequi temporibus voluptate. Velit officiis quam molestiae dolores animi quas quis obcaecati ab facere rem?</p>
-              <button> <span>Ver mas</span></button>
+              <a href="{% url 'market:motos' %}"><button> <span>Ver mas</span></button></a>
             </div>
+            
             <div class="container_sliderMotos_buttons">
               <div class="container_slider_motos">
                 <div class="slider__motos">
-                    <a class="item" href="">
+                  {% for moto in motos_slider %}
+                    <a class="item" href="{% url 'market:moto' moto.slug %}">
                       <img
-                        src="{% static 'images/moto__example.png' %}"
-                        alt=""
+                        src="/public/{{moto.imagen_portada}}"
+                        alt="{{moto.nombre}}"
                       />
-                      <div class="item--hover"></div>
-                      <div class="item--detail">
-                        <h2>Moto picada</h2>
-                        <h3>$100.000</h3>
-                      </div>
                     </a>
-                    <a class="item" href="">
-                      <img
-                        src="{% static 'images/moto_example2.png' %}"
-                        alt="" 
-                      />
-                      <div class="item--hover"></div>
-                      <div class="item--detail">
-                        <h2>Moto picada</h2>
-                        <h3>$100.000</h3>    
-                      </div>
-                    </a>
-                    <a class="item" href="">
-                      <img
-                        src="{% static 'images/moto__example3.png' %}"
-                        alt=""
-                      />
-                      <div class="item--hover"></div>
-                      <div class="item--detail">
-                        <h2>Moto picada</h2>
-                        <h3>$100.000</h3>     
-                      </div>
-  
-                    </a>
+                  {% endfor %}
+                    
+                    
                   </div>
               </div>
               <nav class="slider__motos__nav">
@@ -215,7 +264,7 @@
             <div class="text">
               <h5>Encabezado de Soluciones Dinerarias</h5>
               <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae rerum amet ullam odit iure autem sequi temporibus voluptate. Velit officiis quam molestiae dolores animi quas quis obcaecati ab facere rem?</p>
-              <button> <span>Ver mas</span></button>
+              <a href="{% url 'market:soluciones_dinerarias' %}"><button> <span>Ver mas</span></button></a>
 
             </div>
           </div>
@@ -224,7 +273,7 @@
             <div class="text">
               <h5>Encabezado de Electrodomesticos</h5>
               <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae rerum amet ullam odit iure autem sequi temporibus voluptate. Velit officiis quam molestiae dolores animi quas quis obcaecati ab facere rem?</p>
-              <button> <span>Ver mas</span></button>
+              <a href="{% url 'market:electrodomesticos' %}"><button> <span>Ver mas</span></button></a>
             </div>
             
           </div>
@@ -233,7 +282,7 @@
             <div class="text">
               <h5>Encabezado de Beneficios de Cliente</h5>
               <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae rerum amet ullam odit iure autem sequi temporibus voluptate. Velit officiis quam molestiae dolores animi quas quis obcaecati ab facere rem?</p>
-              <button> <span>Ver mas</span></button>
+              <a href="{% url 'market:beneficios' %}"><button> <span>Ver mas</span></button></a>
 
             </div>
 
@@ -243,7 +292,7 @@
             <div class="text">
               <h5>Encabezado de Usados</h5>
               <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae rerum amet ullam odit iure autem sequi temporibus voluptate. Velit officiis quam molestiae dolores animi quas quis obcaecati ab facere rem?</p>
-              <button> <span>Ver mas</span></button>
+              <a href="{% url 'market:motos'%}?status=True"><button> <span>Ver mas</span></button></a>
 
             </div>
 
@@ -258,7 +307,7 @@
     <h1 class="formulario__eslogan">Todo lo que <strong class="style__palabra__eslogan">necesitas</strong><br> en un solo <strong class="style__palabra__eslogan">lugar</strong></h1>
     <div class="barra">
     </div>
-    <form method="POST" autocomplete="off"> 
+    <form method="POST" autocomplete="off" class="form_cliente" id="form_cliente"> 
      {% csrf_token %}
       <h5>Envianos un correo contándonos lo que quieres</h5>
       <input type="text" name="email" id="email" placeholder="Mail">
@@ -267,9 +316,19 @@
       <input type="text" name="objetivo" id="objetivo"placeholder="Que buscas">
       <input type="text" name="provincia" id="provincia"placeholder="Provincia">
       <input type="text" name="localidad" id="localidad" placeholder="Localidad">
-      <input type="submit" value="Enviar" id="enviar">
+      <button type="button" value="Enviar" id="enviar" class="desactive">Enviar</button>
+      {% comment %} <button type="button" value="Enviar" id="enviar" class="desactive"></button> {% endcomment %}
     </form>
-    
+    <div class="form_success">
+      <div class="text_thanks">
+        <h3>Muchas gracias por confiar en nosotros</h3>
+        <h4>Nos comunicaremos contigo mediante un correo</h4>
+      </div>
+      <figure class="image_success">
+        <img src="{% static 'images/pulgar.svg' %}" alt="pulgar_aprovado">
+      </figure>
+      <button id="close_form_success">Cerrar</button>
+    </div>
   </section>
 
   <section class="ubicacion">
@@ -336,24 +395,7 @@
     </article>
   </section>
 
-  <section class="marcas">
-    <div class="marquee">
-      <ul class="marquee-content">
-        <li>
-          <img src="{% static 'images/yamaha-Logo.png' %}" alt="">
-        </li>
-        <li id="marcar_honda">
-          <img src="{% static 'images/honda.png' %}" alt="">
-        </li>
-        <li id="marcar_lg">
-          <img src="{% static 'images/lg.png' %}" alt="">
-        </li>
-        <li>
-          <img src="{% static 'images/samsung.png' %}" alt="">
-        </li>  
-      </ul>
-    </div>
-  </section>
+  
 
   <footer>
     <div class="footer__encuentranos">
@@ -382,16 +424,16 @@
       <div class="footer__categorias">
         <ul>
           <li class="footer__motos"> 
-            <a href="#">Motos</a>
+            <a href="{% url 'market:motos' %}">Motos</a>
           </li>
           <li class="footer__soluciones-dinerarias"> 
-            <a href="#">Soluciones Dinerarias</a>
+            <a href="{% url 'market:soluciones_dinerarias' %}">Soluciones Dinerarias</a>
           </li>
           <li class="footer__electrodomesticos"> 
-            <a href="#">Electrodomesticos</a>
+            <a href="{% url 'market:electrodomesticos' %}">Electrodomesticos</a>
           </li>
           <li class="footer__beneficios-para-cliente"> 
-            <a href="#">Beneficios para cliente</a>
+            <a href="{% url 'market:beneficios' %}">Beneficios para cliente</a>
           </li>
         </ul>
       </div>
@@ -399,14 +441,14 @@
         <h3>Quienes Somos</h3>
         <ul>
           <li class="footer__mision"> 
-            <a href="">Mision</a>
+            <a href="{% url 'nosotros' %}">Mision</a>
           </li>
           <li class="footer__vision"> 
-            <a href="">Vision</a>
+            <a href="{% url 'nosotros' %}">Vision</a>
           </li>
-          <li class="footer__adjudicados"> 
+          {% comment %} <li class="footer__adjudicados"> 
             <a href="">Adjudicados</a>
-          </li>
+          </li> {% endcomment %}
         </ul>
       </div>
       
@@ -436,6 +478,8 @@
 
 <script src="{% static 'js/scrollreveal_librery.js' %}"></script>
 <script src="{% static 'js/modal_whatsapp.js' %}"></script>
+<script src="{% static 'js/validate_button_index.js' %}"></script>
+<script src="{% static 'js/fetch_form_index.js' %}"></script>
 <script src="{% static 'js/ubicacion.js' %}"></script>
 <script src ="{% static 'js/categoria.js' %}"></script>
 <script src="{% static 'js/slider.js' %}"></script>

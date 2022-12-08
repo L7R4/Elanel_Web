@@ -1,5 +1,6 @@
 const root = document.documentElement;
 const marqueeElementsDisplayed = getComputedStyle(root).getPropertyValue("--marquee-elements-displayed");
+console.log(marqueeElementsDisplayed)
 const marqueeContent = document.querySelector("ul.marquee-content");
 
 root.style.setProperty("--marquee-elements", marqueeContent.children.length);

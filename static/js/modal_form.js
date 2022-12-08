@@ -5,7 +5,6 @@ const background_modal = document.querySelector(".modal_form_container")
 const modal_window = document.querySelector(".wrapper_windown_form")
 const close_modal = document.querySelector("#close_modal");
 const plan_value = document.querySelector("#servicio");
-console.table(plan_value)
 
 
 open_modal.forEach(element => {
@@ -20,3 +19,5 @@ close_modal.addEventListener("click",()=>{
     background_modal.classList.remove("active_modal");
     modal_window.classList.remove("active_modal");
 })
+
+

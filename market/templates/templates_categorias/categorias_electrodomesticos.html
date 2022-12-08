@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{% static 'css/media_querys/nav_bar.css' %}">
     <link rel="stylesheet" href="{% static 'css/media_querys/categorias_motos.css' %}">
     <title>Elanel Servicios y Soluciones</title>
+    <link rel="shortcut icon" href="{% static 'images/fwd/icono.sinfondo_admin_site_logo.png' %}">
 </head>
 <body>
   <header>
@@ -31,31 +32,31 @@
               <a href="{% url 'market:categorias' %}">Categorias</a>
               <img src="{% static 'images/icons8-flecha-ampliar-24.png' %}" alt=""> 
               <ul class="menu_categoria">
-                <li>
-                  <a href="{% url 'market:motos' %}">Motos</a>
-                </li>
-                <li>
-                  <a href="{% url 'market:soluciones_dinerarias' %}">Soluciones dinerias</a>
-                </li>
-                <li>
-                  <a href="{% url 'market:electrodomesticos' %}">Electrodomesticos</a>
-                </li>
-                <li>
-                  <a href="{% url 'market:beneficios' %}">Beneficios para clientes</a>
-                </li>
-                <li>
-                  <a href="/templates_categorias/categoria_usado.html">Usados</a>
-                </li>
+                  <li>
+                    <a href="{% url 'market:motos' %}">Motos</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'market:soluciones_dinerarias' %}">Soluciones dinerias</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'market:electrodomesticos' %}">Electrodomesticos</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'market:beneficios' %}">Beneficios para clientes</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'market:motos'%}?status=True">Usados</a>
+                  </li>
               </ul>
           </li>
           <li class="items">
               <a href="{% url 'nosotros' %}">Sobre Nosotros</a>
           </li>
           <li class="items">
-              <a href="../trabaja_con_nosotros.html">Trabaja con nosotros</a>
+              <a href="{% url 'market:trabaja' %}">Trabaja con nosotros</a>
           </li>
           <li class="items">
-              <a href="../contactanos.html">Contactanos</a>
+              <a href="{% url 'contactanos' %}">Contactanos</a>
           </li>
         </div>
       </ol>
@@ -93,24 +94,24 @@
               
               <h1>Coutas</h1>
               <div class="cuotas">
-                <input type="radio" name="cuota" id="tres" value="3">
-                <label for="tres">
-                  <h3>3</h3>
-                </label>
-  
-                <input type="radio" name="cuota" id="seis" value="6">
-                <label for="seis">
-                  <h3>6</h3>
-                </label>
-  
-                <input type="radio" name="cuota" id="doce" value="12">
-                <label for="doce">
-                  <h3>12</h3>
-                </label>
-  
                 <input type="radio" name="cuota" id="venticuatro" value="24">
                 <label for="venticuatro">
                   <h3>24</h3>
+                </label>
+  
+                <input type="radio" name="cuota" id="treinta" value="30">
+                <label for="treinta">
+                  <h3>30</h3>
+                </label>
+  
+                <input type="radio" name="cuota" id="cuarentaocho" value="48">
+                <label for="cuarentaocho">
+                  <h3>48</h3>
+                </label>
+  
+                <input type="radio" name="cuota" id="sesenta" value="60">
+                <label for="sesenta">
+                  <h3>60</h3>
                 </label>
 
               </div>
@@ -134,8 +135,11 @@
               <a href="{% url 'market:electrodomestico' electrodomestico.slug %}">
                 <article>
                   <img src="{{electrodomestico.imagen_portada.url}}" alt="">
-                  <h2>{{electrodomestico.nombre}}</h2>
-                  <h3>${{electrodomestico.precio|floatformat }}</h3>
+                  <div>
+                    <h2>{{electrodomestico.nombre}}</h2>
+                    <h3>${{electrodomestico.precio|floatformat }}</h3>
+
+                  </div>
                 </article>
               </a>
             {% endfor %}

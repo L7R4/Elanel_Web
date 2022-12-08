@@ -1,12 +1,11 @@
 const valores = window.location.search;
 const a = window.location
-// console.log(valores)
+console.log(valores)
 // console.log(a)
 const marcas = document.querySelectorAll(".marcas > input[type='radio']")
 const estado = document.querySelectorAll(".estado > input[type='radio']")
 const form_inputs = document.querySelectorAll(".filters_container > form label")
 const button = document.getElementById("button_filter")
-
 
 
 
@@ -16,29 +15,37 @@ if(valores != ""){
     document.getElementById('clear').style.visibility = 'hidden';
 }
 
-if (valores.includes("marca=yamaha")){
+if (valores.includes("?marca=yamaha")){
     document.getElementById("yamaha").checked = true;
+    document.getElementById("yamaha").nextElementSibling.classList.add("check")
 }
-else if(valores.includes("marca=corven")){
+else if(valores.includes("?marca=corven")){
     document.getElementById("corven").checked = true;
+    document.getElementById("corven").nextElementSibling.classList.add("check")
 }
-else if(valores.includes("marca=rouser")){
+else if(valores.includes("?marca=rouser")){
     document.getElementById("rouser").checked = true;
+    document.getElementById("rouser").nextElementSibling.classList.add("check")
 }
-else if(valores.includes("marca=motomel")){
+else if(valores.includes("?marca=motomel")){
     document.getElementById("motomel").checked = true;
+    document.getElementById("motomel").nextElementSibling.classList.add("check")
 }
-else if(valores.includes("marca=honda")){
+else if(valores.includes("?marca=honda")){
     document.getElementById("honda").checked = true;
+    document.getElementById("honda").nextElementSibling.classList.add("check")
 }
-else if(valores.includes("marca=zanella")){
+else if(valores.includes("?marca=zanella")){
     document.getElementById("zanella").checked = true;
+    document.getElementById("zanella").nextElementSibling.classList.add("check")
 }
 
 if (valores.includes("status=False")) {
     document.getElementById("nuevo").checked = true;
+    document.getElementById("nuevo").nextElementSibling.classList.add("check")
 }else if(valores.includes("status=True")){
     document.getElementById("usado").checked = true;
+    document.getElementById("usado").nextElementSibling.classList.add("check")
 }
 
 marcas.forEach(function (e) {
@@ -67,13 +74,6 @@ estado.forEach(function (e) {
     } )
 }); 
 
-// form_inputs.forEach(function (e) {
-//     console.log(e)
-//     if(e.classList.contains("check")){
-//         console.log("e")
-        
-//     }
-// })
 
 function desactiveCheck_marcas() {
     marcas.forEach(element => element.nextElementSibling.classList.remove("check"));
