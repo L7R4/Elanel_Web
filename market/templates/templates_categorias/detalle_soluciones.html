@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% comment %} <link rel="stylesheet" href="{% static 'css/detail_moto.css' %}"> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'css/detail_soluciones.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navStyles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/media_querys/nav_bar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/media_querys/detalle_soluciones.css' %}">
+    <title>Elanel Servicios y Soluciones</title>
+    <link rel="shortcut icon" href="{% static 'images/fwd/icono.sinfondo_admin_site_logo.png' %}">
+</head>
+<body>
+    <header>
+        <nav class="header__nav">
+          <ol>
+            <a class="logo_container"href="{% url 'index' %}">
+              <img src="{% static 'images/icons/icono_header_blanco_arreglado.png' %}" alt="" class="logo">
+            </a>
+            <label for="check">
+              <input type="checkbox" id="check"/> 
+              <span></span>
+              <span></span>
+              <span></span>
+            </label>
+            
+            <div class="nav__items">
+              <li class="items__menu">
+                  <a href="{% url 'market:categorias' %}">Categorias</a>
+                  <img src="{% static 'images/icons8-flecha-ampliar-24.png' %}" alt=""> 
+                  <ul class="menu_categoria">
+                      <li>
+                        <a href="{% url 'market:motos' %}">Motos</a>
+                      </li>
+                      <li>
+                        <a href="{% url 'market:soluciones_dinerarias' %}">Soluciones dinerias</a>
+                      </li>
+                      <li>
+                        <a href="{% url 'market:electrodomesticos' %}">Electrodomesticos</a>
+                      </li>
+                      <li>
+                        <a href="{% url 'market:beneficios' %}">Beneficios para clientes</a>
+                      </li>
+                      <li>
+                        <a href="{% url 'market:motos'%}?status=True">Usados</a>
+                      </li>
+                  </ul>
+              </li>
+              <li class="items">
+                  <a href="{% url 'nosotros' %}">Sobre Nosotros</a>
+              </li>
+              <li class="items">
+                  <a href="{% url 'market:trabaja' %}">Trabaja con nosotros</a>
+              </li>
+              <li class="items">
+                  <a href="{% url 'contactanos' %}">Contactanos</a>
+              </li>
+            </div>
+          </ol>
+        </nav>
+      </header>
+    <div class="espace_header_categories"></div>
+    <div class="main_wrapper">
+      <div class="wrapper">
+          <!-- <div class="title_producto_responsive">
+              <h1 id="title_product">Zanella Zb 110</h1>
+              <h1 id="precio_product"> $100.000</h1>
+          </div> -->
+          
+          <article class="monto_container">
+              <img src="{% static 'images/dollar.svg' %}" alt="">
+              <div class="monto_text">
+                <h2>${{object.monto}}</h2>
+                <h3>{{object.cuota}} Cuotas</h3>
+              </div>
+          </article>
+          <aside class="resumen">
+              <div class="contact">
+                  <h3>¿Te ha interesado este producto?</h3>
+                  <h3>Completa el siguiente formulario para hacérnolo saber</h3>
+                  <form action="" method="POST" id="form_product" name="form_product" >
+                      {% csrf_token %}
+                      <input type="text" name="objetivo" id="objetivo" value="" autocomplete="off" readonly>
+
+                      <input type="text"name="nombre_completo" id="nombre" placeholder="Nombre y apeliido" autocomplete="off">
+                      
+                      <input type="text" name="num_telefono" id="numero" pattern="[0-9]*" placeholder="Telefono" autocomplete="off">
+  
+                      <input type="email" name="email" id="correo" placeholder="Email" autocomplete="off">
+                      
+                      <button id="form_product_button" class="desactive">Enviar</button>
+                  </form>
+              </div>
+          </aside>
+      </div>
+    </div>
+    
+    <script src="{% static 'js/detail_product.js' %}"></script>
+    <script src="{% static 'js/header.js' %}"></script>
+    <script src="{% static 'js/message_form.js' %}"></script>
+    <script src="{% static 'js/validate_button_products.js' %}"></script>
+    <script src="{% static 'js/menu_hamburguer.js' %}"></script> 
+</body>
+</html>

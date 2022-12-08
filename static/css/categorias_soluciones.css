@@ -1,0 +1,57 @@
+.catalogo{
+    grid-auto-rows: 25rem;
+}
+.catalogo a > article > div
+{
+    position: absolute; 
+    top: 40%;
+}
+.catalogo a > article > div > h2{
+    font-size: 3rem;
+    color: var(--sColor);
+    font-feature-settings: 'pnum' on, 'lnum' on;
+}
+.catalogo a > article >div> h3{
+    font-size: 2rem;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+}
+.catalogo a > article{
+    height: 25rem;
+    justify-content: center;
+}
+.catalogo a > article > img{
+    max-width: 75%;
+    /* width: 90%; */
+    opacity: .1;
+    filter: drop-shadow(2px 4px 6px black);
+}
+
+
+.filters_container form .cuotas > input[type="radio"]{
+    display: none;
+}
+.filters_container form .cuotas >label >h3{
+    font-family: raleway-semibold;
+    font-size: 1.4rem;
+    color: rgb(94, 93, 93);
+    padding: 3% 1.4rem;
+    border-radius: 5px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+}
+
+.filters_container form .cuotas >label{
+    cursor: pointer;
+    margin-top: 1.2rem;
+    display: flex;
+    margin-left: 2rem;
+}
+
+.filters_container form .cuotas > label:hover h3{
+    color: var(--bgColor);
+}
+
+.filters_container form .cuotas >label.check>h3{
+   transition: all .2s ease;
+   background-color: var(--sColor);
+   color: var(--bgColor);
+}

@@ -7,33 +7,485 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/navStyles.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/media_querys/nav_bar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/media_querys/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/media_querys/footer.css' %}">
+    
+    <title>Elanel Servicios y Soluciones</title>
+    <link rel="shortcut icon" href="{% static 'images/fwd/icono.sinfondo_admin_site_logo.png' %}">
 </head>
 <body>
-    {% include "nav.html" %}
-    <section class="container">
-        <div class="slider">
-          {% for image in posts %}
-            <img src="{{image.imagen_portada.url}}">
-          {% endfor %}
-          {% comment %} <img class="active" src="https://source.unsplash.com/gKk9rpyDryU">
-          <img src="https://source.unsplash.com/VFGEhLznjPU"> {% endcomment %}
+  <figure class="logo__background">
+    <img src="{% static 'images/fwd/icono.sinfondo.png' %}" alt="">
+  </figure> 
+  <header>
+    <nav class="header__nav">
+      <ol>
+        <a class="logo_container"href="{% url 'index' %}">
+          <img src="{% static 'images/icons/icono_header_blanco_arreglado.png' %}" alt="" class="logo">
+        </a>
+        <label for="check">
+          <input type="checkbox" id="check"/> 
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+        
+        <div class="nav__items">
+          <li class="items__menu">
+              <a href="{% url 'market:categorias' %}">Categorias</a>
+              <img src="{% static 'images/icons8-flecha-ampliar-24.png' %}" alt=""> 
+              <ul class="menu_categoria">
+                  <li>
+                    <a href="{% url 'market:motos' %}">Motos</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'market:soluciones_dinerarias' %}">Soluciones dinerias</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'market:electrodomesticos' %}">Electrodomesticos</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'market:beneficios' %}">Beneficios para clientes</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'market:motos'%}?status=True">Usados</a>
+                  </li>
+              </ul>
+          </li>
+          <li class="items">
+              <a href="{% url 'nosotros' %}">Sobre Nosotros</a>
+          </li>
+          <li class="items">
+              <a href="{% url 'market:trabaja' %}">Trabaja con nosotros</a>
+          </li>
+          <li class="items">
+              <a href="{% url 'contactanos' %}">Contactanos</a>
+          </li>
         </div>
-        <nav class="slider-nav">
-          <ul>
-            <li class="arrow">
-              <button class="previous">
-                  <img src="{% static 'images/previous.png' %}" class="previous__img">
-              </button>
-            </li>
-            <li class="arrow">
-              <button class="next">
-                <img src="{% static 'images/forward.png' %}" class="forward__img">
-              </button>
-            </li>
-          </ul>
-        </nav>
-      </section>
-<script src="{% static 'js/slider.js' %}"></script>
+      </ol>
+    </nav>
+  </header>
+  <div class="espace_header_categories"></div>
+
+  <div class="wrapper__slider__botones">
+    <div id="slider-container" class="slider-container">
+      <div class="slider" id="slider">
+        {% for post in posts %}
+          <div class="slider__element">
+            <img
+              src="{{post.imagen_portada.url}}"
+              alt=""
+            />
+          </div>
+        {%endfor%}
+      </div>
+    </div>
+    <div class="slider-buttons">
+      <button id="button-left" class="button">
+        <img src="{% static 'images/icons/previous.svg' %}" alt="">
+      </button>
+      <button id="button-right" class="button">
+        <img src="{% static 'images/icons/next.svg' %}" alt="">
+      </button>
+    </div>
+  </div>
+
+  <button type="button" class="whatsapp_contact" id="whatsapp_contact">
+    <img class="icon_whap" src="{% static 'images/whatsapp_icon.svg' %}" alt="">
+    <h6>¡Escribenos!</h6> 
+  </button>
+
+  <div class="modal_whatsapp_container">
+    <div class="wrapper_windown_whatsapp">
+
+      <div class="window_whatsapp">
+        <li class="contacto">
+          <h2>Administracion</h2>
+          <div class="numbers">
+            <p>54654456654</p>
+          </div>
+        </li>
+        <li class="contacto">
+          <h2>Cobranzas</h2>
+          <div class="numbers">
+              <p>8291738129</p>
+              <p>8291738129</p>
+              <p>8291738129</p>
+          </div>
+        </li>
+        <li class="contacto">
+          <h2>Ventas</h2>
+          <div class="numbers">
+            <p>123456789</p>
+            <p>123456789</p>
+          </div>
+        </li>
+        <button type ="button" id="close_modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+  
+  {% comment %} <section class="marcas">
+    <div class="marquee">
+      <ul class="marquee-content">
+        <li>
+          <div class="item_adjudicado">
+            <h3>N° Adjudicado</h3>
+            <h1>158</h1>
+            <h2>Mayo</h2>
+          </div>
+        </li>
+        <li>
+          <div class="item_adjudicado">
+            <h3>N° Adjudicado</h3>
+            <h1>211</h1>
+            <h2>Junio</h2>
+          </div>
+        </li>
+        <li>
+          <div class="item_adjudicado">
+            <h3>N° Adjudicado</h3>
+            <h1>239</h1>
+            <h2>Julio</h2>
+          </div>
+        </li>
+        <li>
+          <div class="item_adjudicado">
+            <h3>N° Adjudicado</h3>
+            <h1>301</h1>
+            <h2>Agosto</h2>
+          </div>
+        </li>
+        <li id="marcar_honda">
+          <div class="item_adjudicado">
+            <h3>N° Adjudicado</h3>
+            <h1>339</h1>
+            <h2>Septiembre</h2>
+          </div>
+        </li>
+        <li id="marcar_lg">
+          <div class="item_adjudicado">
+            <h3>N° Adjudicado</h3>
+            <h1>411</h1>
+            <h2>Octubre</h2>
+          </div>
+        </li>
+        <li>
+          <div class="item_adjudicado">
+            <h3>N° Adjudicado</h3>
+            <h1>489</h1>
+            <h2>Noviembre</h2>
+          </div>
+        </li>  
+        <li>
+          <div class="item_adjudicado">
+            <h3>N° Adjudicado</h3>
+            <h1>517</h1>
+            <h2>Diciembre</h2>
+          </div>
+        </li>  
+      </ul>
+    </div>
+  </section> {% endcomment %}
+
+   <div class="wrapper_adjudicado">
+    <div class="item_adjudicado2">
+      <h3>N° Adjudicado</h3>
+      <h1>{{num_adjudicado.numero}}</h1>
+      <h2>{{num_adjudicado.mes}}</h2>
+    </div>
+  </div> 
+  
+  <section class="categoria">
+    <h2>¡Elige lo que deseas!</h2>
+    <div class="naccs">
+        <div class="menu">
+            <div class="motos active">
+              <img src="{% static 'images/icons/moto_icon.png' %}" alt="Moto">
+              <h6>Motos</h6>     
+            </div>
+            
+            <div class="soluciones_dinerarias">                   
+              <img src="{% static 'images/icons/icon_solu_dineraria.png' %}" alt="bolsa_de_dinero">
+              <h6>Soluciones Dinerarias</h6>
+            </div>
+
+            <div class= "electrodomesticos">                
+              <img src="{% static 'images/icons/icon_electrodo_relleno.png' %}" alt="lavarropa/heladera">
+              <h6>Electrodomesticos</h6>
+            </div>
+
+            <div class="beneficios">        
+              <img src="{% static 'images/icons/icon_beneficios.png' %}" alt="hombre_del_servicio_tecnico">
+              <h6>Beneficios de Cliente</h6>
+            </div>   
+
+            <div class="usados">   
+              <img src="{% static 'images/icons/icon_moto.png' %}" alt="hombre_del_servicio_tecnico">
+              <h6>Usados</h6>
+            </div>       
+        </div>
+        <div class="detalle">
+          <div class="detalle__motos_contenido active">
+            <div class="text">
+              <h5>Encabezado de Motos</h5>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae rerum amet ullam odit iure autem sequi temporibus voluptate. Velit officiis quam molestiae dolores animi quas quis obcaecati ab facere rem?</p>
+              <a href="{% url 'market:motos' %}"><button> <span>Ver mas</span></button></a>
+            </div>
+            
+            <div class="container_sliderMotos_buttons">
+              <div class="container_slider_motos">
+                <div class="slider__motos">
+                  {% for moto in motos_slider %}
+                    <a class="item" href="{% url 'market:moto' moto.slug %}">
+                      <img
+                        src="/public/{{moto.imagen_portada}}"
+                        alt="{{moto.nombre}}"
+                      />
+                    </a>
+                  {% endfor %}
+                    
+                    
+                  </div>
+              </div>
+              <nav class="slider__motos__nav">
+                  <button class="btn-prev">
+                    <img src="{% static 'images/arrow_icon_slider_motos.png' %}" alt="">
+                  </button>
+                  <button class="btn-next">
+                    <img src="{% static 'images/arrow_icon_slider_motos.png' %}" alt="">
+                  </button>
+              </nav>
+            </div>
+          </div>
+
+          <div class="detalle__soluciones_dinerarias_contenido">
+            <div class="text">
+              <h5>Encabezado de Soluciones Dinerarias</h5>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae rerum amet ullam odit iure autem sequi temporibus voluptate. Velit officiis quam molestiae dolores animi quas quis obcaecati ab facere rem?</p>
+              <a href="{% url 'market:soluciones_dinerarias' %}"><button> <span>Ver mas</span></button></a>
+
+            </div>
+          </div>
+
+          <div class="detalle__electrodomesticos_contenido">
+            <div class="text">
+              <h5>Encabezado de Electrodomesticos</h5>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae rerum amet ullam odit iure autem sequi temporibus voluptate. Velit officiis quam molestiae dolores animi quas quis obcaecati ab facere rem?</p>
+              <a href="{% url 'market:electrodomesticos' %}"><button> <span>Ver mas</span></button></a>
+            </div>
+            
+          </div>
+
+          <div class="detalle__beneficios_contenido">
+            <div class="text">
+              <h5>Encabezado de Beneficios de Cliente</h5>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae rerum amet ullam odit iure autem sequi temporibus voluptate. Velit officiis quam molestiae dolores animi quas quis obcaecati ab facere rem?</p>
+              <a href="{% url 'market:beneficios' %}"><button> <span>Ver mas</span></button></a>
+
+            </div>
+
+          </div>
+
+          <div class="detalle__usados">
+            <div class="text">
+              <h5>Encabezado de Usados</h5>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae rerum amet ullam odit iure autem sequi temporibus voluptate. Velit officiis quam molestiae dolores animi quas quis obcaecati ab facere rem?</p>
+              <a href="{% url 'market:motos'%}?status=True"><button> <span>Ver mas</span></button></a>
+
+            </div>
+
+          </div>
+
+
+        </div>
+    </div>
+  </section>
+
+  <section class="formulario">
+    <h1 class="formulario__eslogan">Todo lo que <strong class="style__palabra__eslogan">necesitas</strong><br> en un solo <strong class="style__palabra__eslogan">lugar</strong></h1>
+    <div class="barra">
+    </div>
+    <form method="POST" autocomplete="off" class="form_cliente" id="form_cliente"> 
+     {% csrf_token %}
+      <h5>Envianos un correo contándonos lo que quieres</h5>
+      <input type="text" name="email" id="email" placeholder="Mail">
+      <input type="text" name="nombre_completo" id="nombre_completo" placeholder="Nombre y Apellido">
+      <input type="text" name="num_telefono" id="num_telefono" placeholder="Telefono">
+      <input type="text" name="objetivo" id="objetivo"placeholder="Que buscas">
+      <input type="text" name="provincia" id="provincia"placeholder="Provincia">
+      <input type="text" name="localidad" id="localidad" placeholder="Localidad">
+      <button type="button" value="Enviar" id="enviar" class="desactive">Enviar</button>
+      {% comment %} <button type="button" value="Enviar" id="enviar" class="desactive"></button> {% endcomment %}
+    </form>
+    <div class="form_success">
+      <div class="text_thanks">
+        <h3>Muchas gracias por confiar en nosotros</h3>
+        <h4>Nos comunicaremos contigo mediante un correo</h4>
+      </div>
+      <figure class="image_success">
+        <img src="{% static 'images/pulgar.svg' %}" alt="pulgar_aprovado">
+      </figure>
+      <button id="close_form_success">Cerrar</button>
+    </div>
+  </section>
+
+  <section class="ubicacion">
+    <article class="mapa__container" id="mapa__container">
+     <div class="wrapper_ubicacion">
+       <div class="ubicacion__direccion active_provincia" id="ubicacion__direccion_resistencia">
+         <h1>Encuentranos en</h1>
+         <h4 >Obligado 841</h4>
+       </div>
+       <iframe class="mapa active_provincia" id="mapa_resistencia" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3540.298199016263!2d-58.983624984976636!3d-27.459974282894965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94450ceee646f275%3A0x77559d941a7c7581!2sC.%20Obligado%20841%2C%20H3504APB%20Resistencia%2C%20Chaco!5e0!3m2!1ses!2sar!4v1660695784285!5m2!1ses!2sar" width="60%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+       
+       <div class="ubicacion__direccion " id="ubicacion__direccion_corrientes">
+         <h1>Encuentranos en</h1>
+         <h4 >Otro lado</h4>
+       </div>
+       <iframe class="mapa" id="mapa_corrientes" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12169.729087973736!2d-58.99652312416893!3d-27.45200271330547!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94450c625d68ef2d%3A0x5adee180c69bb98a!2sParrilla%20la%20Chimenea!5e0!3m2!1ses!2sar!4v1663223469539!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      
+      <div class="ubicacion__text">
+        <div class="ubicacion__text_container">
+          <h5 id="ubicacion__text__title"> Nuestras oficinas se encuentran abiertas</h5>
+          <h6 id="ubicacion__horarios">
+            <strong class="horarios-decoration">Lunes a Viernes</strong>
+            8:00 a 13:00hs <br>
+            15:30 a 21:00hs <br>
+            <strong class="horarios-decoration">Sabados</strong> 8:00 a 13:00hs
+          </h6>
+        </div>
+        
+        <div class="locales">
+          <h4>Nuestros locales</h4>
+          <button id="resistencia" class="resistencia active_ubication">Resistencia, Chaco</button>
+          <button id="corrientes" class="corrientes">Corrientes Capital</button>
+        </div>
+      </div>
+    </article>
+    
+    <article class="ubicacion__redes">
+      <div class="ubicacion__redes__text">
+        <h3>Ademas puedes encontrarnos en nuestras redes</h5>
+        <h6>Siguenos para mas informacion</h6>
+      </div>
+      <div class="wrapper__icons__social">
+        <ol>
+          <li id="ubicacion__facebook">
+            <a href="" class="ubicacion__icon"><img src="{% static 'images/face_icon.svg' %}" alt="">
+            </a>
+          </li>
+          <li id="ubicacion__twitter">
+            <a href="" class="ubicacion__icon"><img src="{% static 'images/twitter_icon.svg' %}" alt="">
+            </a>
+          </li>
+          <li id="ubicacion__instagram">
+            <a href="instagram.com" class="ubicacion__icon"><img src="{% static 'images/insta_icon.svg' %}" alt="">
+            </a>
+          </li>
+          <li id="ubicacion__whatsapp">
+            <!-- <p>¡Escribenos!</p> -->
+            <a href="whatsapp.com" class="ubicacion__icon"><img src="{% static 'images/whatsapp_icon.svg' %}" alt="">
+            </a>
+          </li>
+        </ol>
+      </div>
+    </article>
+  </section>
+
+  
+
+  <footer>
+    <div class="footer__encuentranos">
+      <h3>Encuentranos</h3>
+      <ul>
+        <li class="footer__direccion"> 
+          <p><strong>Corrientes:</strong> la direccion</p>
+          <p><strong>Resistencia:</strong> Obligado 841</p>
+        </li>
+        <li class="footer__social-media"> 
+          <a href="#">
+            <img src="{% static 'images/icons/social_face.png' %}" alt="">
+          </a>
+          <a href="#">
+            <img src="{% static 'images/icons/social_insta.png' %}" alt="">
+          </a>
+          <a href="#">
+            <img src="{% static 'images/icons/social_twitter.png' %}" alt="">
+          </a>
+          <a href="#">
+            <img src="{% static 'images/icons/social_whatsapp.png' %}" alt="">
+          </a>
+        </li>
+      </ul>
+    </div>
+      <div class="footer__categorias">
+        <ul>
+          <li class="footer__motos"> 
+            <a href="{% url 'market:motos' %}">Motos</a>
+          </li>
+          <li class="footer__soluciones-dinerarias"> 
+            <a href="{% url 'market:soluciones_dinerarias' %}">Soluciones Dinerarias</a>
+          </li>
+          <li class="footer__electrodomesticos"> 
+            <a href="{% url 'market:electrodomesticos' %}">Electrodomesticos</a>
+          </li>
+          <li class="footer__beneficios-para-cliente"> 
+            <a href="{% url 'market:beneficios' %}">Beneficios para cliente</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer__quienes-somos">
+        <h3>Quienes Somos</h3>
+        <ul>
+          <li class="footer__mision"> 
+            <a href="{% url 'nosotros' %}">Mision</a>
+          </li>
+          <li class="footer__vision"> 
+            <a href="{% url 'nosotros' %}">Vision</a>
+          </li>
+          {% comment %} <li class="footer__adjudicados"> 
+            <a href="">Adjudicados</a>
+          </li> {% endcomment %}
+        </ul>
+      </div>
+      
+      <div class="footer__contactanos">
+        <h3>Contactanos</h3>
+        <ul>
+          <li class="footer__num-telefono"> 
+            <img src="{% static 'images/icons/social_tel.png' %}" alt="">
+            <p>3624646474</p> 
+          </li>
+          <li class="footer__correo-resistencia"> 
+            <img src="{% static 'images/icons/social_mail.png' %}" alt="">
+            <p>agenciachacoelanel@gmail.com</p>
+          </li>
+          <li class="footer__correo-corrientes"> 
+            <img src="{% static 'images/icons/social_mail.png' %}" alt="">
+            <p>agenciacorrienteselanel@gmail.com</p>
+          </li>
+        </ul>
+      </div>
+      <div class="footer__logo">
+          <img src="{% static 'images/icons/icono_arreglado_blanco.png' %}" alt="">
+      </div>
+  </footer>
+
 </body>
+
+<script src="{% static 'js/scrollreveal_librery.js' %}"></script>
+<script src="{% static 'js/modal_whatsapp.js' %}"></script>
+<script src="{% static 'js/validate_button_index.js' %}"></script>
+<script src="{% static 'js/fetch_form_index.js' %}"></script>
+<script src="{% static 'js/ubicacion.js' %}"></script>
+<script src ="{% static 'js/categoria.js' %}"></script>
+<script src="{% static 'js/slider.js' %}"></script>
+<script src="{% static 'js/header.js' %}"></script>
+<script src ="{% static 'js/slider_marcas.js' %}"></script>
+<script src ="{% static 'js/slider_motos.js' %}"></script>
+<script src="{% static 'js/animation.js' %}"></script>
+<script src="{% static 'js/menu_hamburguer.js' %}"></script>
 </html>

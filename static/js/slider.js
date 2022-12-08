@@ -1,39 +1,91 @@
-const items = document.querySelectorAll('.slider img');
-const itemCount = items.length;
-const nextItem = document.querySelector('.next');
-const previousItem = document.querySelector('.previous');
-let count = 0;
+const sliderContainer = document.getElementById('slider-container');
+const slider = document.getElementById('slider');
+const buttonLeft = document.getElementById('button-left');
+const buttonRight = document.getElementById('button-right');
 
-function showNextItem() {
-  items[count].classList.remove('active');
+const sliderElements = document.querySelectorAll('.slider__element');
+let itemCount = sliderElements.length;
 
-  if(count < itemCount - 1) {
-    count++;
-  } else {
-    count = 0;
+const rootStyles = document.documentElement.style;
+const firstElement_clon= slider.firstElementChild.cloneNode(true);
+const lastElement_clon = slider.lastElementChild.cloneNode(true);
+
+
+let slideCounter = 0;
+let isInTransition = false;
+
+const DIRECTION = {
+  RIGHT: 'RIGHT',
+  LEFT: 'LEFT'
+};
+
+slider.setAttribute("style","min-width:calc(100%/" + itemCount + ")");
+tamañoSlider = slider.setAttribute("style","width:"+ itemCount*100 +"%");
+sliderElements.forEach(function(image){
+  image.setAttribute("style","width:calc(100%/" + itemCount + ")");
+});
+
+let operacion = 0;
+let calcDisplaySlider = 100/itemCount;
+
+
+const reorderSlide = () => {
+  rootStyles.setProperty('--transition', 'none');
+    if (slideCounter === sliderElements.length - 1) {
+      slider.appendChild(slider.firstElementChild);
+      operacion += (calcDisplaySlider);
+      rootStyles.setProperty(
+        '--slide-transform',
+        `${operacion}%`
+      );
+      slideCounter--;
+    } else if (slideCounter === 0) {
+      slider.prepend(slider.lastElementChild);
+      operacion += -(calcDisplaySlider);
+      rootStyles.setProperty(
+        '--slide-transform',
+        `${operacion}%`
+      );
+      slideCounter++;
+    }
+    isInTransition = false;
+  console.log(slideCounter)
+  
+};
+
+const moveSlide = direction => {
+  if (isInTransition) return;
+  rootStyles.setProperty('--transition', 'transform 1s');
+  isInTransition = true;
+ 
+  if (direction === DIRECTION.LEFT) {
+    operacion += (calcDisplaySlider);
+    rootStyles.setProperty(
+      '--slide-transform',
+      `${operacion}%`
+    );
+    slideCounter--;
+  } else if (direction === DIRECTION.RIGHT) {
+    
+    operacion += -(calcDisplaySlider);
+    rootStyles.setProperty(
+      '--slide-transform',
+      `${operacion}%`
+    );
+    slideCounter++;
   }
+};
 
-  items[count].classList.add('active');
-  console.log(count);
-  // if (items[count].classList.contains("active") == true){
+//AUTOMATIZAR SLIDE
+let timerId=setInterval(()=>{moveSlide(DIRECTION.RIGHT);},6000);
 
-  // }
-}
+buttonRight.addEventListener('click', () => moveSlide(DIRECTION.RIGHT));
+buttonLeft.addEventListener('click', () => moveSlide(DIRECTION.LEFT));
 
-function showPreviousItem() {
-  items[count].classList.remove('active');
-
-  if(count > 0) {
-    count--;
-  } else {
-    count = itemCount - 1;
-  }
-
-  items[count].classList.add('active');
-  console.log(count);
-}
+slider.addEventListener('transitionend', reorderSlide);
+reorderSlide()
 
 
-nextItem.addEventListener('click', showNextItem);
-previousItem.addEventListener('click', showPreviousItem);
+
+
 

@@ -1,0 +1,74 @@
+@media screen and (max-width:930px) {
+    .trabaja__title h1{
+        font-size: 6rem;
+    }
+    .trabaja__texto p{
+        font-size: 1.5rem;
+    }
+    /* .cv_field{
+        justify-content: flex-start;
+    } */
+}
+@media screen and (max-width:885px) {
+    .formulario-wrapper form{
+        padding: 4rem;
+    }
+    .formulario-wrapper form > div > label{
+        font-size: 1.5rem;
+    }
+    .cv_field h2{
+        font-size: 1.5rem;
+    }
+    .trabaja__texto p{
+        width: 90%;
+        font-size: 1.4rem;
+    }
+}
+/* @media screen and (max-width:760px) {
+    .formulario-wrapper form{
+        padding: 4rem;
+        margin: 2rem;
+    }
+    
+} */
+@media screen and (max-width:769px) {
+    .trabaja_con_nosotros{
+        display: block;
+    }
+    .trabaja__title{
+        margin-top: 3rem;
+        margin-bottom: 0;
+    }
+    .trabaja__texto p{
+        margin: 2rem 0;
+        font-size: 1.6rem;
+    }
+    .formulario-wrapper form{
+        display: block;
+        margin: 2rem auto;
+        width: 70%;
+    }
+    .formulario-wrapper form > div{
+        display: flex;
+        flex-flow: column;
+    }
+    .cv_field{
+        margin: 0;
+    }
+    .formulario-wrapper form > div > label{
+        font-size: 1.5rem;
+    }
+    .trabaja__title h1{
+        font-size: 5rem;
+    }
+
+    #send-cv{
+        display: block;
+        margin: 0 auto;
+        margin-top: 2rem;
+        width: 16rem;
+    }
+    #cv_input{
+        padding: 1.8% 4rem;
+    }
+}

@@ -1,0 +1,181 @@
+:root{
+
+    --bgColor : #12131b;
+    --secondBgColor: #e8e8e8;
+    --pColor: #212436;
+    --sColor: #027cf1;
+    --tColor: #02e3f5;
+    }
+    *{
+        margin: 0;
+        padding: 0;
+        font-feature-settings: 'pnum' on, 'lnum' on;
+        
+      }
+      html{
+        box-sizing: border-box;
+        font-size: 62.5%; 
+        background-color: var(--secondBgColor);
+    }
+    
+    @font-face {
+    font-family: babapro;
+    src: url("../fonts/Babapro-Ea4rr.otf");
+    }
+    
+    @font-face{
+    font-family: raleway;
+    src: url("../fonts/Raleway-Regular.ttf")
+    }
+    @font-face{
+    font-family: raleway-bold;
+    src: url("../fonts/Raleway-Bold.ttf")
+    }
+    @font-face{
+    font-family: raleway-semibold;
+    src: url("../fonts/Raleway-SemiBold.ttf")
+    }
+
+    .espace_header_categories{
+        width: 100%;
+        height: 65px;
+    }
+    
+    .wrapper{
+        display: grid;
+        grid-template-columns: 35% 65%;
+        /* grid-template-rows:2fr 1fr ; */
+        margin: 2% 5% 2% 5%;
+        background-color: #fff;
+        /* padding: 4% 0; */
+        border-radius: 20px;
+        align-items: center;
+        position: relative;
+        justify-items: center;
+        overflow: hidden;
+        /* height: 80vh; */
+    }
+    .monto_container{
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-flow: column;
+        align-items: center;
+    }
+    .monto_text{
+        /* position: absolute; */
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column;
+    }
+
+    .resumen
+    {
+        background-color: #21243610;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .contact
+    {
+        width: 100%;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .contact h3{
+        font-size: 1.9rem;
+        font-family: raleway-bold;
+        margin: 0 1rem;
+        text-align: center;
+    }
+    .contact h3:nth-child(2)
+    {
+        margin-bottom: 2rem;
+    }
+
+    .monto_container > img{
+        width: 80%;
+        margin: 1rem;
+    }
+    .monto_text h2
+    {
+        font-size: 3.8rem;
+        font-family: raleway-bold;
+    }
+    .monto_text h3 
+    {
+        font-size: 2.6rem;
+        font-family: raleway-bold;
+    }
+    #form_product
+    {
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+        width: 70%;
+    }
+    #objetivo{
+        position: absolute;
+        visibility: hidden;
+    }
+    #form_product >input
+    {
+        width: 80%;
+        height: 34px;
+        font-size: 1.5rem;
+        font-family: raleway-semibold;
+        padding: 0 2%;
+        border-radius: 6px;
+        margin-top: 1%;
+        margin-bottom: 3%;
+        border-color: transparent;
+        transition: all .4s ease;
+    }
+
+    #form_product >input:focus
+    {
+        outline: none;
+        transition: all 2 ease;
+        box-shadow: 0px 0px 20px 2px #027cf130;
+        border-color: #027df15d;
+    }
+
+    #form_product_button
+    {
+        margin-top: 3%;
+        width: 60%;
+        height: 34px;
+        border-radius: 6px;
+        border-color: transparent;
+        outline: none;
+        cursor: pointer;
+        background-color: #1c2457;
+        color: white;
+        font-size: 1.5rem;
+        font-family: raleway-semibold;
+        transition: all .4s ease;
+    }
+
+    #form_product_button.desactive
+    {
+        background-color: #111842bd;
+        pointer-events: none;
+    }
+
+    #form_product_button:hover{
+        transition: all .4s ease;
+        background-color: #fff;
+        color: #12131b;
+        box-shadow: 0px 0px 20px 2px #027cf130;
+        border-color: #027df15d;
+    }

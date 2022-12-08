@@ -1,0 +1,215 @@
+:root {
+    --slide-transform: 0;
+    --transition: transform 1s;
+    --slide-transform_moto: 0;
+    --transition_moto: transform 1s;
+  
+    --bgColor : #12131b;
+    --secondBgColor: #e8e8e8;
+    --pColor: #212436;
+    --sColor: #027cf1;
+    --tColor: #02e3f5;
+    
+    
+  }
+  @font-face {
+    font-family: babapro;
+    src: url("../fonts/Babapro-Ea4rr.otf");
+  }
+  
+  @font-face{
+    font-family: raleway;
+    src: url("../fonts/Raleway-Regular.ttf")
+  }
+  @font-face{
+    font-family: raleway-bold;
+    src: url("../fonts/Raleway-Bold.ttf")
+  }
+  @font-face{
+    font-family: raleway-semibold;
+    src: url("../fonts/Raleway-SemiBold.ttf")
+  }
+  
+  *{
+      margin: 0;
+      padding: 0;
+      
+    }
+    html{
+      box-sizing: border-box;
+      font-size: 62.5%; 
+      background-color: var(--secondBgColor);
+  }
+
+.wrapper_comunicate{
+    display: flex;
+    height: calc(100vh - 65px);
+}
+.contactanos{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    /* flex-flow: column; */
+    flex-wrap: wrap;
+}
+.contactanos >h1{
+    font-family: raleway-bold;
+    font-size: 3.5rem;
+    color: var(--sColor);
+    margin-left: 4rem;
+    margin-top: 2rem;
+    /* margin-bottom: 2rem; */
+    width: 100%;
+}
+.preguntas_frecuentes > h1
+{
+    font-family: raleway-bold;
+    font-size: 3rem;
+    color: var(--sColor);
+    margin-left: 4rem;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+}
+
+.contactanos > div{
+    width: 47%;
+    height: 80%;
+    background-color: #cececea6;
+    border-radius: 8px;
+
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+}
+
+.contactanos > div > h1{
+    font-family: raleway-bold;
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 1.8rem;
+}
+
+.secciones{
+    margin-top: auto;
+}
+.resistencia{
+    margin-left: 2%;
+}
+.corrientes{
+    margin-right: 2%;
+    margin-left: 2%;
+}
+
+.secciones ol
+{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: column;
+}
+
+.secciones .sector{
+    margin-bottom: 3rem;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sector_info {
+    text-align: center;
+    font-size: 1.7rem;
+    font-family: raleway;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+}
+
+.secciones > ol > .sector > h3
+{
+    font-family: raleway-bold;
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 2%;
+    color: #1d5890;
+}
+.secciones > ol > .sector > .number_phone
+{
+    font-family: raleway;
+    font-size: 1.2rem;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    text-align: center;
+}
+
+.secciones > ol > .sector > .correo
+{
+    font-family: raleway;
+    font-size: 1.2rem;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    text-align: center;
+}
+
+
+
+.preguntas_frecuentes{
+    background-color: #212436;
+    width: 40%;
+    height: 100%;
+}
+
+.preguntas_frecuentes > ul{
+    list-style: none;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin-top: 4rem;
+}
+
+.preguntas_frecuentes > ul > li
+{
+    width: 80%;
+    /* margin-top: 4rem; */
+    cursor: pointer;
+    position: relative;
+    height: auto;
+ 
+}
+
+.preguntas_frecuentes > ul > li > h2
+{
+    background-color: #e8e8e8;
+    font-family: raleway-bold;
+    font-size: 1.8rem;
+    color: var(--pColor);
+    padding: .7rem 2rem .7rem 2rem;
+    vertical-align:middle;
+    border-radius: 8px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    display: flex;
+    align-items: center;
+}
+
+.preguntas_frecuentes > ul > li > h2::after{
+    content: '+';
+    font-family: raleway;
+    font-size: 2.4rem;
+    margin-left: auto;
+}
+.question h2.active::after{
+    content: '-';
+    font-family: raleway;
+    font-size: 2.4rem;
+    margin-left: auto;
+}
+
+.preguntas_frecuentes > ul > li > .texts
+{
+    font-family: raleway;
+    position: relative;
+    font-size: 1.4rem;
+    color: white;
+    width: 98%;
+    margin: 2% 1%;
+    /* padding: 3% 0; */
+    max-height: 0;
+    overflow: hidden;
+    transition: all .4s ease;
+}

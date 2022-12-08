@@ -1,3 +1,32 @@
+:root{
+    --bgColor : #12131b;
+    --secondBgColor: #e8e8e8;
+    --pColor: rgb(33, 36, 54);
+    --sColor: rgb(2, 124, 241);
+    --tColor: #02e3f5;
+
+    --slide-transform: 0;
+    --transition: transform 1s;
+    --slide-transform_moto: 0;
+    --transition_moto: transform 1s;
+}
+@font-face{
+    font-family: raleway;
+    src: url("../fonts/Raleway-Regular.ttf")
+  }
+  @font-face{
+    font-family: raleway-bold;
+    src: url("../fonts/Raleway-Bold.ttf")
+  }
+  @font-face{
+    font-family: raleway-semibold;
+    src: url("../fonts/Raleway-SemiBold.ttf")
+  }
+  @font-face{
+    font-family: raleway-extrabold;
+    src: url("../fonts/Raleway-ExtraBold.ttf")
+  }
+
 *{
     margin: 0;
     padding: 0;
@@ -5,5 +34,96 @@
 html{
     box-sizing: border-box;
     font-size: 62.5%;
-    background-color: rgb(236, 231, 231);
+    background-color: var(--secondBgColor);
 }
+
+.espace_header_categories{
+    width: 100%;
+    height: 65px;
+}
+
+.categorias{
+    
+    display: grid;
+    grid-auto-rows: 27rem;
+    grid-auto-flow: dense;
+    grid-template-columns: repeat(auto-fill,minmax(28rem,1fr));
+    gap: 2rem;
+    row-gap: 5rem;
+    margin: 7vh auto 3vh auto;
+    width: 80%;
+}
+
+.categorias article{
+    background-color: var(--secondBgColor);
+    box-shadow: 1px 1px 12px 3px rgba(2,124,241,0.27);
+}
+.categorias article >figure{
+    width: 28%;
+    height: 28%;
+    shape-outside: circle();
+    clip-path: circle();
+    background-color: var(--bgColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -14%;
+    left: 34%;
+    position:relative;
+}
+
+.categorias article >figure> img{
+    width: 100%;
+    max-width: 110px;
+    /* height: 120%; */
+
+}
+.categorias article > a{
+    text-decoration: none;
+}
+.categorias article > a> h1{
+    font-size: 2rem;
+    font-family: raleway-extrabold;
+    margin-left: 4%;
+    color: var(--bgColor);
+}
+
+.categorias article > ul{
+    list-style: none;
+   
+    margin-top: 1%;
+}
+
+.categorias article > ul > li{
+    height: 2.8rem;
+}
+.categorias article > ul > li:hover{
+    background-color: rgba(25, 36, 96, .9);;
+}
+
+.categorias article > ul > li > a{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+.categorias article > ul > li > a > h2{
+    margin-left: 5%;
+    font-size: 1.4rem;
+    font-family: raleway;
+    color: var(--pColor);
+    font-weight: 700;
+    
+    font-feature-settings: 'pnum' on, 'lnum' on;
+}
+.categorias article > ul > li > a:hover h2{
+    color: var(--secondBgColor);
+}
+.soluciones_dinerarias> a > h1, .beneficios_cliente > a > h1
+{
+    text-align: center;
+    margin: 0 !important;
+}
+
+
