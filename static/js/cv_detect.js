@@ -12,13 +12,13 @@ button_cv.addEventListener("click",function(){
 // })
 cv.addEventListener("change",function(){
     if (cv_element.textContent != "") {
-        url = document.createTextNode(cv.value)
+        url = document.createTextNode(cv.files[0].name)
         cv_element.textContent = ""
         cv_element.appendChild(url)
     
     }
     else{
-        let url = document.createTextNode(cv.value)
+        let url = document.createTextNode(cv.files[0].name)
         cv_element.appendChild(url)
         parent_cv.appendChild(cv_element)
     }

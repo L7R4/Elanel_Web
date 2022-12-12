@@ -94,20 +94,25 @@
                 <div class="cv_field">
                     <h2>¡Compartenos tu CV!</h2>
                     <label for="cv"><img src="{% static 'images/in_file.svg' %}" alt=""></label>
-                    <input type="file" name="cv" id="cv" accept=".png, .jpg, .jpeg, .pdf, .doc, .docx">
+                    <input type="file" name="cv" id="cv" accept=".png, .jpg, .jpeg, .pdf">
                     <div class="image_url">
 
                     </div>
                     <button type="button" id="cv_input">Subir</button>
                 </div>
                 
-                <button type="submit" id="send-cv" class="desactive">Enviar</button>
+                <button type="button" id="send-cv" class="desactive">Enviar</button>
+                <div class="message_success hide">
+                  <h3>¡Tu formulario se ha enviado correctamente!</h3>
+                  <h4>Nos comunicaremos contigo mediante un correo</h4>
+              </div>
             </form>
         </div>
     </section>
     <script src="{% static 'js/header.js' %}"></script>
     <script src="{% static 'js/menu_hamburguer.js' %}"></script>
     <script src="{% static 'js/validate_button_trabaja.js' %}"></script>
+    <script src="{% static 'js/fetch_form_trabaja.js' %}"></script>
     <script src="{% static 'js/cv_detect.js' %}"></script>
 
 </body>

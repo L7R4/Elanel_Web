@@ -88,7 +88,11 @@
 
                     <input type="email" name="email" id="email" placeholder="Email" autocomplete="off">
                     
-                    <button type="submit" id="form_product_button">Enviar</button>
+                    <button type ="button"  id="form_product_button" class ="desactive">Enviar</button>
+                    <div class="message_success hide">
+                        <h3>¡Tu formulario se ha enviado correctamente!</h3>
+                        <h4>Nos comunicaremos contigo mediante un correo</h4>
+                    </div>
                 </form>
                 <button type ="button" id="close_modal">Cancelar</button>
               </div>
@@ -163,5 +167,7 @@
 </body>
 <script src="{% static 'js/header.js' %}"></script>
 <script src="{% static 'js/modal_form.js' %}"></script>
+<script src="{% static 'js/fetch_form_beneficios.js' %}"></script>
+<script src="{% static 'js/validate_button_beneficios.js' %}"></script>
 <script src="{% static 'js/menu_hamburguer.js' %}"></script>
 </html>

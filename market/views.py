@@ -1,8 +1,9 @@
+import json
 from django.shortcuts import render,redirect
 from django.urls import reverse
 from django.views.generic import View
 from django.views import generic
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from market.models import Electrodomestico,Cliente ,ImagenMoto,ImagenElectrodomestico, Post, Moto, Personal,BeneficioParaCliente,SolucionDineraria
 from .forms import FormPersonal,FormBeneficios,FormDinero,FormMotos,FormElec
 import os
@@ -46,18 +47,23 @@ class DetalleMoto(generic.DetailView):
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+
+    def get(self,request,*args,**kwargs):
+        self.object = self.get_object()
+        context ={}
         context["moto_images"] = ImagenMoto.objects.filter(producto = self.object)
+        context["object"] = self.object
         try:
             model = Moto.objects.filter(slug = self.object.slug)
             archivo =os.path.split(str(model[0].ficha_tecnica))[1]
             context["ficha_tecnica"] = archivo
         except ValueError:
             print("No existe ficha tecnica")
-        return context
+
+        return render(request,self.template_name,context)
     
     def post(self,request,*args, **kwargs):
+        self.object = self.get_object()
         form = FormMotos()
         if request.method == "POST":
             form = FormMotos(request.POST)
@@ -70,9 +76,11 @@ class DetalleMoto(generic.DetailView):
                 form_moto.objetivo = form.cleaned_data['objetivo']
                 form_moto.save()
 
-        return redirect(request.META['HTTP_REFERER'])
+        return redirect('market:moto',self.object.slug)
 
     
+
+        
 
 class CategoriaElectrodemesticos(generic.ListView):
     model = Electrodomestico
@@ -104,12 +112,22 @@ class DetalleElec(generic.DetailView):
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+    def get(self,request,*args,**kwargs):
+        self.object = self.get_object()
+        context ={}
         context["electrodomesticos_images"] = ImagenElectrodomestico.objects.filter(producto = self.object)
-        return context
-    
+        context["object"] = self.object
+        try:
+            model = Moto.objects.filter(slug = self.object.slug)
+            archivo =os.path.split(str(model[0].ficha_tecnica))[1]
+            context["ficha_tecnica"] = archivo
+        except:
+            print("No existe ficha tecnica")
+
+        return render(request,self.template_name,context)
+
     def post(self,request,*args, **kwargs):
+        self.object = self.get_object()
         form = FormElec()
         if request.method == "POST":
             form = FormElec(request.POST)
@@ -122,7 +140,7 @@ class DetalleElec(generic.DetailView):
                 form_elec.objetivo = form.cleaned_data['objetivo']
                 form_elec.save()
 
-        return redirect(request.META['HTTP_REFERER'])
+        return redirect('market:electrodomestico',self.object.slug)
 
 
 class CategoriaSolucionesDinerarias(generic.ListView):
@@ -142,6 +160,7 @@ class DetalleSolucion(generic.DetailView):
     template_name = "templates_categorias/detalle_soluciones.html"
 
     def post(self,request,*args, **kwargs):
+        self.object = self.get_object()
         form = FormDinero()
         if request.method == "POST":
             print("Entre POST")
@@ -158,11 +177,14 @@ class DetalleSolucion(generic.DetailView):
                 print(form)
         else:
             ("no entre al post")
-        return(render(request,self.template_name))
+        return redirect('market:solucione_detail',self.object.id)
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
+    def get(self,request,*args,**kwargs):
+        self.object = self.get_object()
+        context ={}
+        context["object"] = self.object
+
+        return render(request,self.template_name,context)
 
 
 class CategoriaBeneficiosCliente(generic.ListView):

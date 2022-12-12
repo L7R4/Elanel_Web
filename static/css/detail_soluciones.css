@@ -179,3 +179,29 @@
         box-shadow: 0px 0px 20px 2px #027cf130;
         border-color: #027df15d;
     }
+
+    .message_success.hide
+    {
+        display: none;
+    }
+
+    .message_success
+    {
+        margin: 0 auto;
+        margin-top: 2rem;
+        background-color: #2124361f;
+        padding: 2rem;
+        border-radius: 20px;
+    }
+    .message_success > h3{
+        font-size: 1.7rem;
+        font-family: raleway-bold;
+        color: #027df1;
+        text-align: center;
+    }
+    .message_success > h4{
+        font-size: 1.5rem;
+        font-family: raleway-semibold;
+        margin-top: .3rem;
+        text-align: center;
+    }

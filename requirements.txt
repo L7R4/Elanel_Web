@@ -3,8 +3,11 @@ defusedxml==0.7.1
 diff-match-patch==20200713
 distlib==0.3.5
 Django==4.0.6
+django-admin-rangefilter==0.9.0
 django-environ==0.9.0
 django-import-export==2.8.0
+django-jazzmin==2.6.0
+django-multiselectfield==0.1.12
 et-xmlfile==1.1.0
 filelock==3.8.0
 MarkupPy==1.14
@@ -12,6 +15,7 @@ odfpy==1.4.1
 openpyxl==3.0.10
 Pillow==9.2.0
 platformdirs==2.5.2
+psycopg2==2.9.5
 PyYAML==6.0
 sqlparse==0.4.2
 tablib==3.2.1

@@ -18,6 +18,7 @@ open_modal.forEach(element => {
 close_modal.addEventListener("click",()=>{
     background_modal.classList.remove("active_modal");
     modal_window.classList.remove("active_modal");
+    message_success.classList.add("hide")
 })
 
 

@@ -118,10 +118,15 @@
 
                     <input type="email" name="email" id="correo" placeholder="Email" autocomplete="off">
                     
-                    <button id="form_product_button" class="desactive">Enviar</button>
+                    <button type="button" id="form_product_button" class="desactive">Enviar</button>
+                    <div class="message_success hide">
+                        <h3>¡Tu formulario se ha enviado correctamente!</h3>
+                        <h4>Nos comunicaremos contigo mediante un correo</h4>
+                    </div>
                 </form>
             </div>
         </aside>
+
         {% if object.ficha_tecnica.url != '' %}
             <div class="detalles">
                 <div class="text">
@@ -136,11 +141,13 @@
         {% else %}
             <p></p>
         {% endif %}
+
     </div>
     
     <script src="{% static 'js/detail_product.js' %}"></script>
     <script src="{% static 'js/header.js' %}"></script>
     <script src="{% static 'js/validate_button_products.js' %}"></script>
+    <script src="{% static 'js/fetch_form_products.js' %}"></script>
     <script src="{% static 'js/motos_form_set_value.js' %}"></script>
     <script src="{% static 'js/menu_hamburguer.js' %}"></script> 
     
