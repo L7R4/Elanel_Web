@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" href="{% static 'css/navStyles.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/notFound.css' %}" />
     <link rel="stylesheet" href="{% static 'css/media_querys/nav_bar.css' %}" />
     <link rel="stylesheet" href="{% static 'css/media_querys/notFound.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/notFound.css' %}" />
     <title>Elanel Servicios y Soluciones</title>
     <link rel="shortcut icon" href="{% static 'images/fwd/icono.sinfondo_admin_site_logo.png' %}">
 </head>
@@ -18,8 +18,12 @@
     <main>
         <div class="text_error">
             <div class="container_text">
-                <h1>¡Lo sentimos! Ocurrió un error inesperado</h1>
+                <h1>¡Lo sentimos! <br> Ocurrió un error inesperado</h1>
                 <h2>Al parecer la pagina que estas buscando no existe. Aun asi te invitamos que sigas navegando por nuestra pagina.</h2>
+                <a class="button_redirect" href="{% url 'index' %}">
+                    <img src="{% static 'images/icons/icon_back_index.png' %}" alt="">
+                    <h4>Volver</h4>
+                </a>
             </div>
         </div>
         <div class="image_error">

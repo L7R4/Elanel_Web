@@ -20,7 +20,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG =os.environ.get("DEBUG")
 # DEBUG =False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['192.168.0.163']
 
 
 # Application definition

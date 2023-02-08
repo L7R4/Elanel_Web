@@ -66,6 +66,7 @@ header{
 .header__nav > ol> label +.nav__items{
   transition: all .3s ease-out;
   top: -200%;
+  overflow: auto;
 }
 
 .header__nav > ol> label.active +.nav__items{

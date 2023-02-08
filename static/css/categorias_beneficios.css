@@ -189,7 +189,7 @@
     display: flex;
 }
 .beneficios__table__servicios_list >li::before{
-  content: url(../images/check.svg);
+  content: url(../images/icons/check.svg);
   width: 10px;
   margin-right: 9px;
   margin-top: 0.3rem;

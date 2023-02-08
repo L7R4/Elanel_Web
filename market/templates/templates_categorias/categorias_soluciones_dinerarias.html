@@ -62,7 +62,7 @@
         {% if dineros.count != 0 %} {% for monto in dineros %}
         <a href="{% url 'market:solucione_detail' monto.id %}">
           <article>
-            <img src="{% static 'images/dollar.svg' %}" alt="" />
+            <img src="{% static 'images/icons/dollar.svg' %}" alt="" />
             <div>
               <h2>{{monto.monto}}</h2>
               <h3>{{monto.cuota}} Cuotas</h3>
