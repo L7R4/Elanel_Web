@@ -35,6 +35,7 @@ function EnviarDatos() {
             "X-CSRFToken": getCookie('csrftoken')
         }
     })
+    console.log(form.keys)
     LimpiarDatos()
     form_success.classList.add("active")
     

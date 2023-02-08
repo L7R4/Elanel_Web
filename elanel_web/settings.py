@@ -18,6 +18,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG =os.environ.get("DEBUG")
+# DEBUG =False
 
 ALLOWED_HOSTS = ['*']
 
@@ -35,6 +36,7 @@ INSTALLED_APPS = [
     'import_export',
     'market',
     'rangefilter',
+    'django_quill',
 ]
 
 JAZZMIN_SETTINGS ={
@@ -44,7 +46,14 @@ JAZZMIN_SETTINGS ={
     "welcome_sign": "ELANEL",
     # "hide_apps": ["auth"],
     "site_brand": "Administración",
+    "custom_css": "css/admin.css",
+    "custom_js": "js/admin.js"
 }
+
+# JAZZMIN_UI_TWEAKS = {
+    
+#     # "theme": "flatly",
+# }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

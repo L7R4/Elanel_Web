@@ -1,4 +1,4 @@
-const inputs = document.querySelectorAll(".window_form > form > input[type='text'],.window_form > form >  input[type='email']")
+const inputs = document.querySelectorAll(".window_form > form > input[type='text'],.window_form > form >  input[type='email'],.window_form > form >  input[type='number']")
 console.log(inputs)
 
 const input_array = Array.from(inputs)
@@ -18,7 +18,7 @@ inputs.forEach(element => {
         let list_valid = input_array.filter(input => input.value != "") 
         console.log(list_valid)
         
-        if (list_valid.length == 4){
+        if (list_valid.length == 6){
             console.log("se desbloquea")
             input_submit.classList.remove("desactive")
         }

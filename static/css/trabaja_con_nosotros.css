@@ -53,11 +53,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 11%;
+    /* margin-bottom: 11%; */
 }
 
 .trabaja__title h1{
-    font-size: 7rem;
+    font-size: 6.3rem;
     font-family: raleway-bold;
     text-align: center;
     color: var(--pColor);
@@ -77,6 +77,8 @@
     flex-flow: column;
     align-items: center;
     justify-content: center;
+    padding: 4rem 0;
+    row-gap: 4rem;
 }
 
 .trabaja__texto p{
@@ -94,6 +96,7 @@
     display: flex;
     align-items: center;
     background-color: #212436;
+    justify-content: center;
 }
 
 .formulario-wrapper form{
@@ -169,7 +172,7 @@
     display: flex;
     flex-flow: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     margin-left: 2rem;
 }
 .cv_field h2{
@@ -194,6 +197,9 @@
 .cv_field label{
     cursor: pointer;
     margin-bottom: 1rem;
+    width: 50%;
+    max-width: 138px;
+    min-width: 120px;
 }
 .cv_field label img{
     width: 100%;

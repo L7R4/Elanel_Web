@@ -5,9 +5,16 @@ from email.policy import default
 from django.db import models
 # from django.template.defaultfilters import slugify
 from django.utils.text import slugify
+from django_quill.fields import QuillField
 import datetime
-class Moto(models.Model):
 
+
+class Moto(models.Model):
+    servicios = (
+        ('Basico', 'Basico'),
+        ('Estandar', 'Estandar'),
+        ('Premium', 'Premium')
+        )
     cuotas = (
         ('24','24'),
         ('30','30'),
@@ -23,8 +30,11 @@ class Moto(models.Model):
     año = models.IntegerField(blank=True,null=True)
     marca = models.CharField(max_length=80, blank = True)
     forma_de_pago = models.CharField(max_length= 255, blank=True,null=True)
-    descripcion = models.TextField(blank=True,null=True)
-    imagen_portada = models.ImageField(upload_to="images/motos/", default=None)
+    descripcion = QuillField(blank=True,null=True)
+    imagen_portada = models.ImageField(upload_to="images/motos/", default=None) 
+    servicio = models.CharField(choices=servicios, max_length=50, default="Basico", blank=True,null=True)
+    monto_servicio_por_couta = models.FloatField(blank=True,null=True)
+
     usado = models.BooleanField()
     cuota = models.CharField(max_length=2, choices=cuotas,default='24')
     ficha_tecnica = models.FileField(upload_to="f_tecnicas/motos/",default=None,blank=True,null=True)
@@ -48,6 +58,11 @@ class Electrodomestico(models.Model):
         ('48','48'),
         ('60','60'),
     )
+    servicios = (
+        ('Basico', 'Basico'),
+        ('Estandar', 'Estandar'),
+        ('Premium', 'Premium')
+        )
     combos = (
         ('cocina', 'cocina'),
         ('gamer', 'gamer'),
@@ -58,12 +73,14 @@ class Electrodomestico(models.Model):
     nombre = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100,unique=True,primary_key=True)
     precio = models.DecimalField(max_digits=15, decimal_places=2)
-    descripcion = models.TextField(blank=True,null=True)
+    descripcion = QuillField(blank=True,null=True)
     marca = models.CharField(max_length=80,blank=True,null=True)
     forma_de_pago = models.CharField(max_length= 255 ,blank=True,null=True)
     imagen_portada = models.ImageField(upload_to="images/electrodomesticos/", default=None)
     # usado = models.BooleanField()
     cuota = models.CharField(max_length=2, choices=cuotas,default='24')
+    servicio = models.CharField(choices=servicios, max_length=50, default="Basico",blank=True,null=True)
+    monto_servicio_por_couta = models.FloatField(blank=True,null=True)
     ficha_tecnica = models.FileField(upload_to="f_tecnicas/electrodomesticos/",default=None,blank=True,null=True)
 
     def __str__(self):
@@ -73,13 +90,13 @@ class Electrodomestico(models.Model):
         self.url = slugify(self.nombre)
         super(Electrodomestico, self).save(*args, **kwargs)
 
-class ImagenElectrodomestico(models.Model):
+class ImagenElectrodomestico(models.Model) :
     imagen = models.ImageField(upload_to ="images/electrodomesticos/")
     producto = models.ForeignKey(Electrodomestico, on_delete=models.CASCADE, related_name= "imagenes", db_constraint=False)
 
 
 
-class SolucionDineraria(models.Model):
+class SolucionDineraria(models.Model):  
     cuotas = (
         ('24','24'),
         ('30','30'),
@@ -89,7 +106,7 @@ class SolucionDineraria(models.Model):
     monto = models.DecimalField(max_digits=15, decimal_places=2)
     cuota = models.CharField(max_length=2, choices=cuotas,default='24')
     monto_cuota = models.DecimalField(max_digits=15, decimal_places=2)
-    descripcion = models.TextField(blank=True)
+    descripcion = QuillField(blank=True,null=True)
 
     def __str__(self):
         return str(self.monto)
@@ -101,6 +118,8 @@ class BeneficioParaCliente(models.Model):
     nombre_completo = models.CharField(max_length= 120)
     email = models.EmailField(max_length=200) 
     servicio = models.CharField(max_length=254)
+    producto = models.CharField(max_length=80, default="")
+    monto = models.FloatField(default=0)
     num_telefono = models.CharField(max_length=15)
     
     def __str__(self):
@@ -128,10 +147,13 @@ class Personal(models.Model):
     cv = models.FileField(upload_to="archivos/cv/", default=None, blank=False)
 
 class Post(models.Model):
+    dispositivos = (
+        ('Celular','Celular'),
+        ('Computadoras','Computadoras'),
+    )
     titulo = models.CharField(max_length=60,blank=True)
     descripcion = models.TextField(blank=True)
-    fecha = models.DateTimeField()
-    fecha_limite = models.DateTimeField()
+    tamano = models.CharField(max_length=50, choices=dispositivos)
     imagen_portada = models.ImageField(upload_to= "images/posts", default=None)
 class PostImagenes(models.Model):
     imagen = models.ImageField(upload_to="images/posts", default=None)

@@ -240,14 +240,18 @@ html{
 
 
 .catalogo{
-    display: grid;
+    display: flex;
+    justify-content: center;
     width: 80%;
-    grid-template-columns: repeat(auto-fill, minmax(20rem,1fr));
+    /* grid-template-columns: repeat(auto-fill, minmax(20rem,1fr));
     grid-auto-rows: auto;
     row-gap: 3rem;
-    column-gap: 6rem;
+    column-gap: 6rem; */
     overflow-y: scroll;
     padding: 2rem 6rem;
+    gap: 3rem;
+    padding: 2rem 6rem;
+    flex-wrap: wrap;
 } 
 
 
@@ -286,6 +290,9 @@ html{
     border-radius: 10px;
     height: 100%;
     overflow:hidden;
+    width: 24vw;
+    min-width: 28rem;
+    max-width: 35rem;
 }
 .catalogo a > article > img{
     max-width: 100%;

@@ -18,6 +18,8 @@ class FormBeneficios(forms.ModelForm):
             'email',
             'num_telefono',
             'servicio',
+            'producto',
+            'monto'
         ]
 class FormDinero(forms.ModelForm):
     class Meta:

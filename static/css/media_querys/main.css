@@ -1,6 +1,6 @@
 @media screen and (max-width: 960px){
     .slider-container{
-        height: 440px;
+        height: 385px;
     }
     .formulario__eslogan{
         font-size: 3rem;
@@ -129,6 +129,9 @@
 
 
 @media screen and (max-width:768px) {
+    .naccs{
+        padding-bottom: 3rem;
+    }
     .formulario{
         flex-flow: column;
     }
@@ -217,10 +220,13 @@
     }
     .wrapper_adjudicado
     {
-        position: static;
+        position: relative;
         width: 80%;
         margin: 0 auto;
-
+        bottom: unset;
+        right: unset;
+        margin-top: 3rem;
+        z-index: unset;
     }
     .wrapper__icons__social ol{
         max-width: none;
@@ -310,12 +316,27 @@
 
 }
 
+@media screen and (max-width:600px){
+    .slider_cel
+    {
+      display: flex;
+    }
+    .slider{
+        display: none;
+    }
+}
 
-
+/* @media screen and (max-width: 500px) {
+    html{
+        background-color: red;
+    }
+    .slider-container{
+        height: 440px;
+    }} */
 
 @media screen and (max-width: 470px) {
     .slider-container{
-        height: 390px;
+        height: 340px;
     }
     .categoria >h2{
         font-size: 3rem;

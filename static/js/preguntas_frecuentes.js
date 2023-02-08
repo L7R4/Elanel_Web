@@ -1,5 +1,5 @@
 const questions = document.querySelectorAll(".question h2");
-var texts_heights = document.getElementsByClassName('texts');
+// var texts_heights = document.getElementsByClassName('texts');
 
 
 questions.forEach(element => {

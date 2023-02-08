@@ -1,5 +1,5 @@
-@media screen and (max-width:950px) {
-    .items__menu a{
+@media screen and (max-width:940px) {
+    /* .items__menu a{
         font-size: 1.5rem;
     }
     .items__menu img{
@@ -11,24 +11,7 @@
     }
     .menu_categoria li a,.menu_contactanos li a{
         font-size: 1.3rem;
-    }
-    
-}
-@media screen and (max-width:750px){
-
-    .items__menu a{
-        font-size: 1.4rem;
-    }
-    .items__menu img{
-        height: 1.7rem;
-        width: 1.7rem;
-    }
-    .items a{
-        font-size: 1.4rem;
-    }
-}
-
-@media screen and (max-width:650px){
+    } */
     .header__nav > ol{
         justify-content: space-between;
     }
@@ -56,7 +39,7 @@
         font-family: raleway;
         font-weight: 700;
         text-decoration: none;
-        font-size: 3rem;
+        font-size: 2.6rem;
         color:#fff;
         position:relative;
         height: fit-content;
@@ -71,7 +54,7 @@
         font-family: raleway;
         font-weight: 700;
         text-decoration: none;
-        font-size: 3rem;
+        font-size: 2.6rem;
         color:#fff;
         position: relative;
         height: fit-content;
@@ -80,5 +63,31 @@
     .items__menu{
         margin: 12% 0;
         position: relative;
+    }
+    .items__menu > img
+    {
+        display: none;
+    }
+    
+}
+@media screen and (max-width:750px){
+
+    .items__menu a{
+        font-size: 2rem;
+    }
+    .items__menu img{
+        height: 1.7rem;
+        width: 1.7rem;
+    }
+    .items a{
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width:560px){
+    .logo_container
+    {
+        min-width:unset;
+        max-width: 190px;
     }
 }

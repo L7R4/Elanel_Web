@@ -202,6 +202,8 @@ class CategoriaBeneficiosCliente(generic.ListView):
                 beneficio.email = form.cleaned_data['email']
                 beneficio.num_telefono = form.cleaned_data['num_telefono']
                 beneficio.servicio = form.cleaned_data['servicio']
+                beneficio.producto = form.cleaned_data['producto']
+                beneficio.monto = form.cleaned_data['monto']
                 beneficio.save()
             else:
                 print(form)
@@ -209,7 +211,37 @@ class CategoriaBeneficiosCliente(generic.ListView):
         return(render(request,self.template_name))
 
     def get(self, request, *args, **kwargs):
-        return(render(request,self.template_name))
+        context = {}
+        productos_basico =  list(Moto.objects.filter(servicio="Basico")) + list(Electrodomestico.objects.filter(servicio="Basico"))
+        productos_estandar = list(Moto.objects.filter(servicio="Estandar"))+ list(Electrodomestico.objects.filter(servicio="Estandar"))
+        productos_premium = list(Moto.objects.filter(servicio="Premium"))+ list(Electrodomestico.objects.filter(servicio="Premium"))
+        
+        all_products = productos_estandar + productos_premium + productos_basico
+
+
+        context["productos_basico"]  = productos_basico
+        context["productos_estandar"]  = productos_estandar
+        context["productos_premium"]  = productos_premium
+
+        
+        products_list =[]
+        for product in all_products:
+            data_product = {}
+            data_product['nombre'] = product.nombre
+            data_product['servicio'] = product.servicio
+            if product.monto_servicio_por_couta == None:
+                data_product['monto_mensual'] = 0
+                data_product['monto_total'] = 0
+            else:
+                data_product['monto_mensual'] = product.monto_servicio_por_couta
+                data_product['monto_total'] = product.monto_servicio_por_couta*12
+            products_list.append(data_product)
+        data = json.dumps(products_list)
+
+        if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+            return HttpResponse(data, 'application/json')
+
+        return(render(request,self.template_name,context))
 
 
     
@@ -237,4 +269,6 @@ class TrabajaConNosotros(View):
 
     def get(self, request, *args, **kwargs):
         return(render(request,self.template_name))
+
+
 

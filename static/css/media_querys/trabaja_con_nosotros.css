@@ -1,13 +1,10 @@
 @media screen and (max-width:930px) {
-    .trabaja__title h1{
-        font-size: 6rem;
-    }
     .trabaja__texto p{
         font-size: 1.5rem;
     }
-    /* .cv_field{
-        justify-content: flex-start;
-    } */
+    .trabaja_con_nosotros {
+        display: block;
+    }
 }
 @media screen and (max-width:885px) {
     .formulario-wrapper form{
@@ -23,6 +20,7 @@
         width: 90%;
         font-size: 1.4rem;
     }
+    
 }
 /* @media screen and (max-width:760px) {
     .formulario-wrapper form{
@@ -58,9 +56,6 @@
     .formulario-wrapper form > div > label{
         font-size: 1.5rem;
     }
-    .trabaja__title h1{
-        font-size: 5rem;
-    }
 
     #send-cv{
         display: block;
@@ -70,5 +65,13 @@
     }
     #cv_input{
         padding: 1.8% 4rem;
+    }
+}
+@media screen and (max-width:430px) {
+    .trabaja__title h1{
+        font-size: 5.8rem;
+    }
+    .trabaja__texto p {
+        font-size: 1.5rem;
     }
 }

@@ -147,7 +147,20 @@
     text-align: center;
 }
 
-
+article.contactanos>.resistencia{
+    background-image: url(../images/background_image_contactanos.jpg);
+    background-size: cover;
+    background-blend-mode: hue;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+article.contactanos>.corrientes{
+    background-image: url(../images/background_image_contactanos.jpg);
+    background-size: cover;
+    background-blend-mode: hue;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 
 .preguntas_frecuentes{
     background-color: #212436;

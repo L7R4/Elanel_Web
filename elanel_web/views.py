@@ -5,6 +5,9 @@ from django.views import generic
 from .forms import FormIndex
 from market.models import Cliente,Post
 
+def page_error(request):
+    return render(request, 'pagenotfound.html')
+
 class IndexView2(View):
     template_name="index.html"
 
@@ -27,13 +30,13 @@ class IndexView2(View):
 
     def get(self, request, *args, **kwargs):
         posts = Post.objects.all() 
-        motos_slider = Moto.objects.all()[:5]
-        num_adjudicado = NumAdjudicado.objects.all().last
+        motos_slider = Moto.objects.all()[5:10]
+        nums_adjudicados = NumAdjudicado.objects.all()
 
         context = {
             "posts": posts,
             "motos_slider": motos_slider,
-            "num_adjudicado": num_adjudicado,
+            "nums_adjudicados": nums_adjudicados,
         }
         return(render(request,self.template_name,context))
 
@@ -50,3 +53,4 @@ class Contactanos(View):
 
     def get(self, request, *args, **kwargs):
         return(render(request,self.template_name))
+

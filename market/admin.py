@@ -8,6 +8,11 @@ from rangefilter.filter import DateRangeFilter, DateTimeRangeFilter
 class ClienteResource(resources.ModelResource):
     class Meta:
         model = Cliente
+
+class BeneficioParaClienteResource(resources.ModelResource):
+    class Meta:
+        model = BeneficioParaCliente
+
 class PersonalResource(resources.ModelResource):
     class Meta:
         model = Personal
@@ -28,7 +33,7 @@ class ClienteAdmin(ImportExportModelAdmin,admin.ModelAdmin):
 
 @admin.register(Personal) 
 class PersonalAdmin(ImportExportModelAdmin,admin.ModelAdmin):
-    list_display= ["nombre_completo","email", "num_telefono","cv","fecha"]
+    list_display= ["nombre_completo","email","cv","fecha"]
     search_fields = ["nombre_completo","fecha"]
     list_filter=["fecha"]
     resource_class = PersonalResource
@@ -53,7 +58,7 @@ class ImagenElectrodomesticoAdmin(admin.TabularInline):
 
 @admin.register(Electrodomestico) #decorador que significa que al registrar producto lo extendemos con ProductoAdmin
 class ElectrodomesticoAdmin(admin.ModelAdmin):
-    list_display= ["nombre", "precio","combo","marca"]
+    list_display= ["nombre", "precio","combo"]
     search_fields = ["nombre","marca"]
     list_filter=["marca","combo"]
     list_editable = ["precio"]
@@ -73,7 +78,15 @@ class ProductoAdmin(admin.ModelAdmin):
     inlines = [ImagenPostsAdmin]
 
 
+@admin.register(BeneficioParaCliente)
+class BeneficioParaClienteAdmin(ImportExportModelAdmin,admin.ModelAdmin):
+    list_display =["servicio","producto","fecha"]
+    list_filter=["servicio","fecha"]
+    search_fields = ["producto"]
+    resource_class = BeneficioParaClienteResource
+
+
 admin.site.register(SolucionDineraria)
-admin.site.register(BeneficioParaCliente)
+# admin.site.register(BeneficioParaCliente)
 admin.site.register(NumAdjudicado)
 
