@@ -25,12 +25,14 @@
     <div id="slider-container" class="slider-container">
       <div class="slider" id="slider">
         {% for post in posts %}
-          <div class="slider__element">
-            <img
-              src="{{post.imagen_portada.url}}"
-              alt=""
-            />
-          </div>
+          {% if post.tamano == "Computadoras" %}
+            <div class="slider__element">
+              <img
+                src="{{post.imagen_portada.url}}"
+                alt=""
+              />
+            </div>
+          {% endif %}
         {%endfor%}
       </div>
       <div class="slider_cel" id="slider_cel">
@@ -58,7 +60,7 @@
   </div>
 
   <button type="button" class="whatsapp_contact" id="whatsapp_contact">
-    <img class="icon_whap" src="{% static 'images/whatsapp_icon.svg' %}" alt="">
+    <img class="icon_whap" src="{% static 'images/icons/whatsapp_icon.svg' %}" alt="">
     <h6>¡Escribenos!</h6> 
   </button>
 
