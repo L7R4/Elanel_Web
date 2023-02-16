@@ -1,8 +1,4 @@
 @media screen and (max-width:800px){
-    .wrapper{
-        grid-template-columns: 1fr 2fr;
-        grid-template-rows:35% 50% 15% ;
-    }
 
     .resumen{
         grid-row: 1 / 2;
@@ -75,6 +71,7 @@
     
     .complete__image > img{
         width: 100%;
+        height: 100%;
     }
 
     .nav__images{
@@ -85,12 +82,11 @@
     }
     .detalles{
         grid-row: 3/4;
-        /* margin: 4% 8%; */
         margin-top: 2rem;
     }
 }
 
-@media screen and (max-width:680px)
+@media screen and (max-width:800px)
 {
 
     .wrapper
@@ -99,6 +95,7 @@
         grid-template-rows: none;
         grid-auto-rows: auto;
         padding-bottom: 6rem;
+        row-gap: 1.3rem;
     }
     .ficha_tenica
     {
@@ -165,22 +162,37 @@
         grid-template-rows:none;
         grid-auto-rows: auto;
     }
-    .resumen__detalle
-    {
-        grid-row: unset;
+    .resumen__detalle{
+        grid-column: 1/3;
+        grid-row: 1/2;
     }
 
-    .resumen .contact
-    {
-        grid-row: unset;
+    .resumen .contact{
+        grid-column: 1/3;
+        grid-row: 2/3;
+        margin-right: 0;
+        text-align: center;
     }
 
+    #form_product{
+        justify-content: center;
+    }
 
+    #form_product > input{
+        margin: 1rem 1rem;
+        /* max-width: 200px; */
+        width: 70%;
+    }
+    #form_product > button{
+        max-width: 180px;
+    }
+    
     .complete__image
     {
         max-width: 350px;
         grid-row: 2 / 3;
         grid-column: 1/ 3;
+        max-height: 220px;
     }
     .nav__images > figure
     {
@@ -205,7 +217,7 @@
     }
 
 }
-
+/* 
 @media screen and (max-width:630px)
 {
     .resumen__detalle{
@@ -226,10 +238,9 @@
 
     #form_product > input{
         margin: 1rem 1rem;
-        /* max-width: 200px; */
         width: 70%;
     }
     #form_product > button{
         max-width: 180px;
     }
-}
+} */

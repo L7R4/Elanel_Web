@@ -23,116 +23,119 @@
   </head>
   <body>
     {% include 'nav.html' %}
+      <div class="wrapper">
 
-    <div class="wrapper">
-      <div class="title_producto_responsive">
-        <h1 id="title_product">{{object.nombre|title}}</h1>
-        <h1 id="precio_product">${{object.precio|floatformat }}</h1>
-      </div>
-      <aside class="nav__images">
-        {% for moto_image in moto_images %}
-        <figure>
-          <img src="{{moto_image.imagen.url}}" alt="" />
-        </figure>
-        {% endfor %}
-      </aside>
-      <article class="complete__image">
-        <img src="" alt="" />
-      </article>
-      <aside class="resumen">
-        <div class="detalle_producto">
-          <h1 id="title_product">{{object.nombre|title}}</h1>
-          <h1 id="precio_product">${{object.precio|floatformat }}</h1>
-        </div>
-        <div class="resumen__detalle">
-          <div id="marca">
-            <h2>Marca</h2>
-            <h2>{{object.marca|title}}</h2>
+        <div class="products_images">
+          <div class="title_producto_responsive">
+            <h1 id="title_product">{{object.nombre|title}}</h1>
+            <h1 id="precio_product">${{object.precio|floatformat }}</h1>
           </div>
-          <div id="modelo">
-            <h2>Modelo</h2>
-            <h2>{{object.modelo}}</h2>
-          </div>
-          {% if object.año %}
-          <div id="año">
-            <h2>Año</h2>
-            <h2>{{object.año}}</h2>
+          <aside class="nav__images">
+            {% for moto_image in moto_images %}
+            <figure>
+              <img src="{{moto_image.imagen.url}}" alt="" />
+            </figure>
+            {% endfor %}
+          </aside>
+          <article class="complete__image">
+            <img src="" alt="" />
+          </article>
+          {% if object.ficha_tecnica.url != '' %}
+          <div class="detalles">
+            <div class="text">
+              <h5>Te dejamos la ficha tecnica si quieres saber mas...</h5>
+            </div>
+    
+            <div class="ficha_tenica">
+              <img src="{% static 'images/icons/pdf_icon.svg' %}" alt="Icono de PDF" />
+              <a href="{{object.ficha_tecnica.url}}" target="_blank"
+                >{{ficha_tecnica|truncatechars:40}}</a
+              >
+            </div>
           </div>
           {% else %}
           <p></p>
           {% endif %}
-          <div id="km">
-            <h2>Kilómetros</h2>
-            <h2>{{object.kilometros}}KM</h2>
+        </div>
+        
+        <aside class="resumen">
+          <div class="detalle_producto">
+            <h1 id="title_product">{{object.nombre|title}}</h1>
+            <h1 id="precio_product">${{object.precio|floatformat }}</h1>
           </div>
-        </div>
-        <div class="contact">
-          <h3>¿Te ha interesado este producto?</h3>
-          <h3>Completa el siguiente formulario para hacérnolo saber</h3>
-          <form method="POST" id="form_product" name="form_product">
-            {% csrf_token %}
-            <input
-              type="text"
-              name="objetivo"
-              id="objetivo"
-              value=""
-              autocomplete="off"
-              readonly
-            />
-
-            <input
-              type="text"
-              name="nombre_completo"
-              id="nombre"
-              placeholder="Nombre y apeliido"
-              autocomplete="off"
-            />
-
-            <input
-              type="text"
-              name="num_telefono"
-              id="numero"
-              pattern="[0-9]*"
-              placeholder="Telefono"
-              autocomplete="off"
-            />
-
-            <input
-              type="email"
-              name="email"
-              id="correo"
-              placeholder="Email"
-              autocomplete="off"
-            />
-
-            <button type="button" id="form_product_button" class="desactive">
-              Enviar
-            </button>
-            <div class="message_success hide">
-              <h3>¡Tu formulario se ha enviado correctamente!</h3>
-              <h4>Nos comunicaremos contigo mediante un correo</h4>
+          <div class="resumen__detalle">
+            <div id="marca">
+              <h2>Marca</h2>
+              <h2>{{object.marca|title}}</h2>
             </div>
-          </form>
-        </div>
-      </aside>
-
-      {% if object.ficha_tecnica.url != '' %}
-      <div class="detalles">
-        <div class="text">
-          <h5>Te dejamos la ficha tecnica si quieres saber mas...</h5>
-        </div>
-
-        <div class="ficha_tenica">
-          <img src="{% static 'images/icons/pdf_icon.svg' %}" alt="Icono de PDF" />
-          <a href="{{object.ficha_tecnica.url}}" target="_blank"
-            >{{ficha_tecnica|truncatechars:40}}</a
-          >
-        </div>
+            <div id="modelo">
+              <h2>Modelo</h2>
+              <h2>{{object.modelo}}</h2>
+            </div>
+            {% if object.año %}
+            <div id="año">
+              <h2>Año</h2>
+              <h2>{{object.año}}</h2>
+            </div>
+            {% else %}
+            <p></p>
+            {% endif %}
+            <div id="km">
+              <h2>Kilómetros</h2>
+              <h2>{{object.kilometros}}KM</h2>
+            </div>
+          </div>
+          <div class="contact">
+            <h3>¿Te ha interesado este producto?</h3>
+            <h3>Completa el siguiente formulario para hacérnolo saber</h3>
+            <form method="POST" id="form_product" name="form_product">
+              {% csrf_token %}
+              <input
+                type="text"
+                name="objetivo"
+                id="objetivo"
+                value=""
+                autocomplete="off"
+                readonly
+              />
+  
+              <input
+                type="text"
+                name="nombre_completo"
+                id="nombre"
+                placeholder="Nombre y apeliido"
+                autocomplete="off"
+              />
+  
+              <input
+                type="text"
+                name="num_telefono"
+                id="numero"
+                pattern="[0-9]*"
+                placeholder="Telefono"
+                autocomplete="off"
+              />
+  
+              <input
+                type="email"
+                name="email"
+                id="correo"
+                placeholder="Email"
+                autocomplete="off"
+              />
+  
+              <button type="button" id="form_product_button" class="desactive">
+                Enviar
+              </button>
+              <div class="message_success hide">
+                <h3>¡Tu formulario se ha enviado correctamente!</h3>
+                <h4>Nos comunicaremos contigo mediante un correo</h4>
+              </div>
+            </form>
+          </div>
+        </aside>
       </div>
-      {% else %}
-      <p></p>
-      {% endif %}
-    </div>
+    
 
     <script src="{% static 'js/detail_product.js' %}"></script>
     <script src="{% static 'js/header.js' %}"></script>
