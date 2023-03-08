@@ -43,7 +43,7 @@
       <div class="modal_form_container">
         <div class="wrapper_windown_form">
           <div class="window_form">
-            <form action="" method="post">
+            <form action="" method="post" id="form_fetch_post">
               {% csrf_token %}
               <input
                 type="text"
@@ -65,30 +65,51 @@
                 <h3 class="product_selected"></h3>
                 <h3 class="monto_selected"></h3>
               </div>
-              <input
-                type="text"
-                name="nombre_completo"
-                id="nombre_completo"
-                placeholder="Nombre y apeliido"
-                autocomplete="off"
-              />
 
-              <input
-                type="text"
-                name="num_telefono"
-                id="num_telefono"
-                pattern="[0-9]*"
-                placeholder="Telefono"
-                autocomplete="off"
-              />
+              <div class="nombre_completo_container">
+                <input
+                  type="text"
+                  name="nombre_completo"
+                  id="nombre"
+                  placeholder="Nombre y apeliido"
+                  autocomplete="off"
+                  onkeypress='return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122)|| (event.charCode == 241 || event.charCode == 209) || (event.charCode == 32)'
+                />
+                
+              </div>
 
-              <input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="Email"
-                autocomplete="off"
-              />
+              <div class="num_telefono_container">
+                <input
+                  type="text"
+                  name="num_telefono"
+                  id="numero"
+                  pattern="[0-9]*"
+                  placeholder="Telefono"
+                  autocomplete="off"
+                  onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="10"
+                />
+              </div>
+    
+              <div class="email_container">
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Email"
+                  autocomplete="off"
+                />
+                <p>Formato de email no valido</p>
+              </div>
+    
+              <div class="provincia_container">
+                <input 
+                type= "text"
+                name= "provincia"
+                id= "provincia"
+                placeholder= "Provincia"
+                autocomplete= "off"
+                />
+              </div>
 
               <button type="button" id="form_product_button" class="desactive">
                 Enviar
@@ -97,8 +118,15 @@
                 <h3>¡Tu formulario se ha enviado correctamente!</h3>
                 <h4>Nos comunicaremos contigo mediante un correo</h4>
               </div>
+              <div class="message_error hide">
+                <h3>Algo ha salido mal</h3>
+                <h4>Al parecer has colacado mal algun campo. Vuelve a intentarlo</h4>
+                <figure class="image_error">
+                  <img src="{% static 'images/icons/eliminar.svg' %}" alt="pulgar_aprovado">
+                </figure>
+              </div>
             </form>
-            <button type="button" id="close_modal">Cancelar</button>
+            <button type="button" id="close_modal">Salir</button>
           </div>
         </div>
       </div>
@@ -262,7 +290,7 @@
   <script src="{% static 'js/header.js' %}"></script>
   <script src="{% static 'js/modal_form.js' %}"></script>
   <script src="{% static 'js/fetch_form_beneficios.js' %}"></script>
-  <script src="{% static 'js/validate_button_beneficios.js' %}"></script>
+  <script src="{% static 'js/validate_button_products.js' %}"></script>
   <script src="{% static 'js/beneficios_products.js' %}"></script>
   <script src="{% static 'js/menu_hamburguer.js' %}"></script>
 </html>

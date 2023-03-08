@@ -37,6 +37,7 @@ class FormMotos(forms.ModelForm):
         fields =[
             'nombre_completo',
             'email',
+            'provincia',
             'num_telefono',
             'objetivo',
         ]

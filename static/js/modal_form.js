@@ -30,6 +30,7 @@ close_modal.addEventListener("click",()=>{
     background_modal.classList.remove("active_modal");
     modal_window.classList.remove("active_modal");
     message_success.classList.add("hide")
+    message_error.classList.add("hide")
 })
 
 function clearMonto(monto){

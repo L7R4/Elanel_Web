@@ -31,11 +31,11 @@
         padding: 0;
     }
 
-    #form_product{
+    #form_fetch_post{
         padding: 0;
     }
 
-    #form_product > button{
+    #form_fetch_post > button{
         width: 48%;
         margin-bottom: 3%;
         margin-top: 0%;
@@ -192,17 +192,17 @@
     }
 
 
-    #form_product{
+    #form_fetch_post{
         justify-content: center;
         width: 100%;
     }
 
-    #form_product > input{
+    #form_fetch_post > input{
         margin: 1rem 1rem;
         /* max-width: 200px; */
         width: 70%;
     }
-    #form_product > button{
+    #form_fetch_post > button{
         max-width: 180px;
     }
 }

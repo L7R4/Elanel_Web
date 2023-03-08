@@ -58,6 +58,7 @@ src: url("../fonts/Raleway-SemiBold.ttf")
 {
     width: 65%;
     display: flex;
+    position: relative;
     justify-content: space-around;
     margin-top: 4rem;
     align-items: center;
@@ -85,7 +86,8 @@ src: url("../fonts/Raleway-SemiBold.ttf")
     flex-direction: column;
     justify-content: center;
     margin-left: 3rem;
-    row-gap: 2rem;
+    row-gap: 3%;
+    /* padding: 4rem 0; */
     background: white;
     border-bottom-left-radius: 3rem;
     border-top-left-radius: 3rem;
@@ -102,13 +104,13 @@ src: url("../fonts/Raleway-SemiBold.ttf")
     font-size: 2.5rem;
     font-family: raleway-bold;
     height: fit-content;
-    color: var(--pColor);
+    color: var(--sColor);
 }
 #precio_product{
     font-size: 2.2rem;
     font-family: raleway-semibold;
     margin-top: 2%;
-    height: fit-content;
+    /* height: fit-content; */
 }
 .resumen > .resumen__detalle> div{
     display: flex;
@@ -134,36 +136,139 @@ src: url("../fonts/Raleway-SemiBold.ttf")
     font-family: raleway;
     margin-bottom: 2%;
 }
-
-#form_product{
-    margin-top: 5%;
+.form_modal
+{
+    position: fixed;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #000000c2;
     display: flex;
-    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
+    transition: .5s all ease;
 }
 
-#form_product > input{
-    width: 90%;
-    height: 30px;
+.form_modal.active
+{
+    opacity: 1;
+    pointer-events: unset;
+}
+
+#icon_close
+{
+    position: absolute;
+    top: 2rem;
+    right: 3rem;
+    cursor: pointer;
+}
+.contact > button.display_form
+{
+    text-align: center;
+    min-width: 120px;
+    cursor: pointer;
+    color: var(--bgColor);
+    margin-top: 1rem;
+    border-radius: 7px;
+    border-color: var(--sColor);
+    outline: none;
+    background-color: #fff;
+    font-family: raleway-semibold;
+    padding: 0.7rem 1.4rem;
+}
+
+.contact > button.display_form:hover {
+    transition: all 0.2s ease;
+    background-color: var(--sColor);
+    border-color: transparent;
+    box-shadow: 0px 0px 10px 3px #2a87e0c2;
+}
+
+#form_fetch_post > #button_close
+{
+    background-color: transparent;
+    outline: none;
+    border: none;
+    margin-top: 1rem;
+    font-size: 1.6rem;
+    font-family: 'raleway-semibold';
+    cursor: pointer;
+}
+#form_fetch_post > #button_close:hover
+{
+    color: rgb(228, 54, 54);
+}
+
+
+#form_fetch_post{
+    display: flex;
+    width: 30%;
+    height: fit-content;
+    flex-direction: column;
+    padding: 5rem;
+    background: white;
+    border-radius: 4rem;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+#form_fetch_post > h3{
+    font-size: 2rem;
+    font-family: raleway-bold;
+    margin-bottom: 2%;
+}
+#form_fetch_post > div{
+    width: 80%;
+    padding: 1rem 0;
+    position: relative;
+}
+
+#form_fetch_post > div> input{
     font-size: 1.2rem;
     font-family: raleway-semibold;
-    padding: 0 2%;
-    border-radius: 6px;
-    margin-top:1%;
-    margin-bottom: 3%;
+    padding: 1rem;
     border-color:transparent;
     transition: all .4s ease;
+    border: #0b3862 2px solid;
+    width: calc(100% - 2rem );
+    height: 100%;
+    border-radius: 6px;
+
 }
-#form_product > input:focus{
+#form_fetch_post > div>input:focus{
     outline: none;
     transition: all 2 ease;
     box-shadow: 0px 0px 20px 2px #027cf130;
     border-color: #027df15d;
 }
 
-#form_product > button{
+
+#form_fetch_post > div > p
+{
+  display: none;
+  position: absolute;
+  font-family:raleway;
+  font-size: 1.2rem;
+  color: red;
+  /* bottom: -1.3rem; */
+  left: .4rem;
+}
+
+
+#form_fetch_post > div > #email.invalid
+{
+  border: 1px red solid;
+}
+#form_fetch_post > div > #email.invalid ~ p{
+  display: inline;
+}
+
+#form_fetch_post > #form_product_button{
     margin-top: 3%;
-    width: 60%;
+    width: 50%;
     height: 34px;
     border-radius: 6px;
     border-color: transparent;
@@ -171,17 +276,17 @@ src: url("../fonts/Raleway-SemiBold.ttf")
     cursor: pointer;
     background-color: #1c2457;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-family: raleway-semibold;
     transition: all .4s ease;
 }
-#form_product > button.desactive
+#form_fetch_post > #form_product_button.desactive
 {
     background-color: #111842bd;
     pointer-events: none;
 }
 
-#form_product > button:hover{
+#form_fetch_post > #form_product_button:hover{
     transition: all .4s ease;
     background-color: #fff;
     color: #12131b;
@@ -199,10 +304,15 @@ src: url("../fonts/Raleway-SemiBold.ttf")
     align-items: center;
     overflow-y:scroll;
     width: 30%;
-    padding: 2rem 1rem;
+    padding: 0 1rem 2rem 1rem;
     
 }
-#form_product > input#objetivo{
+.nav__images > figure:first-child
+{
+    margin: 0;
+}
+
+#form_fetch_post > input#objetivo{
     position: absolute;
     visibility: hidden;
     width: 1%;
@@ -220,6 +330,9 @@ src: url("../fonts/Raleway-SemiBold.ttf")
 .title_producto_responsive
 {
     display: none;
+    position: absolute;
+    top: 2rem;
+    right: 3rem;
 }
 .nav__images > figure{
     width: 80%;
@@ -241,6 +354,7 @@ src: url("../fonts/Raleway-SemiBold.ttf")
     max-height: 120px;
     height: 100%;
     object-fit: cover;
+    border-radius: 1rem;
 }
 
 
@@ -256,34 +370,39 @@ src: url("../fonts/Raleway-SemiBold.ttf")
 
 
 .detalles{
-    grid-column: span 2;
-    align-self: flex-start;
-    justify-self: flex-start;
-    width: 100%;
-    overflow: hidden;
-    margin-top: 2rem;
+    background-color: #38479e2c;
+    /* padding: 1.3rem; */
+    border-radius: 1rem;
+    /* overflow: hidden; */
 }
-.detalles > .text
+/* .detalles > .text
 {
     width: 100%;
     padding-bottom: 1.1rem;
     padding-top: 1.1rem;
     background-color: #38479e2c;
     padding-left: 3rem;
-}
+} */
 .detalles > .text > h5{
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-family: raleway-semibold;
     
 }
-
+.detalles > .text
+{
+    padding: 1rem 0 1rem 1rem;
+    background-color: #38479e2c;
+    border-radius: 1rem;
+}
 .ficha_tenica
 {
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-top: 1.6rem;
-    margin-left: 6rem;
+    /* margin-top: 1.6rem; */
+    /* margin-left: 6rem; */
+    padding: 1rem;
+    overflow: hidden;
 }
 .ficha_tenica a{
     font-size: 1.3rem;
@@ -317,7 +436,7 @@ src: url("../fonts/Raleway-SemiBold.ttf")
     display: none;
 }
 
-.message_success
+form#form_fetch_post >.message_success
 {
     margin: 0 auto;
     margin-top: 2rem;
@@ -338,6 +457,40 @@ src: url("../fonts/Raleway-SemiBold.ttf")
     text-align: center;
 }
 
+
+.message_error.hide
+{
+    display: none;
+}
+
+form#form_fetch_post >.message_error
+{
+    margin: 0 auto;
+    margin-top: 2rem;
+    background-color: #2124361f;
+    padding: 2rem;
+    border-radius: 20px;
+    border: 1px solid red;
+    box-shadow: 0px 0px 15px 0px #df5151;
+}
+.image_error
+{
+    width: fit-content;
+    margin: 0 auto;
+    margin-top: .5rem;
+}
+.message_error > h3{
+    font-size: 1.7rem;
+    font-family: raleway-bold;
+    color: #f10202;
+    text-align: center;
+}
+.message_error > h4{
+    font-size: 1.5rem;
+    font-family: raleway-semibold;
+    margin-top: .5rem;
+    text-align: center;
+}
 
 
 

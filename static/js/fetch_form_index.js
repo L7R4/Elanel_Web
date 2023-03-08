@@ -1,12 +1,17 @@
-const button_submit = document.getElementById("enviar")
-const inputs_form = document.querySelectorAll(".form_cliente > input[type='text']")
-const form_success = document.querySelector(".form_success")
+const button_submit = document.getElementById("form_product_button")
+const inputs_form = document.querySelectorAll(".form_cliente > div > input[type='text']")
+const form_success = document.querySelector(".form_success_wrapper")
 const close_form_success = document.getElementById("close_form_success")
+const form_error = document.querySelector(".form_error_wrapper")
+const close_form_error = document.getElementById("close_form_error")
 
 button_submit.addEventListener("click", EnviarDatos)
 
 close_form_success.addEventListener("click", ()=>{
     form_success.classList.remove("active")
+})
+close_form_error.addEventListener("click", ()=>{
+    form_error.classList.remove("active")
 })
 
 function getCookie(name) {
@@ -26,7 +31,7 @@ function getCookie(name) {
 }
 
 function EnviarDatos() {
-    var form = new FormData(document.getElementById("form_cliente"))
+    var form = new FormData(document.getElementById("form_fetch_post"))
 
     let post = fetch("/",{
         method: "POST",
@@ -35,10 +40,16 @@ function EnviarDatos() {
             "X-CSRFToken": getCookie('csrftoken')
         }
     })
-    console.log(form.keys)
-    LimpiarDatos()
-    form_success.classList.add("active")
-    
+    .then(response => response.json())
+    .then(data => {
+        if (data) {
+            LimpiarDatos()
+            form_error.classList.add("active")
+        }
+    }).catch(error => {
+        LimpiarDatos()
+        form_success.classList.add("active")
+    })
 }
 
 function LimpiarDatos() {

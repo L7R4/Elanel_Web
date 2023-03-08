@@ -2,8 +2,11 @@ from django.views.generic import View
 from django.shortcuts import render,redirect, HttpResponseRedirect
 from market.models import Post, Moto, NumAdjudicado
 from django.views import generic
+from django.http import HttpResponseRedirect, HttpResponse
 from .forms import FormIndex
 from market.models import Cliente,Post
+
+import json
 
 def page_error(request):
     return render(request, 'pagenotfound.html')
@@ -24,7 +27,10 @@ class IndexView2(View):
                 user.objetivo = form.cleaned_data['objetivo']
                 user.num_telefono = form.cleaned_data['num_telefono']
                 user.save()
-
+            else:
+                message_error = {'meesage_error':"No enviado"}
+                data = json.dumps(message_error)
+                return HttpResponse(data, 'application/json')
         return redirect('index')
 
 

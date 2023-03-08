@@ -73,8 +73,13 @@ class DetalleMoto(generic.DetailView):
                 form_moto.nombre_completo = form.cleaned_data['nombre_completo']
                 form_moto.email = form.cleaned_data['email']
                 form_moto.num_telefono = form.cleaned_data['num_telefono']
+                form_moto.provincia = form.cleaned_data['provincia']
                 form_moto.objetivo = form.cleaned_data['objetivo']
                 form_moto.save()
+            else:
+                message_error = {"message": "No valido"}
+                data = json.dumps(message_error)
+                return HttpResponse(data,"application/json")
 
         return redirect('market:moto',self.object.slug)
 
@@ -206,7 +211,9 @@ class CategoriaBeneficiosCliente(generic.ListView):
                 beneficio.monto = form.cleaned_data['monto']
                 beneficio.save()
             else:
-                print(form)
+                message_error = {"message": "No valido"}
+                data = json.dumps(message_error)
+                return HttpResponse(data,"application/json")
 
         return(render(request,self.template_name))
 
@@ -264,6 +271,9 @@ class TrabajaConNosotros(View):
                 personal.save()
             else:
                 print(form)
+                message_error = {"message": "No valido"}
+                data = json.dumps(message_error)
+                return HttpResponse(data,"application/json")
 
         return(render(request,self.template_name))
 

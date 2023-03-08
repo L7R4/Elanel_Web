@@ -1,8 +1,13 @@
 complete_image = document.querySelector(".complete__image img");
 query_images = document.querySelectorAll(".nav__images figure img")
+let button_display_form = document.querySelector(".display_form")
+let modal_form = document.querySelector(".form_modal")
+let close_buttons_form = document.querySelectorAll(".close_form")
+
+
 complete_image.src = query_images[0].src
 // message_form = document.querySelector(".form_message")
-// form_product = document.querySelector("#form_product")
+// form_fetch_post = document.querySelector("#form_fetch_post")
 query_images.forEach(element => {
     element.addEventListener("mouseover", () =>{
         image_url = element.src
@@ -10,12 +15,21 @@ query_images.forEach(element => {
     })
 });
 
+button_display_form.addEventListener("click", ()=>{
+    modal_form.classList.add("active")
+})
+
+close_buttons_form.forEach(element =>{
+    element.addEventListener("click", () => {
+        element.parentElement.parentElement.classList.remove("active")
+    })
+})
 
 function colocarImage(url) {
     complete_image.src=url
 }
 
 // function form_send(){
-//     form_product.preventDefault()
+//     form_fetch_post.preventDefault()
 //     message_form.style.zIndex ="2"
 // }

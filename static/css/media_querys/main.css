@@ -128,22 +128,24 @@
 
 
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:810px) {
     .naccs{
         padding-bottom: 3rem;
     }
     .formulario{
         flex-flow: column;
+        padding: 3rem 0;
     }
     .formulario form{
         margin: 0;
-        grid-template-columns: repeat(auto-fill,minmax(14rem,1fr));
-        padding: 5% 5%
+        padding: 5% 5%;
+        width: 60%;
     }
 
     .formulario__eslogan{
         font-size: 3rem;
         width: 100%;
+        margin-bottom: 2rem;
     }
 
     .barra{
@@ -157,7 +159,7 @@
     .formulario form >input::placeholder{
         font-size: 1.3rem;
     }
-    .formulario form #enviar{
+    .formulario form #form_product_button{
         width: 44%;
     }
 
@@ -204,12 +206,23 @@
 
 }
 
-@media screen and (max-width:650px){
+@media screen and (max-width:670px){
+    .formulario form{
+        justify-content: center;
+    }
+    .container_nombre_completo,.container_num_telefono,
+    .container_provincia,.container_localidad {
+        min-width:90%;
+    }
+    .container_objetivo,.container_email {
+        min-width: 90%;
+    }
     .ubicacion{
         display: grid;
         height: auto;
         grid-template-columns: repeat(2,minmax(50%,1fr));
         grid-auto-rows: auto;
+        margin-top: 4rem;
     }
     .ubicacion__redes{
         width: 100%;

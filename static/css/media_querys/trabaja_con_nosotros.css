@@ -45,6 +45,7 @@
         display: block;
         margin: 2rem auto;
         width: 70%;
+        max-height: none;
     }
     .formulario-wrapper form > div{
         display: flex;
@@ -57,7 +58,7 @@
         font-size: 1.5rem;
     }
 
-    #send-cv{
+    #form_product_button{
         display: block;
         margin: 0 auto;
         margin-top: 2rem;
@@ -73,5 +74,9 @@
     }
     .trabaja__texto p {
         font-size: 1.5rem;
+    }
+    .inputs_texts > div> label
+    {
+        display: block;
     }
 }

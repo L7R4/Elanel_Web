@@ -90,6 +90,8 @@
   margin-bottom: 2rem;
   text-align: center;
   filter: drop-shadow(0px 0px 20px #02e3f5);
+  /* filter: drop-shadow(0px 13px 60px #fff); */
+
 }
 .portada_description h3
 {
@@ -241,7 +243,7 @@
   align-items: center;
 }
 
-.window_form form > input{
+/* .window_form form > input{
   width: 70%;
   height: 30px;
   font-size: 1.2rem;
@@ -252,9 +254,25 @@
   margin-bottom: 3%;
   border-color: #0000002e;
   transition: all .4s ease;
+} */
+.window_form > #form_fetch_post > div{
+  width: 80%;
+  padding: 1rem 0;
+  position: relative;
 }
-.window_form form > input:focus{
 
+.window_form > #form_fetch_post > div> input{
+  font-size: 1.2rem;
+  font-family: raleway-semibold;
+  padding: 1rem;
+  border-color:transparent;
+  transition: all .4s ease;
+  border: #0b3862 2px solid;
+  width: calc(100% - 2rem );
+  border-radius: 6px;
+
+}
+.window_form > #form_fetch_post > div > input:focus{
   outline: none;
   transition: all 1 ease;
   box-shadow: 0px 0px 20px 2px #027cf130;
@@ -274,6 +292,26 @@
   width: 60%;
 }
 
+#form_fetch_post > div > p
+{
+  display: none;
+  position: absolute;
+  font-family:raleway;
+  font-size: 1.2rem;
+  color: red;
+  /* bottom: -1.3rem; */
+  left: .4rem;
+}
+
+
+#form_fetch_post > div > #email.invalid
+{
+  border: 1px red solid;
+}
+#form_fetch_post > div > #email.invalid ~ p{
+  display: inline;
+}
+
 
 #form_product_button.desactive
 {
@@ -289,11 +327,45 @@
   box-shadow: 0px 0px 10px 3px #2a87e0c2;
 
 }
-.window_form form > input:nth-child(2)
+.window_form > #form_fetch_post > div > input:nth-child(2)
 {
   margin-top: 2rem;
 }
 
+.message_error.hide
+{
+    display: none;
+}
+
+form#form_fetch_post >.message_error
+{
+    margin: 0 auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background-color: #2124361f;
+    padding: 2rem;
+    border-radius: 20px;
+    border: 1px solid red;
+    box-shadow: 0px 0px 15px 0px #df5151;
+}
+.image_error
+{
+    width: fit-content;
+    margin: 0 auto;
+    margin-top: .5rem;
+}
+.message_error > h3{
+    font-size: 1.7rem;
+    font-family: raleway-bold;
+    color: #f10202;
+    text-align: center;
+}
+.message_error > h4{
+    font-size: 1.5rem;
+    font-family: raleway-semibold;
+    margin-top: .5rem;
+    text-align: center;
+}
 
 .window_form{
   height: 100%;
@@ -375,7 +447,7 @@
     display: none;
 }
 
-.message_success
+.window_form > #form_fetch_post > div.message_success
 {
     margin: 0 auto;
     /* margin-top: 2rem; */
@@ -470,7 +542,7 @@
   font-family: raleway-bold;
   margin-top: 2rem;
 }
-.container_product
+.window_form > #form_fetch_post > div.container_product
 {
   display: flex;
   /* margin-top: .5rem; */

@@ -116,7 +116,7 @@
         font-size: 2.6rem;
         font-family: raleway-bold;
     }
-    #form_product
+    #form_fetch_post
     {
         display: flex;
         flex-flow: column;
@@ -128,7 +128,7 @@
         position: absolute;
         visibility: hidden;
     }
-    #form_product >input
+    #form_fetch_post >input
     {
         width: 80%;
         height: 34px;
@@ -142,7 +142,7 @@
         transition: all .4s ease;
     }
 
-    #form_product >input:focus
+    #form_fetch_post >input:focus
     {
         outline: none;
         transition: all 2 ease;
