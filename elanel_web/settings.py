@@ -20,7 +20,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG =os.environ.get("DEBUG")
 # DEBUG =False
 
-ALLOWED_HOSTS = ['192.168.0.163']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'market',
     'rangefilter',
     'django_quill',
+    'django.contrib.humanize',
 ]
 
 JAZZMIN_SETTINGS ={

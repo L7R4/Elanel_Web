@@ -16,7 +16,7 @@
     font-feature-settings: 'pnum' on, 'lnum' on;
 }
 .catalogo a > article{
-    height: 25rem;
+    /* height: 25rem; */
     justify-content: center;
 }
 .catalogo a > article > img{
