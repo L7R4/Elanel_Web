@@ -248,18 +248,20 @@ img.active {
 
 .text h5 {
   text-align: center;
-  color: var(--bgColor);
+  color: #1a73e8;
   font-family: raleway-bold;
-  font-size: 2.7rem;
+  font-size: 3rem;
   margin-bottom: 1.4rem;
+  filter: drop-shadow(0px 0px 1px #6295d6);
 }
 
 .text p {
   text-align: center;
   color: var(--bgColor);
   font-family: raleway;
-  font-size: 1.06vw;
-  font-weight: 700;
+  font-size: 1.7rem;
+  font-weight: 600;
+  line-height: 1.5 ;
 }
 
 .text button {

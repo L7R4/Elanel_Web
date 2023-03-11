@@ -208,13 +208,16 @@
 .modal_form_container{
   position: fixed;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-color: #111111bd;
-  z-index: 10;
-  top: 65px;
+  z-index: 101;
   opacity: 0;
+  top: 0;
   pointer-events: none;
   transition: .4s all ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .modal_form_container.active_modal{
   opacity: 1;
@@ -222,20 +225,19 @@
 }
 
 .wrapper_windown_form{
-  position: relative;
-  height: 0rem;
-  width: 0rem;
-  margin: 0 auto;
-  top: calc(16% - 65px);
+  width: 40rem;
+  opacity: 0;
   transition: .4s all ease;
   z-index: 10;
+  pointer-events: none;
 }
 .wrapper_windown_form.active_modal{
-  height: 50rem;
-  width: 40rem;
+  opacity: 1;
+  pointer-events: all;
 }
 
 .window_form form{
+  height: fit-content;
   display: flex;
   flex-flow: column;
   width: 100%;
@@ -287,7 +289,7 @@
   background-color: #fff;
   font-family: raleway-semibold;
   padding: 2.5% 3rem;
-  margin: 2rem auto;
+  margin: 1.2rem auto;
   display: block;
   width: 60%;
 }
@@ -368,18 +370,18 @@ form#form_fetch_post >.message_error
 }
 
 .window_form{
-  height: 100%;
+  /* height: 100%; */
   width: 100%;
   background-color: white;
   border: #027cf1 2px solid;
   box-shadow: 0px 0px 20px 2px #027cf130;
   margin: auto;
-  position: absolute;
   display: flex;
   flex-flow: column;
   align-items: center;
   border-radius: 10px;
   overflow-y: auto;
+  padding-bottom: 1rem;
 }
 .window_form > .contacto
 {
@@ -433,8 +435,6 @@ form#form_fetch_post >.message_error
     font-size: 1.7rem;
     color: #ece7e7;
     cursor: pointer;
-    margin-top: auto;
-    margin-bottom: 4rem;
     height: 3.4rem;
     min-height: 3.4rem;
     border-radius: 10px;

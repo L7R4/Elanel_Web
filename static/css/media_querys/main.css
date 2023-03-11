@@ -1,18 +1,4 @@
-@media screen and (max-width: 960px){
-    .slider-container{
-        height: 385px;
-    }
-    .formulario__eslogan{
-        font-size: 3rem;
-    }
-    .wrapper_windown_whatsapp{
-        width: 42%;
-    }
-}
-
-
-@media screen and (max-width: 900px) {
-    
+@media screen and (max-width: 1200px){
     .naccs{
         display: flex;
         flex-flow: column;
@@ -83,6 +69,24 @@
     .container_slider_motos{
         width: 100%;
     }
+}
+
+@media screen and (max-width: 960px){
+    .slider-container{
+        height: 385px;
+    }
+    .formulario__eslogan{
+        font-size: 3rem;
+    }
+    .wrapper_windown_whatsapp{
+        width: 42%;
+    }
+}
+
+
+@media screen and (max-width: 900px) {
+    
+    
 
     .ubicacion__redes__text{
         display: none;

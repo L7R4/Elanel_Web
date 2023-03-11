@@ -1,17 +1,5 @@
 @media screen and (max-width:940px) {
-    /* .items__menu a{
-        font-size: 1.5rem;
-    }
-    .items__menu img{
-        height: 1.8rem;
-        width: 1.8rem;
-    }
-    .items a{
-        font-size: 1.5rem;
-    }
-    .menu_categoria li a,.menu_contactanos li a{
-        font-size: 1.3rem;
-    } */
+   
     .header__nav > ol{
         justify-content: space-between;
     }
@@ -47,7 +35,7 @@
     }
     
     .items{
-        margin: 12% 0;
+        margin: 2.3rem 0;
     }
     
     .items__menu a{
@@ -61,7 +49,7 @@
         top: 0%;
     }
     .items__menu{
-        margin: 12% 0;
+        margin: 2.3rem 0;
         position: relative;
     }
     .items__menu > img

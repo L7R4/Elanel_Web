@@ -166,6 +166,7 @@ article.contactanos>.corrientes{
     background-color: #212436;
     width: 40%;
     height: 100%;
+    overflow-y: auto;
 }
 
 .preguntas_frecuentes > ul{
