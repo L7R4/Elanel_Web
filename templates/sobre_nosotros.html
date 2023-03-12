@@ -35,10 +35,7 @@
         </figure> {% endcomment %}
         <h1>Quienes <strong>Somos</strong></h1>
         <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos,
-          tempora eos aspernatur modi architecto ea asperiores suscipit
-          nesciunt. Voluptate nesciunt molestiae blanditiis in voluptates
-          accusamus at magnam, possimus dignissimos vel.
+          Bienvenidos a Elanel, tu tienda en línea de confianza. Aquí encontrarás una amplia variedad de productos de alta calidad, desde motocicletas hasta electrodomésticos, y también ofrecemos ayuda dineraria y servicio técnico. Además, nuestros clientes disfrutan de beneficios exclusivos y ofertas especiales. <br><strong>¡Compra con confianza en Elanel!</strong>
         </p>
       </section>
       <section class="two_section">
@@ -163,17 +160,17 @@
       </div>
       <div class="footer__categorias">
         <ul>
-          <li class="footer__motos">
-            <a href="#">Motos</a>
+          <li class="footer__motos"> 
+            <a href="{% url 'market:motos' %}">Motos</a>
           </li>
-          <li class="footer__soluciones-dinerarias">
-            <a href="#">Soluciones Dinerarias</a>
+          <li class="footer__soluciones-dinerarias"> 
+            <a href="{% url 'market:soluciones_dinerarias' %}">Soluciones Dinerarias</a>
           </li>
-          <li class="footer__electrodomesticos">
-            <a href="#">Electrodomesticos</a>
+          <li class="footer__electrodomesticos"> 
+            <a href="{% url 'market:electrodomesticos' %}">Electrodomesticos</a>
           </li>
-          <li class="footer__beneficios-para-cliente">
-            <a href="#">Beneficios para cliente</a>
+          <li class="footer__beneficios-para-cliente"> 
+            <a href="{% url 'market:beneficios' %}">Beneficios para cliente</a>
           </li>
         </ul>
       </div>
@@ -185,9 +182,6 @@
           </li>
           <li class="footer__vision">
             <a href="">Vision</a>
-          </li>
-          <li class="footer__adjudicados">
-            <a href="">Adjudicados</a>
           </li>
         </ul>
       </div>

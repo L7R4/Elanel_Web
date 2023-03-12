@@ -9,6 +9,10 @@
 
 
 @media screen and (max-width:630px) {
+    .one_section > p
+    {
+        text-align: start;
+    }
     .one_section figure img{
         width: auto;
     }

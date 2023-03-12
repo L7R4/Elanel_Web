@@ -80,7 +80,7 @@ html {
 
 .one_section > h1 {
   font-family: babapro;
-  font-size: 7rem;
+  font-size: 8rem;
   color: white;
   text-align: center;
   margin-bottom: 2%;
@@ -92,10 +92,12 @@ html {
   font-size: 1.8rem;
   font-family: raleway;
   color: white;
+  text-align: center;
+  line-height: 1.5;
 }
 
 .one_section > h1 > strong {
-  font-size: 7rem;
+  font-size: 8rem;
   color: #027cf1;
 }
 
@@ -115,6 +117,8 @@ html {
   font-size: 1.8rem;
   font-family: raleway;
   color: white;
+  line-height: 1.4;
+  text-align: center;
 }
 
 .three_section {
@@ -138,10 +142,11 @@ html {
 }
 .three_section > div > p {
   color: #e8e8e8;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-family: raleway;
   width: 80%;
   max-width: 700px;
+  line-height: 1.4;
 }
 
 .four_section {

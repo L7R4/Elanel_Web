@@ -1,6 +1,7 @@
 const button_submit = document.getElementById("form_product_button")
-const inputs_form = document.querySelectorAll(".window_form > form > input[type='text'] , .window_form > form >input[type='email']")
+const inputs_form = document.querySelectorAll(".window_form > #form_fetch_post input[type='text'] , .window_form > #form_fetch_post input[type='email']")
 const message_success = document.querySelector(".message_success")
+const message_error = document.querySelector(".message_error")
 
 button_submit.addEventListener("click", EnviarDatos)
 var url = window.location.pathname;
@@ -31,8 +32,18 @@ function EnviarDatos() {
             "X-CSRFToken": getCookie('csrftoken')
         }
     })
-    LimpiarDatos()
-    message_success.classList.remove("hide")
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+        if (data) {
+            LimpiarDatos()
+            message_error.classList.remove("hide")
+        }
+    }).catch(error => {
+        LimpiarDatos()
+        message_error.classList.add("hide")
+        message_success.classList.remove("hide")
+    })
     
 }
 

@@ -6,6 +6,7 @@ from django.db import models
 # from django.template.defaultfilters import slugify
 from django.utils.text import slugify
 from django_quill.fields import QuillField
+from django.core.validators import RegexValidator
 import datetime
 
 
@@ -115,34 +116,34 @@ class SolucionDineraria(models.Model):
 
 class BeneficioParaCliente(models.Model):
     fecha = models.DateTimeField(auto_now_add = True)
-    nombre_completo = models.CharField(max_length= 120)
+    nombre_completo = models.CharField(max_length= 120,validators=[RegexValidator(r'^[a-zA-ZñÑ ]+$', 'Ingrese solo letras')])
     email = models.EmailField(max_length=200) 
     servicio = models.CharField(max_length=254)
     producto = models.CharField(max_length=80, default="")
-    monto = models.FloatField(default=0)
-    num_telefono = models.CharField(max_length=15)
+    monto = models.FloatField(validators=[RegexValidator(r'^\d+(\.\d+)?$', 'Ingrese un número válido')])
+    num_telefono = models.CharField(max_length=10,validators=[RegexValidator(r'^\d+(\.\d+)?$', 'Ingrese un número válido')])
     
     def __str__(self):
         return self.email + ' // ' + self.servicio
 
 
 class Cliente(models.Model):
-    nombre_completo = models.CharField(max_length= 120, default="")
-    dni = models.CharField(max_length=8, blank=True, null=True)
-    provincia = models.CharField(max_length=50,blank=True, null=True)  
-    localidad = models.CharField(max_length=50,blank=True, null=True)  
+    nombre_completo = models.CharField(max_length= 120, default="", validators=[RegexValidator(r'^[a-zA-ZñÑ ]+$', 'Ingrese solo letras')])
+    dni = models.CharField(max_length=8, blank=True, null=True, validators=[RegexValidator(r'^\d+(\.\d+)?$', 'Ingrese un número válido')])
+    provincia = models.CharField(max_length=50,blank=True, null=True, validators=[RegexValidator(r'^[a-zA-ZñÑ ]+$', 'Ingrese solo letras')])  
+    localidad = models.CharField(max_length=50,blank=True, null=True, validators=[RegexValidator(r'^[a-zA-ZñÑ ]+$', 'Ingrese solo letras')])  
     email = models.EmailField(max_length=200,blank=True, null=True) 
     objetivo = models.CharField(max_length=254)
-    num_telefono = models.CharField(max_length=15,blank=True, null=True)
+    num_telefono = models.CharField(blank=True, null=True, validators=[RegexValidator(r'^\d+(\.\d+)?$', 'Ingrese un número válido')], max_length=10)
     fecha = models.DateTimeField(auto_now_add = True)
 
     def __str__(self):
         return self.nombre_completo
 
 class Personal(models.Model):
-    nombre_completo = models.CharField(max_length= 120, default="")
+    nombre_completo = models.CharField(max_length= 120, default="", validators=[RegexValidator(r'^[a-zA-ZñÑ ]+$', 'Ingrese solo letras')])
     email = models.EmailField(max_length=200) 
-    num_telefono = models.CharField(max_length=15)
+    num_telefono = models.CharField(max_length=10, validators=[RegexValidator(r'^\d+(\.\d+)?$', 'Ingrese un número válido')])
     fecha = models.DateTimeField(auto_now_add = True)
     cv = models.FileField(upload_to="archivos/cv/", default=None, blank=False)
 

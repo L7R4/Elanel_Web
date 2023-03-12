@@ -192,7 +192,7 @@ html {
   grid-template-columns: 30% 68%;
   grid-column-gap: 2%;
   grid-template-areas: "menu detalle";
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .menu {
@@ -248,18 +248,20 @@ img.active {
 
 .text h5 {
   text-align: center;
-  color: var(--bgColor);
+  color: #1a73e8;
   font-family: raleway-bold;
-  font-size: 2.7rem;
+  font-size: 3rem;
   margin-bottom: 1.4rem;
+  filter: drop-shadow(0px 0px 1px #6295d6);
 }
 
 .text p {
   text-align: center;
   color: var(--bgColor);
   font-family: raleway;
-  font-size: 1.06vw;
-  font-weight: 700;
+  font-size: 1.7rem;
+  font-weight: 600;
+  line-height: 1.5 ;
 }
 
 .text button {
@@ -773,55 +775,87 @@ img.active {
   /* width: 20%; */
   font-family: raleway-semibold;
   font-weight: 500;
-  font-size: 1.6rem;
-  grid-area: subtitulo;
-  align-self: flex-end;
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
 .formulario form {
   background-color: var(--secondBgColor);
-  margin-right: 8%;
+  margin-right: 1rem;
   min-width: 300px;
   box-shadow: 0px 0px 20px 2px #027cf130;
+  /* min-height: 25rem; */
+  padding: 4rem;
   border-radius: 6px;
   max-width: 600px;
   border-color: transparent;
-  padding: 5% 3%;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(16rem, 1fr));
-  grid-auto-rows: 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 4%;
+  row-gap: 1.3rem;
   width: 50%;
-  grid-template-areas:
-    "subtitulo subtitulo"
-    "nameSurname telefono"
-    "email email"
-    "provincia localidad"
-    "objetivo objetivo"
-    "enviar enviar";
-  grid-row-gap: 1rem;
-  grid-column-gap: 1.5rem;
 }
 
-.formulario form #email {
-  grid-area: email;
+.formulario form > div
+{
+  position: relative;
+  padding: 0.3rem 0;
+  /* overflow: hidden; */
+
+
 }
-.formulario form #nameSurname {
-  grid-area: nameSurname;
+
+
+.formulario form > div > input {
+  font-weight: 600;
+  font-size: 1.6rem;
+  border-color: transparent;
+
+  font-family: raleway;
+  outline: none;
+  /* padding: .8rem; */
+  height: 3.4rem;
+  padding-left: 1.5rem;
+  width: calc(100% - 1.5rem);
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px 0px #23252647;
 }
-.formulario form #telefono {
-  grid-area: telefono;
+
+
+.container_objetivo,.container_email {
+  min-width: 100%;
 }
-.formulario form #objetivo {
-  grid-area: objetivo;
+
+
+
+.container_nombre_completo,.container_num_telefono,
+.container_provincia,.container_localidad {
+  min-width: 48%;
 }
-.formulario form #provincia {
-  grid-area: provincia;
+
+
+.formulario form #email.invalid
+{
+  border: 1px red solid;
 }
-.formulario form #localidad {
-  grid-area: localidad;
+.formulario form #email.invalid ~ p{
+  display: inline;
 }
-.formulario form #enviar {
-  grid-area: enviar;
+
+.formulario form > div > p
+{
+  display: none;
+  position: absolute;
+  font-family:raleway;
+  font-size: 1.2rem;
+  color: red;
+  bottom: -1.3rem;
+  left: .4rem;
+}
+
+.formulario form #form_product_button {
+  grid-area: form_product_button;
   border-color: transparent;
   width: 30%;
   font-weight: 600;
@@ -829,14 +863,14 @@ img.active {
   font-size: 1.7rem;
   color: #ece7e7;
   cursor: pointer;
-  padding: 0;
+  padding: .7rem 0;
   border-radius: 8px;
 }
-.formulario form #enviar.desactive {
+.formulario form #form_product_button.desactive {
   background-color: #111842bd;
   pointer-events: none;
 }
-.formulario form #enviar:hover {
+.formulario form #form_product_button:hover {
   transition: all 0.4s ease;
   background-color: #fff;
   color: #12131b;
@@ -844,13 +878,26 @@ img.active {
   border-color: #027df15d;
 }
 
-.form_success {
-  position: absolute;
-  z-index: 10;
-  top: 30%;
-  right: -100%;
-  background-color: #212436;
+.form_success_wrapper
+{
+  position: fixed;
+  top: 0;
+  right: 0%;
+  z-index: 20;
+  height: 100vh;
+  width: 100%;
+  background-color: #212436a1;
   transition: 0.4s all ease-in;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+.form_success {
+  background-color: #212436;
   border-radius: 20px;
   display: flex;
   flex-flow: column;
@@ -858,8 +905,9 @@ img.active {
   align-items: center;
   padding: 2rem 0;
 }
-.form_success.active {
-  right: 0%;
+.form_success_wrapper.active {
+  opacity: 1;
+  pointer-events: all;
 }
 .form_success > .text_thanks {
   width: 90%;
@@ -900,23 +948,78 @@ img.active {
   padding: 0.7rem 2%;
 }
 
-.formulario form > input {
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px 0px #23252647;
-  font-weight: 600;
-  font-size: 1.6rem;
-  border-color: transparent;
-  font-family: raleway;
-  outline: none;
-  padding-left: 10px;
+.form_error_wrapper
+{
+  position: fixed;
+  top: 0;
+  right: 0%;
+  z-index: 20;
+  height: 100vh;
+  width: 100%;
+  background-color: #212436a1;
+  transition: 0.4s all ease-in;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
 }
-.formulario form > input::placeholder {
+
+.form_error {
+  background-color: #fcf9f9;
+  border-radius: 20px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+  border: 1px solid red;
+  box-shadow: 0px 0px 15px 0px #df5151;
+}
+.form_error_wrapper.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.form_error > .text_error {
+  width: 90%;
+  text-align: center;
+}
+.text_error > h3 {
+  font-size: 1.6rem;
+  font-family: raleway-bold;
+  color: #f70909;
+  margin-bottom: 1rem;
+}
+.text_error > h4 {
+  font-size: 1.5rem;
+  width: 90%;
+  font-family: raleway-semibold;
+  color: black;
+  margin: 0 auto;
+}
+#close_form_error
+{
+  text-align: center;
+  min-width: 120px;
+  cursor: pointer;
+  color: var(--bgColor);
+  margin-top: 1rem;
+  border-radius: 7px;
+  border-color: red;
+  outline: none;
+  background-color: #fff;
+  font-family: raleway-semibold;
+  padding: 0.7rem 2%;
+}
+
+
+.formulario form > div > input::placeholder {
   font-weight: 500;
   font-size: 1.5rem;
   border-color: #12131b37;
   font-family: raleway;
 }
-.formulario form > input:focus {
+.formulario form > div > input:focus  {
   border: solid 1px var(--sColor);
 }
 

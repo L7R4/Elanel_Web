@@ -23,71 +23,114 @@
   </head>
   <body>
     {% include 'nav.html' %}
+      <div class="wrapper">
 
-    <div class="wrapper">
-      <div class="title_producto_responsive">
-        <h1 id="title_product">{{object.nombre|title}}</h1>
-        <h1 id="precio_product">${{object.precio|floatformat }}</h1>
-      </div>
-      <aside class="nav__images">
-        {% for moto_image in moto_images %}
-        <figure>
-          <img src="{{moto_image.imagen.url}}" alt="" />
-        </figure>
-        {% endfor %}
-      </aside>
-      <article class="complete__image">
-        <img src="" alt="" />
-      </article>
-      <aside class="resumen">
-        <div class="detalle_producto">
-          <h1 id="title_product">{{object.nombre|title}}</h1>
-          <h1 id="precio_product">${{object.precio|floatformat }}</h1>
+        <div class="products_images">
+          
+          <aside class="nav__images">
+            {% for moto_image in moto_images %}
+            <figure>
+              <img src="{{moto_image.imagen.url}}" alt="" />
+            </figure>
+            {% endfor %}
+          </aside>
+
+          <article class="complete__image">
+            <img src="" alt="" />
+          </article>
+
+          <div class="title_producto_responsive">
+            <h1 id="title_product">{{object.nombre|title}}</h1>
+            <h1 id="precio_product">${{object.precio|floatformat }}</h1>
+          </div>
+
         </div>
-        <div class="resumen__detalle">
-          <div id="marca">
-            <h2>Marca</h2>
-            <h2>{{object.marca|title}}</h2>
+        
+        <aside class="resumen">
+
+          <div class="detalle_producto">
+            <h1 id="title_product">{{object.nombre|title}}</h1>
+            <h1 id="precio_product">${{object.precio|floatformat }}</h1>
           </div>
-          <div id="modelo">
-            <h2>Modelo</h2>
-            <h2>{{object.modelo}}</h2>
+
+          <div class="resumen__detalle">
+            <div id="marca">
+              <h2>Marca</h2>
+              <h2>{{object.marca|title}}</h2>
+            </div>
+            <div id="modelo">
+              <h2>Modelo</h2>
+              <h2>{{object.modelo}}</h2>
+            </div>
+            {% if object.año %}
+            <div id="año">
+              <h2>Año</h2>
+              <h2>{{object.año}}</h2>
+            </div>
+            {% else %}
+            <p></p>
+            {% endif %}
+            <div id="km">
+              <h2>Kilómetros</h2>
+              <h2>{{object.kilometros}}KM</h2>
+            </div>
           </div>
-          {% if object.año %}
-          <div id="año">
-            <h2>Año</h2>
-            <h2>{{object.año}}</h2>
+
+          {% if object.ficha_tecnica.url != '' %}
+          <div class="detalles">
+            <div class="text">
+              <h5> Ficha técnica </h5>
+            </div>
+    
+            <div class="ficha_tenica">
+              <img src="{% static 'images/icons/pdf_icon.svg' %}" alt="Icono de PDF" />
+              <a href="{{object.ficha_tecnica.url}}" target="_blank"
+                >{{ficha_tecnica|truncatechars:40}}</a
+              >
+            </div>
           </div>
+
           {% else %}
           <p></p>
           {% endif %}
-          <div id="km">
-            <h2>Kilómetros</h2>
-            <h2>{{object.kilometros}}KM</h2>
+          <div class="contact">
+            <h3>¿Te ha interesado este producto?</h3>
+            <h3>Completa el siguiente formulario para hacérnolo saber</h3>
+            <button class="display_form" type="button">
+                Completar formulario
+            </button>
           </div>
-        </div>
-        <div class="contact">
-          <h3>¿Te ha interesado este producto?</h3>
-          <h3>Completa el siguiente formulario para hacérnolo saber</h3>
-          <form method="POST" id="form_product" name="form_product">
-            {% csrf_token %}
-            <input
-              type="text"
-              name="objetivo"
-              id="objetivo"
-              value=""
-              autocomplete="off"
-              readonly
-            />
 
+        </aside>
+
+      </div>
+      <div class="form_modal">
+        <form method="POST" id="form_fetch_post" name="form_fetch_post">
+          <i class="close_form" id="icon_close">
+            <img src="{% static 'images/icons/cancel.svg' %}" alt="">
+          </i>
+          <h3>INGRESA TUS DATOS</h3>
+          {% csrf_token %}
+          <input
+            type="text"
+            name="objetivo"
+            id="objetivo"
+            value=""
+            autocomplete="off"
+            readonly
+          />
+          <div class="nombre_completo_container">
             <input
               type="text"
               name="nombre_completo"
               id="nombre"
               placeholder="Nombre y apeliido"
               autocomplete="off"
+              onkeypress='return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122)|| (event.charCode == 241 || event.charCode == 209) || (event.charCode == 32)'
             />
-
+            
+          </div>
+          <div class="num_telefono_container">
             <input
               type="text"
               name="num_telefono"
@@ -95,44 +138,52 @@
               pattern="[0-9]*"
               placeholder="Telefono"
               autocomplete="off"
+              onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="10"
             />
+          </div>
 
+          <div class="email_container">
             <input
               type="email"
               name="email"
-              id="correo"
+              id="email"
               placeholder="Email"
               autocomplete="off"
             />
+            <p>Formato de email no valido</p>
+          </div>
 
-            <button type="button" id="form_product_button" class="desactive">
-              Enviar
-            </button>
-            <div class="message_success hide">
-              <h3>¡Tu formulario se ha enviado correctamente!</h3>
-              <h4>Nos comunicaremos contigo mediante un correo</h4>
-            </div>
-          </form>
-        </div>
-      </aside>
+          <div class="provincia_container">
+            <input 
+            type= "text"
+            name= "provincia"
+            id= "provincia"
+            placeholder= "Provincia"
+            autocomplete= "off"
+            />
+          </div>
 
-      {% if object.ficha_tecnica.url != '' %}
-      <div class="detalles">
-        <div class="text">
-          <h5>Te dejamos la ficha tecnica si quieres saber mas...</h5>
-        </div>
+          <button type="button" id="form_product_button" class="desactive">
+            Enviar
+          </button>
 
-        <div class="ficha_tenica">
-          <img src="{% static 'images/icons/pdf_icon.svg' %}" alt="Icono de PDF" />
-          <a href="{{object.ficha_tecnica.url}}" target="_blank"
-            >{{ficha_tecnica|truncatechars:40}}</a
-          >
-        </div>
+          <button class="close_form" id="button_close" type="button">
+            Cerrar
+          </button>
+
+          <div class="message_success hide">
+            <h3>¡Tu formulario se ha enviado correctamente!</h3>
+            <h4>Nos comunicaremos contigo mediante un correo</h4>
+          </div>
+          <div class="message_error hide">
+            <h3>Algo ha salido mal</h3>
+            <h4>Al parecer has colacado mal algun campo. Vuelve a intentarlo</h4>
+            <figure class="image_error">
+              <img src="{% static 'images/icons/eliminar.svg' %}" alt="pulgar_aprovado">
+            </figure>
+          </div>
+        </form>
       </div>
-      {% else %}
-      <p></p>
-      {% endif %}
-    </div>
 
     <script src="{% static 'js/detail_product.js' %}"></script>
     <script src="{% static 'js/header.js' %}"></script>

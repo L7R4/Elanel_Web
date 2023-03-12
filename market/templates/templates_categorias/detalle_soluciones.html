@@ -42,7 +42,7 @@
           <div class="contact">
             <h3>¿Te ha interesado este producto?</h3>
             <h3>Completa el siguiente formulario para hacérnolo saber</h3>
-            <form action="" method="POST" id="form_product" name="form_product">
+            <form action="" method="POST" id="form_fetch_post" name="form_fetch_post">
               {% csrf_token %}
               <input
                 type="text"
@@ -79,7 +79,7 @@
               />
 
               <button type="button" id="form_product_button" class="desactive">
-                Enviar
+                form_product_button
               </button>
               <div class="message_success hide">
                 <h3>¡Tu formulario se ha enviado correctamente!</h3>

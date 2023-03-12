@@ -7,15 +7,12 @@ const image_cv = document.querySelector(".cv_field label img")
 button_cv.addEventListener("click",function(){
     cv.click()
 })
-// button_cv.addEventListener("touch",function(){
-//     cv.touch()
-// })
+
 cv.addEventListener("change",function(){
     if (cv_element.textContent != "") {
         url = document.createTextNode(cv.files[0].name)
         cv_element.textContent = ""
         cv_element.appendChild(url)
-    
     }
     else{
         let url = document.createTextNode(cv.files[0].name)

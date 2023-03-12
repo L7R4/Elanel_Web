@@ -50,7 +50,7 @@ html{
     grid-template-columns: repeat(auto-fill,minmax(28rem,1fr));
     gap: 2rem;
     row-gap: 5rem;
-    margin: 7vh auto 3vh auto;
+    margin: 9vh auto 3vh auto;
     width: 80%;
 }
 

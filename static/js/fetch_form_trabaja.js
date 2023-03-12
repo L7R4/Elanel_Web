@@ -1,9 +1,22 @@
-const button_submit = document.getElementById("send-cv")
-const inputs_form = document.querySelectorAll(".form > input[type='text'], .form > input[type='email']")
-const message_success = document.querySelector(".message_success")
+const button_submit = document.getElementById("form_product_button")
+const inputs_form = document.querySelectorAll("#form_fetch_post input[type='text'], #form_fetch_post input[type='email'], #form_fetch_post input[type='file']")
+const message_success = document.querySelector(".form_success_wrapper")
+const message_error = document.querySelector(".form_error_wrapper")
+const button_close_error = document.querySelector("#close_form_error")
+const button_close_success = document.querySelector("#close_form_success")
 
 button_submit.addEventListener("click", EnviarDatos)
+button_close_error.addEventListener("click",()=>{
+    message_error.classList.remove("show")
+    
+})
+button_close_success.addEventListener("click",()=>{
+    message_success.classList.remove("show")
+    
+})
+
 var url = window.location.pathname;
+
 
 function getCookie(name) {
     let cookieValue = null;
@@ -31,8 +44,23 @@ function EnviarDatos() {
             "X-CSRFToken": getCookie('csrftoken')
         }
     })
-    LimpiarDatos()
-    message_success.classList.remove("hide")
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+        if (data) {
+            LimpiarDatos()
+            message_error.classList.add("show")
+            parent_cv.removeChild(cv_element)
+            image_cv.setAttribute("src","/static/images/icons/cv_icon.svg")
+        }
+    }).catch(error => {
+        LimpiarDatos()
+        message_error.classList.remove("show")
+        message_success.classList.add("show")
+        parent_cv.removeChild(cv_element)
+        image_cv.setAttribute("src","/static/images/icons/cv_icon.svg")
+        // image_cv.setAttribute("src","/static/images/icons/cv_icon.svg")
+    })
     
 }
 
