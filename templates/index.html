@@ -16,7 +16,7 @@
 </head>
 <body>
   <figure class="logo__background">
-    <img src="{% static 'images/fwd/icono.sinfondo.png' %}" alt="">
+    <img src="{% static 'images/fwd/iconosinfondo(2).png' %}" alt="">
   </figure> 
   
   {% include 'nav.html' %}
@@ -244,7 +244,7 @@
             <div class="text">
               <h5>SOLUCIONES FINANCIERAS A SU MEDIDA</h5>
               <p>En Elanel, no solo ofrecemos productos de alta calidad, sino que también ofrecemos soluciones dinerarias y beneficios exclusivos para nuestros clientes. Ahora puedes disfrutar de nuestras opciones de pago con beneficios en cuotas. ¡Haz tus compras con nosotros y disfruta de todos nuestros beneficios!</p>
-              <img src="{% static 'images/nashe.png' %}" alt="">
+              {% comment %} <img src="{% static 'images/nashe.png' %}" alt=""> {% endcomment %}
               <a href="{% url 'market:soluciones_dinerarias' %}"><button> <span>Ver mas</span></button></a>
 
             </div>
@@ -364,13 +364,22 @@
       </div>
       
       <div class="ubicacion__text">
-        <div class="ubicacion__text_container">
+        <div class="ubicacion__text_container resistencia active_provincia">
           <h5 id="ubicacion__text__title"> Nuestras oficinas se encuentran abiertas</h5>
           <h6 id="ubicacion__horarios">
             <strong class="horarios-decoration">Lunes a Viernes</strong>
-            8:00 a 13:00hs <br>
-            15:30 a 21:00hs <br>
-            <strong class="horarios-decoration">Sabados</strong> 8:00 a 13:00hs
+            8:30 a 12:30hs <br>
+            17:00 a 21:00hs <br>
+            <strong class="horarios-decoration">Sabados</strong> 9:00 a 13:00hs
+          </h6>
+        </div>
+        <div class="ubicacion__text_container corrientes">
+          <h5 id="ubicacion__text__title"> Nuestras oficinas se encuentran abiertas</h5>
+          <h6 id="ubicacion__horarios">
+            <strong class="horarios-decoration">Lunes a Viernes</strong>
+            8:30 a 12:30hs <br>
+            16:30 a 20:30hs <br>
+            <strong class="horarios-decoration">Sabados</strong> 9:00 a 13:00hs
           </h6>
         </div>
         
