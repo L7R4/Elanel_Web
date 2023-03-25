@@ -5,52 +5,55 @@ const close_form_success = document.getElementById("close_form_success")
 const form_error = document.querySelector(".form_error_wrapper")
 const close_form_error = document.getElementById("close_form_error")
 
-button_submit.addEventListener("click", EnviarDatos)
-
-close_form_success.addEventListener("click", ()=>{
-    form_success.classList.remove("active")
-})
-close_form_error.addEventListener("click", ()=>{
-    form_error.classList.remove("active")
-})
-
-function getCookie(name) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            // Does this cookie string begin with the name we want?
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
+window.addEventListener('load',()=>{
+    button_submit.addEventListener("click", EnviarDatos)
+    
+    close_form_success.addEventListener("click", ()=>{
+        form_success.classList.remove("active")
+    })
+    close_form_error.addEventListener("click", ()=>{
+        form_error.classList.remove("active")
+    })
+    
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
             }
         }
+        return cookieValue;
     }
-    return cookieValue;
-}
-
-function EnviarDatos() {
-    var form = new FormData(document.getElementById("form_fetch_post"))
-
-    let post = fetch("/",{
-        method: "POST",
-        body: form,
-        headers: {
-            "X-CSRFToken": getCookie('csrftoken')
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data) {
+    
+    function EnviarDatos() {
+        var form = new FormData(document.getElementById("form_fetch_post"))
+    
+        let post = fetch("/",{
+            method: "POST",
+            body: form,
+            headers: {
+                "X-CSRFToken": getCookie('csrftoken')
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data) {
+                LimpiarDatos()
+                form_error.classList.add("active")
+            }
+        }).catch(error => {
             LimpiarDatos()
-            form_error.classList.add("active")
-        }
-    }).catch(error => {
-        LimpiarDatos()
-        form_success.classList.add("active")
-    })
-}
+            form_success.classList.add("active")
+        })
+    }
+
+})
 
 function LimpiarDatos() {
     inputs_form.forEach(element => {
