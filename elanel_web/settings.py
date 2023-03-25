@@ -90,22 +90,22 @@ WSGI_APPLICATION = 'elanel_web.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 # DATABASES = {
-#    'default': {
-#        'ENGINE': os.environ.get('ENGINE'),
-#        'NAME': os.environ.get('NAME'),
-#        'USER': os.environ.get('USER'),
-#        'PASSWORD': os.environ.get('PASSWORD'),
-#        'HOST':os.environ.get('HOST'),
-#        'PORT':os.environ.get('PORT'),
-#    }
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
 # }
+DATABASES = {
+   'default': {
+       'ENGINE': os.environ.get('ENGINE'),
+       'NAME': os.environ.get('NAME'),
+       'USER': os.environ.get('USER'),
+       'PASSWORD': os.environ.get('PASSWORD'),
+       'HOST':os.environ.get('HOST'),
+       'PORT':os.environ.get('PORT'),
+   }
+}
 
 
 # Password validation
@@ -145,7 +145,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL =  '/public/'
 MEDIA_ROOT = BASE_DIR / "media"
-
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles/')
 STATICFILES_DIRS = (os.path.join(BASE_DIR,"static"),)
 
 # Default primary key field type
