@@ -241,30 +241,43 @@
           </div>
 
           <div class="detalle__soluciones_dinerarias_contenido">
-            <div class="text">
-              <h5>SOLUCIONES FINANCIERAS A SU MEDIDA</h5>
-              <p>En Elanel, no solo ofrecemos productos de alta calidad, sino que también ofrecemos soluciones dinerarias y beneficios exclusivos para nuestros clientes. Ahora puedes disfrutar de nuestras opciones de pago con beneficios en cuotas. ¡Haz tus compras con nosotros y disfruta de todos nuestros beneficios!</p>
-              {% comment %} <img src="{% static 'images/nashe.png' %}" alt=""> {% endcomment %}
-              <a href="{% url 'market:soluciones_dinerarias' %}"><button> <span>Ver mas</span></button></a>
-
+            <div class="container_text">
+              <div class="text">
+                <h5>SOLUCIONES DINERARIAS A SU MEDIDA</h5>
+                <p>En Elanel, no solo ofrecemos productos de alta calidad, sino que también ofrecemos soluciones dinerarias y beneficios exclusivos para nuestros clientes. Ahora puedes disfrutar de nuestras opciones de pago con beneficios en cuotas. ¡Haz tus compras con nosotros y disfruta de todos nuestros beneficios!</p>
+                {% comment %} <img src="{% static 'images/nashe.png' %}" alt=""> {% endcomment %}
+                <a href="{% url 'market:soluciones_dinerarias' %}"><button> <span>Ver mas</span></button></a>
+  
+              </div>
+              <figure>
+                <img src="{%static 'images/dinero_4.png' %}" alt="">
+              </figure>
             </div>
           </div>
 
           <div class="detalle__electrodomesticos_contenido">
-            <div class="text">
-              <h5>¡EQUIPA TU CASA CON NOSOTROS!</h5>
-              <p>Descubre nuestra selección de electrodomésticos de alta calidad en Elanel. También ofrecemos ayuda dineraria, servicio técnico y beneficios exclusivos para nuestros clientes. Aprovecha nuestros combos y compra todo lo que necesitas en un solo lugar. ¡Visítanos ahora!</p>
-              <a href="{% url 'market:electrodomesticos' %}"><button> <span>Ver mas</span></button></a>
+            <div class="container_text">
+              <div class="text">
+                <h5>¡EQUIPA TU CASA CON NOSOTROS!</h5>
+                <p>Descubre nuestra selección de electrodomésticos de alta calidad en Elanel. También ofrecemos ayuda dineraria, servicio técnico y beneficios exclusivos para nuestros clientes. Aprovecha nuestros combos y compra todo lo que necesitas en un solo lugar. ¡Visítanos ahora!</p>
+                <a href="{% url 'market:electrodomesticos' %}"><button> <span>Ver mas</span></button></a>
+              </div>
+              <figure>
+                <img src="{%static 'images/electrodo_8.png' %}" alt="">
+              </figure>
             </div>
-            
           </div>
 
           <div class="detalle__beneficios_contenido">
-            <div class="text">
-              <h5>ASISTENCIA TECNICA INMEDIATA</h5>
-              <p>En Elanel, nos preocupamos por nuestros clientes y por eso ofrecemos beneficios exclusivos para ellos. Ya que contamos con un equipo de servicio técnico altamente capacitado. ¡Compra con confianza en Elanel y disfruta de todos nuestros beneficios!</p>
-              <a href="{% url 'market:beneficios' %}"><button> <span>Ver mas</span></button></a>
-
+            <div class="container_text">
+              <div class="text">
+                <h5>ASISTENCIA TECNICA INMEDIATA</h5>
+                <p>En Elanel, nos preocupamos por nuestros clientes y por eso ofrecemos beneficios exclusivos para ellos. Ya que contamos con un equipo de servicio técnico altamente capacitado. ¡Compra con confianza en Elanel y disfruta de todos nuestros beneficios!</p>
+                <a href="{% url 'market:beneficios' %}"><button> <span>Ver mas</span></button></a>
+              </div>
+              <figure>
+                <img src="{%static 'images/beneficio.png' %}" alt="">
+              </figure>
             </div>
 
           </div>
@@ -358,7 +371,7 @@
        
        <div class="ubicacion__direccion " id="ubicacion__direccion_corrientes">
          <h1>Encuentranos en</h1>
-         <h4 >Otro lado</h4>
+         <h4>9 de Julio 1687 Local 2</h4>
        </div>
        <iframe class="mapa" id="mapa_corrientes" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12169.729087973736!2d-58.99652312416893!3d-27.45200271330547!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94450c625d68ef2d%3A0x5adee180c69bb98a!2sParrilla%20la%20Chimenea!5e0!3m2!1ses!2sar!4v1663223469539!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
@@ -427,7 +440,7 @@
       <h3>Encuentranos</h3>
       <ul>
         <li class="footer__direccion"> 
-          <p><strong>Corrientes:</strong> la direccion</p>
+          <p><strong>Corrientes:</strong> 9 de Julio 1687 Local 2</p>
           <p><strong>Resistencia:</strong> Obligado 841</p>
         </li>
         <li class="footer__social-media"> 
@@ -482,7 +495,11 @@
         <ul>
           <li class="footer__num-telefono"> 
             <img src="{% static 'images/icons/social_tel.png' %}" alt="">
-            <p>3624646474</p> 
+            <p>Chaco: 362 524-5484</p> 
+          </li>
+          <li class="footer__num-telefono"> 
+            <img src="{% static 'images/icons/social_tel.png' %}" alt="">
+            <p>Corrientes: 3795 16-1905</p> 
           </li>
           <li class="footer__correo-resistencia"> 
             <img src="{% static 'images/icons/social_mail.png' %}" alt="">
