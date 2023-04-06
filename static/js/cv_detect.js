@@ -24,7 +24,7 @@ window.addEventListener('load',()=>{
             image_cv.setAttribute("src","/static/images/icons/done.svg")
         }else{
             image_cv.removeAttribute("src")
-            image_cv.setAttribute("src","/static/images/icons/cv_icon.svg")
+            image_cv.setAttribute("src","/static/images/icons/cv_icon.png")
         }
         
     })

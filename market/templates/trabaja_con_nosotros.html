@@ -18,21 +18,32 @@
       href="{% static 'images/fwd/icono.sinfondo_admin_site_logo.png' %}"
     />
   </head>
+
   <body>
     {% include 'nav.html' %}
 
     <section class="trabaja_con_nosotros">
+      
       <div class="trabaja__texto">
-        <div class="trabaja__title">
-          <h1>
-            Trabajá<br />
-            con<br />
-            <strong id="nosotros_decoration">Nosotros</strong>
-          </h1>
+
+        <div class="container_tittle">
+          <div class="trabaja__title">
+            <h1>
+              Trabajá<br />
+              con<br />
+              <strong id="nosotros_decoration">Nosotros</strong>
+            </h1>
+          </div>
         </div>
-        <p>
-          ¡Únete al equipo de Elanel! Buscamos personas apasionadas y comprometidas para formar parte de nuestra empresa tecnológica innovadora. Ofrecemos un ambiente de trabajo dinámico, desarrollo profesional y enfoque en la calidad de vida de nuestros empleados. Completa el formulario para considerarte en futuras oportunidades laborales.
-        </p>
+
+        <div class="container_text">
+          <div class="trabaja_text">
+            <p>
+              ¡Únete al equipo de Elanel! Buscamos personas apasionadas y comprometidas para formar parte de nuestra empresa tecnológica innovadora. Ofrecemos un ambiente de trabajo dinámico, desarrollo profesional y enfoque en la calidad de vida de nuestros empleados. Completa el formulario para considerarte en futuras oportunidades laborales.
+            </p>
+          </div>
+        </div>
+        
       </div>
 
       <div class="formulario-wrapper">
@@ -84,9 +95,9 @@
             
             <div class="cv_field">
               <h2>¡Compartenos tu CV!</h2>
-              <label for="cv"
-                ><img src="{% static 'images/icons/cv_icon.svg' %}" alt=""
-              /></label>
+              <label for="cv">
+                <img src="{% static 'images/icons/cv_icon.png' %}" alt=""/>
+              </label>
               <input
                 type="file"
                 name="cv"
@@ -116,6 +127,7 @@
         </div>
         
       </div>
+
       <div class="form_error_wrapper">
         <div class="message_error">
           <div class="text_error">

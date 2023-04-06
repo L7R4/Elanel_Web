@@ -52,14 +52,14 @@ window.addEventListener('load',()=>{
                 LimpiarDatos()
                 message_error.classList.add("show")
                 parent_cv.removeChild(cv_element)
-                image_cv.setAttribute("src","/static/images/icons/cv_icon.svg")
+                image_cv.setAttribute("src","/static/images/icons/cv_icon.png")
             }
         }).catch(error => {
             LimpiarDatos()
             message_error.classList.remove("show")
             message_success.classList.add("show")
             parent_cv.removeChild(cv_element)
-            image_cv.setAttribute("src","/static/images/icons/cv_icon.svg")
+            image_cv.setAttribute("src","/static/images/icons/cv_icon.png")
             // image_cv.setAttribute("src","/static/images/icons/cv_icon.svg")
         })
         
