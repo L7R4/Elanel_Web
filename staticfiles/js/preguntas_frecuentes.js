@@ -1,0 +1,1 @@
+/home/elanelweb/elanal_web/static/js/preguntas_frecuentes.js

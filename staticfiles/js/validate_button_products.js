@@ -1,0 +1,1 @@
+/home/elanelweb/elanal_web/static/js/validate_button_products.js

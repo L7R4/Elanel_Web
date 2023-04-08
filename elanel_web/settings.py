@@ -14,11 +14,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
-
+#SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY="()ue$zj3&su3$+1a#p0r8=umkc-v^la2=5zu6#91r^pi5&#qil"
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG =os.environ.get("DEBUG")
-# DEBUG =False
+#DEBUG =os.environ.get("DEBUG")
+DEBUG =True
 
 ALLOWED_HOSTS = ['*']
 
@@ -89,12 +89,12 @@ WSGI_APPLICATION = 'elanel_web.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}
 # DATABASES = {
 #    'default': {
 #        'ENGINE': os.environ.get('ENGINE'),
@@ -105,7 +105,16 @@ DATABASES = {
 #        'PORT':os.environ.get('PORT'),
 #    }
 # }
-
+DATABASES ={
+	'default':{
+		'ENGINE': 'django.db.backends.postgresql',
+		'NAME': 'elanelweb',
+		'USER': 'postgres',
+		'PASSWORD': 'klf781CL',
+		'HOST': 'localhost',
+		'PORT': '5432',
+	}
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -144,9 +153,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL =  '/public/'
 MEDIA_ROOT = BASE_DIR / "media"
-
 STATICFILES_DIRS = (os.path.join(BASE_DIR,"static"),)
-
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles/')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 

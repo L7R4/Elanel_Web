@@ -1,0 +1,1 @@
+/home/elanelweb/elanal_web/static/js/clear_filters_motos.js

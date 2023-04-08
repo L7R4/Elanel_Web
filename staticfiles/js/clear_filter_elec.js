@@ -1,0 +1,1 @@
+/home/elanelweb/elanal_web/static/js/clear_filter_elec.js

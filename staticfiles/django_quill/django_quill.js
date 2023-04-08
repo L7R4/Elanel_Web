@@ -1,0 +1,1 @@
+/home/elanelweb/elanal_web/venv/lib/python3.10/site-packages/django_quill/static/django_quill/django_quill.js

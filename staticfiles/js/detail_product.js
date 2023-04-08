@@ -1,0 +1,1 @@
+/home/elanelweb/elanal_web/static/js/detail_product.js
