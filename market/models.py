@@ -105,7 +105,7 @@ class SolucionDineraria(models.Model):
     )
     monto = models.DecimalField(max_digits=15, decimal_places=2)
     cuota = models.CharField(max_length=2, choices=cuotas,default='24')
-    monto_cuota = models.DecimalField(max_digits=15, decimal_places=2)
+    # monto_cuota = models.DecimalField(max_digits=15, decimal_places=2)
     descripcion = QuillField(blank=True,null=True)
 
     def __str__(self):

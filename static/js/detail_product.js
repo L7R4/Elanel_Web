@@ -6,30 +6,26 @@ let close_buttons_form = document.querySelectorAll(".close_form")
 
 
 complete_image.src = query_images[0].src
-// message_form = document.querySelector(".form_message")
-// form_fetch_post = document.querySelector("#form_fetch_post")
-query_images.forEach(element => {
-    element.addEventListener("mouseover", () =>{
-        image_url = element.src
-        colocarImage(image_url)
+window.addEventListener('load',()=>{
+    query_images.forEach(element => {
+        element.addEventListener("mouseover", () =>{
+            image_url = element.src
+            colocarImage(image_url)
+        })
+    });
+    
+    button_display_form.addEventListener("click", ()=>{
+        modal_form.classList.add("active")
     })
-});
-
-button_display_form.addEventListener("click", ()=>{
-    modal_form.classList.add("active")
-})
-
-close_buttons_form.forEach(element =>{
-    element.addEventListener("click", () => {
-        element.parentElement.parentElement.classList.remove("active")
+    
+    close_buttons_form.forEach(element =>{
+        element.addEventListener("click", () => {
+            element.parentElement.parentElement.classList.remove("active")
+        })
     })
+
 })
 
 function colocarImage(url) {
     complete_image.src=url
 }
-
-// function form_send(){
-//     form_fetch_post.preventDefault()
-//     message_form.style.zIndex ="2"
-// }

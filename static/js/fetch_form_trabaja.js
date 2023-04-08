@@ -5,64 +5,67 @@ const message_error = document.querySelector(".form_error_wrapper")
 const button_close_error = document.querySelector("#close_form_error")
 const button_close_success = document.querySelector("#close_form_success")
 
-button_submit.addEventListener("click", EnviarDatos)
-button_close_error.addEventListener("click",()=>{
-    message_error.classList.remove("show")
+window.addEventListener('load',()=>{
+    button_submit.addEventListener("click", EnviarDatos)
+    button_close_error.addEventListener("click",()=>{
+        message_error.classList.remove("show")
+        
+    })
+    button_close_success.addEventListener("click",()=>{
+        message_success.classList.remove("show")
+        
+    })
     
-})
-button_close_success.addEventListener("click",()=>{
-    message_success.classList.remove("show")
+    var url = window.location.pathname;
     
-})
-
-var url = window.location.pathname;
-
-
-function getCookie(name) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            // Does this cookie string begin with the name we want?
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
+    
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
             }
         }
+        return cookieValue;
     }
-    return cookieValue;
-}
-
-function EnviarDatos() {
-    var form = new FormData(document.querySelector(".form"))
-
-    let post = fetch(url,{
-        method: "POST",
-        body: form,
-        headers: {
-            "X-CSRFToken": getCookie('csrftoken')
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data)
-        if (data) {
-            LimpiarDatos()
-            message_error.classList.add("show")
-            parent_cv.removeChild(cv_element)
-            image_cv.setAttribute("src","/static/images/icons/cv_icon.svg")
-        }
-    }).catch(error => {
-        LimpiarDatos()
-        message_error.classList.remove("show")
-        message_success.classList.add("show")
-        parent_cv.removeChild(cv_element)
-        image_cv.setAttribute("src","/static/images/icons/cv_icon.svg")
-        // image_cv.setAttribute("src","/static/images/icons/cv_icon.svg")
-    })
     
-}
+    function EnviarDatos() {
+        var form = new FormData(document.querySelector(".form"))
+    
+        let post = fetch(url,{
+            method: "POST",
+            body: form,
+            headers: {
+                "X-CSRFToken": getCookie('csrftoken')
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            if (data) {
+                LimpiarDatos()
+                message_error.classList.add("show")
+                parent_cv.removeChild(cv_element)
+                image_cv.setAttribute("src","/static/images/icons/cv_icon.png")
+            }
+        }).catch(error => {
+            LimpiarDatos()
+            message_error.classList.remove("show")
+            message_success.classList.add("show")
+            parent_cv.removeChild(cv_element)
+            image_cv.setAttribute("src","/static/images/icons/cv_icon.png")
+            // image_cv.setAttribute("src","/static/images/icons/cv_icon.svg")
+        })
+        
+    }
+
+})
 
 function LimpiarDatos() {
     inputs_form.forEach(element => {

@@ -1,4 +1,7 @@
 {% load static %}
+{% load humanize %}
+{% load i18n %}
+{% load l10n %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -59,17 +62,19 @@
       </aside>
       <button type="button" id="filter_button">Filtrar</button>
       <section class="catalogo">
-        {% if dineros.count != 0 %} {% for monto in dineros %}
-        <a href="{% url 'market:solucione_detail' monto.id %}">
-          <article>
-            <img src="{% static 'images/icons/dollar.svg' %}" alt="" />
-            <div>
-              <h2>{{monto.monto}}</h2>
-              <h3>{{monto.cuota}} Cuotas</h3>
-            </div>
-          </article>
-        </a>
-        {% endfor %} {% elif dineros.count == 0 %}
+        {% if dineros.count != 0 %} 
+          {% for monto in dineros %}
+            <a href="{% url 'market:solucione_detail' monto.id %}">
+              <article>
+                <img src="{% static 'images/icons/dollar.svg' %}" alt="" />
+                <div>
+                  <h2>${{monto.monto|floatformat:0|intcomma}}</h2>
+                  <h3>{{monto.cuota}} Cuotas</h3>
+                </div>
+              </article>
+            </a>
+          {% endfor %} 
+        {% elif dineros.count == 0 %}
         <div class="not_found">
           <figure>
             <img src="{% static 'images/icons/nothing-found.png' %}" alt="" />
@@ -79,6 +84,8 @@
         {% endif %}
       </section>
     </div>
+
+    
   </body>
   <script src="{% static 'js/header.js' %}"></script>
   <script src="{% static 'js/filter_button.js' %}"></script>

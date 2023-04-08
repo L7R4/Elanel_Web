@@ -2,6 +2,7 @@
     .wrapper_comunicate
     {
         flex-flow: column;
+        height: auto;
     }
     .contactanos
     {
@@ -24,7 +25,7 @@
     }
     .contactanos > div
     {
-        min-height: 40rem;
+        max-height: 40rem;
     }
     
 }
@@ -39,7 +40,7 @@
     .contactanos > div
     {
         min-width: 90%;
-        height: fit-content;
+        /* height: fit-content; */
         margin: 0;
         margin-top: 2rem;
     }

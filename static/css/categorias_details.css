@@ -290,15 +290,12 @@ html{
     border-radius: 10px;
     height: 100%;
     overflow:hidden;
-    width: 24vw;
+    width: 22vw;
     min-width: 28rem;
     max-width: 35rem;
 }
 .catalogo a > article > img{
-    max-width: 100%;
-    /* width: 100%; */
     height: 70%;
-    /* object-fit: cover; */
 }
 
 .catalogo a > article > div

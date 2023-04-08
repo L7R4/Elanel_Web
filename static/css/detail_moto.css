@@ -40,102 +40,6 @@ src: url("../fonts/Raleway-SemiBold.ttf")
     width: 100%;
     height: 65px;
 }
-
-.container_block
-{
-    display: block;
-    width: 100%;
-    height: calc(100vh - 65px);
-}
-
-
-.wrapper{
-    display: flex;
-    position: relative;
-    align-items: center;
-}
-.products_images
-{
-    width: 65%;
-    display: flex;
-    position: relative;
-    justify-content: space-around;
-    margin-top: 4rem;
-    align-items: center;
-    padding: 2rem 0;
-    /* background-color: white; */
-    margin: 0 2rem 0 2rem;
-    border-radius: 5rem;
-    height: 78vh;
-    flex-wrap: wrap;
-}
-
-.complete__image{
-    height: fit-content;
-    /* height: 70%; */
-    overflow: hidden;
-    max-width: 700px;
-    max-height: 500px;
-    width: 60%;
-}
-
-.resumen{
-    width: 35%;
-    height: calc(100vh - 65px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: 3rem;
-    row-gap: 3%;
-    /* padding: 4rem 0; */
-    background: white;
-    border-bottom-left-radius: 3rem;
-    border-top-left-radius: 3rem;
-    box-shadow: 0px 0px 19px 6px #00000030;
-}
-.resumen > div 
-{
-    width: 70%;
-    margin-left: 4rem;
-}
-
-
-#title_product{
-    font-size: 2.5rem;
-    font-family: raleway-bold;
-    height: fit-content;
-    color: var(--sColor);
-}
-#precio_product{
-    font-size: 2.2rem;
-    font-family: raleway-semibold;
-    margin-top: 2%;
-    /* height: fit-content; */
-}
-.resumen > .resumen__detalle> div{
-    display: flex;
-    justify-content: space-between;
-    background-color: #027df19f;
-    padding: 3% 5%;
-    border-radius: 5px;
-    margin-bottom: 1rem;
-}
-.resumen > .resumen__detalle> div>h2{
-    font-size: 1.4rem;
-    font-family: raleway;
-    height: fit-content;
-}
-
-
-.resumen .contact > h3:first-child{
-    font-size: 1.5rem;
-    font-family: raleway-bold;
-}
-.resumen .contact > h3{
-    font-size: 1.3rem;
-    font-family: raleway;
-    margin-bottom: 2%;
-}
 .form_modal
 {
     position: fixed;
@@ -293,6 +197,103 @@ src: url("../fonts/Raleway-SemiBold.ttf")
     box-shadow: 0px 0px 20px 2px #027cf130;
     border-color: #027df15d;
 }
+
+.container_block
+{
+    display: block;
+    width: 100%;
+    height: calc(100vh - 65px);
+}
+
+
+.wrapper{
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+.products_images
+{
+    width: 65%;
+    display: flex;
+    position: relative;
+    justify-content: space-around;
+    margin-top: 4rem;
+    align-items: center;
+    padding: 2rem 0;
+    /* background-color: white; */
+    margin: 0 2rem 0 2rem;
+    border-radius: 5rem;
+    height: 78vh;
+    flex-wrap: wrap;
+}
+
+.complete__image{
+    height: fit-content;
+    /* height: 70%; */
+    overflow: hidden;
+    max-width: 700px;
+    max-height: 500px;
+    width: 60%;
+}
+
+.resumen{
+    width: 35%;
+    height: calc(100vh - 65px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 3rem;
+    row-gap: 3%;
+    /* padding: 4rem 0; */
+    background: white;
+    border-bottom-left-radius: 3rem;
+    border-top-left-radius: 3rem;
+    box-shadow: 0px 0px 19px 6px #00000030;
+}
+.resumen > div 
+{
+    width: 70%;
+    margin-left: 4rem;
+}
+
+
+#title_product{
+    font-size: 2.5rem;
+    font-family: raleway-bold;
+    height: fit-content;
+    color: var(--sColor);
+}
+#precio_product{
+    font-size: 2.2rem;
+    font-family: raleway-semibold;
+    margin-top: 2%;
+    /* height: fit-content; */
+}
+.resumen > .resumen__detalle> div{
+    display: flex;
+    justify-content: space-between;
+    background-color: #027df19f;
+    padding: 3% 5%;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+.resumen > .resumen__detalle> div>h2{
+    font-size: 1.4rem;
+    font-family: raleway;
+    height: fit-content;
+}
+
+
+.resumen .contact > h3:first-child{
+    font-size: 1.5rem;
+    font-family: raleway-bold;
+}
+.resumen .contact > h3{
+    font-size: 1.3rem;
+    font-family: raleway;
+    margin-bottom: 2%;
+}
+
 
 
 .nav__images{
