@@ -1,1 +1,17 @@
-/home/elanelweb/elanal_web/venv/lib/python3.10/site-packages/jazzmin/static/admin/js/cancel.js
+(function($) {
+    'use strict';
+
+    $(document).ready(function() {
+        $('.cancel-link').click(function(e) {
+            e.preventDefault();
+            const parentWindow = window.parent;
+            if (parentWindow && typeof(parentWindow.dismissRelatedObjectModal) === 'function' && parentWindow !== window) {
+                parentWindow.dismissRelatedObjectModal();
+            } else {
+                // fallback to default behavior
+                window.history.back();
+            }
+            return false;
+        });
+    });
+})(django.jQuery);

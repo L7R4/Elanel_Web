@@ -1,1 +1,205 @@
-/home/elanelweb/elanal_web/static/css/media_querys/trabaja_con_nosotros.css
+@media screen and (max-width:930px) {
+    .trabaja__texto
+    {
+        display: flex;
+        height: 30rem;
+        align-items: center;
+    }
+    .container_text
+    {
+        height: 100%;
+    }
+    .trabaja__title
+    {
+        width: 100%;
+        margin-left: 0;
+    }
+    .trabaja_text
+    {
+        width: 80%;
+        margin-left: 0;
+        background: #037BEC;
+        padding: 0 2rem;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;    
+        justify-content: center;
+    }
+    
+    .trabaja__texto p{
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    .trabaja_con_nosotros {
+        display: block;
+        height: unset;
+        background-color: #fff;
+    }
+    .formulario-wrapper
+    {
+        position: unset;
+        margin: 4rem 0;
+        display: flex;
+        justify-content: center;
+    }
+    .formulario-wrapper form
+    {
+        width: 90%;
+        max-width: unset;
+    }
+    .container_tittle
+    {
+        background-color: unset;
+        height: 100%;
+        padding: 0;
+    }
+    .trabaja__title h1
+    {
+        color: #22243B;
+        padding-left: 4rem;
+    }
+    .trabaja__title h1 #nosotros_decoration
+    {
+        color: #037BEC;
+    }
+}
+@media screen and (max-width:885px) {
+    
+    .formulario-wrapper form > div > label{
+        font-size: 1.5rem;
+    }
+    .cv_field h2{
+        font-size: 1.5rem;
+    }
+    .trabaja__texto p{
+        /* width: 90%; */
+        font-size: 1.4rem;
+    }
+    
+}
+/* @media screen and (max-width:760px) {
+    .formulario-wrapper form{
+        padding: 4rem;
+        margin: 2rem;
+    }
+    
+} */
+@media screen and (max-width:769px) {
+    .trabaja_con_nosotros{
+        display: block;
+    }
+    .trabaja__title{
+        margin-top: 3rem;
+        margin-bottom: 0;
+    }
+    
+    /* .formulario-wrapper form{
+        display: block;
+        margin: 2rem auto;
+        width: 70%;
+        max-height: none;
+    } */
+    /* .formulario-wrapper form > div{
+        display: flex;
+        flex-flow: column;
+    } */
+    /* .cv_field{
+        margin: 0;
+    } */
+    /* .formulario-wrapper form > div > label{
+        font-size: 1.5rem;
+    } */
+
+    #form_product_button{
+        display: block;
+        margin: 0 auto;
+        margin-top: 2rem;
+        width: 16rem;
+    }
+    #cv_input{
+        padding: 1.8% 4rem;
+    }
+}
+@media screen and (max-width:680px){
+    .trabaja__texto
+    {
+        display: block;
+        height: unset;
+    }
+    .trabaja_text
+    {
+        background: none;
+        padding: 0;
+        justify-content: center;
+        width: 100%;
+    }
+    .trabaja__texto p
+    {
+        width: 80%;
+    }
+    .trabaja_con_nosotros{
+        background-color:transparent;
+    }
+    .container_text
+    {
+        background-color: transparent;
+        margin-top: 2rem;
+    }
+    .trabaja__title
+    {
+        justify-content: center;
+    }
+    .trabaja__title h1
+    {
+        text-align: center;
+        padding: 0;
+    }
+    .formulario-wrapper
+    {
+        width: 100%;
+        margin-bottom: 0;
+    }
+    .formulario-wrapper form
+    {
+        width: 100%;
+        border-radius: unset;
+    }
+}
+@media screen and (max-width:550px)
+{
+    .inputs_container
+    {
+        display: unset;
+    }
+    .formulario-wrapper form
+    {
+        height: auto;
+        max-height: none;
+        padding: 2rem 0;
+        min-width: unset;
+    }
+    .inputs_texts
+    {
+        align-items: center;
+        width: 100%;
+    }
+    .inputs_texts > div
+    {
+        text-align: center;
+    }
+    .cv_field
+    {
+        margin: 0 auto;
+    }
+}
+@media screen and (max-width:430px) {
+    .trabaja__title h1{
+        font-size: 5.8rem;
+    }
+    .trabaja__texto p {
+        font-size: 1.5rem;
+    }
+    .inputs_texts > div> label
+    {
+        display: block;
+    }
+}

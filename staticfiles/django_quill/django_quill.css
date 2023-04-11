@@ -1,1 +1,9 @@
-/home/elanelweb/elanal_web/venv/lib/python3.10/site-packages/django_quill/static/django_quill/django_quill.css
+div.form-row div.django-quill-widget-container {
+    display: inline-block;
+}
+.quill-editor iframe,
+.quill-editor video,
+button.ytp-large-play-button,
+button.ytp-button {
+    pointer-events: none;
+}

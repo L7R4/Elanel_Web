@@ -20,7 +20,7 @@ SECRET_KEY="()ue$zj3&su3$+1a#p0r8=umkc-v^la2=5zu6#91r^pi5&#qil"
 #DEBUG =os.environ.get("DEBUG")
 DEBUG =True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['181.215.135.171','www.elanelsys.com','elanelsys.com']
 
 
 # Application definition
@@ -153,7 +153,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
-MEDIA_URL =  '/public/'
+MEDIA_URL =  '/media/'
 MEDIA_ROOT = BASE_DIR / "media"
 STATICFILES_DIRS = (os.path.join(BASE_DIR,"static"),)
 STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles/')

@@ -220,7 +220,7 @@
                   {% for moto in motos_slider %}
                     <a class="item" href="{% url 'market:moto' moto.slug %}">
                       <img
-                        src="/public/{{moto.imagen_portada}}"
+                        src="{{moto.imagen_portada.url}}"
                         alt="{{moto.nombre}}"
                       />
                     </a>

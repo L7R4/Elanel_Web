@@ -1,1 +1,223 @@
-/home/elanelweb/elanal_web/static/css/media_querys/detalle_soluciones.css
+@media screen and (max-width:800px){
+    .wrapper
+    {
+        height: auto;
+    }
+    .resumen{
+        grid-row: 2 / 3;
+        grid-column: 1/3;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 30% 70%;
+    }
+
+    .resumen__detalle{
+        grid-column: 1/2;
+        margin: 0;
+        height: fit-content;
+        padding-left: 10%
+    }
+    .resumen > .resumen__detalle> div{
+        width: 75%;
+        padding: 2% 6%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .resumen .contact{
+        grid-column: 2/3;
+        grid-row: 1/3;
+        margin-top: 3%;
+        padding: 0;
+    }
+
+    #form_fetch_post{
+        padding: 0;
+    }
+
+    #form_fetch_post > button{
+        width: 48%;
+        margin-bottom: 3%;
+        margin-top: 0%;
+        margin-left: 2%;
+    }
+
+    .monto_container{
+        grid-column: 1/-1;
+    }
+
+    .monto_container > img
+    {
+        width: 30%;
+    }
+
+    #title_product{
+        font-size: 2rem;
+        margin-top: 0;
+        padding-left: 10%
+    }
+    #precio_product{
+        font-size: 1.8rem;
+        padding-left: 10%
+    }
+
+    .detalle_producto{
+        margin-top: 3%;
+    }
+
+    .complete__image{
+        max-width: 350px;
+        grid-row: 2 / 3;
+        grid-column: 2/ 3;
+    }
+    
+    .complete__image > img{
+        width: 100%;
+    }
+
+    .nav__images{
+        grid-row: 2 / 3;
+        grid-column: 1/ 2;
+        height: 90%;
+        max-width: 150px;
+    }
+    .detalles{
+        grid-row: 3/4;
+        margin: 4% 8%;
+    }
+}
+
+@media screen and (max-width:680px)
+{
+
+    .wrapper
+    {
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: none;
+        grid-auto-rows: auto;
+    }
+
+    .detalle_producto
+    {
+        display: none;
+    }
+
+    .title_producto_responsive 
+    {
+        display: flex;
+        justify-content: center;
+        align-items: end;
+        grid-column: 1/3;
+        grid-row: 1/2;
+        width: 100%;
+        margin-top: 5%;
+        margin-right: 8%;
+        flex-flow: column;
+    }
+
+    #precio_product
+    {
+        padding: 0;
+        margin: 0;
+    }
+
+    #title_product
+    {
+        padding: 0;
+        color: var(--sColor);
+    }
+
+    .resumen
+    {
+        grid-row: 2 / 3;
+        grid-column: 1/-1;
+        align-items: center;
+        border-radius: 0;
+        /* height: auto; */
+        /* padding: 3% 0; */
+        grid-template-rows:none;
+        grid-auto-rows: auto;
+    }
+    .resumen__detalle
+    {
+        grid-row: unset;
+    }
+
+    .resumen .contact
+    {
+        grid-row: unset;
+    }
+
+
+    .complete__image
+    {
+        max-width: 350px;
+        grid-row: 2 / 3;
+        grid-column: 1/ 3;
+    }
+    .nav__images > figure
+    {
+        min-width: 110px;
+    }
+
+    .nav__images
+    {
+        grid-row: 3 / 4;
+        grid-column: 1/ 3;
+        height: 90%;
+        width: 70%;
+        max-width: 500px;
+        margin-bottom: 2rem;
+        overflow-y: hidden;
+        overflow-x: auto;
+        flex-flow: row;
+    }
+    .detalles{
+        grid-row: 5 / 6;
+    }
+
+}
+
+@media screen and (max-width:630px)
+{
+    .resumen__detalle{
+        grid-column: 1/3;
+        grid-row: 1/2;
+    }
+    .resumen .contact{
+        grid-column: 1/3;
+        grid-row: 2/3;
+        margin-right: 0;
+        text-align: center;
+    }
+
+
+    #form_fetch_post{
+        justify-content: center;
+        width: 100%;
+    }
+
+    #form_fetch_post > input{
+        margin: 1rem 1rem;
+        /* max-width: 200px; */
+        width: 70%;
+    }
+    #form_fetch_post > button{
+        max-width: 180px;
+    }
+}
+
+@media screen and (max-width:440px){
+    .monto_text h2
+    {
+        font-size: 3rem;
+    }
+    .monto_text h3
+    {
+        font-size: 2.4rem;
+    }
+    .contact h3
+    {
+        font-size: 1.5rem;
+    }
+}

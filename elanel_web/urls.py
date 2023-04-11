@@ -5,10 +5,10 @@ from django.urls import path, include
 # from .views import *
 from django.conf.urls.static import static
 from django.conf import settings
-# from django.conf.urls import handler404
+from django.conf.urls import handler404
 from .views import IndexView2, SobreNosotros,Contactanos,page_error
 
-# handler404 = page_error
+handler404 = page_error
 
 urlpatterns = [
     path('admin/', admin.site.urls),

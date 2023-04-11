@@ -1,1 +1,150 @@
-/home/elanelweb/elanal_web/static/css/media_querys/categorias_beneficios.css
+@media screen and (max-width:960px) {
+    .beneficios__table__item:last-child{
+        margin: 3rem 1rem;
+      }
+      .beneficios__wrapper
+      {
+        flex-flow:column-reverse;
+        height: auto;
+        align-items: center;
+      }
+      .portada_description
+      {
+        width: 80%;
+        margin-bottom: 3rem;
+      }
+      .background_tittle
+      {
+        border-top-left-radius: unset;
+        border-bottom-right-radius: 2rem;
+      }
+      .portada_description h3
+      {
+        font-size: 1.7rem;
+      }
+}
+
+@media screen and (max-width:870px){
+
+    .portada_description
+    {
+        justify-content: flex-end;
+    }
+
+    .portada_description h1
+    {
+        font-size: 4rem;
+    }
+    .portada_description h3
+    {
+        font-size: 1.6rem;
+    }
+}
+
+
+@media screen and (max-width:750px)
+{
+    .container_text3
+    {
+        max-height: unset;
+        flex-flow: column;
+        min-height: 24rem;
+        justify-content: center;
+        gap: 1.5rem;
+        padding: 2rem 0;
+    }
+    .background_image > img
+    {
+        object-fit: cover;
+    }
+    .container_text2 > p
+    {
+        width: 80%;
+    }
+    .container_text3 > div
+    {
+        width: 80%;
+        margin-left:0;
+        height: 40%;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+    .background_text
+    {
+        border-radius: 10px;
+    }
+    .container_text3 > div >p
+    {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width:680px){
+    .beneficios__table__item__title{
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .beneficios__wrapper
+    {
+        height: fit-content;
+        padding: 3rem 0;
+    }
+
+    .portada_description
+    {
+        width: 80%;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .portada_description h1
+    {
+        font-size: 3.7rem;
+    }
+    .portada_description h3
+    {
+        font-size: 1.5rem;
+        margin-bottom: 5rem;
+        width: 100%;
+    }
+    .image_tenico{
+        display: none;
+    }
+}
+
+@media screen and (max-width:570px)
+{
+    .container_text2 > p
+    {
+        width: 90%;
+    }
+    .container_text3 > div
+    {
+        width: 90%;
+    }
+    .background_text
+    {
+        padding: 1rem;
+    }
+}
+@media screen and (max-width:380px){
+
+    .beneficios__table__item
+    {
+      min-width: 23rem;
+      
+    }
+    .portada_description
+    {
+        width: 80%;
+    }
+    .portada_description h3
+    {
+        font-size: 1.4rem;
+    }
+    .portada_description h1
+    {
+        font-size: 3.5rem;
+    }
+}
