@@ -8,7 +8,7 @@ from market.models import Cliente,Post
 
 import json
 
-def page_error(request):
+def page_error(request,exception):
     return render(request, 'pagenotfound.html')
 
 class IndexView2(View):

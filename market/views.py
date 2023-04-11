@@ -142,8 +142,13 @@ class DetalleElec(generic.DetailView):
                 form_elec.nombre_completo = form.cleaned_data['nombre_completo']
                 form_elec.email = form.cleaned_data['email']
                 form_elec.num_telefono = form.cleaned_data['num_telefono']
+                form_elec.provincia = form.cleaned_data['provincia']
                 form_elec.objetivo = form.cleaned_data['objetivo']
                 form_elec.save()
+            else:
+                message_error = {"message": "No valido"}
+                data = json.dumps(message_error)
+                return HttpResponse(data,"application/json")
 
         return redirect('market:electrodomestico',self.object.slug)
 
@@ -176,12 +181,13 @@ class DetalleSolucion(generic.DetailView):
                 solu_dine.nombre_completo = form.cleaned_data['nombre_completo']
                 solu_dine.email = form.cleaned_data['email']
                 solu_dine.num_telefono = form.cleaned_data['num_telefono']
+                solu_dine.provincia = form.cleaned_data['provincia']
                 solu_dine.objetivo = form.cleaned_data['objetivo']
                 solu_dine.save()
             else:
-                print(form)
-        else:
-            ("no entre al post")
+                message_error = {"message": "No valido"}
+                data = json.dumps(message_error)
+                return HttpResponse(data,"application/json")
         return redirect('market:solucione_detail',self.object.id)
 
     def get(self,request,*args,**kwargs):

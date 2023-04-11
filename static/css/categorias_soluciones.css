@@ -1,23 +1,28 @@
-.catalogo{
-    grid-auto-rows: 25rem;
+section.catalogo{
+    overflow-y: auto;
+    width: 100%;
 }
 .catalogo a > article > div
 {
     position: absolute; 
-    top: 40%;
 }
 .catalogo a > article > div > h2{
-    font-size: 3rem;
+    font-size: clamp(3.8rem,4vw, 5rem);
     color: var(--sColor);
     font-feature-settings: 'pnum' on, 'lnum' on;
 }
 .catalogo a > article >div> h3{
     font-size: 2rem;
     font-feature-settings: 'pnum' on, 'lnum' on;
+    display: none;
 }
-.catalogo a > article{
+section.catalogo a > article{
     /* height: 25rem; */
     justify-content: center;
+}
+section.catalogo > a
+{
+    max-height: none;
 }
 .catalogo a > article > img{
     max-width: 75%;

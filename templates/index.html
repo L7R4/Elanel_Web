@@ -220,7 +220,7 @@
                   {% for moto in motos_slider %}
                     <a class="item" href="{% url 'market:moto' moto.slug %}">
                       <img
-                        src="/public/{{moto.imagen_portada}}"
+                        src="{{moto.imagen_portada.url}}"
                         alt="{{moto.nombre}}"
                       />
                     </a>
@@ -412,20 +412,20 @@
       <div class="wrapper__icons__social">
         <ol>
           <li id="ubicacion__facebook">
-            <a href="" class="ubicacion__icon"><img src="{% static 'images/icons/face_icon.svg' %}" alt="">
+            <a href="https://m.facebook.com/elanelsys" target=”_blank” class="ubicacion__icon"><img src="{% static 'images/icons/face_icon.svg' %}" alt="">
             </a>
           </li>
           <li id="ubicacion__twitter">
-            <a href="" class="ubicacion__icon"><img src="{% static 'images/icons/twitter_icon.svg' %}" alt="">
+            <a href="https://www.tiktok.com/@elaneloficial" target=”_blank” class="ubicacion__icon"><img src="{% static 'images/icons/tiktok_icon.svg' %}" alt="">
             </a>
           </li>
           <li id="ubicacion__instagram">
-            <a href="instagram.com" class="ubicacion__icon"><img src="{% static 'images/icons/insta_icon.svg' %}" alt="">
+            <a href="https://www.instagram.com/elanel.servicios/?hl=es-la" target=”_blank” class="ubicacion__icon"><img src="{% static 'images/icons/insta_icon.svg' %}" alt="">
             </a>
           </li>
           <li id="ubicacion__whatsapp">
             <!-- <p>¡Escribenos!</p> -->
-            <a href="whatsapp.com" class="ubicacion__icon"><img src="{% static 'images/icons/whatsapp_icon.svg' %}" alt="">
+            <a href="whatsapp.com"  target=”_blank” class="ubicacion__icon"><img src="{% static 'images/icons/whatsapp_icon.svg' %}" alt="">
             </a>
           </li>
         </ol>
