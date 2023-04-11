@@ -42,18 +42,13 @@
     }
     
     .wrapper{
-        display: grid;
-        grid-template-columns: 35% 65%;
-        /* grid-template-rows:2fr 1fr ; */
-        margin: 2% 5% 2% 5%;
+        display: flex;
         background-color: #fff;
-        /* padding: 4% 0; */
         border-radius: 20px;
         align-items: center;
         position: relative;
         justify-items: center;
         overflow: hidden;
-        /* height: 80vh; */
     }
     .monto_container{
         position: relative;
@@ -128,10 +123,15 @@
         position: absolute;
         visibility: hidden;
     }
-    #form_fetch_post >input
-    {
+    #form_fetch_post > div{
         width: 80%;
-        height: 34px;
+        padding: 1rem 0;
+        position: relative;
+    }
+    #form_fetch_post > div>input
+    {
+        width: calc(100% - 2rem );
+        /* height: 34px;  */
         font-size: 1.5rem;
         font-family: raleway-semibold;
         padding: 0 2%;
@@ -142,7 +142,7 @@
         transition: all .4s ease;
     }
 
-    #form_fetch_post >input:focus
+    #form_fetch_post > div >input:focus
     {
         outline: none;
         transition: all 2 ease;
@@ -178,6 +178,24 @@
         color: #12131b;
         box-shadow: 0px 0px 20px 2px #027cf130;
         border-color: #027df15d;
+    }
+
+    #form_fetch_post > div > p
+    {
+        display: none;
+        position: absolute;
+        font-family:raleway;
+        font-size: 1.2rem;
+        color: red;
+        /* bottom: -1.3rem; */
+        left: .4rem;
+    }
+    #form_fetch_post > div > #email.invalid
+    {
+        border: 1px red solid;  
+    }
+    #form_fetch_post > div > #email.invalid ~ p{
+        display: inline;
     }
 
     .message_success.hide

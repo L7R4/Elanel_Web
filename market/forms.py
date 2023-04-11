@@ -27,6 +27,7 @@ class FormDinero(forms.ModelForm):
         fields =[
             'nombre_completo',
             'email',
+            'provincia',
             'num_telefono',
             'objetivo',
         ]
@@ -47,6 +48,7 @@ class FormElec(forms.ModelForm):
         fields =[
             'nombre_completo',
             'email',
+            'provincia',
             'num_telefono',
             'objetivo',
         ]
