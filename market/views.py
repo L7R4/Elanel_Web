@@ -6,7 +6,25 @@ from django.views import generic
 from django.http import HttpResponseRedirect, HttpResponse
 from market.models import Electrodomestico,Cliente ,ImagenMoto,ImagenElectrodomestico, Post, Moto, Personal,BeneficioParaCliente,SolucionDineraria
 from .forms import FormPersonal,FormBeneficios,FormDinero,FormMotos,FormElec
+from django.core.mail import EmailMultiAlternatives
+from django.conf import settings
+from django.template.loader import get_template
 import os
+
+def create_email(email, subject, template_path,context):
+    template = get_template(template_path)
+    content = template.render(context)
+    mail = EmailMultiAlternatives(
+        subject=subject,
+        body='',
+        from_email=settings.EMAIL_HOST_USER,
+        to = [email],
+    )
+    mail.attach_alternative(content, "text/html")
+    mail.fail_silently = False
+    return mail
+
+   
 
 class Categorias(generic.ListView):
     template_name = "templates_categorias/categorias.html"
@@ -76,6 +94,20 @@ class DetalleMoto(generic.DetailView):
                 form_moto.provincia = form.cleaned_data['provincia']
                 form_moto.objetivo = form.cleaned_data['objetivo']
                 form_moto.save()
+                mail = create_email(
+                    "lautaro.rodriguez553@gmail.com",
+                    form_moto.objetivo,
+                    "mail.html",
+                    {
+                        "person": form_moto.nombre_completo,
+                        "target": form_moto.objetivo,
+                        "num_tel": form_moto.num_telefono,
+                        "correo" : form_moto.email,
+                        "provincia": form_moto.provincia
+                    }
+                )
+                mail.send()
+                
             else:
                 message_error = {"message": "No valido"}
                 data = json.dumps(message_error)
@@ -144,6 +176,19 @@ class DetalleElec(generic.DetailView):
                 form_elec.num_telefono = form.cleaned_data['num_telefono']
                 form_elec.provincia = form.cleaned_data['provincia']
                 form_elec.objetivo = form.cleaned_data['objetivo']
+                mail = create_email(
+                    "lautaro.rodriguez553@gmail.com",
+                    form_elec.objetivo,
+                    "mail.html",
+                    {
+                        "person": form_elec.nombre_completo,
+                        "target": form_elec.objetivo,
+                        "num_tel": form_elec.num_telefono,
+                        "correo" : form_elec.email,
+                        "provincia": form_elec.provincia
+                    }
+                )
+                mail.send()
                 form_elec.save()
             else:
                 message_error = {"message": "No valido"}
@@ -164,11 +209,33 @@ class CategoriaSolucionesDinerarias(generic.ListView):
         if is_valid_query(cuota):
             qs = qs.filter(cuota = cuota)
         return qs
+    
+
+def send_email(request,*args, **kwargs):
+    if(request == "POST"):
+        last_item = Cliente.objects.last()
+        print(last_item.nombre_completo)
+        mail = create_email(
+                    "lautaro.rodriguez553@gmail.com",
+                    last_item.objetivo,
+                    "mail.html",
+                    {
+                        "person": last_item.nombre_completo,
+                        "target": last_item.objetivo,
+                        "num_tel": last_item.num_telefono,
+                        "correo" : last_item.email,
+                        "provincia": last_item.provincia
+                    }
+                )
+        mail.send()
+
 
 class DetalleSolucion(generic.DetailView):
     model = SolucionDineraria
     template_name = "templates_categorias/detalle_soluciones.html"
 
+    
+            
     def post(self,request,*args, **kwargs):
         self.object = self.get_object()
         form = FormDinero()
@@ -184,15 +251,20 @@ class DetalleSolucion(generic.DetailView):
                 solu_dine.provincia = form.cleaned_data['provincia']
                 solu_dine.objetivo = form.cleaned_data['objetivo']
                 solu_dine.save()
+                
+                send_email(request.method)
             else:
                 message_error = {"message": "No valido"}
                 data = json.dumps(message_error)
                 return HttpResponse(data,"application/json")
         return redirect('market:solucione_detail',self.object.id)
 
+    
+
     def get(self,request,*args,**kwargs):
         self.object = self.get_object()
         context ={}
+        
         context["object"] = self.object
 
         return render(request,self.template_name,context)
@@ -285,6 +357,7 @@ class TrabajaConNosotros(View):
 
     def get(self, request, *args, **kwargs):
         return(render(request,self.template_name))
+
 
 
 
