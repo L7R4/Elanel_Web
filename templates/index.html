@@ -22,6 +22,7 @@
   {% include 'nav.html' %}
 
   <div class="wrapper__slider__botones">
+
     <div id="slider-container" class="slider-container">
       <div class="slider" id="slider">
         {% for post in posts %}
@@ -34,8 +35,9 @@
             </div>
           {% endif %}
         {%endfor%}
-       </div>
       </div>
+    
+
       <div class="slider_cel" id="slider_cel">
         {% for post in posts %}
           {% if post.tamano == "Celular" %}
@@ -46,7 +48,6 @@
               />
             </div>
           {% endif %}
-          
         {%endfor%}
       </div>
     </div>
@@ -58,14 +59,15 @@
         <img src="{% static 'images/icons/next.svg' %}" alt="">
       </button>
     </div>
+
   </div>
 
-  <a class="whatsapp_contact" id="whatsapp_contact" href="https://wa.me/543624643544?text=Vi%20esto%20en%20la%20web,%20me%20podrias%20brindar%20mas%20informacion?" target="_blank">
+  <a class="whatsapp_contact" id="whatsapp_contact" href="https://wa.me/543625170890?text=Vi%20esto%20en%20la%20web,%20me%20podrias%20brindar%20mas%20informacion?" target="_blank">
     <img class="icon_whap" src="{% static 'images/icons/whatsapp_icon.svg' %}" alt="">
     <h6>¡Escribenos!</h6> 
   </a>
 
-   <div class="wrapper_adjudicado">
+  <div class="wrapper_adjudicado">
       <button id="back">
         <img src="{% static 'images/icons/next.svg' %}" alt="">
       </button>
@@ -345,8 +347,6 @@
       </div>
     </article>
   </section>
-
-  
 
   <footer>
     <div class="footer__encuentranos">
