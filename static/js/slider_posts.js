@@ -4,7 +4,7 @@ const forward = document.getElementById("button-right");
 // -------
 
 
-let slider = document.querySelector(".slider");
+const slider = document.querySelector(".slider");
 let items_slider = document.querySelectorAll(".slider__element");
 let lastElement = slider.lastElementChild;
 let firstElement = slider.firstElementChild;
@@ -14,6 +14,22 @@ let firstElement_clone = slider.firstElementChild.cloneNode(true);
 
 let length_slider = items_slider.length;
 let length_slider_for_to_items = length_slider * 2;
+if(length_slider === 1){
+  slider.setAttribute("style", "margin-left: 0; width:" + length_slider * 100 + "%; transition: none");
+}else if(length_slider === 2) {
+  back.style.display ="block"
+  forward.style.display ="block"
+  slider.setAttribute(
+    "style",
+    "width:" + length_slider_for_to_items * 100 + "%"
+  );
+  slider.insertAdjacentElement("beforeend", lastElement_clone);
+  slider.insertAdjacentElement("beforeend", firstElement_clone);
+}else {
+  back.style.display ="block"
+  forward.style.display ="block"
+  slider.setAttribute("style", "width:" + length_slider * 100 + "%");
+}
 
 const mqLarge  = window.matchMedia( '(min-width: 600px)' );
 let size = mqLarge.matches ? 'large' : 'not large'
@@ -31,16 +47,9 @@ if (size == "not large"){
 }
 
 
-if (length_slider === 2) {
-  slider.setAttribute(
-    "style",
-    "width:" + length_slider_for_to_items * 100 + "%"
-  );
-  slider.insertAdjacentElement("beforeend", lastElement_clone);
-  slider.insertAdjacentElement("beforeend", firstElement_clone);
-} else {
-  slider.setAttribute("style", "width:" + length_slider * 100 + "%");
-}
+
+
+
 slider.insertAdjacentElement("afterbegin", lastElement);
 
 
@@ -87,7 +96,8 @@ function mqHandler(e) {
       );
       slider.insertAdjacentElement("beforeend", lastElement_clone);
       slider.insertAdjacentElement("beforeend", firstElement_clone);
-    } else {
+    }
+    else {
       slider.setAttribute("style", "width:" + length_slider * 100 + "%");
     } 
   }

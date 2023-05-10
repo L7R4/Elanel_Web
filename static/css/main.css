@@ -302,6 +302,7 @@ html {
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
+  display: none;
 }
 .button > img {
   width: 70%;
