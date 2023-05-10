@@ -147,7 +147,11 @@
 
             if (this.value === "") {
                 $themeCSS.remove();
+<<<<<<< HEAD
                 // window.ui_changes['dark_mode_theme'] = null;
+=======
+                window.ui_changes['dark_mode_theme'] = null;
+>>>>>>> 81ce0382839ddb2d2acf6b31c3abadefbf50a44e
                 return
             }
 
@@ -169,7 +173,11 @@
 
             themeSpecificTweaks(newTheme);
 
+<<<<<<< HEAD
             // window.ui_changes['dark_mode_theme'] = newTheme;
+=======
+            window.ui_changes['dark_mode_theme'] = newTheme;
+>>>>>>> 81ce0382839ddb2d2acf6b31c3abadefbf50a44e
         });
     }
 
@@ -298,7 +306,11 @@
 
     function setFromExisting() {
         $('#jazzmin-theme-chooser').val(window.ui_changes['theme']);
+<<<<<<< HEAD
         // $('#jazzmin-dark-mode-theme-chooser').val(window.ui_changes['dark_mode_theme']);
+=======
+        $('#jazzmin-dark-mode-theme-chooser').val(window.ui_changes['dark_mode_theme']);
+>>>>>>> 81ce0382839ddb2d2acf6b31c3abadefbf50a44e
         $('#theme-condition').val(window.ui_changes['theme_condition']);
         $('#body-small-text').get(0).checked = window.ui_changes['body_small_text'];
         $('#footer-small-text').get(0).checked = window.ui_changes['footer_small_text'];
