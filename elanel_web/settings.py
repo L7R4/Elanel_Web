@@ -22,13 +22,6 @@ DEBUG =os.environ.get("DEBUG")
 
 ALLOWED_HOSTS = ['*']
 
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST= "c1611768.ferozo.com"
-EMAIL_USE_SSL = True
-EMAIL_PORT = 465
-# EMAIL_TIMEOUT = None
-EMAIL_HOST_USER="solicitudesclientes@elanelsys.com"
-EMAIL_HOST_PASSWORD="klf781CL*"
 
 # Application definition
 
