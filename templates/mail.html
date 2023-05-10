@@ -1,0 +1,23 @@
+{% load static %}
+<html>
+    <body style="text-align: center; ">
+
+        {% if target %}
+            <h1 style="font-size: 30px;">{{target}}</h1>
+        {% else %}
+            <h1 style="font-size: 30px;">ENVIO DE CURRICULUM</h1>
+        {% endif %}
+
+        <h2><strong style="color: #027cf1;">La persona</strong>  <br>{{person}}</h2>
+        
+        {% if provincia %}
+            <h2><strong style="color: #027cf1;">Es de:</strong>  <br>{{provincia}}</h2>
+        {% else %}
+            <h6></h6>
+        {% endif %}
+        
+        <h2><strong style="color: #027cf1;">Su numero de telefono es:</strong> <br>{{num_tel}}</h2>
+        <h2><strong style="color: #027cf1;">Su correo es:</strong> <br>{{correo}}</h2>
+    </body>
+</html>
+

@@ -4,7 +4,7 @@ const message_success = document.querySelector(".form_success_wrapper")
 const message_error = document.querySelector(".form_error_wrapper")
 const button_close_error = document.querySelector("#close_form_error")
 const button_close_success = document.querySelector("#close_form_success")
-
+const wrapper__loader = document.querySelector(".wrapper__loader")
 window.addEventListener('load',()=>{
     button_submit.addEventListener("click", EnviarDatos)
     button_close_error.addEventListener("click",()=>{
@@ -36,6 +36,8 @@ window.addEventListener('load',()=>{
     }
     
     function EnviarDatos() {
+        wrapper__loader.classList.add("active")
+        wrapper__loader.parentElement.style.pointerEvents = "none"
         var form = new FormData(document.querySelector(".form"))
     
         let post = fetch(url,{
@@ -61,6 +63,9 @@ window.addEventListener('load',()=>{
             parent_cv.removeChild(cv_element)
             image_cv.setAttribute("src","/static/images/icons/cv_icon.png")
             // image_cv.setAttribute("src","/static/images/icons/cv_icon.svg")
+        }).finally(()=>{
+            wrapper__loader.classList.remove("active")
+            wrapper__loader.parentElement.style.pointerEvents = "all"
         })
         
     }

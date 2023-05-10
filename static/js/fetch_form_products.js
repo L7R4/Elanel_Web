@@ -2,6 +2,7 @@ const button_submit = document.getElementById("form_product_button")
 const inputs_form = document.querySelectorAll("#form_fetch_post  input[type='text'],#form_fetch_post  input[type='email']")
 const message_success = document.querySelector(".message_success")
 const message_error = document.querySelector(".message_error")
+const wrapper__loader = document.querySelector(".wrapper__loader")
 var url = window.location.pathname;
 
 window.addEventListener('load',()=>{
@@ -23,6 +24,8 @@ window.addEventListener('load',()=>{
     }
     
     function EnviarDatos() {
+        wrapper__loader.classList.add("active")
+        wrapper__loader.parentElement.style.pointerEvents = "none"
         var form = new FormData(document.getElementById("form_fetch_post"))
     
         let post = fetch(url,{
@@ -43,6 +46,9 @@ window.addEventListener('load',()=>{
             LimpiarDatos()
             message_error.classList.add("hide")
             message_success.classList.remove("hide")
+        }).finally(()=>{
+            wrapper__loader.classList.remove("active")
+            wrapper__loader.parentElement.style.pointerEvents = "all"
         })
         
         

@@ -65,9 +65,10 @@ class Electrodomestico(models.Model):
         )
     combos = (
         ('cocina', 'cocina'),
-        ('gamer', 'gamer'),
-        ('musica', 'musica'),
-        ('tv', 'tv'),
+        ('tecnologia', 'tecnologia'),
+        ('dormitorio', 'dormitorio'),
+        ('living', 'living'),
+        ('hogar', 'hogar'),
     )
     combo = models.CharField(max_length=100, choices=combos)
     nombre = models.CharField(max_length=100)
@@ -97,15 +98,7 @@ class ImagenElectrodomestico(models.Model) :
 
 
 class SolucionDineraria(models.Model):  
-    cuotas = (
-        ('24','24'),
-        ('30','30'),
-        ('48','48'),
-        ('60','60'),
-    )
     monto = models.DecimalField(max_digits=15, decimal_places=2)
-    cuota = models.CharField(max_length=2, choices=cuotas,default='24')
-    # monto_cuota = models.DecimalField(max_digits=15, decimal_places=2)
     descripcion = QuillField(blank=True,null=True)
 
     def __str__(self):

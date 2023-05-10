@@ -3,10 +3,14 @@ from django.shortcuts import render,redirect
 from django.urls import reverse
 from django.views.generic import View
 from django.views import generic
+from django.conf import settings
 from django.http import HttpResponseRedirect, HttpResponse
 from market.models import Electrodomestico,Cliente ,ImagenMoto,ImagenElectrodomestico, Post, Moto, Personal,BeneficioParaCliente,SolucionDineraria
 from .forms import FormPersonal,FormBeneficios,FormDinero,FormMotos,FormElec
 import os
+
+
+   
 
 class Categorias(generic.ListView):
     template_name = "templates_categorias/categorias.html"
@@ -76,6 +80,7 @@ class DetalleMoto(generic.DetailView):
                 form_moto.provincia = form.cleaned_data['provincia']
                 form_moto.objetivo = form.cleaned_data['objetivo']
                 form_moto.save()
+                
             else:
                 message_error = {"message": "No valido"}
                 data = json.dumps(message_error)
@@ -164,11 +169,14 @@ class CategoriaSolucionesDinerarias(generic.ListView):
         if is_valid_query(cuota):
             qs = qs.filter(cuota = cuota)
         return qs
+    
 
 class DetalleSolucion(generic.DetailView):
     model = SolucionDineraria
     template_name = "templates_categorias/detalle_soluciones.html"
 
+    
+            
     def post(self,request,*args, **kwargs):
         self.object = self.get_object()
         form = FormDinero()
@@ -190,9 +198,12 @@ class DetalleSolucion(generic.DetailView):
                 return HttpResponse(data,"application/json")
         return redirect('market:solucione_detail',self.object.id)
 
+    
+
     def get(self,request,*args,**kwargs):
         self.object = self.get_object()
         context ={}
+        
         context["object"] = self.object
 
         return render(request,self.template_name,context)
@@ -285,6 +296,7 @@ class TrabajaConNosotros(View):
 
     def get(self, request, *args, **kwargs):
         return(render(request,self.template_name))
+
 
 
 

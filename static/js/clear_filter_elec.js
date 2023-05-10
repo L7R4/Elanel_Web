@@ -11,39 +11,43 @@ window.addEventListener('load',()=>{
         document.getElementById('clear').style.visibility = 'hidden';
     }
     
-    if (valores.includes("cuota=24")){
-        document.getElementById("venticuatro").checked = true;
-        document.getElementById("venticuatro").nextElementSibling.classList.add("check")
-    }
-    else if(valores.includes("cuota=30")){
-        document.getElementById("treinta").checked = true;
-        document.getElementById("treinta").nextElementSibling.classList.add("check")
-    }
-    else if(valores.includes("cuota=48")){
-        document.getElementById("cuarentaocho").checked = true;
-        document.getElementById("cuarentaocho").nextElementSibling.classList.add("check")
-    }
-    else if(valores.includes("cuota=60")){
-        document.getElementById("sesenta").checked = true;
-        document.getElementById("sesenta").nextElementSibling.classList.add("check")
-    }
+    // if (valores.includes("cuota=24")){
+    //     document.getElementById("venticuatro").checked = true;
+    //     document.getElementById("venticuatro").nextElementSibling.classList.add("check")
+    // }
+    // else if(valores.includes("cuota=30")){
+    //     document.getElementById("treinta").checked = true;
+    //     document.getElementById("treinta").nextElementSibling.classList.add("check")
+    // }
+    // else if(valores.includes("cuota=48")){
+    //     document.getElementById("cuarentaocho").checked = true;
+    //     document.getElementById("cuarentaocho").nextElementSibling.classList.add("check")
+    // }
+    // else if(valores.includes("cuota=60")){
+    //     document.getElementById("sesenta").checked = true;
+    //     document.getElementById("sesenta").nextElementSibling.classList.add("check")
+    // }
     
     
     if (valores.includes("combo=cocina")){
         document.getElementById("cocina").checked = true;
         document.getElementById("cocina").nextElementSibling.classList.add("check")
     }
-    else if(valores.includes("combo=gamer")){
-        document.getElementById("gamer").checked = true;
-        document.getElementById("gamer").nextElementSibling.classList.add("check")
+    else if(valores.includes("combo=tecnologia")){
+        document.getElementById("tecnologia").checked = true;
+        document.getElementById("tecnologia").nextElementSibling.classList.add("check")
     }
-    else if(valores.includes("combo=musica")){
-        document.getElementById("musica").checked = true;
-        document.getElementById("musica").nextElementSibling.classList.add("check")
+    else if(valores.includes("combo=living")){
+        document.getElementById("living").checked = true;
+        document.getElementById("living").nextElementSibling.classList.add("check")
     }
-    else if(valores.includes("combo=tv")){
-        document.getElementById("tv").checked = true;
-        document.getElementById("tv").nextElementSibling.classList.add("check")
+    else if(valores.includes("combo=hogar")){
+        document.getElementById("hogar").checked = true;
+        document.getElementById("hogar").nextElementSibling.classList.add("check")
+    }
+    else if(valores.includes("combo=dormitorio")){
+        document.getElementById("dormitorio").checked = true;
+        document.getElementById("dormitorio").nextElementSibling.classList.add("check")
     }
     
     

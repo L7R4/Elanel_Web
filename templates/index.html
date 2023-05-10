@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{% static 'css/media_querys/footer.css' %}">
     
     <title>Elanel Servicios y Soluciones</title>
-    <link rel="shortcut icon" href="{% static 'images/fwd/icono.sinfondo_admin_site_logo.png' %}">
+    <link rel="shortcut icon" href="{% static 'images/fwd/icon_page4.png' %}">
 </head>
 <body>
   <figure class="logo__background">
@@ -24,7 +24,7 @@
   <div class="wrapper__slider__botones">
     <div id="slider-container" class="slider-container">
       <div class="slider" id="slider">
-        {% for post in posts %}
+        {% comment %} {% for post in posts %}
           {% if post.tamano == "Computadoras" %}
             <div class="slider__element">
               <img
@@ -33,7 +33,13 @@
               />
             </div>
           {% endif %}
-        {%endfor%}
+        {%endfor%}  {% endcomment %}
+        {% comment %} <div class="slider__element">
+          <video
+            src="{% static 'images/video.mp4' %}"
+            alt=""
+          /> {% endcomment %}
+        </div>
       </div>
       <div class="slider_cel" id="slider_cel">
         {% for post in posts %}
@@ -59,103 +65,10 @@
     </div>
   </div>
 
-  <button type="button" class="whatsapp_contact" id="whatsapp_contact">
+  <a class="whatsapp_contact" id="whatsapp_contact" href="https://wa.me/543624643544?text=Vi%20esto%20en%20la%20web,%20me%20podrias%20brindar%20mas%20informacion?" target="_blank">
     <img class="icon_whap" src="{% static 'images/icons/whatsapp_icon.svg' %}" alt="">
     <h6>¡Escribenos!</h6> 
-  </button>
-
-  <div class="modal_whatsapp_container">
-    <div class="wrapper_windown_whatsapp">
-
-      <div class="window_whatsapp">
-        <li class="contacto">
-          <h2>Administracion</h2>
-          <div class="numbers">
-            <p>54654456654</p>
-          </div>
-        </li>
-        <li class="contacto">
-          <h2>Cobranzas</h2>
-          <div class="numbers">
-              <p>8291738129</p>
-              <p>8291738129</p>
-              <p>8291738129</p>
-          </div>
-        </li>
-        <li class="contacto">
-          <h2>Ventas</h2>
-          <div class="numbers">
-            <p>123456789</p>
-            <p>123456789</p>
-          </div>
-        </li>
-        <button type ="button" id="close_modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
-  
-   {% comment %} <section class="marcas">
-    <div class="marquee">
-      <ul class="marquee-content">
-        <li>
-          <div class="item_adjudicado">
-            <h3>N° Adjudicado</h3>
-            <h1>158</h1>
-            <h2>Mayo</h2>
-          </div>
-        </li>
-        <li>
-          <div class="item_adjudicado">
-            <h3>N° Adjudicado</h3>
-            <h1>211</h1>
-            <h2>Junio</h2>
-          </div>
-        </li>
-        <li>
-          <div class="item_adjudicado">
-            <h3>N° Adjudicado</h3>
-            <h1>239</h1>
-            <h2>Julio</h2>
-          </div>
-        </li>
-        <li>
-          <div class="item_adjudicado">
-            <h3>N° Adjudicado</h3>
-            <h1>301</h1>
-            <h2>Agosto</h2>
-          </div>
-        </li>
-        <li id="marcar_honda">
-          <div class="item_adjudicado">
-            <h3>N° Adjudicado</h3>
-            <h1>339</h1>
-            <h2>Septiembre</h2>
-          </div>
-        </li>
-        <li id="marcar_lg">
-          <div class="item_adjudicado">
-            <h3>N° Adjudicado</h3>
-            <h1>411</h1>
-            <h2>Octubre</h2>
-          </div>
-        </li>
-        <li>
-          <div class="item_adjudicado">
-            <h3>N° Adjudicado</h3>
-            <h1>489</h1>
-            <h2>Noviembre</h2>
-          </div>
-        </li>  
-        <li>
-          <div class="item_adjudicado">
-            <h3>N° Adjudicado</h3>
-            <h1>517</h1>
-            <h2>Diciembre</h2>
-          </div>
-        </li>  
-      </ul>
-    </div>
-  </section>  {% endcomment %}
+  </a>
 
    <div class="wrapper_adjudicado">
       <button id="back">
@@ -328,7 +241,12 @@
       <div class = "container_objetivo">
         <input type="text" name="objetivo" id="objetivo"placeholder="Que buscas">
       </div>
-      <button type="button" value="Enviar" id="form_product_button" class="desactive">Enviar</button>
+      <button type="button" value="Enviar" id="form_product_button" class="desactive">
+        Enviar
+        <div class="wrapper__loader">
+          <div id="loader"></div>
+        </div>
+      </button>
       {% comment %} <button type="button" value="Enviar" id="enviar" class="desactive"></button> {% endcomment %}
     </form>
     <div class="form_success_wrapper">
@@ -365,7 +283,7 @@
      <div class="wrapper_ubicacion">
        <div class="ubicacion__direccion active_provincia" id="ubicacion__direccion_resistencia">
          <h1>Encuentranos en</h1>
-         <h4 >Obligado 841</h4>
+         <h4 >Obligado 841 Local B</h4>
        </div>
        <iframe class="mapa active_provincia" id="mapa_resistencia" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3540.298199016263!2d-58.983624984976636!3d-27.459974282894965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94450ceee646f275%3A0x77559d941a7c7581!2sC.%20Obligado%20841%2C%20H3504APB%20Resistencia%2C%20Chaco!5e0!3m2!1ses!2sar!4v1660695784285!5m2!1ses!2sar" width="60%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
        
@@ -420,12 +338,12 @@
             </a>
           </li>
           <li id="ubicacion__instagram">
-            <a href="https://www.instagram.com/elanel.servicios/?hl=es-la" target=”_blank” class="ubicacion__icon"><img src="{% static 'images/icons/insta_icon.svg' %}" alt="">
+            <a href="https://www.instagram.com/elanel_servicios/" target=”_blank” class="ubicacion__icon"><img src="{% static 'images/icons/insta_icon.svg' %}" alt="">
             </a>
           </li>
           <li id="ubicacion__whatsapp">
             <!-- <p>¡Escribenos!</p> -->
-            <a href="whatsapp.com"  target=”_blank” class="ubicacion__icon"><img src="{% static 'images/icons/whatsapp_icon.svg' %}" alt="">
+            <a href="https://wa.me/543625170890?text=Vi%20esto%20en%20la%20web,%20me%20podrias%20brindar%20mas%20informacion?"  target=”_blank” class="ubicacion__icon"><img src="{% static 'images/icons/whatsapp_icon.svg' %}" alt="">
             </a>
           </li>
         </ol>
@@ -441,19 +359,19 @@
       <ul>
         <li class="footer__direccion"> 
           <p><strong>Corrientes:</strong> 9 de Julio 1687 Local 2</p>
-          <p><strong>Resistencia:</strong> Obligado 841</p>
+          <p><strong>Resistencia:</strong> Obligado 841 Local B</p>
         </li>
         <li class="footer__social-media"> 
-          <a href="#">
+          <a href="https://m.facebook.com/elanelsys" target=”_blank”>
             <img src="{% static 'images/icons/social_face.png' %}" alt="">
           </a>
-          <a href="#">
+          <a href="https://www.instagram.com/elanel.servicios/?hl=es-la" target=”_blank”>
             <img src="{% static 'images/icons/social_insta.png' %}" alt="">
           </a>
-          <a href="#">
-            <img src="{% static 'images/icons/social_twitter.png' %}" alt="">
+          <a href="https://www.tiktok.com/@elaneloficial" target=”_blank”>
+            <img src="{% static 'images/icons/tiktok_icon.svg' %}" alt="">
           </a>
-          <a href="#">
+          <a href="whatsapp.com" target=”_blank”>
             <img src="{% static 'images/icons/social_whatsapp.png' %}" alt="">
           </a>
         </li>
@@ -497,17 +415,18 @@
             <img src="{% static 'images/icons/social_tel.png' %}" alt="">
             <p>Chaco: 362 524-5484</p> 
           </li>
+          <li class="footer__correo-resistencia"> 
+            <img src="{% static 'images/icons/social_mail.png' %}" alt="">
+            <p>admin.chaco@elanelsys.com</p>
+          </li>
+          <p>_____________________________________</p>
           <li class="footer__num-telefono"> 
             <img src="{% static 'images/icons/social_tel.png' %}" alt="">
             <p>Corrientes: 3795 16-1905</p> 
           </li>
-          <li class="footer__correo-resistencia"> 
-            <img src="{% static 'images/icons/social_mail.png' %}" alt="">
-            <p>Agenciachaco.elanel@mail.com</p>
-          </li>
           <li class="footer__correo-corrientes"> 
             <img src="{% static 'images/icons/social_mail.png' %}" alt="">
-            <p>Agenciactes.elanel@gmail.com</p>
+            <p>admin.ctes@elanelsys.com</p>
           </li>
         </ul>
       </div>
