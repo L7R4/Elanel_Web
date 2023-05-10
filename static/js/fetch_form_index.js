@@ -4,7 +4,7 @@ const form_success = document.querySelector(".form_success_wrapper")
 const close_form_success = document.getElementById("close_form_success")
 const form_error = document.querySelector(".form_error_wrapper")
 const close_form_error = document.getElementById("close_form_error")
-
+const wrapper__loader = document.querySelector(".wrapper__loader")
 window.addEventListener('load',()=>{
     button_submit.addEventListener("click", EnviarDatos)
     
@@ -32,6 +32,8 @@ window.addEventListener('load',()=>{
     }
     
     function EnviarDatos() {
+        wrapper__loader.classList.add("active")
+        wrapper__loader.parentElement.style.pointerEvents = "none"
         var form = new FormData(document.getElementById("form_fetch_post"))
     
         let post = fetch("/",{
@@ -50,6 +52,9 @@ window.addEventListener('load',()=>{
         }).catch(error => {
             LimpiarDatos()
             form_success.classList.add("active")
+        }).finally(()=>{
+            wrapper__loader.classList.remove("active")
+            wrapper__loader.parentElement.style.pointerEvents = "all"
         })
     }
 

@@ -24,7 +24,7 @@ ALLOWED_HOSTS = ['*']
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST= "c1611768.ferozo.com"
-# EMAIL_USE_SSL = True
+EMAIL_USE_SSL = True
 EMAIL_PORT = 465
 # EMAIL_TIMEOUT = None
 EMAIL_HOST_USER="solicitudesclientes@elanelsys.com"
@@ -140,7 +140,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'es'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Argentina/Buenos_Aires'
 
 USE_I18N = True
 
