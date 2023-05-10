@@ -4,6 +4,7 @@ const message_success = document.querySelector(".message_success_wrapper")
 const message_error = document.querySelector(".message_error_wrapper")
 const close_form_success = document.getElementById("close_form_success")
 const close_form_error = document.getElementById("close_form_error")
+const wrapper__loader = document.querySelector(".wrapper__loader")
 var url = window.location.pathname;
 
 window.addEventListener('load',()=>{
@@ -32,6 +33,8 @@ window.addEventListener('load',()=>{
     }
     
     function EnviarDatos() {
+        wrapper__loader.classList.add("active")
+        wrapper__loader.parentElement.style.pointerEvents = "none"
         var form = new FormData(document.getElementById("form_fetch_post"))
     
         let post = fetch(url,{
@@ -41,7 +44,10 @@ window.addEventListener('load',()=>{
                 "X-CSRFToken": getCookie('csrftoken')
             }
         })
-        .then(response => response.json())
+        .then(response =>{
+            
+            return response.json();
+        })
         .then(data => {
             if (data) {
                 LimpiarDatos()
@@ -53,6 +59,9 @@ window.addEventListener('load',()=>{
             LimpiarDatos()
             message_error.classList.remove("active")
             message_success.classList.add("active")
+        }).finally(()=>{
+            wrapper__loader.classList.remove("active")
+            wrapper__loader.parentElement.style.pointerEvents = "all"
         })
         
         

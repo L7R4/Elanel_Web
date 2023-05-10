@@ -22,6 +22,14 @@ DEBUG =True
 
 ALLOWED_HOSTS = ['181.215.135.171','www.elanelsys.com','elanelsys.com','*']
 
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST= "c1611768.ferozo.com"
+EMAIL_USE_SSL = True
+EMAIL_PORT = 465
+# EMAIL_TIMEOUT = None
+EMAIL_HOST_USER="solicitudesclientes@elanelsys.com"
+EMAIL_HOST_PASSWORD="klf781CL*"
+
 LOGGING = {
 	"version": 1,
 	"disable_existing_loggers": False,
