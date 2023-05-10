@@ -20,8 +20,26 @@ SECRET_KEY="()ue$zj3&su3$+1a#p0r8=umkc-v^la2=5zu6#91r^pi5&#qil"
 #DEBUG =os.environ.get("DEBUG")
 DEBUG =True
 
-ALLOWED_HOSTS = ['181.215.135.171','www.elanelsys.com','elanelsys.com']
+ALLOWED_HOSTS = ['181.215.135.171','www.elanelsys.com','elanelsys.com','*']
 
+LOGGING = {
+	"version": 1,
+	"disable_existing_loggers": False,
+	"handlers": {
+		"file": {
+			"level": "DEBUG",
+			"class": "logging.FileHandler",
+			"filename": "/home/elanelweb/elanal_web/errors_production/error.log",
+		 },
+	},
+	"loggers": {
+		"django": {
+			"handlers": ["file"],
+			"level": "DEBUG",
+			"propagate": True,
+		},
+	},
+}
 
 # Application definition
 
@@ -55,6 +73,8 @@ JAZZMIN_SETTINGS ={
     
 #     # "theme": "flatly",
 # }
+# CSRF_COOKIE_SECURE =True
+CSRF_TRUSTED_ORIGINS = ['https://*.elanelsys.com/','https://elanelsys.com/']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
