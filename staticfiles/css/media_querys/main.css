@@ -1,0 +1,441 @@
+@media screen and (max-width: 1200px){
+    .naccs{
+        display: flex;
+        flex-flow: column;
+        border-radius: 0;
+    }
+    .detalle > div:not(.active){
+        left: auto;
+    }
+
+    .menu{
+        grid-area: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0;
+    }
+    .categoria .naccs .menu >div{
+        margin-right: 2rem;
+        height: fit-content;
+        padding: 1% 2%;
+        border-radius: 1rem;
+        width: 25%;
+        margin-bottom: 1rem;
+        min-width: 150px;
+    }
+
+    .menu > div > img{
+        width: 20%;
+        min-width: 4.5rem;
+        margin-left: 2%;
+    }
+
+    .menu > div > h6{
+        margin-left: 0;
+        font-size: 1.2rem;
+    }
+
+    .detalle{
+        grid-area: none;
+        height: 60vh;
+        margin-top: 10%;
+    }
+
+    .detalle > div{
+        flex-flow: column;
+        justify-content: flex-start;
+    }
+
+    .detalle > div .text{
+        width: 80%;
+        margin-bottom: 3%;
+    }
+
+    .container_sliderMotos_buttons{
+        margin-top: 3%;
+    }
+
+    .text h5{
+        font-size: 2.3rem;
+    }
+    .text p{
+        font-size: 1.4rem;
+    }
+    .slider__motos__nav{
+        width: 130%;
+    }
+    .container_slider_motos{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 960px){
+    .slider-container{
+        height: 385px;
+    }
+    .formulario__eslogan{
+        font-size: 3rem;
+    }
+    .wrapper_windown_whatsapp{
+        width: 42%;
+    }
+}
+
+
+@media screen and (max-width: 900px) {
+    
+    
+
+    .ubicacion__redes__text{
+        display: none;
+    }
+
+    #mapa__container{
+        width: 80%;
+    }
+
+    .ubicacion__redes{
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        width: 20%;
+    }
+    
+
+    .wrapper__icons__social ol{
+        display: block;
+    }
+
+    .wrapper__icons__social ol li{
+        margin: 0 auto;
+        margin-bottom: 2.5rem;
+        min-width: 70px;
+        min-height: 70px;
+    }
+
+    .marquee-content li img {
+        width: 67%;
+      }
+      
+      #marcar_honda img{
+        width: 40%;
+      }
+      
+      #marcar_lg img{
+        width: 50%;
+      }
+
+}
+
+
+
+
+@media screen and (max-width:810px) {
+    .naccs{
+        padding-bottom: 3rem;
+    }
+    .formulario{
+        flex-flow: column;
+        padding: 3rem 0;
+    }
+    .formulario form{
+        margin: 0;
+        padding: 5% 5%;
+        width: 60%;
+    }
+
+    .formulario__eslogan{
+        font-size: 3rem;
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    .barra{
+        top: 0;
+        height: 70%;
+    }
+
+    .formulario form >input{
+        font-size: 1.4rem;
+    }
+    .formulario form >input::placeholder{
+        font-size: 1.3rem;
+    }
+    .formulario form #form_product_button{
+        width: 44%;
+    }
+
+
+
+    .wrapper__slider__botones{
+        margin: 0;
+    }
+
+
+    .slider-buttons{
+        width: 100%;
+    }
+    
+    .slider-container{
+        height: 430px;
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .locales button{
+        font-size: 1.3rem;
+    }
+
+    .marquee-content li img {
+        width: 80%;
+    }
+      
+    #marcar_honda img{
+        width: 45%;
+    }
+      
+    #marcar_lg img{
+        width: 54%;
+    }
+
+    .wrapper_windown_whatsapp{
+        width: 48%;
+    }
+
+    .contacto > h2{
+        font-size: 1.7rem;
+    }
+
+}
+
+@media screen and (max-width:670px){
+    .formulario form{
+        justify-content: center;
+    }
+    .container_nombre_completo,.container_num_telefono,
+    .container_provincia,.container_localidad {
+        min-width:90%;
+    }
+    .container_objetivo,.container_email {
+        min-width: 90%;
+    }
+    .ubicacion{
+        display: grid;
+        height: auto;
+        grid-template-columns: repeat(2,minmax(50%,1fr));
+        grid-auto-rows: auto;
+        margin-top: 4rem;
+    }
+    .ubicacion__redes{
+        width: 100%;
+        margin: 0;
+        height: auto;
+        grid-column: span 2;
+        margin: 2rem 0;
+    }
+    .wrapper_adjudicado
+    {
+        position: relative;
+        width: 80%;
+        margin: 0 auto;
+        bottom: unset;
+        right: unset;
+        margin-top: 3rem;
+        z-index: unset;
+    }
+    .wrapper__icons__social ol{
+        max-width: none;
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .wrapper__icons__social ol li{
+        margin: 0;
+        
+    }
+
+    #mapa__container{
+        width: 100%;
+        margin: 0;
+        align-items: flex-start;
+        flex-flow: column;
+        grid-column: span 2;
+        height: 100%;
+    }
+
+    .locales{
+        position: static;
+        width: auto;
+        display: flex;
+        flex-flow: column;
+    } 
+
+
+    .locales button{
+        font-size: 1.3rem;
+        width: 60%;
+        margin-top: .5rem;
+    }
+
+    .wrapper_ubicacion
+    {
+        width: 100%;
+        min-height:380px; 
+        max-width: none;
+    }
+
+    .mapa{
+        max-width: none;
+        bottom: 3%;
+    }
+
+    .ubicacion__direccion{
+        margin: 1.3rem 0;
+        margin-left: 3%;
+    }
+    .ubicacion__text{
+        margin-top: 1rem;
+        margin-left: 0%;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 1fr;
+        max-width: none;
+        width: 100%;
+    }
+
+    .ubicacion__text_container{
+        margin-left: 6%;
+    }
+
+    .wrapper__icons__social ol li{
+        min-height: 50px;
+        min-width: 50px;
+    }
+    .marquee-content li{
+        margin: 0 1.2rem;
+    }
+    .marquee-content li img {
+        width: 95%;
+    }
+      
+    #marcar_honda img{
+        width: 50%;
+    }
+    #marcar_lg img{
+        width: 70%;
+    }
+    .wrapper_windown_whatsapp{
+        width: 65%;
+    }
+
+}
+
+@media screen and (max-width:600px){
+    .slider_cel
+    {
+      display: flex;
+    }
+    .slider{
+        display: none;
+    }
+}
+
+/* @media screen and (max-width: 500px) {
+    html{
+        background-color: red;
+    }
+    .slider-container{
+        height: 440px;
+    }} */
+
+@media screen and (max-width: 470px) {
+    .slider-container{
+        height: 340px;
+    }
+    .categoria >h2{
+        font-size: 3rem;
+    }
+
+    .categoria .naccs .menu >div{
+        padding: 2% 2%;
+        display: block;
+    }
+
+    .detalle{
+        height: 55vh;
+    }
+
+    .detalle > div .text{
+        width: 90%;
+        margin-bottom:0;
+    }
+
+    .menu > div > h6{
+        margin-left: 0;
+    }
+
+    .container_sliderMotos_buttons{
+        width: 48%;
+    }
+    .slider__motos__nav{
+        width: 150%;
+    }
+    .locales > h4{
+        font-size: 1.6rem;
+        margin-bottom: .3rem;
+    }
+
+
+    .ubicacion__text #ubicacion__text__title{
+        font-size: 1.6rem;
+    }
+    
+    .ubicacion__text #ubicacion__horarios{
+        font-size: 1.2rem;
+    }
+
+    .locales button{
+        width: 80%;
+    }
+
+    
+    #ubicacion__horarios .horarios-decoration{
+       font-size: 1.4rem;
+    }
+
+    .marquee-content li{
+        margin: 0 1.2rem;
+    }
+    .marquee-content li img {
+        width: 100%;
+    }
+      
+    #marcar_honda img{
+        width: 60%;
+    }
+    #marcar_lg img{
+        width: 80%;
+    }
+    :root {
+        --marquee-height: 10vh;
+    }
+
+}
+
+@media screen and (max-width: 350px){
+    .categoria >h2{
+        font-size: 2.6rem;
+    }
+    .container_sliderMotos_buttons{
+        margin-top: 5%;
+    }
+    .locales button{
+        width: 90%;
+    }
+    :root {
+        --marquee-height: 8vh;
+    }
+}

@@ -1,0 +1,49 @@
+.hidden
+{
+    display: none !important;
+}
+
+.gap_for_flex{
+    column-gap: 1rem;
+}
+
+.gap_for_flex > a{
+    border-radius: 4px !important;
+}
+
+.ql-formats > .select2{
+    display: none;
+}
+.ql-editor.ql-blank
+{
+    min-height: 100px;
+}
+/* .object-tools
+{
+    display: none;
+} */
+
+.timeline>div>.timeline-item>.time
+{
+    float: unset !important;
+}
+.breadcrumb
+{
+    display: none;
+}
+.container-fluid > .row{
+    display: flex;
+    column-gap: 1.5rem;
+    row-gap: 1.5rem;
+}
+.container-fluid > .row > div
+{
+    margin: 0 auto;
+}
+
+.container-fluid > .row > div:nth-child(1) > h1{
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    font-size: 1.7rem;
+}

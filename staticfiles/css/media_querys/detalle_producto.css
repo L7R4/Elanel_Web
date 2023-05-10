@@ -1,0 +1,104 @@
+@media screen and (max-width:940px){
+    .wrapper
+    {
+        flex-direction: column;
+        padding-bottom: 3rem;
+    }
+    
+    
+    
+    #form_fetch_post
+    {
+        width: 40%;
+    }
+    .products_images
+    {
+        width: 100%;
+    }
+    .complete__image
+    {
+       width: 50%;
+    }
+    .title_producto_responsive
+    {
+        display: block;
+    }
+    .resumen{
+        width: 95%;
+        height: auto;
+        margin: 0;
+        border-radius: 3rem;
+        align-items: center;
+        padding: 5rem 0;
+        row-gap: 2rem;
+    }
+    .resumen > .detalle_producto
+    {
+        display: none;
+    }
+    .resumen > div
+    {
+        margin: 0;
+        width: 85%;
+        text-align: center;
+    }
+    .ficha_tenica
+    {
+        justify-content: center;
+    }
+} 
+@media screen and (max-width:640px){
+    #form_fetch_post
+    {
+        width: 70%;
+    }
+    .products_images
+    {
+        flex-wrap: unset;
+        flex-direction: column-reverse;
+        /* justify-content: flex-end; */
+        height: auto;
+    }
+    .complete__image
+    {
+        width: 65%;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+    .nav__images
+    {
+        flex-flow: unset;
+        width: 90%;
+        max-width: unset;
+        /* height: 30%; */
+        padding:1rem 0;
+        overflow-y: hidden;
+        overflow-x: scroll;
+    }
+    
+    .nav__images > figure
+    {
+        max-width: 115px;
+        min-width: 115px;
+        margin: 0;
+        min-height: unset;
+        display: flex;
+        justify-content: center;
+        margin-right: 2rem !important;
+    }
+
+    .nav__images > figure>img
+    {
+        width: 80%;
+    }
+    .title_producto_responsive
+    {
+        position: unset;
+        align-self: flex-start;
+        margin-left: 3rem;
+    }
+    .nav__images::-webkit-scrollbar{
+        
+        height: 4px;
+    }
+}
