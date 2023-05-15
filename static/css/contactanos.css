@@ -157,8 +157,15 @@
     color: #fff;
     font-family: raleway;
     font-feature-settings: 'pnum' on, 'lnum' on;
+    border-left-style: outset;
+    padding-left: 1rem;
+    margin-left: 1rem;
+    letter-spacing: 0.08rem;
 }
-
+.secciones > ol > .sector:first-child > .sector_info > h5:first-child
+{
+    margin-bottom: 1rem;
+}
 .secciones > ol > .sector > h3
 {
     font-family: raleway-bold;

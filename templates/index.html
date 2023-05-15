@@ -25,7 +25,7 @@
 
     <div id="slider-container" class="slider-container">
       <div class="slider" id="slider">
-        {% for post in posts %}
+        {% comment %} {% for post in posts %}
           {% if post.tamano == "Computadoras" %}
             <div class="slider__element">
               <img
@@ -34,7 +34,10 @@
               />
             </div>
           {% endif %}
-        {%endfor%}
+        {%endfor%} {% endcomment %}
+        <div class="slider__element">
+          <video src="{% static 'images/video.mp4' %}" type="video/mp4" autoplay muted preload="auto"></video>
+        </div>
       </div>
     
 
