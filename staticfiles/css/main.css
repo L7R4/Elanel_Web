@@ -222,7 +222,7 @@ html {
   position: relative;
   display: flex;
   align-items: center;
-  margin-top: 2%;
+  /* margin-top: 2%; */
   justify-content: center;
 }
 .slider_cel
@@ -249,11 +249,10 @@ html {
 }
 
 .slider-container {
-  width: 80%;
+  width: 100%;
   height: 470px;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 10px;
   overflow: hidden;
   position: relative;
 }
@@ -284,12 +283,13 @@ html {
   max-height: 100%;
   max-width: 100%;
 }
-/* .slider__element video{
+.slider__element video{
   width: 100%;
   height: 100%;
   max-height: 100%;
   max-width: 100%;
-} */
+  object-fit: cover;
+}
 
 .button {
   background-color: #12131bd2;
