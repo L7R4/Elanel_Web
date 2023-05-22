@@ -23,7 +23,7 @@ def create_email(email, subject, template_path,context):
 def enviar_correo(sender, instance, created, **kwargs):
     if created:  # Solo se envía el correo si se crea un objeto nuevo
         mail = create_email(
-            'lautaro.rodriguez553@gmail.com',
+            'atencionaclientes@elanelsys.com',
             instance.objetivo,
             "mail.html",
             {
@@ -42,7 +42,7 @@ def enviar_correo(sender, instance, created, **kwargs):
 def enviar_correo_personal(sender, instance, created, **kwargs):
     if created:  # Solo se envía el correo si se crea un objeto nuevo
         mail = create_email(
-            'lautaro.rodriguez553@gmail.com',
+            'rrhh@elanelsys.com',
             instance.cv,
             "mail.html",
             {
