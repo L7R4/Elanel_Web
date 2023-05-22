@@ -152,62 +152,65 @@
           </li>
         </ul>
       </div>
-      <div class="footer__categorias">
-        <ul>
-          <li class="footer__motos"> 
-            <a href="{% url 'market:motos' %}">Motos</a>
-          </li>
-          <li class="footer__soluciones-dinerarias"> 
-            <a href="{% url 'market:soluciones_dinerarias' %}">Soluciones Dinerarias</a>
-          </li>
-          <li class="footer__electrodomesticos"> 
-            <a href="{% url 'market:electrodomesticos' %}">Electrodomesticos</a>
-          </li>
-          <li class="footer__beneficios-para-cliente"> 
-            <a href="{% url 'market:beneficios' %}">Beneficios para cliente</a>
-          </li>
-        </ul>
-      </div>
-      <div class="footer__quienes-somos">
-        <h3>Quienes Somos</h3>
-        <ul>
-          <li class="footer__mision">
-            <a href="">Mision</a>
-          </li>
-          <li class="footer__vision">
-            <a href="">Vision</a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="footer__contactanos">
-        <h3>Contactanos</h3>
-        <ul>
-          <li class="footer__num-telefono"> 
-            <img src="{% static 'images/icons/social_tel.png' %}" alt="">
-            <p>Chaco: 362 524-5484</p> 
-          </li>
-          <li class="footer__correo-resistencia"> 
-            <img src="{% static 'images/icons/social_mail.png' %}" alt="">
-            <p>admin.chaco@elanelsys.com</p>
-          </li>
-          <p>_____________________________________</p>
-          <li class="footer__num-telefono"> 
-            <img src="{% static 'images/icons/social_tel.png' %}" alt="">
-            <p>Corrientes: 3795 16-1905</p> 
-          </li>
-          <li class="footer__correo-corrientes"> 
-            <img src="{% static 'images/icons/social_mail.png' %}" alt="">
-            <p>admin.ctes@elanelsys.com</p>
-          </li>
-        </ul>
-      </div>
-      <div class="footer__logo">
-        <img
-          src="{% static 'images/icons/icono_arreglado_blanco.png' %}"
-          alt=""
-        />
-      </div>
+        <div class="footer__categorias">
+          <ul>
+            <li class="footer__motos"> 
+              <a href="{% url 'market:motos' %}">Motos</a>
+            </li>
+            <li class="footer__soluciones-dinerarias"> 
+              <a href="{% url 'market:soluciones_dinerarias' %}">Soluciones Dinerarias</a>
+            </li>
+            <li class="footer__electrodomesticos"> 
+              <a href="{% url 'market:electrodomesticos' %}">Electrodomesticos</a>
+            </li>
+            <li class="footer__beneficios-para-cliente"> 
+              <a href="{% url 'market:beneficios' %}">Beneficios para cliente</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer__quienes-somos">
+          <h3>Quienes Somos</h3>
+          <ul>
+            <li class="footer__mision"> 
+              <a href="{% url 'nosotros' %}">Mision</a>
+            </li>
+            <li class="footer__vision"> 
+              <a href="{% url 'nosotros' %}">Vision</a>
+            </li>
+            <li class="footer__vision"> 
+              <a href="{% url 'privacidad' %}">Politicas de privacidad</a>
+            </li>
+            {% comment %} <li class="footer__adjudicados"> 
+              <a href="">Adjudicados</a>
+            </li> {% endcomment %}
+          </ul>
+        </div>
+        
+        <div class="footer__contactanos">
+          <h3>Contactanos</h3>
+          <ul>
+            <li class="footer__num-telefono"> 
+              <img src="{% static 'images/icons/social_tel.png' %}" alt="">
+              <p>Chaco: 362 524-5484</p> 
+            </li>
+            <li class="footer__correo-resistencia"> 
+              <img src="{% static 'images/icons/social_mail.png' %}" alt="">
+              <p>admin.chaco@elanelsys.com</p>
+            </li>
+            <p>_____________________________________</p>
+            <li class="footer__num-telefono"> 
+              <img src="{% static 'images/icons/social_tel.png' %}" alt="">
+              <p>Corrientes: 3795 16-1905</p> 
+            </li>
+            <li class="footer__correo-corrientes"> 
+              <img src="{% static 'images/icons/social_mail.png' %}" alt="">
+              <p>admin.ctes@elanelsys.com</p>
+            </li>
+          </ul>
+        </div>
+        <div class="footer__logo">
+            <img src="{% static 'images/icons/icono_arreglado_blanco.png' %}" alt="">
+        </div>
     </footer>
 
     <script src="{% static 'js/menu_hamburguer.js' %}"></script>

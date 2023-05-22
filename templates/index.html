@@ -25,7 +25,7 @@
 
     <div id="slider-container" class="slider-container">
       <div class="slider" id="slider">
-        {% for post in posts %}
+        {% comment %} {% for post in posts %}
           {% if post.tamano == "Computadoras" %}
             <div class="slider__element">
               <img
@@ -34,7 +34,10 @@
               />
             </div>
           {% endif %}
-        {%endfor%}
+        {%endfor%} {% endcomment %}
+        <div class="slider__element">
+          <video src="{% static 'images/video_index.mp4' %}" type="video/mp4" autoplay muted preload="auto"></video>
+        </div>
       </div>
     
 
@@ -396,6 +399,9 @@
           </li>
           <li class="footer__vision"> 
             <a href="{% url 'nosotros' %}">Vision</a>
+          </li>
+          <li class="footer__vision"> 
+            <a href="{% url 'privacidad' %}">Politicas de privacidad</a>
           </li>
           {% comment %} <li class="footer__adjudicados"> 
             <a href="">Adjudicados</a>

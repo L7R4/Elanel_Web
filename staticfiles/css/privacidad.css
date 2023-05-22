@@ -1,0 +1,28 @@
+
+.text_wrapper
+{
+    padding: 2rem;
+    padding-left: 4rem;
+}
+
+.text_wrapper > h3
+{
+    font-family: raleway-bold;
+    color: #1a73e8;
+    font-size: clamp(1.4rem,5vw,3.5rem);
+    margin-bottom: .3rem;
+}
+.text_wrapper > p{
+    font-family: raleway;
+    /* color: #1a73e8; */
+    font-size: clamp(1.4rem,4vw,2rem);
+    margin-bottom: 4rem;
+}
+p.text_main
+{
+    font-family: raleway;
+    /* color: #1a73e8; */
+    font-size: clamp(1.4rem,3vw,2.2rem);
+    margin-bottom: 4rem;
+    font-weight: bolder; 
+}
