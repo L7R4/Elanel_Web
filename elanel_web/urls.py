@@ -6,7 +6,7 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 from django.conf.urls import handler404
-from .views import IndexView2, SobreNosotros,Contactanos,page_error
+from .views import IndexView2, SobreNosotros,Contactanos,page_error, Privicidad
 
 handler404 = page_error
 
@@ -15,6 +15,7 @@ urlpatterns = [
     path("",IndexView2.as_view(), name = "index"),
     path("nosotros/",SobreNosotros.as_view(), name = "nosotros"),
     path("contactanos/",Contactanos.as_view(), name = "contactanos"),
+    path("politicas_de_privacidad/",Privicidad.as_view(), name = "privacidad"),
     path("notfound/", page_error,name="error"),
     path("m/", include("market.urls", namespace="market")),
 

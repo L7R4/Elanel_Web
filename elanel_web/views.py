@@ -60,3 +60,9 @@ class Contactanos(View):
     def get(self, request, *args, **kwargs):
         return(render(request,self.template_name))
 
+class Privicidad(View):
+    template_name = "privacidad.html"
+
+    def get(self, request, *args, **kwargs):
+        return(render(request,self.template_name))
+
