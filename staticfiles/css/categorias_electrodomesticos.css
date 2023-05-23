@@ -1,0 +1,94 @@
+.catalogo{
+    grid-auto-rows: 22rem;
+   
+} 
+.catalogo a > article{
+    height: 22rem;
+    overflow: hidden;
+}
+.catalogo a > article > img{
+    height: 70%;
+}
+.catalogo a > article > h2{
+    margin-top: 1rem;
+}
+
+.cuotas{
+    width: fit-content;
+    padding-left: 2rem;
+}
+
+.filters_container form .cuotas > input[type="radio"]{
+    display: none;
+}
+
+.filters_container form .estado > input[type="radio"]{
+    display: none;
+}
+
+.filters_container form .cuotas >label img{
+    width: 90%;
+    /* height: 100%; */
+    position: absolute;
+    z-index:1;
+    opacity: .3;
+}
+.filters_container form .cuotas >label >h3{
+    font-family: raleway-semibold;
+    font-size: 1.3rem;
+    color: rgb(94, 93, 93);
+    padding: 3% 1.4rem;
+    border-radius: 5px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+}
+
+.filters_container form .cuotas >label{
+    cursor: pointer;
+    margin-top: 1.2rem;
+    display: flex;
+}
+
+.filters_container form .cuotas > label:hover h3{
+    color: var(--bgColor);
+}
+
+.filters_container form .cuotas >label.check>h3{
+   transition: all .2s ease;
+   background-color: var(--sColor);
+   color: var(--bgColor);
+}
+
+.combos
+{
+    width: fit-content;
+    padding-left: 2rem;
+}
+
+.filters_container form .combos > input{
+    display: none;
+}
+
+.filters_container form .combos >label >h3{
+    font-family: raleway-semibold;
+    font-size: 1.3rem;
+    color: rgb(94, 93, 93);
+    padding: 3% 1.4rem;
+    border-radius: 5px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+}
+
+.filters_container form .combos >label{
+    cursor: pointer;
+    margin-top: 1.2rem;
+    display: flex;
+}
+
+.filters_container form .combos > label:hover h3{
+    color: var(--bgColor);
+}
+
+.filters_container form .combos >label.check>h3{
+   transition: all .2s ease;
+   background-color: var(--sColor);
+   color: var(--bgColor);
+}
