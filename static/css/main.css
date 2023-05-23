@@ -247,6 +247,14 @@ html {
   max-height: 100%;
   max-width: 100%;
 }
+.slider__element_cel > video{
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: left;
+}
 
 .slider-container {
   width: 100%;
