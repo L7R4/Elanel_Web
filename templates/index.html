@@ -26,7 +26,7 @@
       <div id="slider-container" class="slider-container">
         <div class="slider" id="slider">
             <div class="slider__element">
-              <video src="{% static 'images/video_index.mp4' %}" type="video/mp4" autoplay muted preload="auto"></video>
+              <video src="{% static 'images/video_index.mp4' %}" type="video/mp4" autoplay muted loop preload="auto"></video>
             </div>
             {% for post in posts %}
               {% if post.tamano == "Computadoras" %}
@@ -42,8 +42,8 @@
       </div>
   
       <div class="slider_cel" id="slider_cel">
-          <div class="slider__element">
-              <video src="{% static 'images/video_index.mp4' %}" type="video/mp4" autoplay muted preload="auto"></video>
+          <div class="slider__element_cel">
+              <video src="{% static 'images/video_index.mp4' %}" type="video/mp4" autoplay muted loop preload="auto"></video>
           </div>
           {% for post in posts %}
               {% if post.tamano == "Celular" %}
