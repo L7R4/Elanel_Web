@@ -14,6 +14,7 @@ let firstElement_clone = slider.firstElementChild.cloneNode(true);
 
 let length_slider = items_slider.length;
 let length_slider_for_to_items = length_slider * 2;
+console.log(items_slider)
 if(length_slider === 1){
   slider.setAttribute("style", "margin-left: 0; width:" + length_slider * 100 + "%; transition: none");
 }else if(length_slider === 2) {
