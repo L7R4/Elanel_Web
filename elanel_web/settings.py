@@ -27,8 +27,8 @@ EMAIL_HOST= "c1611768.ferozo.com"
 EMAIL_USE_SSL = True
 EMAIL_PORT = 465
 # EMAIL_TIMEOUT = None
-EMAIL_HOST_USER="solicitudesclientes@elanelsys.com"
-EMAIL_HOST_PASSWORD="klf781CL*"
+EMAIL_HOST_USER="lautaror@elanelsys.com"
+EMAIL_HOST_PASSWORD="ixq039KG*"
 
 LOGGING = {
 	"version": 1,
@@ -114,6 +114,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'elanel_web.wsgi.application'
 
+DATA_UPLOAD_MAX_MEMORY_SIZE = None
+DATA_UPLOAD_MAX_NUMBER_FIELDS = None
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
