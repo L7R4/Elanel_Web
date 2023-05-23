@@ -1,0 +1,455 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/navStyles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/media_querys/nav_bar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/media_querys/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/media_querys/footer.css' %}">
+    
+    <title>Elanel Servicios y Soluciones</title>
+    <link rel="shortcut icon" href="{% static 'images/fwd/icon_page4.png' %}">
+</head>
+<body>
+    <figure class="logo__background">
+      <img src="{% static 'images/fwd/iconosinfondo(2).png' %}" alt="">
+    </figure> 
+    
+    {% include 'nav.html' %}
+  
+    <div class="wrapper__slider__botones">
+  
+      <div id="slider-container" class="slider-container">
+        <div class="slider" id="slider">
+            <div class="slider__element">
+              <video src="{% static 'images/video_index.mp4' %}" type="video/mp4" autoplay muted preload="auto"></video>
+            </div>
+            {% for post in posts %}
+              {% if post.tamano == "Computadoras" %}
+                <div class="slider__element">
+                  <img
+                    src="{{post.imagen_portada.url}}"
+                    alt=""
+                  />
+                </div>
+              {% endif %}
+            {%endfor%} 
+        </div>
+      </div>
+  
+      <div class="slider_cel" id="slider_cel">
+          <div class="slider__element">
+              <video src="{% static 'images/video_index.mp4' %}" type="video/mp4" autoplay muted preload="auto"></video>
+          </div>
+          {% for post in posts %}
+              {% if post.tamano == "Celular" %}
+                <div class="slider__element_cel">
+                  <img
+                    src="{{post.imagen_portada.url}}"
+                    alt=""
+                  />
+                </div>
+              {% endif %}
+          {%endfor%}
+      </div>
+      
+      <div class="slider-buttons">
+        <button id="button-left" class="button">
+          <img src="{% static 'images/icons/previous.svg' %}" alt="">
+        </button>
+        <button id="button-right" class="button">
+          <img src="{% static 'images/icons/next.svg' %}" alt="">
+        </button>
+      </div>
+  
+    </div>
+  
+    <a class="whatsapp_contact" id="whatsapp_contact" href="https://wa.me/543625170890?text=Vi%20esto%20en%20la%20web,%20me%20podrias%20brindar%20mas%20informacion?" target="_blank">
+      <img class="icon_whap" src="{% static 'images/icons/whatsapp_icon.svg' %}" alt="">
+      <h6>¡Escribenos!</h6> 
+    </a>
+  
+    <div class="wrapper_adjudicado">
+        <button id="back">
+          <img src="{% static 'images/icons/next.svg' %}" alt="">
+        </button>
+        <div class="slider_adjudicado">
+  
+          {% for item in nums_adjudicados %}
+            <div class="item_adjudicado2">
+              <h3>N° Adjudicado</h3>
+              <h1>{{item.numero}}</h1>
+              <h2>{{item.mes}}</h2>
+            </div>
+          {% endfor %}
+  
+        </div>
+        <button id="forward">
+          <img src="{% static 'images/icons/next.svg' %}" alt="">
+        </button>
+    </div>  
+    
+    <section class="categoria">
+      <h2>¡Elige lo que deseas!</h2>
+      <div class="naccs">
+          <div class="menu">
+              <div class="motos active">
+                <img src="{% static 'images/icons/moto_icon.png' %}" alt="Moto">
+                <h6>Motos</h6>     
+              </div>
+              
+              <div class="soluciones_dinerarias">                   
+                <img src="{% static 'images/icons/icon_solu_dineraria.png' %}" alt="bolsa_de_dinero">
+                <h6>Soluciones Dinerarias</h6>
+              </div>
+  
+              <div class= "electrodomesticos">                
+                <img src="{% static 'images/icons/icon_electrodo_relleno.png' %}" alt="lavarropa/heladera">
+                <h6>Electrodomesticos</h6>
+              </div>
+  
+              <div class="beneficios">        
+                <img src="{% static 'images/icons/icon_beneficios.png' %}" alt="hombre_del_servicio_tecnico">
+                <h6>Beneficios de Cliente</h6>
+              </div>   
+  
+              <div class="usados">   
+                <img src="{% static 'images/icons/icon_moto.png' %}" alt="hombre_del_servicio_tecnico">
+                <h6>Usados</h6>
+              </div>       
+          </div>
+          <div class="detalle">
+            <div class="detalle__motos_contenido active">
+              <div class="text">
+                <h5>¡COMPRA TU MOTO 0KM!</h5>
+                <p>Disfruta de la mejor calidad y garantía. Además, nuestro servicio técnico altamente capacitado te ayudará con cualquier problema que puedas tener. <br>¡Confía en nosotros para tu próximo paseo en moto!</p>
+                <a href="{% url 'market:motos' %}"><button> <span>Ver mas</span></button></a>
+              </div>
+              
+              <div class="container_sliderMotos_buttons">
+                <div class="container_slider_motos">
+                  <div class="slider__motos">
+                    {% for moto in motos_slider %}
+                      <a class="item" href="{% url 'market:moto' moto.slug %}">
+                        <img
+                          src="{{moto.imagen_portada.url}}"
+                          alt="{{moto.nombre}}"
+                        />
+                      </a>
+                    {% endfor %}
+                      
+                      
+                    </div>
+                </div>
+                <nav class="slider__motos__nav">
+                    <button class="btn-prev">
+                      <img src="{% static 'images/icons/next.svg' %}" alt="">
+                    </button>
+                    <button class="btn-next">
+                      <img src="{% static 'images/icons/next.svg' %}" alt="">
+                    </button>
+                </nav>
+              </div>
+            </div>
+  
+            <div class="detalle__soluciones_dinerarias_contenido">
+              <div class="container_text">
+                <div class="text">
+                  <h5>SOLUCIONES DINERARIAS A SU MEDIDA</h5>
+                  <p>En Elanel, no solo ofrecemos productos de alta calidad, sino que también ofrecemos soluciones dinerarias y beneficios exclusivos para nuestros clientes. Ahora puedes disfrutar de nuestras opciones de pago con beneficios en cuotas. ¡Haz tus compras con nosotros y disfruta de todos nuestros beneficios!</p>
+                  {% comment %} <img src="{% static 'images/nashe.png' %}" alt=""> {% endcomment %}
+                  <a href="{% url 'market:soluciones_dinerarias' %}"><button> <span>Ver mas</span></button></a>
+    
+                </div>
+                <figure>
+                  <img src="{%static 'images/dinero_4.png' %}" alt="">
+                </figure>
+              </div>
+            </div>
+  
+            <div class="detalle__electrodomesticos_contenido">
+              <div class="container_text">
+                <div class="text">
+                  <h5>¡EQUIPA TU CASA CON NOSOTROS!</h5>
+                  <p>Descubre nuestra selección de electrodomésticos de alta calidad en Elanel. También ofrecemos ayuda dineraria, servicio técnico y beneficios exclusivos para nuestros clientes. Aprovecha nuestros combos y compra todo lo que necesitas en un solo lugar. ¡Visítanos ahora!</p>
+                  <a href="{% url 'market:electrodomesticos' %}"><button> <span>Ver mas</span></button></a>
+                </div>
+                <figure>
+                  <img src="{%static 'images/electrodo_8.png' %}" alt="">
+                </figure>
+              </div>
+            </div>
+  
+            <div class="detalle__beneficios_contenido">
+              <div class="container_text">
+                <div class="text">
+                  <h5>ASISTENCIA TECNICA INMEDIATA</h5>
+                  <p>En Elanel, nos preocupamos por nuestros clientes y por eso ofrecemos beneficios exclusivos para ellos. Ya que contamos con un equipo de servicio técnico altamente capacitado. ¡Compra con confianza en Elanel y disfruta de todos nuestros beneficios!</p>
+                  <a href="{% url 'market:beneficios' %}"><button> <span>Ver mas</span></button></a>
+                </div>
+                <figure>
+                  <img src="{%static 'images/beneficio.png' %}" alt="">
+                </figure>
+              </div>
+  
+            </div>
+  
+            <div class="detalle__usados">
+              <div class="text">
+                <h5>COMPRA TU MOTO USADA CON CONFIANZA</h5>
+                <p>Elanel es tu tienda en línea de confianza para motos usados de alta calidad. Además, nuestro equipo de servicio técnico está listo para ayudarte con cualquier problema que puedas tener. ¡Compra con confianza en Elanel y encuentra el vehículo usado perfecto para ti!</p>
+                <a href="{% url 'market:motos'%}?status=True"><button> <span>Ver mas</span></button></a>
+  
+              </div>
+  
+            </div>
+  
+  
+          </div>
+      </div>
+    </section>
+  
+    <section class="formulario">
+      <h1 class="formulario__eslogan">Todo lo que <strong class="style__palabra__eslogan">necesitas</strong><br> en un solo <strong class="style__palabra__eslogan">lugar</strong></h1>
+      <div class="barra">
+      </div>
+      <form method="POST" autocomplete="off" class="form_cliente" id="form_fetch_post"> 
+       {% csrf_token %}
+        <h5>Envianos un correo contándonos lo que quieres</h5>
+        <div class = "container_nombre_completo">
+          <input type="text" name="nombre_completo" id="nombre_completo" placeholder="Nombre y Apellido" onkeypress='return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122)|| (event.charCode == 241 || event.charCode == 209) || (event.charCode == 32)'>
+        </div>
+  
+        <div class = "container_num_telefono">
+          <input type="text" name="num_telefono" id="num_telefono" placeholder="Telefono" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="10">
+        </div>
+  
+        <div class = "container_email">
+          <input type="text" name="email" id="email" placeholder="Mail">
+          <p>Formato de email no valido</p>
+        </div>
+        
+        <div class = "container_provincia">
+          <input type="text" name="provincia" id="provincia"placeholder="Provincia">
+        </div>
+  
+        <div class = "container_localidad">
+          <input type="text" name="localidad" id="localidad" placeholder="Localidad">
+        </div>
+  
+        <div class = "container_objetivo">
+          <input type="text" name="objetivo" id="objetivo"placeholder="Que buscas">
+        </div>
+        <button type="button" value="Enviar" id="form_product_button" class="desactive">
+          Enviar
+          <div class="wrapper__loader">
+            <div id="loader"></div>
+          </div>
+        </button>
+        {% comment %} <button type="button" value="Enviar" id="enviar" class="desactive"></button> {% endcomment %}
+      </form>
+      <div class="form_success_wrapper">
+        <div class="form_success">
+          <div class="text_thanks">
+            <h3>Muchas gracias por confiar en nosotros</h3>
+            <h4>Nos comunicaremos contigo mediante un correo</h4>
+          </div>
+          <figure class="image_success">
+            <img src="{% static 'images/icons/pulgar.svg' %}" alt="pulgar_aprovado">
+          </figure>
+          <button id="close_form_success">Cerrar</button>
+        </div>
+        
+      </div>
+      <div class="form_error_wrapper">
+        <div class="form_error">
+          <div class="text_error">
+            <h3>Algo ha salido mal</h3>
+            <h4>Al parecer has colacado mal algun campo. Vuelve a intentarlo</h4>
+          </div>
+          <figure class="image_error">
+            <img src="{% static 'images/icons/eliminar.svg' %}" alt="pulgar_aprovado">
+          </figure>
+          <button id="close_form_error">Cerrar</button>
+        </div>
+      </div>
+      
+      
+    </section>
+  
+    <section class="ubicacion">
+      <article class="mapa__container" id="mapa__container">
+       <div class="wrapper_ubicacion">
+         <div class="ubicacion__direccion active_provincia" id="ubicacion__direccion_resistencia">
+           <h1>Encuentranos en</h1>
+           <h4 >Obligado 841 Local B</h4>
+         </div>
+         <iframe class="mapa active_provincia" id="mapa_resistencia" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3540.298199016263!2d-58.983624984976636!3d-27.459974282894965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94450ceee646f275%3A0x77559d941a7c7581!2sC.%20Obligado%20841%2C%20H3504APB%20Resistencia%2C%20Chaco!5e0!3m2!1ses!2sar!4v1660695784285!5m2!1ses!2sar" width="60%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+         
+         <div class="ubicacion__direccion " id="ubicacion__direccion_corrientes">
+           <h1>Encuentranos en</h1>
+           <h4>9 de Julio 1687 Local 2</h4>
+         </div>
+         <iframe class="mapa" id="mapa_corrientes" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3540.0744162103942!2d-58.83147708541187!3d-27.46694252316063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94456ca0a671163f%3A0xaf0071abbe4ad709!2s9%20de%20Julio%201687%2C%20W3400AZF%20Corrientes!5e0!3m2!1ses-419!2sar!4v1678984007965!5m2!1ses-419!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        
+        <div class="ubicacion__text">
+          <div class="ubicacion__text_container resistencia active_provincia">
+            <h5 id="ubicacion__text__title"> Nuestras oficinas se encuentran abiertas</h5>
+            <h6 id="ubicacion__horarios">
+              <strong class="horarios-decoration">Lunes a Viernes</strong>
+              8:30 a 12:30hs <br>
+              17:00 a 21:00hs <br>
+              <strong class="horarios-decoration">Sabados</strong> 9:00 a 13:00hs
+            </h6>
+          </div>
+          <div class="ubicacion__text_container corrientes">
+            <h5 id="ubicacion__text__title"> Nuestras oficinas se encuentran abiertas</h5>
+            <h6 id="ubicacion__horarios">
+              <strong class="horarios-decoration">Lunes a Viernes</strong>
+              8:30 a 12:30hs <br>
+              16:30 a 20:30hs <br>
+              <strong class="horarios-decoration">Sabados</strong> 9:00 a 13:00hs
+            </h6>
+          </div>
+          
+          <div class="locales">
+            <h4>Nuestros locales</h4>
+            <button id="resistencia" class="resistencia active_ubication">Resistencia, Chaco</button>
+            <button id="corrientes" class="corrientes">Corrientes Capital</button>
+          </div>
+        </div>
+      </article>
+      
+      <article class="ubicacion__redes">
+        <div class="ubicacion__redes__text">
+          <h3>Ademas puedes encontrarnos en nuestras redes</h5>
+          <h6>Siguenos para mas informacion</h6>
+        </div>
+        <div class="wrapper__icons__social">
+          <ol>
+            <li id="ubicacion__facebook">
+              <a href="https://m.facebook.com/elanelsys" target=”_blank” class="ubicacion__icon"><img src="{% static 'images/icons/face_icon.svg' %}" alt="">
+              </a>
+            </li>
+            <li id="ubicacion__twitter">
+              <a href="https://www.tiktok.com/@elaneloficial" target=”_blank” class="ubicacion__icon"><img src="{% static 'images/icons/tiktok_icon.svg' %}" alt="">
+              </a>
+            </li>
+            <li id="ubicacion__instagram">
+              <a href="https://www.instagram.com/elanel_servicios/" target=”_blank” class="ubicacion__icon"><img src="{% static 'images/icons/insta_icon.svg' %}" alt="">
+              </a>
+            </li>
+            <li id="ubicacion__whatsapp">
+              <!-- <p>¡Escribenos!</p> -->
+              <a href="https://wa.me/543625170890?text=Vi%20esto%20en%20la%20web,%20me%20podrias%20brindar%20mas%20informacion?"  target=”_blank” class="ubicacion__icon"><img src="{% static 'images/icons/whatsapp_icon.svg' %}" alt="">
+              </a>
+            </li>
+          </ol>
+        </div>
+      </article>
+    </section>
+  
+    <footer>
+      <div class="footer__encuentranos">
+        <h3>Encuentranos</h3>
+        <ul>
+          <li class="footer__direccion"> 
+            <p><strong>Corrientes:</strong> 9 de Julio 1687 Local 2</p>
+            <p><strong>Resistencia:</strong> Obligado 841 Local B</p>
+          </li>
+          <li class="footer__social-media"> 
+            <a href="https://m.facebook.com/elanelsys" target=”_blank”>
+              <img src="{% static 'images/icons/social_face.png' %}" alt="">
+            </a>
+            <a href="https://www.instagram.com/elanel.servicios/?hl=es-la" target=”_blank”>
+              <img src="{% static 'images/icons/social_insta.png' %}" alt="">
+            </a>
+            <a href="https://www.tiktok.com/@elaneloficial" target=”_blank”>
+              <img src="{% static 'images/icons/tiktok_icon.svg' %}" alt="">
+            </a>
+            <a href="whatsapp.com" target=”_blank”>
+              <img src="{% static 'images/icons/social_whatsapp.png' %}" alt="">
+            </a>
+          </li>
+        </ul>
+      </div>
+        <div class="footer__categorias">
+          <ul>
+            <li class="footer__motos"> 
+              <a href="{% url 'market:motos' %}">Motos</a>
+            </li>
+            <li class="footer__soluciones-dinerarias"> 
+              <a href="{% url 'market:soluciones_dinerarias' %}">Soluciones Dinerarias</a>
+            </li>
+            <li class="footer__electrodomesticos"> 
+              <a href="{% url 'market:electrodomesticos' %}">Electrodomesticos</a>
+            </li>
+            <li class="footer__beneficios-para-cliente"> 
+              <a href="{% url 'market:beneficios' %}">Beneficios para cliente</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer__quienes-somos">
+          <h3>Quienes Somos</h3>
+          <ul>
+            <li class="footer__mision"> 
+              <a href="{% url 'nosotros' %}">Mision</a>
+            </li>
+            <li class="footer__vision"> 
+              <a href="{% url 'nosotros' %}">Vision</a>
+            </li>
+            <li class="footer__vision"> 
+              <a href="{% url 'privacidad' %}">Politicas de privacidad</a>
+            </li>
+            {% comment %} <li class="footer__adjudicados"> 
+              <a href="">Adjudicados</a>
+            </li> {% endcomment %}
+          </ul>
+        </div>
+        
+        <div class="footer__contactanos">
+          <h3>Contactanos</h3>
+          <ul>
+            <li class="footer__num-telefono"> 
+              <img src="{% static 'images/icons/social_tel.png' %}" alt="">
+              <p>Chaco: 362 524-5484</p> 
+            </li>
+            <li class="footer__correo-resistencia"> 
+              <img src="{% static 'images/icons/social_mail.png' %}" alt="">
+              <p>admin.chaco@elanelsys.com</p>
+            </li>
+            <p>_____________________________________</p>
+            <li class="footer__num-telefono"> 
+              <img src="{% static 'images/icons/social_tel.png' %}" alt="">
+              <p>Corrientes: 3795 16-1905</p> 
+            </li>
+            <li class="footer__correo-corrientes"> 
+              <img src="{% static 'images/icons/social_mail.png' %}" alt="">
+              <p>admin.ctes@elanelsys.com</p>
+            </li>
+          </ul>
+        </div>
+        <div class="footer__logo">
+            <img src="{% static 'images/icons/icono_arreglado_blanco.png' %}" alt="">
+        </div>
+    </footer>
+  
+</body>
+<script src="{% static 'js/scrollreveal_librery.js' %}"></script>
+<script src="{% static 'js/modal_whatsapp.js' %}"></script>
+<script src="{% static 'js/validate_button_products.js' %}"></script>
+<script src="{% static 'js/fetch_form_index.js' %}"></script>
+<script src="{% static 'js/ubicacion.js' %}"></script>
+<script src ="{% static 'js/categoria.js' %}"></script>
+<script src="{% static 'js/slider_posts.js' %}"></script> 
+<script src="{% static 'js/slider_adjudicados.js' %}"></script> 
+<script src="{% static 'js/header.js' %}"></script>
+<script src ="{% static 'js/slider_motos.js' %}"></script>
+<script src="{% static 'js/animation.js' %}"></script>
+<script src="{% static 'js/menu_hamburguer.js' %}"></script>
+</html>
