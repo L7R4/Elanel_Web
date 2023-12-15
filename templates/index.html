@@ -295,6 +295,19 @@
            <h4>9 de Julio 1687 Local 2</h4>
          </div>
          <iframe class="mapa" id="mapa_corrientes" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3540.0744162103942!2d-58.83147708541187!3d-27.46694252316063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94456ca0a671163f%3A0xaf0071abbe4ad709!2s9%20de%20Julio%201687%2C%20W3400AZF%20Corrientes!5e0!3m2!1ses-419!2sar!4v1678984007965!5m2!1ses-419!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        
+         <div class="ubicacion__direccion " id="ubicacion__direccion_posadas">
+           <h1>Encuentranos en</h1>
+           <h4>Avenida Cabred 1053</h4>
+         </div>
+         <iframe class="mapa" id="mapa_posadas" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3542.6824374773696!2d-55.891852025373716!3d-27.38563137636844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9457bfab655c9fa3%3A0x87ee38968c465098!2sAv.%20Domingo%20Cabred%201053%2C%20N3300NCB%20Posadas%2C%20Misiones!5e0!3m2!1ses!2sar!4v1702612496820!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+         
+         <div class="ubicacion__direccion " id="ubicacion__direccion_saenzPenia">
+           <h1>Encuentranos en</h1>
+           <h4>Av. Rodríguez Peña 1055</h4>
+         </div>
+         <iframe class="mapa" id="mapa_saenzPenia" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.3322256084484!2d-58.54246152502927!3d-34.59575967295718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb79104214ad9%3A0x8062ec539b08a27f!2sAv.%20Rodr%C3%ADguez%20Pe%C3%B1a%201055%2C%20B1676BTC%20S%C3%A1enz%20Pe%C3%B1a%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1702612633917!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        
         </div>
         
         <div class="ubicacion__text">
@@ -316,11 +329,33 @@
               <strong class="horarios-decoration">Sabados</strong> 9:00 a 13:00hs
             </h6>
           </div>
+          <div class="ubicacion__text_container posadas">
+            <h5 id="ubicacion__text__title"> Nuestras oficinas se encuentran abiertas</h5>
+            <h6 id="ubicacion__horarios">
+              <strong class="horarios-decoration">Lunes a Viernes</strong>
+              8:30 a 12:30hs <br>
+              16:30 a 21:00hs <br>
+              <strong class="horarios-decoration">Sabados</strong> 9:00 a 13:00hs
+            </h6>
+          </div>
+          <div class="ubicacion__text_container saenzPenia">
+            <h5 id="ubicacion__text__title"> Nuestras oficinas se encuentran abiertas</h5>
+            <h6 id="ubicacion__horarios">
+              <strong class="horarios-decoration">Lunes a Viernes</strong>
+              8:30 a 12:30hs <br>
+              16:30 a 20:30hs <br>
+              <strong class="horarios-decoration">Sabados</strong> 9:00 a 13:00hs
+            </h6>
+          </div>
           
           <div class="locales">
             <h4>Nuestros locales</h4>
-            <button id="resistencia" class="resistencia active_ubication">Resistencia, Chaco</button>
-            <button id="corrientes" class="corrientes">Corrientes Capital</button>
+            <div class="buttonsWrapper">
+                <button id="resistencia" class="resistencia active_ubication">Resistencia, Chaco</button>
+                <button id="corrientes" class="corrientes">Corrientes Capital</button>
+                <button id="posadas" class="posadas">Posadas, Misiones</button>
+                <button id="saenzPenia" class="saenzPenia">Sáenz Peña, Chaco</button>
+            </div>
           </div>
         </div>
       </article>
