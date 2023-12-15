@@ -18,7 +18,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY="()ue$zj3&su3$+1a#p0r8=umkc-v^la2=5zu6#91r^pi5&#qil"
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG =os.environ.get("DEBUG")
-DEBUG =True
+DEBUG =False
 
 ALLOWED_HOSTS = ['181.215.135.171','www.elanelsys.com','elanelsys.com','*']
 
