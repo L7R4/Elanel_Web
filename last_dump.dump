@@ -1,0 +1,2341 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 14.8 (Ubuntu 14.8-0ubuntu0.22.04.1)
+-- Dumped by pg_dump version 14.8 (Ubuntu 14.8-0ubuntu0.22.04.1)
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: auth_group; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.auth_group (
+    id integer NOT NULL,
+    name character varying(150) NOT NULL
+);
+
+
+ALTER TABLE public.auth_group OWNER TO postgres;
+
+--
+-- Name: auth_group_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.auth_group_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.auth_group_id_seq OWNER TO postgres;
+
+--
+-- Name: auth_group_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.auth_group_id_seq OWNED BY public.auth_group.id;
+
+
+--
+-- Name: auth_group_permissions; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.auth_group_permissions (
+    id bigint NOT NULL,
+    group_id integer NOT NULL,
+    permission_id integer NOT NULL
+);
+
+
+ALTER TABLE public.auth_group_permissions OWNER TO postgres;
+
+--
+-- Name: auth_group_permissions_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.auth_group_permissions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.auth_group_permissions_id_seq OWNER TO postgres;
+
+--
+-- Name: auth_group_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.auth_group_permissions_id_seq OWNED BY public.auth_group_permissions.id;
+
+
+--
+-- Name: auth_permission; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.auth_permission (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    content_type_id integer NOT NULL,
+    codename character varying(100) NOT NULL
+);
+
+
+ALTER TABLE public.auth_permission OWNER TO postgres;
+
+--
+-- Name: auth_permission_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.auth_permission_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.auth_permission_id_seq OWNER TO postgres;
+
+--
+-- Name: auth_permission_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.auth_permission_id_seq OWNED BY public.auth_permission.id;
+
+
+--
+-- Name: auth_user; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.auth_user (
+    id integer NOT NULL,
+    password character varying(128) NOT NULL,
+    last_login timestamp with time zone,
+    is_superuser boolean NOT NULL,
+    username character varying(150) NOT NULL,
+    first_name character varying(150) NOT NULL,
+    last_name character varying(150) NOT NULL,
+    email character varying(254) NOT NULL,
+    is_staff boolean NOT NULL,
+    is_active boolean NOT NULL,
+    date_joined timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.auth_user OWNER TO postgres;
+
+--
+-- Name: auth_user_groups; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.auth_user_groups (
+    id bigint NOT NULL,
+    user_id integer NOT NULL,
+    group_id integer NOT NULL
+);
+
+
+ALTER TABLE public.auth_user_groups OWNER TO postgres;
+
+--
+-- Name: auth_user_groups_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.auth_user_groups_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.auth_user_groups_id_seq OWNER TO postgres;
+
+--
+-- Name: auth_user_groups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.auth_user_groups_id_seq OWNED BY public.auth_user_groups.id;
+
+
+--
+-- Name: auth_user_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.auth_user_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.auth_user_id_seq OWNER TO postgres;
+
+--
+-- Name: auth_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.auth_user_id_seq OWNED BY public.auth_user.id;
+
+
+--
+-- Name: auth_user_user_permissions; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.auth_user_user_permissions (
+    id bigint NOT NULL,
+    user_id integer NOT NULL,
+    permission_id integer NOT NULL
+);
+
+
+ALTER TABLE public.auth_user_user_permissions OWNER TO postgres;
+
+--
+-- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.auth_user_user_permissions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.auth_user_user_permissions_id_seq OWNER TO postgres;
+
+--
+-- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.auth_user_user_permissions_id_seq OWNED BY public.auth_user_user_permissions.id;
+
+
+--
+-- Name: django_admin_log; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.django_admin_log (
+    id integer NOT NULL,
+    action_time timestamp with time zone NOT NULL,
+    object_id text,
+    object_repr character varying(200) NOT NULL,
+    action_flag smallint NOT NULL,
+    change_message text NOT NULL,
+    content_type_id integer,
+    user_id integer NOT NULL,
+    CONSTRAINT django_admin_log_action_flag_check CHECK ((action_flag >= 0))
+);
+
+
+ALTER TABLE public.django_admin_log OWNER TO postgres;
+
+--
+-- Name: django_admin_log_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.django_admin_log_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.django_admin_log_id_seq OWNER TO postgres;
+
+--
+-- Name: django_admin_log_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.django_admin_log_id_seq OWNED BY public.django_admin_log.id;
+
+
+--
+-- Name: django_content_type; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.django_content_type (
+    id integer NOT NULL,
+    app_label character varying(100) NOT NULL,
+    model character varying(100) NOT NULL
+);
+
+
+ALTER TABLE public.django_content_type OWNER TO postgres;
+
+--
+-- Name: django_content_type_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.django_content_type_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.django_content_type_id_seq OWNER TO postgres;
+
+--
+-- Name: django_content_type_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.django_content_type_id_seq OWNED BY public.django_content_type.id;
+
+
+--
+-- Name: django_migrations; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.django_migrations (
+    id bigint NOT NULL,
+    app character varying(255) NOT NULL,
+    name character varying(255) NOT NULL,
+    applied timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.django_migrations OWNER TO postgres;
+
+--
+-- Name: django_migrations_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.django_migrations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.django_migrations_id_seq OWNER TO postgres;
+
+--
+-- Name: django_migrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.django_migrations_id_seq OWNED BY public.django_migrations.id;
+
+
+--
+-- Name: django_session; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.django_session (
+    session_key character varying(40) NOT NULL,
+    session_data text NOT NULL,
+    expire_date timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.django_session OWNER TO postgres;
+
+--
+-- Name: market_beneficioparacliente; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.market_beneficioparacliente (
+    id bigint NOT NULL,
+    fecha timestamp with time zone NOT NULL,
+    nombre_completo character varying(120) NOT NULL,
+    email character varying(200) NOT NULL,
+    servicio character varying(254) NOT NULL,
+    num_telefono character varying(10) NOT NULL,
+    monto double precision NOT NULL,
+    producto character varying(80) NOT NULL
+);
+
+
+ALTER TABLE public.market_beneficioparacliente OWNER TO postgres;
+
+--
+-- Name: market_beneficioparacliente_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.market_beneficioparacliente_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.market_beneficioparacliente_id_seq OWNER TO postgres;
+
+--
+-- Name: market_beneficioparacliente_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.market_beneficioparacliente_id_seq OWNED BY public.market_beneficioparacliente.id;
+
+
+--
+-- Name: market_cliente; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.market_cliente (
+    id bigint NOT NULL,
+    nombre_completo character varying(120) NOT NULL,
+    dni character varying(8),
+    provincia character varying(50),
+    localidad character varying(50),
+    email character varying(200),
+    objetivo character varying(254) NOT NULL,
+    num_telefono character varying(10),
+    fecha timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.market_cliente OWNER TO postgres;
+
+--
+-- Name: market_cliente_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.market_cliente_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.market_cliente_id_seq OWNER TO postgres;
+
+--
+-- Name: market_cliente_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.market_cliente_id_seq OWNED BY public.market_cliente.id;
+
+
+--
+-- Name: market_electrodomestico; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.market_electrodomestico (
+    combo character varying(100) NOT NULL,
+    nombre character varying(100) NOT NULL,
+    slug character varying(100) NOT NULL,
+    precio numeric(15,2) NOT NULL,
+    descripcion text,
+    marca character varying(80),
+    forma_de_pago character varying(255),
+    imagen_portada character varying(100) NOT NULL,
+    cuota character varying(2) NOT NULL,
+    ficha_tecnica character varying(100),
+    servicio character varying(50),
+    monto_servicio_por_couta double precision
+);
+
+
+ALTER TABLE public.market_electrodomestico OWNER TO postgres;
+
+--
+-- Name: market_imagenelectrodomestico; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.market_imagenelectrodomestico (
+    id bigint NOT NULL,
+    imagen character varying(100) NOT NULL,
+    producto_id character varying(100) NOT NULL
+);
+
+
+ALTER TABLE public.market_imagenelectrodomestico OWNER TO postgres;
+
+--
+-- Name: market_imagenelectrodomestico_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.market_imagenelectrodomestico_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.market_imagenelectrodomestico_id_seq OWNER TO postgres;
+
+--
+-- Name: market_imagenelectrodomestico_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.market_imagenelectrodomestico_id_seq OWNED BY public.market_imagenelectrodomestico.id;
+
+
+--
+-- Name: market_imagenmoto; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.market_imagenmoto (
+    id bigint NOT NULL,
+    imagen character varying(100) NOT NULL,
+    producto_id bigint NOT NULL
+);
+
+
+ALTER TABLE public.market_imagenmoto OWNER TO postgres;
+
+--
+-- Name: market_imagenmoto_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.market_imagenmoto_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.market_imagenmoto_id_seq OWNER TO postgres;
+
+--
+-- Name: market_imagenmoto_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.market_imagenmoto_id_seq OWNED BY public.market_imagenmoto.id;
+
+
+--
+-- Name: market_moto; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.market_moto (
+    id bigint NOT NULL,
+    nombre character varying(100) NOT NULL,
+    slug character varying(100) NOT NULL,
+    precio numeric(15,2) NOT NULL,
+    modelo character varying(80) NOT NULL,
+    kilometros integer,
+    "año" integer,
+    marca character varying(80) NOT NULL,
+    forma_de_pago character varying(255),
+    descripcion text,
+    imagen_portada character varying(100) NOT NULL,
+    usado boolean NOT NULL,
+    cuota character varying(2) NOT NULL,
+    ficha_tecnica character varying(100),
+    servicio character varying(50),
+    monto_servicio_por_couta double precision
+);
+
+
+ALTER TABLE public.market_moto OWNER TO postgres;
+
+--
+-- Name: market_moto_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.market_moto_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.market_moto_id_seq OWNER TO postgres;
+
+--
+-- Name: market_moto_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.market_moto_id_seq OWNED BY public.market_moto.id;
+
+
+--
+-- Name: market_numadjudicado; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.market_numadjudicado (
+    id bigint NOT NULL,
+    numero integer NOT NULL,
+    mes character varying(50) NOT NULL,
+    "año" integer NOT NULL,
+    CONSTRAINT "market_numadjudicado_año_check" CHECK (("año" >= 0)),
+    CONSTRAINT market_numadjudicado_numero_check CHECK ((numero >= 0))
+);
+
+
+ALTER TABLE public.market_numadjudicado OWNER TO postgres;
+
+--
+-- Name: market_numadjudicado_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.market_numadjudicado_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.market_numadjudicado_id_seq OWNER TO postgres;
+
+--
+-- Name: market_numadjudicado_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.market_numadjudicado_id_seq OWNED BY public.market_numadjudicado.id;
+
+
+--
+-- Name: market_personal; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.market_personal (
+    id bigint NOT NULL,
+    nombre_completo character varying(120) NOT NULL,
+    email character varying(200) NOT NULL,
+    num_telefono character varying(10) NOT NULL,
+    fecha timestamp with time zone NOT NULL,
+    cv character varying(100) NOT NULL
+);
+
+
+ALTER TABLE public.market_personal OWNER TO postgres;
+
+--
+-- Name: market_personal_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.market_personal_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.market_personal_id_seq OWNER TO postgres;
+
+--
+-- Name: market_personal_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.market_personal_id_seq OWNED BY public.market_personal.id;
+
+
+--
+-- Name: market_post; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.market_post (
+    id bigint NOT NULL,
+    titulo character varying(60) NOT NULL,
+    descripcion text NOT NULL,
+    imagen_portada character varying(100) NOT NULL,
+    tamano character varying(50) NOT NULL
+);
+
+
+ALTER TABLE public.market_post OWNER TO postgres;
+
+--
+-- Name: market_post_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.market_post_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.market_post_id_seq OWNER TO postgres;
+
+--
+-- Name: market_post_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.market_post_id_seq OWNED BY public.market_post.id;
+
+
+--
+-- Name: market_postimagenes; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.market_postimagenes (
+    id bigint NOT NULL,
+    imagen character varying(100) NOT NULL,
+    descripcion character varying(255) NOT NULL,
+    producto_id bigint NOT NULL
+);
+
+
+ALTER TABLE public.market_postimagenes OWNER TO postgres;
+
+--
+-- Name: market_postimagenes_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.market_postimagenes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.market_postimagenes_id_seq OWNER TO postgres;
+
+--
+-- Name: market_postimagenes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.market_postimagenes_id_seq OWNED BY public.market_postimagenes.id;
+
+
+--
+-- Name: market_soluciondineraria; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.market_soluciondineraria (
+    id bigint NOT NULL,
+    monto numeric(15,2) NOT NULL,
+    descripcion text,
+    cuota character varying(2) NOT NULL
+);
+
+
+ALTER TABLE public.market_soluciondineraria OWNER TO postgres;
+
+--
+-- Name: market_soluciondineraria_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.market_soluciondineraria_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.market_soluciondineraria_id_seq OWNER TO postgres;
+
+--
+-- Name: market_soluciondineraria_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.market_soluciondineraria_id_seq OWNED BY public.market_soluciondineraria.id;
+
+
+--
+-- Name: auth_group id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_group ALTER COLUMN id SET DEFAULT nextval('public.auth_group_id_seq'::regclass);
+
+
+--
+-- Name: auth_group_permissions id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_group_permissions ALTER COLUMN id SET DEFAULT nextval('public.auth_group_permissions_id_seq'::regclass);
+
+
+--
+-- Name: auth_permission id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_permission ALTER COLUMN id SET DEFAULT nextval('public.auth_permission_id_seq'::regclass);
+
+
+--
+-- Name: auth_user id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_user ALTER COLUMN id SET DEFAULT nextval('public.auth_user_id_seq'::regclass);
+
+
+--
+-- Name: auth_user_groups id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_user_groups ALTER COLUMN id SET DEFAULT nextval('public.auth_user_groups_id_seq'::regclass);
+
+
+--
+-- Name: auth_user_user_permissions id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_user_user_permissions ALTER COLUMN id SET DEFAULT nextval('public.auth_user_user_permissions_id_seq'::regclass);
+
+
+--
+-- Name: django_admin_log id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.django_admin_log ALTER COLUMN id SET DEFAULT nextval('public.django_admin_log_id_seq'::regclass);
+
+
+--
+-- Name: django_content_type id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.django_content_type ALTER COLUMN id SET DEFAULT nextval('public.django_content_type_id_seq'::regclass);
+
+
+--
+-- Name: django_migrations id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.django_migrations ALTER COLUMN id SET DEFAULT nextval('public.django_migrations_id_seq'::regclass);
+
+
+--
+-- Name: market_beneficioparacliente id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.market_beneficioparacliente ALTER COLUMN id SET DEFAULT nextval('public.market_beneficioparacliente_id_seq'::regclass);
+
+
+--
+-- Name: market_cliente id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.market_cliente ALTER COLUMN id SET DEFAULT nextval('public.market_cliente_id_seq'::regclass);
+
+
+--
+-- Name: market_imagenelectrodomestico id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.market_imagenelectrodomestico ALTER COLUMN id SET DEFAULT nextval('public.market_imagenelectrodomestico_id_seq'::regclass);
+
+
+--
+-- Name: market_imagenmoto id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.market_imagenmoto ALTER COLUMN id SET DEFAULT nextval('public.market_imagenmoto_id_seq'::regclass);
+
+
+--
+-- Name: market_moto id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.market_moto ALTER COLUMN id SET DEFAULT nextval('public.market_moto_id_seq'::regclass);
+
+
+--
+-- Name: market_numadjudicado id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.market_numadjudicado ALTER COLUMN id SET DEFAULT nextval('public.market_numadjudicado_id_seq'::regclass);
+
+
+--
+-- Name: market_personal id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.market_personal ALTER COLUMN id SET DEFAULT nextval('public.market_personal_id_seq'::regclass);
+
+
+--
+-- Name: market_post id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.market_post ALTER COLUMN id SET DEFAULT nextval('public.market_post_id_seq'::regclass);
+
+
+--
+-- Name: market_postimagenes id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.market_postimagenes ALTER COLUMN id SET DEFAULT nextval('public.market_postimagenes_id_seq'::regclass);
+
+
+--
+-- Name: market_soluciondineraria id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.market_soluciondineraria ALTER COLUMN id SET DEFAULT nextval('public.market_soluciondineraria_id_seq'::regclass);
+
+
+--
+-- Data for Name: auth_group; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.auth_group (id, name) FROM stdin;
+\.
+
+
+--
+-- Data for Name: auth_group_permissions; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.auth_group_permissions (id, group_id, permission_id) FROM stdin;
+\.
+
+
+--
+-- Data for Name: auth_permission; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
+1	Can add log entry	1	add_logentry
+2	Can change log entry	1	change_logentry
+3	Can delete log entry	1	delete_logentry
+4	Can view log entry	1	view_logentry
+5	Can add permission	2	add_permission
+6	Can change permission	2	change_permission
+7	Can delete permission	2	delete_permission
+8	Can view permission	2	view_permission
+9	Can add group	3	add_group
+10	Can change group	3	change_group
+11	Can delete group	3	delete_group
+12	Can view group	3	view_group
+13	Can add user	4	add_user
+14	Can change user	4	change_user
+15	Can delete user	4	delete_user
+16	Can view user	4	view_user
+17	Can add content type	5	add_contenttype
+18	Can change content type	5	change_contenttype
+19	Can delete content type	5	delete_contenttype
+20	Can view content type	5	view_contenttype
+21	Can add session	6	add_session
+22	Can change session	6	change_session
+23	Can delete session	6	delete_session
+24	Can view session	6	view_session
+25	Can add beneficio para cliente	7	add_beneficioparacliente
+26	Can change beneficio para cliente	7	change_beneficioparacliente
+27	Can delete beneficio para cliente	7	delete_beneficioparacliente
+28	Can view beneficio para cliente	7	view_beneficioparacliente
+29	Can add cliente	8	add_cliente
+30	Can change cliente	8	change_cliente
+31	Can delete cliente	8	delete_cliente
+32	Can view cliente	8	view_cliente
+33	Can add electrodomestico	9	add_electrodomestico
+34	Can change electrodomestico	9	change_electrodomestico
+35	Can delete electrodomestico	9	delete_electrodomestico
+36	Can view electrodomestico	9	view_electrodomestico
+37	Can add moto	10	add_moto
+38	Can change moto	10	change_moto
+39	Can delete moto	10	delete_moto
+40	Can view moto	10	view_moto
+41	Can add personal	11	add_personal
+42	Can change personal	11	change_personal
+43	Can delete personal	11	delete_personal
+44	Can view personal	11	view_personal
+45	Can add post	12	add_post
+46	Can change post	12	change_post
+47	Can delete post	12	delete_post
+48	Can view post	12	view_post
+49	Can add solucion dineraria	13	add_soluciondineraria
+50	Can change solucion dineraria	13	change_soluciondineraria
+51	Can delete solucion dineraria	13	delete_soluciondineraria
+52	Can view solucion dineraria	13	view_soluciondineraria
+53	Can add post imagenes	14	add_postimagenes
+54	Can change post imagenes	14	change_postimagenes
+55	Can delete post imagenes	14	delete_postimagenes
+56	Can view post imagenes	14	view_postimagenes
+57	Can add imagen moto	15	add_imagenmoto
+58	Can change imagen moto	15	change_imagenmoto
+59	Can delete imagen moto	15	delete_imagenmoto
+60	Can view imagen moto	15	view_imagenmoto
+61	Can add imagen electrodomestico	16	add_imagenelectrodomestico
+62	Can change imagen electrodomestico	16	change_imagenelectrodomestico
+63	Can delete imagen electrodomestico	16	delete_imagenelectrodomestico
+64	Can view imagen electrodomestico	16	view_imagenelectrodomestico
+65	Can add num adjudicado	17	add_numadjudicado
+66	Can change num adjudicado	17	change_numadjudicado
+67	Can delete num adjudicado	17	delete_numadjudicado
+68	Can view num adjudicado	17	view_numadjudicado
+\.
+
+
+--
+-- Data for Name: auth_user; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.auth_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined) FROM stdin;
+3	pbkdf2_sha256$320000$V9ueJI8Rpe4BrKM1TdxH08$6G423REPp4yEavjKaROUTs4rE4v0BC8wAHVcjyKp4UA=	\N	t	admin1			admin1@gmail.com	t	t	2023-04-11 14:38:23.486538+00
+4	pbkdf2_sha256$320000$s08aP2SwbOdU6rPSMZH1HD$HK3OK93XmjKPMU8XBQUiQN5dhKi/1W3ATbR0YMZWzSo=	2023-04-14 13:20:19.339837+00	t	admindef			admindef@gmail.com	t	t	2023-04-13 13:05:28.550659+00
+2	pbkdf2_sha256$320000$BhbWhs5wigSu4UuhqW1YUy$gX/PpyIdSB+PyeqTP+XweKkFzieItZUEEeP2U0Lwr88=	2023-05-15 22:08:28.3307+00	t	admin			admin@gmail.com	t	t	2023-04-11 14:31:07.566877+00
+\.
+
+
+--
+-- Data for Name: auth_user_groups; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.auth_user_groups (id, user_id, group_id) FROM stdin;
+\.
+
+
+--
+-- Data for Name: auth_user_user_permissions; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.auth_user_user_permissions (id, user_id, permission_id) FROM stdin;
+\.
+
+
+--
+-- Data for Name: django_admin_log; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.django_admin_log (id, action_time, object_id, object_repr, action_flag, change_message, content_type_id, user_id) FROM stdin;
+19	2023-04-19 13:48:53.294943+00	1	150000	1	[{"added": {}}]	13	4
+20	2023-04-19 13:49:27.484841+00	2	200000	1	[{"added": {}}]	13	4
+21	2023-04-19 13:49:37.405975+00	3	250000	1	[{"added": {}}]	13	4
+22	2023-04-19 13:49:55.155428+00	4	300000	1	[{"added": {}}]	13	4
+23	2023-04-19 13:50:02.691774+00	5	350000	1	[{"added": {}}]	13	4
+24	2023-04-19 13:50:10.719468+00	6	400000	1	[{"added": {}}]	13	4
+25	2023-04-19 13:50:19.375018+00	7	450000	1	[{"added": {}}]	13	4
+26	2023-04-19 13:50:26.862915+00	8	500000	1	[{"added": {}}]	13	4
+27	2023-04-19 13:50:34.662897+00	9	550000	1	[{"added": {}}]	13	4
+28	2023-04-19 13:50:41.641694+00	10	600000	1	[{"added": {}}]	13	4
+29	2023-04-19 13:50:48.172994+00	11	650000	1	[{"added": {}}]	13	4
+30	2023-04-19 13:50:55.38337+00	12	700000	1	[{"added": {}}]	13	4
+31	2023-04-19 13:51:03.793973+00	13	750000	1	[{"added": {}}]	13	4
+32	2023-04-19 13:51:12.74806+00	14	800000	1	[{"added": {}}]	13	4
+33	2023-04-19 13:51:20.381804+00	15	850000	1	[{"added": {}}]	13	4
+34	2023-04-19 13:51:27.81885+00	16	900000	1	[{"added": {}}]	13	4
+35	2023-04-19 13:51:35.030775+00	17	950000	1	[{"added": {}}]	13	4
+36	2023-04-19 13:51:45.335553+00	18	1000000	1	[{"added": {}}]	13	4
+37	2023-05-22 13:42:02.354233+00	hogar-1	Hogar 1	1	[{"added": {}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (1)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (2)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (3)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (4)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (5)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (6)"}}]	9	2
+38	2023-05-22 14:12:17.044006+00	hogar-2	Hogar 2	1	[{"added": {}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (7)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (8)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (9)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (10)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (11)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (12)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (13)"}}]	9	2
+39	2023-05-22 14:13:27.946377+00	hogar-3	Hogar 3	1	[{"added": {}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (14)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (15)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (16)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (17)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (18)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (19)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (20)"}}]	9	2
+40	2023-05-22 14:14:29.047529+00	cocina-1	Cocina 1	1	[{"added": {}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (21)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (22)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (23)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (24)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (25)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (26)"}}]	9	2
+41	2023-05-22 14:15:17.836135+00	cocina-2	Cocina 2	1	[{"added": {}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (27)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (28)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (29)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (30)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (31)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (32)"}}]	9	2
+42	2023-05-22 14:16:16.396771+00	cocina-3	Cocina 3	1	[{"added": {}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (33)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (34)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (35)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (36)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (37)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (38)"}}]	9	2
+43	2023-05-22 14:17:30.468778+00	living-1	Living 1	1	[{"added": {}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (39)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (40)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (41)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (42)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (43)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (44)"}}]	9	2
+44	2023-05-22 14:19:17.212339+00	living-2	Living 2	1	[{"added": {}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (45)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (46)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (47)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (48)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (49)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (50)"}}]	9	2
+45	2023-05-22 14:20:06.636045+00	living-3	Living 3	1	[{"added": {}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (51)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (52)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (53)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (54)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (55)"}}]	9	2
+46	2023-05-22 14:20:52.679718+00	dormitorio-1	Dormitorio 1	1	[{"added": {}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (56)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (57)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (58)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (59)"}}]	9	2
+47	2023-05-22 14:21:49.851452+00	dormitorio-2	Dormitorio 2	1	[{"added": {}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (60)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (61)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (62)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (63)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (64)"}}]	9	2
+48	2023-05-22 14:25:46.961147+00	dormitorio-2	Dormitorio 2	3		9	2
+49	2023-05-22 14:25:54.661086+00	dormitorio-1	Dormitorio 1	3		9	2
+50	2023-05-23 20:01:44.152411+00	cocina-3	Cocina 3	3		9	2
+51	2023-05-23 20:04:26.388275+00	cocina-3	Cocina 3	1	[{"added": {}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (65)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (66)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (67)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (68)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (69)"}}]	9	2
+52	2023-05-23 20:08:23.871922+00	living-2	Living 2	3		9	2
+53	2023-05-23 20:13:56.313717+00	living-2	Living 2	1	[{"added": {}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (70)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (71)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (72)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (73)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (74)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (75)"}}]	9	2
+54	2023-05-23 20:14:47.160635+00	living-3	Living 3	3		9	2
+55	2023-05-23 20:17:07.73433+00	living-3	Living 3	1	[{"added": {}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (76)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (77)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (78)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (79)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (80)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (81)"}}]	9	2
+56	2023-05-23 20:20:02.516996+00	dormitorio-1	Dormitorio 1	1	[{"added": {}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (82)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (83)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (84)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (85)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (86)"}}]	9	2
+57	2023-05-23 20:22:43.316719+00	dormitorio-3	Dormitorio 3	1	[{"added": {}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (87)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (88)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (89)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (90)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (91)"}}]	9	2
+58	2023-05-23 20:24:12.571789+00	dormitorio-2	Dormitorio 2	1	[{"added": {}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (92)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (93)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (94)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (95)"}}, {"added": {"name": "imagen electrodomestico", "object": "ImagenElectrodomestico object (96)"}}]	9	2
+\.
+
+
+--
+-- Data for Name: django_content_type; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.django_content_type (id, app_label, model) FROM stdin;
+1	admin	logentry
+2	auth	permission
+3	auth	group
+4	auth	user
+5	contenttypes	contenttype
+6	sessions	session
+7	market	beneficioparacliente
+8	market	cliente
+9	market	electrodomestico
+10	market	moto
+11	market	personal
+12	market	post
+13	market	soluciondineraria
+14	market	postimagenes
+15	market	imagenmoto
+16	market	imagenelectrodomestico
+17	market	numadjudicado
+\.
+
+
+--
+-- Data for Name: django_migrations; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.django_migrations (id, app, name, applied) FROM stdin;
+1	contenttypes	0001_initial	2023-03-14 02:04:53.618488+00
+2	auth	0001_initial	2023-03-14 02:04:53.678996+00
+3	admin	0001_initial	2023-03-14 02:04:53.710364+00
+4	admin	0002_logentry_remove_auto_add	2023-03-14 02:04:53.723275+00
+5	admin	0003_logentry_add_action_flag_choices	2023-03-14 02:04:53.732723+00
+6	contenttypes	0002_remove_content_type_name	2023-03-14 02:04:53.755062+00
+7	auth	0002_alter_permission_name_max_length	2023-03-14 02:04:53.76352+00
+8	auth	0003_alter_user_email_max_length	2023-03-14 02:04:53.773078+00
+9	auth	0004_alter_user_username_opts	2023-03-14 02:04:53.783421+00
+10	auth	0005_alter_user_last_login_null	2023-03-14 02:04:53.797665+00
+11	auth	0006_require_contenttypes_0002	2023-03-14 02:04:53.799487+00
+12	auth	0007_alter_validators_add_error_messages	2023-03-14 02:04:53.807192+00
+13	auth	0008_alter_user_username_max_length	2023-03-14 02:04:53.821993+00
+14	auth	0009_alter_user_last_name_max_length	2023-03-14 02:04:53.836564+00
+15	auth	0010_alter_group_name_max_length	2023-03-14 02:04:53.846972+00
+16	auth	0011_update_proxy_permissions	2023-03-14 02:04:53.855527+00
+17	auth	0012_alter_user_first_name_max_length	2023-03-14 02:04:53.865946+00
+18	market	0001_initial	2023-03-14 02:04:53.935293+00
+19	market	0002_alter_moto_año_alter_moto_forma_de_pago	2023-03-14 02:04:53.943539+00
+20	market	0003_alter_moto_año	2023-03-14 02:04:53.948432+00
+21	market	0004_alter_moto_año_alter_moto_cuotas_and_more	2023-03-14 02:04:53.96643+00
+22	market	0005_numadjudicado	2023-03-14 02:04:53.977132+00
+23	market	0006_remove_electrodomestico_cuotas_remove_moto_cuotas_and_more	2023-03-14 02:04:54.001662+00
+24	market	0007_electrodomestico_ficha_tecnica_moto_ficha_tecnica_and_more	2023-03-14 02:04:54.017835+00
+25	market	0008_alter_cliente_dni_alter_cliente_email_and_more	2023-03-14 02:04:54.032507+00
+26	market	0009_remove_electrodomestico_usado_and_more	2023-03-14 02:04:54.045534+00
+27	market	0010_alter_electrodomestico_descripcion_and_more	2023-03-14 02:04:54.059343+00
+28	market	0011_remove_post_fecha_remove_post_fecha_limite	2023-03-14 02:04:54.069387+00
+29	market	0012_alter_electrodomestico_descripcion_and_more	2023-03-14 02:04:54.082734+00
+30	market	0013_electrodomestico_servicio_moto_servicio	2023-03-14 02:04:54.092227+00
+31	market	0014_alter_electrodomestico_servicio_alter_moto_servicio	2023-03-14 02:04:54.101268+00
+32	market	0015_electrodomestico_monto_servicio_por_couta_and_more	2023-03-14 02:04:54.10881+00
+33	market	0016_beneficioparacliente_monto_and_more	2023-03-14 02:04:54.115152+00
+34	market	0017_post_tamaño_alter_numadjudicado_año	2023-03-14 02:04:54.125053+00
+35	market	0018_rename_tamaño_post_tamano	2023-03-14 02:04:54.130503+00
+36	market	0019_alter_cliente_num_telefono	2023-03-14 02:04:54.139223+00
+37	market	0020_alter_beneficioparacliente_monto_and_more	2023-03-14 02:04:54.214297+00
+38	market	0021_alter_beneficioparacliente_monto_and_more	2023-03-14 02:04:54.225091+00
+39	market	0022_alter_personal_nombre_completo_and_more	2023-03-14 02:04:54.232535+00
+40	sessions	0001_initial	2023-03-14 02:04:54.242523+00
+43	market	0019_remove_soluciondineraria_monto_cuota	2023-04-11 14:24:14.343833+00
+44	market	0023_merge_20230320_1037	2023-04-11 14:24:14.348972+00
+\.
+
+
+--
+-- Data for Name: django_session; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.django_session (session_key, session_data, expire_date) FROM stdin;
+5daez5ojo91vvwr0liy22nl5ktjjb9n0	.eJxVjEEOwiAQAP_C2ZBSSgGP3vsGsssuUjWQlPZk_Lsh6UGvM5N5iwDHnsPReAsriatQ4vLLEOKTSxf0gHKvMtaybyvKnsjTNrlU4tftbP8GGVruW9Jm1EpZ0MonD2lMzjjNnGycMCHwTOwjeIsTgQGNM0U_KDRsBkcsPl_2FTj1:1pl14J:4HoFVeOPwyz7sQz5bbV-X6VyvBOL-4_RfXcK3dtv2Os	2023-04-22 05:24:55.909199+00
+t9y38q1b8a08caisaxjx2fym3al8v380	.eJxVjcFuwjAQRP_FZxTJdhLi3iBVpEpUrYRCC5fIu14nQBKX2IDSqv9OkLhwmMvMm5k_VqEfbHBH6tkLS8JiU--KcvXqJCZfnws5-jbfUt7u8FD82L5bX8quTorv0IVtNzr6oLex_M1PqbkqAWzGKn0OTXX2NFR7M03Gzx5onK7ugTnovnYRuj4Me4juSPRIffTuDLXLB_s00GjfTG2tQOos1Ypn1kijcJIUAmIlELgAmaU0BxRSzC2n2AgCTGIJPEu5Mlaz_xvoYlP5:1pmwhn:a8f0-eLX0u5IWayn3tgO7vk14B7p8jNgTK7f-cmHc4o	2023-04-27 13:09:39.92136+00
+jl759sojy8r5gdlp6obu1d3yj9336318	.eJxVjT1vwjAYhP-L5yqS7TTY3ZqhQRUgdYhoWKL3wyZpSFzFRipU_e8NEgvDLXfP3f2KluLsUxjcJF6E4Wo47uu024y67D6bK-1fp9ryrmq-I_yMinu9rt77Jp3qtf-w45uhQznH8nq4xMsQxJNo4Zy69hzd3Pa8TOaPHgItV7eAv2A6hozClOYesxuS3dOYbQO7U3lnHwY6iN3SBosaTAFWGs-aLS3SSmFuFaFUqE3hVkhKq5WXLmflkJ5zjdIU0rIH8fcP8G9UAg:1pnJLf:7aEoVYiFFNkj4SriTI19p3VO52LqsE3K9O4OaUFYKXw	2023-04-28 13:20:19.341747+00
+q49dylqvwvdo87mwn4tpdtrnk1mhinit	.eJxVjEEOwiAQRe_C2hAYaqEu3fcMZGZgbNVAUtqV8e7apAvd_vfef6mI2zrFreUlzkldFKjT70bIj1x2kO5YblVzLesyk94VfdCmx5ry83q4fwcTtulbZ8jMpgsJiESsd-AlBEtMZhDyDs85GYKBiQZx1jL0nXFMXnoU9KDeHw1eOOE:1pygMm:8RDRradA6qhJfihR6BfLwLBLBb6y1H-geYuEHoH-2UM	2023-05-29 22:08:28.335025+00
+\.
+
+
+--
+-- Data for Name: market_beneficioparacliente; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.market_beneficioparacliente (id, fecha, nombre_completo, email, servicio, num_telefono, monto, producto) FROM stdin;
+\.
+
+
+--
+-- Data for Name: market_cliente; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.market_cliente (id, nombre_completo, dni, provincia, localidad, email, objetivo, num_telefono, fecha) FROM stdin;
+1	Lautaro	\N	sakldjasl	\N	asd@gmail.com	Solicitud de dinero de $250.000	1231231231	2023-04-19 13:52:23.284164+00
+2	Gomez Jose	\N	Corrientes capital	\N	gomezjosee582004@gmail.com	Moto Xr 150 150 Honda a $900000	3795046537	2023-04-27 00:59:29.95867+00
+3	Gomez Jose	\N	Corrientes capital	\N	gomezjosee582004@gmail.com	Moto Xr 150 150 Honda a $900000	3795046537	2023-05-05 21:59:41.003469+00
+4	Camila Carolina Lugo	\N	Barranqueras	\N	mati.monte3011@gmail.com	Moto Xr 150 150 Honda a $900000	3624282141	2023-05-06 17:16:55.268766+00
+5	hugo flores	\N	corrientes	\N	hugoeflores@hotmail.com	Moto Xr 150 150 Honda a $900000	3777382705	2023-05-27 18:38:53.501801+00
+6	Pablo Diaz	\N	Chaco	Resistencia	Pablo.elanel@gmail.com	Moto	3624036425	2023-05-31 02:15:09.088301+00
+7	CARMEN BEATRIZ PILZ	\N	MISIONES	\N	PP152001@HOTMAIL.COM	Moto Biz 125 125 Honda a $300000	3765223595	2023-06-02 12:04:48.712688+00
+8	Carlos benitez	\N	Corrientes	\N	carlitos3777312444@gamil.com	Moto Wave S110 110 Honda a $600000	3777598257	2023-06-06 01:21:46.859915+00
+9	Cabral Fernando	\N	Corrientes	\N	cfernandocabral@hotmail.com	Moto Negocio 125 125 honda a $300000	3795166254	2023-06-15 12:28:06.441079+00
+10	adriana toñanez	\N	corrientes	\N	tonanezadriana59@gmail.com	Moto Zb B110 B110 Zanella a $350000	3795573652	2023-07-14 15:00:20.283214+00
+11	adriana toñanez	\N	corrientes	\N	tonanezadriana59@gmail.com	Moto Wave S110 110 Honda a $600000	3795573652	2023-07-14 15:01:41.693284+00
+12	Federico Ayala	\N	Corrientes	\N	fede2001ayala04@gmail.com	Moto Wave S110 110 Honda a $600000	3786408702	2023-07-18 23:22:59.292396+00
+13	Enzo Dozdor	\N	Chaco	\N	enzo_211_@hotmail.com	Moto Wave S110 110 Honda a $600000	3644723572	2023-07-20 02:43:15.057775+00
+14	Ojeda Laura veronica	\N	Chaco	Puerto tirol	lauraojeda798@gmail.com	Necesito dar de baja la escribió de la moto	3624745698	2023-07-20 17:04:52.5932+00
+15	Ojeda Laura verinica	\N	Chaco	Puerto tirol	lauraojeda798@gmail.com	Necesito dar de baja la escricion de la moto	3624745698	2023-07-21 13:20:57.945947+00
+16	Ramona Cristina Encinas	\N	Corrientes capital	\N	encinas_cristina_r@yahoo.com.ar	Equipo Living 2 a $400000	3794864643	2023-07-22 16:11:35.946942+00
+17	Claudio Daniel Mendoza	\N	Corrientes	\N	claudio.d.mendoza@gmail.com	Solicitud de dinero de $250.000	3794044990	2023-07-25 21:20:24.604791+00
+18	Mario idelson	\N	Chaco	\N	mario-idelson@hotmail.com	Solicitud de dinero de $1.000.000	3624068548	2023-07-27 00:23:47.951289+00
+19	Javierr  Galarza	\N	Resistencia	\N	obregonmilagros56@gmail.com	Solicitud de dinero de $450.000	3624843666	2023-07-28 15:06:36.149359+00
+20	Javier Galarza	\N	Resistencia Chaco	\N	javigalarza17@gmail.com	Solicitud de dinero de $500.000	3624843666	2023-07-28 16:46:53.787383+00
+21	Lucas Quinteros	\N	Chaco	\N	lucasquinteros058@gmail.com	Moto Energy F110 F110 Corven a $350000	3885204712	2023-07-28 22:08:17.162004+00
+22	Dimas	\N	Chaco	\N	dimasalexis13@gmail.com	Moto Biz 125 125 Honda a $300000	3624292299	2023-08-02 17:01:07.572032+00
+23	NICOLAS EMMANUEL SANCHEZ	\N	CHACO	\N	NS2000840@GMAIL.COM	Moto Wave S110 110 Honda a $600000	3624841638	2023-08-03 13:59:56.358395+00
+24	Claudia Benitez	\N	Chaco	Resistencia	Clauben23@gmail.com	Aire acondicionado	3624779499	2023-08-04 00:39:19.035501+00
+25	Carlos Jaime	\N	Corrientes	\N	charly_cj_james@hotmail.com	Moto Skua 150 150 Motomel a $450000	3794658130	2023-08-06 14:53:16.658673+00
+26	Billordo Norma Fabiana	\N	Chaco	\N	fabianabillordo1994@gmail.com	Moto Blitz F110 F110 Motomel a $350000	3624380714	2023-08-09 14:32:19.630444+00
+27	Marcelo Muller	\N	Misiones	\N	marcelo.muller1122@gmail.com	Moto Wave S110 110 Honda a $600000	3764847907	2023-08-13 17:38:44.855075+00
+28	Edgar Riveros	\N	Puerto Bermejo	\N	riverosedgar43@gmail.com	Moto Wave S110 110 Honda a $600000	1166137123	2023-08-14 19:43:48.684694+00
+29	Navarro Laura	\N	Chaco	\N	laurita.chaco17@gmail.com	Moto Titán CG150 CG150 honda a $950000	3644116213	2023-08-22 01:13:37.501459+00
+30	Maria laura morel	\N	Formosa	El colorado	Lauramorel24@hotmail.com.ar	Moto honda wave	3704007499	2023-08-26 03:03:31.47943+00
+31	Jaqueline canteros	\N	Barranqueras	\N	canterosjaquee@gmail.com	Solicitud de dinero de $500.000	3624392678	2023-08-28 15:34:32.444322+00
+32	Morales priscila	\N	Chaco	\N	pm5738450@gmail.com	Moto Titán Cg150 CG150 honda a $950000	3644339004	2023-08-31 13:28:20.96594+00
+33	Jara sotelo juan david	\N	Corrientes capital	\N	jarita46461658@gmail.com	Moto Biz 125 125 Honda a $300000	3794097219	2023-09-02 00:10:08.461767+00
+34	mirta obregon	\N	chaco	\N	palavecinofiamma15@gmail.com	Equipo Hogar 3 a $650000	3644845207	2023-09-02 13:16:39.095258+00
+35	mirta gladys obregon	\N	chaco	\N	palavecinofiamma15@gmail.com	Equipo Cocina 1 a $250000	3644733896	2023-09-04 12:21:34.191157+00
+36	Fernando Joel Gomez	\N	Chaco	\N	fg9939456@gmail.com	Equipo Cocina 1 a $250000	3644841288	2023-09-05 00:08:18.483715+00
+37	Belen cao	\N	Chaco	\N	belen.cao.17@gmail.com	Moto Biz 125 125 Honda a $300000	3624904815	2023-09-05 15:28:59.512148+00
+38	Juan Pablo	\N	Chaco	\N	spanhakejuan@gmail.com	Moto Blitz F110 F110 Motomel a $350000	3624061893	2023-09-09 05:49:18.834853+00
+39	Juan Pablo Spanhake	\N	Chaco	Resistencia	spanhakejuan@gmail.com	Moto blitz	3624061893	2023-09-09 14:00:07.503459+00
+40	Juan Pablo Spanhake	\N	Chaco	\N	spanhakejuan@gmail.com	Moto Blitz F110 F110 Motomel a $350000	3624061893	2023-09-11 11:41:53.771528+00
+41	FRANCISCO JAVIER PELOZO GONZALEZ	\N	CORRIENTES	\N	javeei021@gmail.com	Solicitud de dinero de $600.000	3794788569	2023-09-15 11:19:59.254463+00
+42	Codutti Foschiatti Mariano David	\N	Chacho	\N	mariano_davidfoschiatti@outlook.es	Moto Zb F110 F110 Zanella a $400000	3624846980	2023-09-19 20:30:16.383519+00
+43	Casco Natalia	\N	Chaco	\N	gerardomar1984@yahoo.com	Solicitud de dinero de $500.000	3624623082	2023-09-23 00:24:11.334438+00
+44	Braian Fernando Querio	\N	Corrientes	\N	queriob2@gmail.com	Equipo Cocina 1 a $250000	3794095923	2023-09-25 18:23:25.752784+00
+45	Braian Fernando	\N	Corrientes	\N	queriob2@gmail.com	Solicitud de dinero de $1.000.000	3794095923	2023-09-25 18:27:54.929263+00
+46	Riquelme Alexis Adolfo	\N	Chaco	\N	alexis99riquelme@gmail.com	Moto Titan Cg150 CG150 Honda a $950000	3725549132	2023-09-25 23:32:08.677091+00
+47	Maria Alejandra Moreyra	\N	Corrientes	Goya	maralejmore@gmail.com	Combos de electrodomesticos	3777416838	2023-10-04 13:51:30.631254+00
+48	Moreyra Alejandra	\N	Corrientes	Goya	maralejmore@gmail.com	Combos de electrodomésticos	3777416838	2023-10-05 00:41:01.720144+00
+49	Moreyra Alejandra	\N	Corrientes	\N	maralejmore@gmail.com	Equipo Hogar 1 a $550000	3777416838	2023-10-05 00:43:11.860722+00
+50	Abril	\N	Corrientes	\N	qabril27@gmail.com	Moto Wave S110 110 Honda a $600000	3794064145	2023-10-05 04:49:37.037291+00
+51	Camila Florencia Oviedo	\N	Formosa	\N	camilaoviedo103@gmail.com	Moto Wave S110 110 Honda a $600000	3704924279	2023-10-06 04:56:29.878587+00
+52	carlos acevey	\N	CORRIENTES	\N	carlosacevey@gmail.com	Moto Wave S110 110 Honda a $600000	3777675790	2023-10-10 20:27:04.393687+00
+53	Daniel Sanchez	\N	Chaco	\N	mixingradio@gmail.com	Moto Titan Cg150 CG150 Honda a $950000	2236938237	2023-10-16 17:26:15.151622+00
+54	Tomas Romero	\N	Chaco	Fontana	tomiexequielromero@gmail.com	Moto	3624332269	2023-10-18 14:10:52.802935+00
+55	Carla Gimena Chas	\N	CHACO	\N	carlagchas@gmail.com	Moto Styler 150 Rs 150RS Zanella a $550000	3624520057	2023-10-21 16:55:47.146917+00
+56	Santiago Rios	\N	Corrientes	\N	santy454517@gmail.com	Moto Xr 150 150 Honda a $900000	3794014405	2023-10-25 20:45:56.060203+00
+57	Ramirez Noelia	\N	Corrientes	\N	ramirezleidy648@gmail.com	Solicitud de dinero de $200.000	3773406278	2023-10-25 22:49:34.14641+00
+58	Sanchez emanuel	\N	Saladas	\N	esmanuss0@gmail.com	Moto Xr 150 150 Honda a $900000	3782432598	2023-10-28 19:51:38.928296+00
+59	Jorge Eduardo otazo	\N	Corrintes	\N	edu.ota.2014@gmail.com	Moto Blitz B110 B110 Motomel a $300000	1155698096	2023-11-01 15:05:26.817508+00
+60	Luna Matias	\N	Corrientes	\N	matiasluna.mln@gmail.com	Moto Xr 150 150 Honda a $900000	3795076073	2023-11-03 16:54:20.11773+00
+61	Ximena Sanchez	\N	Chaco	\N	ximesanchez04@gmail.com	Moto Energy F110 F110 Corven a $350000	3624072707	2023-11-06 17:26:26.002528+00
+62	Malena Gonzalez	\N	Chaco	\N	malena.gonzalez0018@gmail.com	Equipo Hogar 3 a $650000	3625243472	2023-11-08 12:33:38.890985+00
+63	Elian Mejia	\N	Santa Fe	\N	elianmjia4@gmail.com	Moto xr 150 150 honda a $900000	3482505463	2023-11-09 19:46:27.377598+00
+64	Gomez gabriel	\N	Chaco	\N	lenchoghg21@gmail.com	Moto Biz 125 125 Honda a $300000	3644185166	2023-11-11 03:12:38.951957+00
+65	Florencia Almiron	\N	Corrientes	Corrientes	Almironflorencia98@gmail.com	Motos	3794754626	2023-11-17 14:46:22.6454+00
+66	Liset Lezcano	\N	Corrientes	\N	lisetlzcn@gmail.com	Moto Wave S110 110 Honda a $600000	3795036707	2023-11-22 14:22:24.238425+00
+67	Liset Lezcano	\N	Corrientes	\N	lisetlzcn@gmail.com	Moto Zb F110 F110 Zanella a $400000	3795036707	2023-11-22 14:23:11.452595+00
+68	malena	\N	chaco	\N	malena13gonzalez@gmail.com	Equipo Hogar 3 a $650000	3625243472	2023-11-27 20:39:26.79497+00
+69	CAMILA MARISEL GOMEZ	\N	CHACO	\N	cg6137160@gmail.com	Moto Zb F110 F110 Zanella a $400000	3644830689	2023-11-28 03:04:49.444701+00
+70	William Duarte	\N	Misiones	\N	duartewilliam356@gmail.com	Moto Wave S110 110 Honda a $600000	3757683746	2023-11-28 03:39:02.569856+00
+71	Karen Molina	\N	Chaco	\N	karenmelissa.km@gmail.com	Equipo Hogar 1 a $550000	3625152349	2023-11-28 21:31:16.443933+00
+72	Georgina	\N	Chaco	\N	georginacelinagutierrez24@gmail.com	Equipo Cocina 1 a $250000	3644764178	2023-11-29 11:14:31.171313+00
+73	Hugo Hernan Orellana	\N	Formosa	\N	h2o_losmillo@live.com.ar	Equipo Hogar 3 a $650000	1153755343	2023-11-29 17:45:55.474534+00
+74	Alarcon lucas	\N	Corrientes capital	\N	lucashernanalarcon@gmail.com	Moto Biz 125 125 Honda a $300000	3795350225	2023-11-29 18:30:11.163758+00
+75	Emanuel Jalife	\N	Chaco	\N	emma1780@hotmail.com	Moto Biz 125 125 Honda a $300000	3644305718	2023-11-30 12:50:17.967+00
+76	Lucas Coria	\N	Chaco	\N	eliezerperalta304@gmail.com	Equipo Dormitorio 3 a $400000	3731432923	2023-11-30 14:17:01.666273+00
+77	Candelaria	\N	Chaco	\N	gcxndl@gmail.com	Moto Biz 125 125 Honda a $300000	3625153564	2023-12-01 10:40:10.385227+00
+78	Juan Diego Arias	\N	Misiones	\N	escarcenajuan@gmail.com	Moto Skua 150 150 Motomel a $450000	3764721344	2023-12-02 15:31:37.657253+00
+79	Gonzalez Rodrigo	\N	Misiones	\N	rg4813960@gmail.com	Moto Titan Cg150 CG150 Honda a Consultar precio	3764121639	2023-12-02 20:06:06.795132+00
+80	Ignacia marcela soledad aranda	\N	Chaco	\N	acosta33489@gmail.com	Moto Wave S110 110 Honda a Consultar precio	3644614890	2023-12-02 21:36:17.361073+00
+81	Aranda Ignacia Marcela Soledad	\N	Chaco	\N	acosta33489@gmail.com	Equipo Dormitorio 1 a Consultar precio	3644614890	2023-12-02 21:40:19.130334+00
+82	Caballero lourdes	\N	Corrientes	\N	lc5712571@gmail.com	Equipo Living 2 a Consultar precio	3777208825	2023-12-03 09:58:42.417492+00
+83	Claudia	\N	Corrientes	\N	polca519@gmail.com	Equipo Cocina 2 a Consultar precio	3795305332	2023-12-04 15:47:44.671783+00
+84	andres sebastian osorio	\N	misiones	\N	andres.sebastian.osorio@hotmail.com	Moto Zb F110 F110 Zanella a Consultar precio	3764837206	2023-12-07 13:05:31.830202+00
+85	Patricia Olarreaga	\N	CORRIENTES	\N	patriciaagustinafrancis@gmail.com	Moto Titan Cg150 CG150 Honda a Consultar precio	3794686089	2023-12-11 14:52:46.391367+00
+86	Barrios liliana	\N	Corrientes	\N	lilianaebarrios63@gmail.com	Moto Zb B110 B110 Zanella a Consultar precio	3795316819	2023-12-12 13:20:49.369842+00
+87	Liliana barrios	\N	Corrientes	\N	lilianaebarrios63@gmail.com	Equipo Hogar 3 a Consultar precio	3795316819	2023-12-12 18:31:50.53858+00
+88	Beatriz Riveros	\N	Corrientes	\N	beatriz23riveros@gmail.com	Equipo Living 1 a Consultar precio	3794127121	2023-12-15 20:27:31.664946+00
+89	Rosa Aide Flores	\N	Chaco	\N	rossi-1422@hotmail.com	Moto S2 150 150 Motomel a Consultar precio	3625141272	2023-12-19 00:20:07.10017+00
+90	Paulo leguiza	\N	Corrientes	\N	paulorafalegui@hotmail.com	Moto Wave S110 110 Honda a Consultar precio	3756599611	2023-12-19 13:23:42.204578+00
+91	Yonatan Aguirre	\N	Misiones	\N	yonatanag27@hotmail.com	Moto Wave S110 110 Honda a Consultar precio	3754466202	2023-12-21 00:46:41.268447+00
+92	Ernestina galarza	\N	Misiones	\N	galarzaernes@gmail.com	Moto Xr 150 150 Honda a Consultar precio	3764284513	2023-12-21 15:53:55.366391+00
+93	GABRIEL GARCIA	\N	chaco	\N	buloneragarcia@gmail.com	Equipo Hogar 3 a Consultar precio	3644328282	2023-12-21 21:55:19.836953+00
+94	Cristian isa	\N	Misiones	\N	cdisa1986@gmail.com	Moto Hunter 150 150 Corven a Consultar precio	3764197637	2023-12-24 02:09:38.159527+00
+95	REY ANDREA CAROLINA	\N	misiones	\N	carolinarey851@gmail.com	Moto Zb B110 B110 Zanella a Consultar precio	3764691732	2023-12-26 13:45:35.239739+00
+96	REY ANDREA CAROLINA	\N	misiones	\N	carolinarey851@gmail.com	Equipo Cocina 1 a Consultar precio	3764691732	2023-12-26 13:48:00.473809+00
+97	Leandro	\N	Misiones	\N	sebaachu98@gmail.com	Moto Wave S110 110 Honda a Consultar precio	3765042513	2023-12-26 22:45:18.017481+00
+98	Santiago flamenco	\N	Santa Fe	\N	santiagoflamenco27@gmail.com	Moto Biz 125 125 Honda a Consultar precio	3491603287	2023-12-26 23:51:16.548841+00
+99	Silvana Avalos	\N	Misiones	\N	silulilu@gmail.com	Moto Biz 125 125 Honda a Consultar precio	3764129891	2023-12-27 14:45:08.920851+00
+100	Brahian	\N	Misiones	\N	brahianjacobsen001@gmail.com	Moto Titan Cg150 CG150 Honda a Consultar precio	3764109223	2023-12-27 22:43:35.460399+00
+101	Borges Lucas	\N	Misiones	\N	lukascapoborges@gmail.com	Moto Titan Cg150 CG150 Honda a Consultar precio	3757462503	2023-12-30 11:47:04.106383+00
+102	Felix Gomez	\N	Corrientes	\N	reydelskytwo@gmail.com	Moto Titan Cg150 CG150 Honda a Consultar precio	3756497775	2024-01-02 04:56:56.325545+00
+103	Felix Gomez	\N	Corrientes	\N	reydelskytwo@gmail.com	Equipo Hogar 2 a Consultar precio	3756497775	2024-01-02 05:00:09.813019+00
+104	Briant Fleitas	\N	Corrientes  goya	\N	briantfleitas581@gmail.com	Moto Titan Cg150 CG150 Honda a Consultar precio	3777633294	2024-01-02 10:10:48.757144+00
+105	Briant Roberto Fleitas	\N	Corrientes	\N	briantfleitas581@gmail.com	Moto Titan Cg150 CG150 Honda a Consultar precio	3777633294	2024-01-02 14:31:54.206752+00
+106	Carlos Daniel suarez	\N	Chaco	Margarita Belen	carlosdanielsuarez06@gmail.com	Motos 110	3624645548	2024-01-02 17:38:32.126633+00
+107	Jose	\N	Misiones	\N	jirtuchelo@gmail.com	Moto Titan Cg150 CG150 Honda a Consultar precio	3764175042	2024-01-02 23:25:53.158233+00
+108	Emmanuel honig	\N	Misiones	\N	honig1@outlook.es	Moto Titan Cg150 CG150 Honda a Consultar precio	3764500161	2024-01-02 23:33:16.316423+00
+109	Omar cesar krutli	\N	Misiones	\N	kenystark46@gmail.com	Moto Zb F110 F110 Zanella a Consultar precio	3764637636	2024-01-03 00:18:45.929856+00
+110	Daniela Echeverria	\N	Misiones	\N	echeverriaana478@gmail.com	Solicitud de dinero de $200.000	3764647026	2024-01-03 16:17:23.422733+00
+111	Agustin Monzon	\N	Misiones	\N	agustinivanmonzon84@gmail.com	Moto Titan Cg150 CG150 Honda a Consultar precio	3764622285	2024-01-05 17:09:38.09124+00
+112	Ulises Freyre	\N	Chaco	\N	ulisesfreyre06@hotmail.com	Moto Xr 150 150 Honda a Consultar precio	3625293439	2024-01-06 13:26:44.8292+00
+113	Nadia Lopez	\N	Corrientes	\N	nay909265@gmail.com	Moto Wave S110 110 Honda a Consultar precio	3777204609	2024-01-08 13:58:45.294985+00
+114	Abigail Juliana	\N	Santa Fe	\N	aabigailjuliana@gmail.com	Equipo Hogar 3 a Consultar precio	3412763659	2024-01-08 16:15:07.898479+00
+115	Tevez Giuliana Guadalupe	\N	Chaco	\N	yulianatevez25@gmail.com	Moto Energy F110 F110 Corven a Consultar precio	3731443928	2024-01-08 16:56:57.458247+00
+116	Ledesma sofia	\N	Corrientes	\N	shopledesma@gmail.com	Solicitud de dinero de $950.000	3777302972	2024-01-08 18:48:45.346233+00
+117	Ledesma sofia	\N	Corrientes	\N	shopledesma@gmail.com	Equipo Hogar 3 a Consultar precio	3777302972	2024-01-08 18:52:39.54933+00
+118	Aldana Rojas	\N	Chaco	\N	aldanaabigailrojas22@gmail.com	Moto Wave S110 110 Honda a Consultar precio	3644335075	2024-01-08 21:21:58.676362+00
+119	Araceli Hurt	\N	Corrientes	\N	aracelihurt68@gmail.com	Equipo Hogar 2 a Consultar precio	3482676616	2024-01-08 22:29:17.874672+00
+120	Juan Carlos Avellaneda	\N	Misiones	\N	juankavedj@gmail.com	Moto Titan Cg150 CG150 Honda a Consultar precio	3764907520	2024-01-09 07:21:00.25527+00
+121	Priscila cejas	\N	Chaco	\N	jazmincejas297@gmail.com	Equipo Hogar 1 a Consultar precio	3731447550	2024-01-09 12:12:17.947629+00
+122	Lorena Romero	\N	Misiones	\N	romeroprogramacion@gmail.com	Moto Titan Cg150 CG150 Honda a Consultar precio	3764265947	2024-01-10 12:14:42.694553+00
+123	ulises freyre	\N	Chaco	\N	ulisesfreyre06@hotmail.com	Moto Xr 150 150 Honda a Consultar precio	3624083704	2024-01-10 20:00:18.405664+00
+124	mauricio mendez	\N	Misiones	\N	mauriciomendez51@gmail.com	Moto Titan Cg150 CG150 Honda a Consultar precio	3764247351	2024-01-11 18:51:43.970219+00
+125	Belen pinto	\N	Misiones	\N	belensana90@gmail.com	Moto Titan Cg150 CG150 Honda a Consultar precio	3764625275	2024-01-11 23:51:35.498916+00
+126	Walter Emanuel Acuña	\N	Chaco	\N	walterkap444@gmail.com	Moto Energy F110 F110 Corven a Consultar precio	3644734308	2024-01-12 15:52:14.169725+00
+127	Segovia Camila Soledad	\N	Corrientes	Esquina	cami05segovia@gmail.com	Moto	3777385334	2024-01-12 20:12:53.37954+00
+128	Bruno ribeiro	\N	Misiones	\N	brunoribeirocjs@gmail.com	Equipo Hogar 3 a Consultar precio	3764367578	2024-01-13 13:56:10.074671+00
+129	Patricia Vargas	\N	Chaco	\N	vargaspatricianoelia@gmail.com	Moto Biz 125 125 Honda a Consultar precio	3624317805	2024-01-13 14:22:40.066945+00
+130	Patricia Vargas	\N	Chaco	\N	vargaspatricianoelia@gmail.com	Moto Zb F110 F110 Zanella a Consultar precio	3624317805	2024-01-13 14:24:10.642971+00
+131	Andrea Camacho	\N	Misiones	\N	andreapaolacamacho95@gmail.com	Equipo Cocina 1 a Consultar precio	3764285755	2024-01-15 15:44:20.968521+00
+132	Galarza Silvana	\N	Chaco	Colonia Elisa	naratiziana1623@gmail.com	Motos 110	3734415173	2024-01-16 13:58:00.610607+00
+133	Paola Ruiz	\N	Chaco	\N	paoruizz590@gmail.com	Equipo Cocina 3 a Consultar precio	3731639812	2024-01-16 15:29:14.02855+00
+134	Pao Ruiz	\N	Chaco	\N	paoruizz590@gmail.com	Equipo Living 1 a Consultar precio	3731639812	2024-01-16 15:38:58.178126+00
+135	Cristian Silva	\N	Misiones	\N	cristttian.silva10@gmail.com	Moto Xr 150 150 Honda a Consultar precio	3764575908	2024-01-16 16:20:32.286935+00
+136	Cristian Silva	\N	Misiones	\N	cristttian.silva10@gmail.com	Moto Skua 150 150 Motomel a Consultar precio	3764575908	2024-01-16 16:21:15.399899+00
+137	Bruno Gonzalez	\N	Misiones	\N	brunogonzalez7314@gmail.com	Moto Wave S110 110 Honda a Consultar precio	3764226386	2024-01-17 00:08:41.545773+00
+138	Camila Daiana Paiva	\N	Misiones	Posadas	Camilapaiva2022@outlook.com	Moto 110, u honda twister	3764730483	2024-01-18 20:38:24.984245+00
+139	Antonio lara	\N	Misiones	\N	laraantonioelias@gmail.com	Moto Dax 70 70 Corven a Consultar precio	3764104053	2024-01-18 22:22:38.794635+00
+140	Yamila Flores	\N	Corrientes	\N	yamilaflores3@gmail.com	Equipo Hogar 3 a Consultar precio	3777446711	2024-01-19 18:28:58.302396+00
+141	Denis Mariam Olivera	\N	MISIONES	\N	denissmariamo@gmail.com	Solicitud de dinero de $250.000	3764233468	2024-01-19 22:19:28.957159+00
+142	Rolando	\N	Misiones	\N	rojabe832014@gmail.com	Moto Xr 150 150 Honda a Consultar precio	3751597049	2024-01-20 02:23:44.325895+00
+143	jonatam gonzalez	\N	chaco	\N	yonatangonzalez344@gmail.com	Moto Biz 125 125 Honda a Consultar precio	3624513299	2024-01-20 02:27:06.43699+00
+144	Diego Pirez	\N	Misiones	\N	diegopirezcoc@gmail.com	Moto Xr 150 150 Honda a Consultar precio	3754463415	2024-01-20 15:08:18.594927+00
+145	Milagroso Jaqueline Robledo Nuñez	\N	Chaco	\N	robledomilagrosjaqueline@gmail.com	Equipo Hogar 1 a Consultar precio	3644278421	2024-01-21 22:17:26.426593+00
+146	Milagros Jaqueline Robledo Nuñez	\N	Chaco	\N	robledomilagrosjaqueline@gmail.com	Equipo Hogar 3 a Consultar precio	3644278421	2024-01-21 22:20:20.00231+00
+147	Milagros Jaqueline Robledo Nuñez	\N	Chaco	\N	robledomilagrosjaqueline@gmail.com	Solicitud de dinero de $200.000	3644278421	2024-01-21 22:23:37.340542+00
+148	Juan Antonio	\N	posadas	\N	bernaljuan916@gmail.com	Equipo Hogar 2 a Consultar precio	3765188297	2024-01-22 00:01:54.211325+00
+149	Liliana	\N	Chaco	\N	garragam225@gmail.com	Equipo Dormitorio 1 a Consultar precio	3624619983	2024-01-22 19:37:20.047889+00
+150	Nahuel romero	\N	Chaco	\N	nahuelromero720@gmail.com	Moto Xr 150 150 Honda a Consultar precio	3624214555	2024-01-23 13:52:21.558381+00
+151	Melani	\N	Chaco	\N	melanibrian4@gmail.com	Moto Wave S110 110 Honda a Consultar precio	3624884081	2024-01-23 14:33:59.474458+00
+152	Nahuel romero	\N	Chaco puerto Tirol	\N	nahuelromero720@gmail.com	Moto Titan Cg150 CG150 Honda a Consultar precio	3624214555	2024-01-23 15:11:28.859784+00
+153	Agustin Oliveira	\N	Misiones	\N	agustinoliveira53@gmail.com	Moto Wave S110 110 Honda a Consultar precio	3765053720	2024-01-23 23:22:08.474526+00
+154	Lucas Marcelo Parodi	\N	Misiones	\N	lucsparodi_2320@hotmail.com	Moto Zb F110 F110 Zanella a Consultar precio	3764988413	2024-01-24 13:46:48.532721+00
+155	Segovia carolina	\N	Corrientes	\N	carolinasegovia623@gmail.com	Moto Energy F110 F110 Corven a Consultar precio	3756505619	2024-01-25 01:41:59.59434+00
+156	Ricardo Ramirez	\N	Chaco	\N	alexisram570@gmail.com	Moto Wave S110 110 Honda a Consultar precio	3625527248	2024-01-25 02:48:55.890117+00
+157	opkmalZVNfMxAWwC	\N	CFhQejtgEDGX	fzBoNergqnSVMcZW	statrevor1763@gmail.com	kXeinMSdW	7178929955	2024-01-26 01:28:19.705121+00
+158	opkmalZVNfMxAWwC	\N	CFhQejtgEDGX	fzBoNergqnSVMcZW	statrevor1763@gmail.com	kXeinMSdW	7178929955	2024-01-26 01:28:24.104058+00
+159	Baldi Blanca	\N	Corrientes	\N	blancabaldi22@gmail.com	Equipo Hogar 3 a Consultar precio	3777310324	2024-01-26 22:49:27.756893+00
+160	Cristian Rodriguez	\N	Misiones	Obera	Cristiannicolasrodriguez3@gmail.com	Moto	3755656455	2024-01-26 23:29:24.331444+00
+161	David Rondan	\N	Misiones	\N	davidemanuelrondan@gmail.com	Moto Blitz F110 F110 Motomel a Consultar precio	3764851674	2024-01-27 12:30:25.065498+00
+162	Jimena Olivera	\N	Goya corrientes	\N	jimenaolivera33@gmail.com	Moto Wave S110 110 Honda a Consultar precio	3777219199	2024-01-27 13:14:46.92286+00
+163	Fernandez franco	\N	Chaco	\N	francojavierfer270881@gmail.com	Moto Wave S110 110 Honda a Consultar precio	3615179689	2024-01-29 02:34:39.362378+00
+164	Nahuel Perez	\N	Misiones	\N	pereznahuelperez@gmail.com	Moto Wave S110 110 Honda a Consultar precio	3764356587	2024-01-29 13:23:10.109687+00
+165	Godoy Silvia	\N	Santa Fe	\N	godoy.silviairene@gmail.com	Moto Zb F110 F110 Zanella a Consultar precio	3482569352	2024-01-29 19:17:33.713521+00
+166	Gonzalo Ricchini	\N	Misiones	\N	ricchinigonzalo@gmail.com	Equipo Hogar 1 a Consultar precio	3764741156	2024-01-29 21:44:52.968972+00
+167	Maribel Agustina Romero	\N	Corrientes	\N	agus99soy@gmail.com	Moto Zb F110 F110 Zanella a Consultar precio	3777543283	2024-01-29 21:54:36.024554+00
+168	Mendoza Ruth Milagros	\N	Chaco	Barranqueras	mendozaruth889@gmail.com	Empleo en atención al cliente	3624237532	2024-01-29 23:08:49.915486+00
+169	Hugo Hernan Orellana	\N	Formosa	\N	h2o22esme03@hotmail.com	Solicitud de dinero de $150.000	1153755343	2024-01-30 03:18:19.387123+00
+170	Laura	\N	Misiones	\N	laurithaferreyra@gmail.com	Moto Xr 150 150 Honda a Consultar precio	3764674868	2024-01-30 20:57:46.92268+00
+171	LEONEL MEDINA	\N	Corrientes	\N	leonelgps@gmail.com	Moto Biz 125 125 Honda a Consultar precio	3777410657	2024-01-30 23:13:31.411106+00
+172	Leonel Medina	\N	Corrientes	\N	leonelgps@gmail.com	Moto Xr 150 150 Honda a Consultar precio	3777410657	2024-01-30 23:14:37.00102+00
+173	Yanina alaio	\N	Chaco	\N	portaldelcielo4231@gmail.com	Moto Titan Cg150 CG150 Honda a Consultar precio	3625245484	2024-02-01 01:17:56.901379+00
+174	Nicolas Zilz	\N	Misiones	\N	zilzn431@gmail.com	Moto Wave S110 110 Honda a Consultar precio	3757525976	2024-02-01 03:39:18.814795+00
+175	Hugo Hernan orellana	\N	Formosa	\N	h2o_losmillo@live.com.ar	Solicitud de dinero de $150.000	1153755343	2024-02-01 14:27:34.414481+00
+176	Tania brambila	\N	Misiones	\N	brambilatania6@gmail.com	Moto Wave S110 110 Honda a Consultar precio	3765138470	2024-02-01 16:11:11.962536+00
+177	Juan ocampo	\N	Misiones	\N	juanalbertoocampo20@gmail.com	Moto Energy F110 F110 Corven a Consultar precio	3757447046	2024-02-02 15:06:07.218437+00
+178	christianpark	\N	Chaco	\N	circoloco@nav.com	Moto Xr 150 150 Honda a Consultar precio	0112408456	2024-02-03 13:42:15.57963+00
+179	Jesus Gonzalez	\N	Misiones	\N	gnzchuy67@gmail.com	Moto Blitz F110 F110 Motomel a Consultar precio	3764735864	2024-02-03 15:47:21.885199+00
+180	Yesica Monteiro	\N	Misiones	\N	ajessika20@hotmail.com	Moto Dax 70 70 Corven a Consultar precio	3758482270	2024-02-03 21:20:10.032568+00
+181	Paola Soloaga	\N	Chaco	\N	paladinomic12@gmail.com	Equipo Hogar 1 a Consultar precio	362424434	2024-02-03 22:59:41.786669+00
+182	Anahi Gomez	\N	Chaco	\N	anahiigomez19@gmail.com	Equipo Cocina 2 a Consultar precio	3644727410	2024-02-04 14:58:30.156859+00
+183	Britez Viviana	\N	Misiones	\N	britezviviana59@gmail.com	Moto Zb F110 F110 Zanella a Consultar precio	3764210025	2024-02-04 18:09:17.137917+00
+184	cpeyQqjnNYRuXP	\N	BFYLTkwXdbQfM	FdOBMAetD	msarabj3615@gmail.com	wlaCXutpRxWPYvo	2308786036	2024-02-05 00:04:03.855009+00
+185	cpeyQqjnNYRuXP	\N	BFYLTkwXdbQfM	FdOBMAetD	msarabj3615@gmail.com	wlaCXutpRxWPYvo	2308786036	2024-02-05 00:04:10.392818+00
+186	Luis Mora	\N	Chaco	\N	luisitomora095@gmail.com	Moto Energy F110 F110 Corven a Consultar precio	3644612371	2024-02-05 10:43:55.981989+00
+187	Mauricio bogado	\N	Misiones	\N	mauriciobogado338@gmail.com	Moto Wave S110 110 Honda a Consultar precio	3764510137	2024-02-06 01:53:57.378814+00
+188	Valeria Espindola	\N	Misiones	\N	espi210499@gmail.com	Moto Xr 150 150 Honda a Consultar precio	3754522340	2024-02-06 12:59:26.718037+00
+189	Bruno Tomas Espinola	\N	Chaco	\N	tomyespinola9@gmail.com	Moto Biz 125 125 Honda a Consultar precio	3483408247	2024-02-06 13:05:18.719588+00
+190	Ramon Rodriguez	\N	Misiones	\N	oscar.ramon.rodriguez1221@gmail.com	Moto Xr 150 150 Honda a Consultar precio	3758568135	2024-02-06 15:20:48.08268+00
+191	Ramon Rodriguez	\N	Misiones	\N	oscar.ramon.rodriguez1221@gmail.com	Moto Wave S110 110 Honda a Consultar precio	3758568135	2024-02-06 15:21:24.098285+00
+192	Priscila cejas	\N	Chaco	\N	jazmincejas297@gmail.com	Equipo Hogar 2 a Consultar precio	3731447450	2024-02-06 21:25:57.312968+00
+193	Elias Pereyra	\N	MISIONES	\N	Elias321ezequiel@gmail.com	Moto Blitz F110 F110 Motomel a Consultar precio	3764841754	2024-02-07 22:07:41.3006+00
+194	Quijano Andrea	\N	Chaco	\N	quijanoandrea85@gmail.com	Moto Wave S110 110 Honda a Consultar precio	3624986817	2024-02-08 00:45:25.244204+00
+195	Thiago arce	\N	Corrientes	\N	thiagoarce857@gmail.com	Moto Wave S110 110 Honda a Consultar precio	3794547226	2024-02-08 02:58:23.147062+00
+196	Quijano Andrea Jacqueline	\N	Chaco	La leonesa	quijanoandrea85@gmail.co	Moto 110	3624986817	2024-02-08 13:38:25.673022+00
+197	Radimak Lara	\N	Chaco	\N	radimaklara20@gmail.com	Equipo Living 3 a Consultar precio	3644466081	2024-02-08 16:31:40.079608+00
+198	Duarte laura elisabet	\N	Chaco	\N	lauduareli43@gmail.com	Moto Zb B110 B110 Zanella a Consultar precio	2625303457	2024-02-08 23:24:14.032992+00
+199	Leandro caballero	\N	Misiones posadas	\N	leandrocaballero1235@gmail.com	Moto Wave S110 110 Honda a Consultar precio	3765195049	2024-02-09 00:17:52.474689+00
+200	Gerardo Campos	\N	Misiones	\N	camposgerardoe@gmail.com	Moto Biz 125 125 Honda a Consultar precio	3764236467	2024-02-09 05:54:46.230644+00
+201	Barbara Ponce	\N	Chaco	\N	saloponce708@gmail.com	Equipo Cocina 1 a Consultar precio	3731538350	2024-02-09 20:59:15.062731+00
+202	Farias Magali	\N	Chaco	\N	fariasmaga62@gmail.com	Moto Zb B110 B110 Zanella a Consultar precio	3644567179	2024-02-10 16:44:00.385277+00
+203	Pedro Daniel Acevedo	\N	Corrientes	\N	pedroacevedo477@gmail.com	Moto Xr 150 150 Honda a Consultar precio	3777207606	2024-02-11 13:35:51.635529+00
+204	Alex Fadel Bujakiewicz	\N	Misiones	\N	alex.bujakiewiczzz@gmail.com	Moto Hunter 150 150 Corven a Consultar precio	3764650999	2024-02-11 14:34:16.969088+00
+205	Villalba Diego Armando	\N	Corrientes	\N	dieguitovillalba3@gmail.com	Moto Wave S110 110 Honda a Consultar precio	3773440052	2024-02-12 16:01:29.485466+00
+206	Alexander Nahuel	\N	Chaco	\N	maxcocxd40@gmail.com	Moto Wave S110 110 Honda a Consultar precio	3813331138	2024-02-13 00:15:39.519767+00
+207	Exequiel Delgado	\N	Misiones	\N	darioexequield@gmail.com	Moto Biz 125 125 Honda a Consultar precio	3765018915	2024-02-13 16:19:44.111971+00
+208	Exequiel Delgado	\N	Misiones	\N	darioexequield@gmail.com	Moto Styler 150 Rs 150RS Zanella a Consultar precio	3765018915	2024-02-13 16:21:23.922693+00
+209	Rodrigo Cantero	\N	Misiones	\N	rodrigocantero263@gmail.com	Moto Zb F110 F110 Zanella a Consultar precio	3751336205	2024-02-16 01:13:17.192009+00
+210	Nahuel Pereyra	\N	Misiones	\N	nague43@gmail.com	Moto Wave S110 110 Honda a Consultar precio	3765123313	2024-02-17 14:07:35.912177+00
+211	jose alberto ocampo	\N	misiones	\N	jaocampo2222@gmail.com	Solicitud de dinero de $1.000.000	3764992939	2024-02-17 15:23:28.582396+00
+212	Karina Castro	\N	Chaco	\N	karinaace1973@gmail.com	Moto Wave S110 110 Honda a Consultar precio	3644608740	2024-02-17 18:59:19.133362+00
+213	Martin Alejandro Baez	\N	Misiones	\N	martin.bzz18@gmail.com	Moto Wave S110 110 Honda a Consultar precio	3764952226	2024-02-20 03:38:58.731575+00
+214	Rodrigo Exequiel Pared	\N	Chaco	\N	rodri_pared87@hotmail.com	Equipo Hogar 3 a Consultar precio	3624078397	2024-02-20 11:05:53.337259+00
+215	RkPaOocK	\N	KzpFjvTXgsP	MKUvZlwExhygsjbz	harpermichelle1980@aol.com	bWQLuFSqCys	6243996588	2024-02-21 11:31:10.110544+00
+216	RkPaOocK	\N	KzpFjvTXgsP	MKUvZlwExhygsjbz	harpermichelle1980@aol.com	bWQLuFSqCys	6243996588	2024-02-21 11:31:17.088713+00
+217	Gonzalo Ricchini	\N	Misiones	\N	ricchinigonzalo@gmail.com	Equipo Hogar 1 a Consultar precio	3764741156	2024-02-22 13:31:25.579294+00
+218	Patricia	\N	Misiones	\N	patriciasuncheski@gmail.com	Moto Wave S110 110 Honda a Consultar precio	3764726996	2024-02-22 13:39:08.335969+00
+219	Walter	\N	Chaco	\N	candiawalter6@gmail.com	Moto Wave S110 110 Honda a Consultar precio	3624163350	2024-02-22 16:04:00.509603+00
+220	Carolina Chamorro	\N	Misiones	\N	paola026chamo@gmail.com	Moto Zb B110 B110 Zanella a Consultar precio	3765133524	2024-02-23 00:07:13.673507+00
+221	Ivan Natanael Maidana	\N	Misiones	\N	Ivan_brats_17@hotmail.com	Moto Zb F110 F110 Zanella a Consultar precio	3764871206	2024-02-24 16:50:57.908575+00
+222	Antonio Enrique	\N	Chaco	\N	antonioenrique808@gmail.com	Moto Zb B110 B110 Zanella a Consultar precio	3644184557	2024-02-24 16:54:10.846526+00
+223	Aldana Malena Gauto	\N	Chaco	\N	aldannagaut@gmail.com	Moto Biz 125 125 Honda a Consultar precio	3624140755	2024-02-24 21:23:07.949717+00
+224	aldana malena gauto	\N	Chaco	\N	aldannagaut@gmail.com	Moto Biz 125 125 Honda a Consultar precio	3624140755	2024-02-24 23:07:39.425933+00
+225	Julieta Moreira	\N	Chaco	\N	lmlamejor@gmail.com	Moto Wave S110 110 Honda a Consultar precio	3625220619	2024-02-25 16:02:07.410863+00
+226	Vanina Bitencourt	\N	Misiones	\N	vaninabitencourt1@gmail.com	Equipo Hogar 3 a Consultar precio	3764881654	2024-02-25 16:43:13.797339+00
+227	Jessica Ojeda	\N	Misiones	\N	jessicaojeda221@gmail.com	Equipo Hogar 1 a Consultar precio	3765022169	2024-02-26 00:27:07.166769+00
+228	Melina Galeano	\N	Chaco	\N	melinagaleanoo14@gmail.com	Solicitud de dinero de $1.000.000	3625470228	2024-02-27 00:37:33.040164+00
+229	Melina Galeano	\N	Chaco	\N	melinagaleanoo14@gmail.com	Moto Wave S110 110 Honda a Consultar precio	3635470228	2024-02-27 00:38:30.585762+00
+230	Angeles Leonor Acosta	\N	Chaco	\N	angelesleonoracosta@yahoo.com.ar	Moto Wave S110 110 Honda a Consultar precio	43788081	2024-02-27 13:30:05.119641+00
+231	Milagros	\N	Corrientes	\N	milyg4868@gmail.com	Equipo Hogar 1 a Consultar precio	3794534215	2024-02-28 02:06:43.871552+00
+232	Noelia	\N	Misiones	\N	noeliacabral2022@gmail.com	Moto Titan Cg150 CG150 Honda a Consultar precio	3764223383	2024-02-28 19:43:20.985744+00
+233	Neu Maximiliano	\N	Misiones	\N	maximilianoneu19@gmail.com	Equipo Hogar 3 a Consultar precio	3764733885	2024-02-29 03:14:37.581353+00
+234	Milagros	\N	Corrientes	\N	milyg4868@gmail.com	Equipo Dormitorio 3 a Consultar precio	3794550048	2024-02-29 15:51:51.754531+00
+235	Toledo abril	\N	Goya Ctes	\N	toledoabril794@gmail.com	Moto Energy F110 F110 Corven a Consultar precio	3777727194	2024-02-29 20:15:56.083805+00
+\.
+
+
+--
+-- Data for Name: market_electrodomestico; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.market_electrodomestico (combo, nombre, slug, precio, descripcion, marca, forma_de_pago, imagen_portada, cuota, ficha_tecnica, servicio, monto_servicio_por_couta) FROM stdin;
+hogar	Hogar 1	hogar-1	550000.00	{"delta":"","html":""}	\N	\N	images/electrodomesticos/combo.png	24		Estandar	\N
+hogar	Hogar 2	hogar-2	600000.00	{"delta":"","html":""}	\N	\N	images/electrodomesticos/combo2.png	24		Basico	\N
+hogar	Hogar 3	hogar-3	650000.00	{"delta":"","html":""}	\N	\N	images/electrodomesticos/combo_3.png	24		Premium	\N
+cocina	Cocina 1	cocina-1	250000.00	{"delta":"","html":""}	\N	\N	images/electrodomesticos/combo4.png	24		Basico	\N
+cocina	Cocina 2	cocina-2	350000.00	{"delta":"","html":""}	\N	\N	images/electrodomesticos/combo5.png	24		Basico	\N
+living	Living 1	living-1	350000.00	{"delta":"","html":""}	\N	\N	images/electrodomesticos/combo7.png	24		Basico	\N
+cocina	Cocina 3	cocina-3	400000.00	{"delta":"","html":""}	\N	\N	images/electrodomesticos/combo6_6ophQp3.png	24		Basico	\N
+living	Living 2	living-2	400000.00	{"delta":"","html":""}	\N	\N	images/electrodomesticos/combo8_cZb8hsu.png	24		Basico	\N
+living	Living 3	living-3	450000.00	{"delta":"","html":""}	\N	\N	images/electrodomesticos/combo9_iYPtat6.png	24		Basico	\N
+dormitorio	Dormitorio 1	dormitorio-1	300000.00	{"delta":"","html":""}	\N	\N	images/electrodomesticos/combo10_R78ifEs.png	24		Basico	\N
+dormitorio	Dormitorio 3	dormitorio-3	400000.00	{"delta":"","html":""}	\N	\N	images/electrodomesticos/combo11_FsK7HHG.png	24		Basico	\N
+dormitorio	Dormitorio 2	dormitorio-2	350000.00	{"delta":"","html":""}	\N	\N	images/electrodomesticos/combo10_yRi0Z9k.png	24		Basico	\N
+\.
+
+
+--
+-- Data for Name: market_imagenelectrodomestico; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.market_imagenelectrodomestico (id, imagen, producto_id) FROM stdin;
+1	images/electrodomesticos/COCINA_FLORENCIA_5516.png	hogar-1
+2	images/electrodomesticos/HEL_CFREEZ_BAMBI_239_lts.png	hogar-1
+3	images/electrodomesticos/LAVARROPAS_DREAN_CONCEPT_5.05_CARGA_SUPERIOR.png	hogar-1
+4	images/electrodomesticos/A.ACOND_SPLIT_ALASKA_3000_FGS.png	hogar-1
+5	images/electrodomesticos/SMART_TV_NOBLEX_91DM32X7000PI_LED_HD_32_220V.png	hogar-1
+6	images/electrodomesticos/SOMMIER_Y_COLCHON_SUAVESTAR_SUEÑO_PLUS_140X190.png	hogar-1
+7	images/electrodomesticos/combo2_ZP0iZDk.png	hogar-2
+8	images/electrodomesticos/COCINA_FLORENCIA_5516_PzSwVPq.png	hogar-2
+9	images/electrodomesticos/A.ACOND_SPLIT_ALASKA_3000_FGS_anx0XqB.png	hogar-2
+10	images/electrodomesticos/HEL_CFREEZ_BAMBI_239_lts_Wv599l8.png	hogar-2
+11	images/electrodomesticos/LAVARROPAS_DREAN_CONCEPT_5.05_CARGA_SUPERIOR_Dy96Puk.png	hogar-2
+12	images/electrodomesticos/SMART_TV_PHILIPS__43PFD6825_77_LED_FULL_HD_43_110V_240V.png	hogar-2
+13	images/electrodomesticos/SOMMIER_PIERO_GENOVA_2_1_2_PLAZAS_DE_190CMX140CM.png	hogar-2
+14	images/electrodomesticos/combo_3_LnyzTre.png	hogar-3
+15	images/electrodomesticos/COCINA_FLORENCIA_5538.png	hogar-3
+16	images/electrodomesticos/aire_acondicionado_split_tcl_taca-5100fcsael_friocalor_4386.png	hogar-3
+17	images/electrodomesticos/heladera_bambi_nf_1600pd_gris_plata.png	hogar-3
+18	images/electrodomesticos/LAVARROPAS_SAMSUNG_65_KG_CARGA_FRONTAL_WW65M0NHUU.png	hogar-3
+19	images/electrodomesticos/SMART_TV_PHILIPS__43PFD6825_77_LED_FULL_HD_43_110V_240V_7ozDBLZ.png	hogar-3
+20	images/electrodomesticos/SOMMIER_PIERO_GENOVA_2_1_2_PLAZAS_DE_190CMX140CM_yq03slU.png	hogar-3
+21	images/electrodomesticos/combo4_2GofNUY.png	cocina-1
+22	images/electrodomesticos/cocina_escorial_candor_s2_51cm_blanca.png	cocina-1
+23	images/electrodomesticos/EXTRACTOR_PURIFICADOR_DE_COCINA_LILIANA_PURIFY_SLIM_KP981_EMPOTRABLE.png	cocina-1
+24	images/electrodomesticos/HEL_CFREEZ_BAMBI_239_lts_u0sxoi8.png	cocina-1
+25	images/electrodomesticos/MICROONDAS_ATMA_EASY_COOK_MR1720N.png	cocina-1
+26	images/electrodomesticos/TERMOTANQUE_ESCORIAL_55_LTS_ELÉCTRICO.png	cocina-1
+27	images/electrodomesticos/combo5_LtMmi2W.png	cocina-2
+28	images/electrodomesticos/COCINA_FLORENCIA_5516_MPb3iwq.png	cocina-2
+29	images/electrodomesticos/extractor_gafa_ajsr24m5amwvl3v_60cm.png	cocina-2
+30	images/electrodomesticos/heladera_eslabon_de_lujo_erd34ab_330lts.png	cocina-2
+31	images/electrodomesticos/MICROONDAS_GRILL_ATMA_EASY_COOK_MD1723GN_BLANCO_23L_220V.png	cocina-2
+32	images/electrodomesticos/TERMOTANQUE_ELÉCTRICO_85_L_SHERMAN_RHEEM_PIE_CARGA_SUPERIOR.png	cocina-2
+39	images/electrodomesticos/combo7_FVTc5WT.png	living-1
+40	images/electrodomesticos/A.ACOND_SPLIT_ALASKA_3000_FGS_iGAPdQW.png	living-1
+41	images/electrodomesticos/MESA_COMEDOR_140__6_SILLAS_MADERA_REFORZADAS.png	living-1
+42	images/electrodomesticos/parlante_bluetooth_philco_bluetooth_94djp61p_30w.png	living-1
+43	images/electrodomesticos/SMART_TV_NOBLEX_91DM32X7000PI_LED_HD_32_220V_1eN18G1.png	living-1
+44	images/electrodomesticos/SILLON_SOFA_TRES_CUERPOS__PUFF_TELA_PANA.png	living-1
+65	images/electrodomesticos/combo6_QshmhSh.png	cocina-3
+66	images/electrodomesticos/COCINA_FLORENCIA_5538_tLezpWZ.png	cocina-3
+67	images/electrodomesticos/extractor_gafa_ajsr24m5amwvl3v_60cm_8VF57Jd.png	cocina-3
+68	images/electrodomesticos/TERMOTANQUE_ELÉCTRICO_85_L_SHERMAN_RHEEM_PIE_CARGA_SUPERIOR_bMGuUyP.png	cocina-3
+69	images/electrodomesticos/MICROONDAS_ATMA_EASY_COOK_MR1720N_xiE4072.png	cocina-3
+70	images/electrodomesticos/combo8_sINWfCx.png	living-2
+71	images/electrodomesticos/MESA_COMEDOR_140__6_SILLAS_MADERA_REFORZADAS_QjsPRJm.png	living-2
+72	images/electrodomesticos/SILLON_SOFA_TRES_CUERPOS__PUFF_TELA_PANA_WABdaih.png	living-2
+73	images/electrodomesticos/SMART_TV_PHILIPS__43PFD6825_77_LED_FULL_HD_43_110V_240V_N2WVjiw.png	living-2
+74	images/electrodomesticos/A.ACOND_SPLIT_ALASKA_3000_FGS_gnK4iPK.png	living-2
+75	images/electrodomesticos/parlante_bluetooth_philco_bluetooth_94djp61p_30w_8Ly8bfw.png	living-2
+76	images/electrodomesticos/combo9_K7e2JMJ.png	living-3
+77	images/electrodomesticos/A.ACOND_SPLIT_ALASKA_3000_FGS_y1tTKni.png	living-3
+78	images/electrodomesticos/MESA_COMEDOR_140__6_SILLAS_MADERA_REFORZADAS_x5ZLUiA.png	living-3
+79	images/electrodomesticos/SILLON_SOFA_TRES_CUERPOS__PUFF_TELA_PANA_HWIWJFf.png	living-3
+80	images/electrodomesticos/SMART_TV_PHILIPS__43PFD6825_77_LED_FULL_HD_43_110V_240V_trc410p.png	living-3
+81	images/electrodomesticos/parlante_torre_bluetooth_aiwa_flama_aw-t806f-sa_bFeqtPL.png	living-3
+82	images/electrodomesticos/combo10_km72Xcx.png	dormitorio-1
+83	images/electrodomesticos/placar_2_puertas_corredizas_120x180cm_2HKfVHv.png	dormitorio-1
+84	images/electrodomesticos/SMART_TV_NOBLEX_91DM32X7000PI_LED_HD_32_220V_E04whTo.png	dormitorio-1
+85	images/electrodomesticos/A.ACOND_SPLIT_ALASKA_3000_FGS_MutptGC.png	dormitorio-1
+86	images/electrodomesticos/sommier_suavestar_espuma_extra_2_12_plazas_190cm_x_140cm_mEdVuOL.png	dormitorio-1
+87	images/electrodomesticos/combo11_HoQNphm.png	dormitorio-3
+88	images/electrodomesticos/placar_moderno_ropero_vestifor_2_metros_7xrXurl.png	dormitorio-3
+89	images/electrodomesticos/SMART_TV_PHILIPS__43PFD6825_77_LED_FULL_HD_43_110V_240V_sXiayzY.png	dormitorio-3
+90	images/electrodomesticos/SOMMIER_PIERO_GENOVA_2_1_2_PLAZAS_DE_190CMX140CM_02AW4yK.png	dormitorio-3
+91	images/electrodomesticos/A.ACOND_SPLIT_ALASKA_3000_FGS_BEXXSwn.png	dormitorio-3
+92	images/electrodomesticos/combo10_L3GcoB4.png	dormitorio-2
+93	images/electrodomesticos/placard_2_puerta_corredizas.png	dormitorio-2
+94	images/electrodomesticos/sommier_suavestar_espuma_extra_2_12_plazas_190cm_x_140cm_uortxW9.png	dormitorio-2
+95	images/electrodomesticos/SMART_TV_NOBLEX_91DM32X7000PI_LED_HD_32_220V_svDKUgd.png	dormitorio-2
+96	images/electrodomesticos/A.ACOND_SPLIT_ALASKA_3000_FGS_uwUycLU.png	dormitorio-2
+\.
+
+
+--
+-- Data for Name: market_imagenmoto; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.market_imagenmoto (id, imagen, producto_id) FROM stdin;
+1	images/motos/22c-3web-biz125-color1_2knJW7M.jpg	1
+2	images/motos/22c-4web-biz125-color-rojo_qfDZK9H.jpg	1
+3	images/motos/22c-5web-biz125-color-negra_mQ326qQ.jpg	1
+4	images/motos/70_0s-0web-biz125-diseno_Mg8jA5U.jpg	1
+5	images/motos/71_0s-0web-biz125-tecnologia-cambio_xZKmfO8.jpg	1
+6	images/motos/232_1s-1web-biz125-seguridad-2.jpg	1
+7	images/motos/232_0s-0web-biz125-seguridad.jpg	1
+8	images/motos/23c-1web-cgtitan-color-rojo_kXlPCHA.jpg	2
+9	images/motos/23c-0web-cgtitan-color-blanco_Ps4Engx.jpg	2
+10	images/motos/23c-2web-cgtitan-color-negro_gzZhE0e.jpg	2
+11	images/motos/79_0s-0web-cgtitan-cualidades-a-destacar02.jpg	2
+12	images/motos/78_0s-0web-cgtitan-motor_aaIHXTa.jpg	2
+13	images/motos/77_0s-0web-cgtitan-tecnologia.jpg	2
+14	images/motos/76_0s-0web-cgtitan-diseno_dD51MYM.jpg	2
+15	images/motos/21c-2web-wave-2020-negra_JHaELjD.jpg	3
+16	images/motos/21c-1web-wave-2020-blanca_9hZUpxQ.jpg	3
+17	images/motos/21c-0web-wave-2020-roja.jpg	3
+18	images/motos/61_0s-061-0s-0nuevo-disen-o-wave_NzAQ550.jpg	3
+19	images/motos/62_0s-062-0s-0web-wave-2020-motor_lTcePaa.jpg	3
+20	images/motos/61_1s-161-1s-1web-wave-cast-freno_R7fowhI.jpg	3
+21	images/motos/26c-1gbf_qrj20xY.png	4
+22	images/motos/26c-2erfghj_kCUHuaA.png	4
+23	images/motos/26c-0roja-xr150-color_2paTpBN.jpg	4
+24	images/motos/102_0s-0motor-xr150-rally_NhheYmy.jpg	4
+25	images/motos/106_0s-0transmisio-n-xr150-rally.jpg	4
+26	images/motos/103_0s-0web-xr150-frente_Hx3kyK2.jpg	4
+27	images/motos/New-Energy-110-Roja-1_KhRXdrq.png	5
+28	images/motos/New-Energy-110-Gris_FYkzUgA.png	5
+29	images/motos/New-Energy-110-Blanca_AlEuzAm.png	5
+30	images/motos/New-Energy-110-Azul_2W7t7FE.png	5
+31	images/motos/New-EnergyAD-110-Azul_nJhXswj.png	6
+32	images/motos/New-EnergyAD-110-Blanca_QoOsLQn.png	6
+33	images/motos/New-EnergyAD-110-Gris-1_dpTBysG.png	6
+34	images/motos/New-EnergyAD-110-Roja_vVdM6wX.png	6
+35	images/motos/dx70-Negro-1_lh6ZO0v.png	7
+36	images/motos/dx70-Rojo-1_hYNI1rq.png	7
+37	images/motos/dx70-Azul-1_FdwkDXr.png	7
+38	images/motos/Hunter150rt-azul_Q3pbkAJ.png	8
+39	images/motos/Hunter150rt-blanca_Lmc8CKl.png	8
+40	images/motos/Hunter150rt-negra_TRPEA9Z.png	8
+41	images/motos/Hunter150rt-roja_B329DVo.png	8
+42	images/motos/Blitz110-V8-slider-azul-marino_zqrx57n.png	9
+43	images/motos/Blitz110-V8-slider-negro_Yc80t5L.png	9
+44	images/motos/Blitz110-V8-slider-rojo_wG68YEd.png	9
+45	images/motos/Blitz-110-V8-Blitz-110-V8-Automatica-2_JLJC9J4.jpg	9
+46	images/motos/Blitz-110-V8-Blitz-110-V8-Automatica-4.jpg	9
+47	images/motos/Blitz110-V8-aleacion-slider-rojo_dxOeJDi.png	10
+48	images/motos/Blitz110-V8-aleacion-slider-negro_rWkikyZ.png	10
+49	images/motos/Blitz110-V8-aleacion-slider-blanco_21QfNvJ.png	10
+50	images/motos/Blitz110-V8-aleacion-slider-azul-marino_weJKokm.png	10
+51	images/motos/Blitz110V8Full-Aleacion-2_ICsg0T4.jpg	10
+52	images/motos/Blitz110V8Full-Aleacion-3_gOVAgEK.jpg	10
+53	images/motos/Blitz110V8Full-Aleacion-1.jpg	10
+54	images/motos/S2150-blanca_FBLpirm.png	11
+55	images/motos/S2150-azul_zyZzEH9.png	11
+56	images/motos/S2150-negra_c8ujBFH.png	11
+57	images/motos/S2150-roja_cghqdk4.png	11
+58	images/motos/S2-detalle-1_uHJLhNY.jpg	11
+59	images/motos/S2-detalle-3_156X2S3.jpg	11
+60	images/motos/S2-detalle-4_GNl9DyI.jpg	11
+61	images/motos/Skua150-V6-slider-rojo_OsOm9Tu.png	12
+62	images/motos/Skua150-V6-slider-negro_dPnYSTL.png	12
+63	images/motos/Skua150-V6-slider-blanco_r1QaDRF.png	12
+64	images/motos/Skua150-V6-slider-azul_9WUn6pR.png	12
+65	images/motos/Skua150-V6-6_GuvM89Q.jpg	12
+66	images/motos/Skua150-V6-5_eb0L1eY.jpg	12
+67	images/motos/Skua150-V6-3.jpg	12
+68	images/motos/RX-150-Z7-RT_Color1_l2sP7OW.png	13
+69	images/motos/RX-150-Z7-RT_Color2_g23v9fd.png	13
+70	images/motos/RX-150-Z7-RT_Color3_sk9mIkP.png	13
+71	images/motos/RX-150-Z7-RT_Color4_NHKbX5V.png	13
+72	images/motos/RX-150-Z7-RT_galeria1_cEmjANY.jpg	13
+73	images/motos/RX-150-Z7-RT_galeria6_aQwLNRi.jpg	13
+74	images/motos/RX_150_LT_USB.jpg	13
+75	images/motos/STYLER-RS_Color1_QNwAPWy.png	14
+76	images/motos/STYLER-RS_Color2_5npIEdh.png	14
+77	images/motos/STYLER-RS_Color4_05yUH0X.png	14
+78	images/motos/STYLER-RS_Color3_Hs18T7N.png	14
+79	images/motos/STYLER_RS_LED_VhD7hu0.jpg	14
+80	images/motos/STYLER-RS_galeria5.jpg	14
+81	images/motos/STYLER-RS_galeria6_IxSdyu5.jpg	14
+82	images/motos/ZB-110-LT_Color1_IUKZMwV.png	15
+83	images/motos/ZB-110-LT_Color2_U0Ug9wT.png	15
+84	images/motos/ZB-110-LT_Color3_ROsv8C1.png	15
+85	images/motos/ZB-110-LT_Color4_fdP7cXh.png	15
+86	images/motos/ZB-110-LT_galeria1_2okPifh.jpg	15
+87	images/motos/ZB-110-LT_galeria2_bhav43f.jpg	15
+88	images/motos/ZB-110-LT_galeria4_NsGY1dl.jpg	15
+89	images/motos/ZB-110-LT_galeria3.jpg	15
+90	images/motos/ZB-110-RT_Color1_6stRn5f.png	16
+91	images/motos/ZB-110-RT_Color2_A2xYQaa.png	16
+92	images/motos/ZB-110-RT_Color3_mnOux17.png	16
+93	images/motos/ZB-110-RT_Color4_LcXkcQL.png	16
+94	images/motos/ZB-110-RT_galeria1_tBTspUd.jpg	16
+95	images/motos/ZB-110-RT_galeria2.jpg	16
+96	images/motos/ZB-110-RT_galeria6.jpg	16
+97	images/motos/ZB-110-RT_galeria5_QDMnOko.jpg	16
+\.
+
+
+--
+-- Data for Name: market_moto; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.market_moto (id, nombre, slug, precio, modelo, kilometros, "año", marca, forma_de_pago, descripcion, imagen_portada, usado, cuota, ficha_tecnica, servicio, monto_servicio_por_couta) FROM stdin;
+1	Biz 125	biz-125	300000.00	125	0	\N	honda	\N	{"delta":"","html":""}	images/motos/22c-3web-biz125-color1.png	f	24		Basico	1000
+2	Titan CG150	titan-cg150	950000.00	CG150	0	\N	honda	\N	{"delta":"","html":""}	images/motos/23c-1web-cgtitan-color-rojo_J0iwVrz.jpg	f	24	f_tecnicas/motos/23c-1ficha-tecnica-cg150-titan_ZmPppIN.pdf	Premium	1000
+3	Wave S110	wave-s110	600000.00	110	0	\N	honda	\N	{"delta":"","html":""}	images/motos/21c-2web-wave-2020-negra_10QX3N2.jpg	f	24	f_tecnicas/motos/21c-1ficha-tecnica-wave_WqPVdfw.pdf	Estandar	1000
+4	XR 150	xr-150	900000.00	150	0	\N	honda	\N	{"delta":"","html":""}	images/motos/26c-1gbf_8QPOTLo.png	f	24	f_tecnicas/motos/26c-1ficha-tecnica-xr150l_ICa24G4.pdf	Premium	1000
+5	Energy B110	energy-b110	300000.00	B110	0	\N	corven	\N	{"delta":"","html":""}	images/motos/New-Energy-110-Roja-1_w1ItFi5.png	f	24	f_tecnicas/motos/New-Energy-110-RT_Print_HBqTemr.pdf	Basico	1000
+6	Energy F110	energy-f110	350000.00	F110	0	\N	corven	\N	{"delta":"","html":""}	images/motos/New-EnergyAD-110-Azul_sM20ZQV.png	f	24	f_tecnicas/motos/New-Energy-110-AD_-Print-1_rDfBTqx.pdf	Basico	1000
+7	Dax 70	dax-70	350000.00	70	0	\N	corven	\N	{"delta":"","html":""}	images/motos/dx70-Negro-1_W1t3qJM.png	f	24	f_tecnicas/motos/Ficha-DX-70-Print_VQm2ydR.pdf	Basico	1000
+8	Hunter 150	hunter-150	400000.00	150	0	\N	corven	\N	{"delta":"","html":""}	images/motos/Hunter150rt-azul_FXhXYcz.png	f	24	f_tecnicas/motos/Hunter-150-RT-Print_JnWnEDG.pdf	Basico	1000
+9	Blitz B110	blitz-b110	300000.00	B110	0	\N	motomel	\N	{"delta":"","html":""}	images/motos/Blitz110-V8-slider-azul-marino_tUWPReK.png	f	24		Basico	1000
+10	Blitz F110	blitz-f110	350000.00	F110	0	\N	motomel	\N	{"delta":"","html":""}	images/motos/Blitz110-V8-aleacion-slider-rojo_IOP6N45.png	f	24	f_tecnicas/motos/ficha-tecnica-blitz-110-full_utBrxta.pdf	Basico	1000
+11	S2 150	s2-150	400000.00	150	0	\N	motomel	\N	{"delta":"","html":""}	images/motos/S2150-blanca_VYJK8mt.png	f	24	f_tecnicas/motos/ficha-tecnica-s2-150-start_mRYaswA.pdf	Basico	1000
+12	Skua 150	skua-150	450000.00	150	0	\N	motomel	\N	{"delta":"","html":""}	images/motos/Skua150-V6-slider-rojo_dunkxjM.png	f	24	f_tecnicas/motos/ficha-tecnica-skua-150_61WYETx.pdf	Basico	1000
+14	Styler 150 RS	styler-150-rs	550000.00	150RS	0	\N	zanella	\N	{"delta":"","html":""}	images/motos/STYLER-RS_Color1_8kbkEXZ.png	f	24	f_tecnicas/motos/Ficha-tecnica_Styler-RS_print_vmzbURM.pdf	Estandar	1000
+13	RX F150	rx-f150	400000.00	F150	0	\N	zanella	\N	{"delta":"","html":""}	images/motos/RX-150-Z7-RT_Color1_T84Y0hw.png	f	24	f_tecnicas/motos/Ficha-tecnica_Styler-RS_print_cMHoQIR.pdf	Basico	1000
+15	ZB B110	zb-b110	350000.00	B110	0	\N	zanella	\N	{"delta":"","html":""}	images/motos/ZB-110-LT_Color1_X0NhVUD.png	f	24	f_tecnicas/motos/FICHA-TECNICA-_-ZB-110-LT_Print_a6mFhkz.pdf	Basico	1000
+16	ZB F110	zb-f110	400000.00	F110	0	\N	zanella	\N	{"delta":"","html":""}	images/motos/ZB-110-RT_Color1_HXhk1J5.png	f	24	f_tecnicas/motos/FICHA-TECNICA-_-ZB-110-RT_Print_1BI61ri.pdf	Basico	1000
+\.
+
+
+--
+-- Data for Name: market_numadjudicado; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.market_numadjudicado (id, numero, mes, "año") FROM stdin;
+\.
+
+
+--
+-- Data for Name: market_personal; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.market_personal (id, nombre_completo, email, num_telefono, fecha, cv) FROM stdin;
+1	sosa pablo ezequiel	sosapablo44944@gmail.com	3624926515	2023-08-31 22:38:16.647271+00	archivos/cv/curriculum_1.rtf
+2	Adela Esther  Nuñez	adenu24@gmail.com	3794843134	2023-09-27 01:04:53.546911+00	archivos/cv/CV_-_Adela_Nuñez_220722_151410.pdf
+3	LUCAS SAPENA	hilalylucas11@gmail.com	3704203186	2023-10-06 16:00:06.109181+00	archivos/cv/Opera_Instantánea_2023-10-05_224425_www.cvwizard.es.png
+4	LUCAS	hilalylucas11@gmail.com	3704203186	2023-10-06 16:01:04.597418+00	archivos/cv/Opera_Instantánea_2023-10-05_224425_www.cvwizard.es_OXLVJne.png
+5	Acosta Marcelo Emanuel	marcelo091093@gmail.com	3644402123	2023-10-12 16:51:48.941388+00	archivos/cv/inbound8495630730611673639.pdf
+6	Vallejos Jorge Alberto	spittvallejos@gmail.com	3764169901	2023-10-12 23:25:28.589779+00	archivos/cv/Vallejos_Jorge_A._1.pdf
+7	Exequiel Agustin Martinez	martinezexe98@gmail.com	3644638513	2023-10-13 00:55:55.957201+00	archivos/cv/inbound8385735281289594957.pdf
+8	Iñiguez Cristian Leonel	leoiniguez007@gmail.com	3644736950	2023-10-13 01:00:19.76604+00	archivos/cv/inbound7313187704118155650.pdf
+9	Iñiguez Cristian Leonel	leoiniguez007@gmail.com	3644736959	2023-10-13 01:01:07.283444+00	archivos/cv/inbound8925759447753080939.pdf
+10	Antonella melisa nuñez	antonellanunez99@gmail.com	3644687825	2023-10-13 06:49:43.575491+00	archivos/cv/inbound5972598421885690702.jpg
+11	Diaz Macarena Ailen	macaadiaz07@gmail.com	3644109969	2023-10-15 03:59:41.216191+00	archivos/cv/inbound7958951365372880481.png
+12	BRNA VICTORIA YANELA	brnavictoriayanela@hotmail.com	3644165520	2023-10-16 19:56:23.876458+00	archivos/cv/Brna_Yanela_CV_act.pdf
+13	Anabela Magali Rojas	anabelarojas1998@gmail.com	3644744761	2023-10-16 19:59:12.306764+00	archivos/cv/inbound4285054281845754511.pdf
+14	Viedner Milton German	gervied@gmail.com	3731447683	2023-10-16 21:22:28.802337+00	archivos/cv/CV-Milton_Germán_Viedner.pdf
+15	Cintia Elizabeth Saucedo	ciintii2015@hotmail.com	3644626280	2023-10-16 22:04:12.304898+00	archivos/cv/inbound3874391341941605074.jpg
+16	Lucas ezequiel espinola	lucasespinola947@gmail.com	3644757050	2023-10-17 00:45:03.728853+00	archivos/cv/inbound2050645657299828775.pdf
+17	Florencia Magali Acuña	maguiacunia@gmail.com	3644458748	2023-10-17 01:32:03.673318+00	archivos/cv/inbound8451269303480400669.pdf
+18	Martin pedrozo	pedrozamartin999@gmail.com	3644727256	2023-10-17 07:54:36.160906+00	archivos/cv/inbound7417881985867877801.pdf
+19	Judith Magali Videnoff	judithvidenoff@gmail.com	3644335765	2023-10-17 15:59:28.360741+00	archivos/cv/inbound1741947844981139766.pdf
+20	Gabriel Alejandro Centurion	Gabicenturion1990@gmail.com	3644819100	2023-10-17 21:27:26.066798+00	archivos/cv/inbound5855413705475776671.pdf
+21	Micaela Leyla Paladino	paladinomic12@gmail.com	3624244342	2023-10-25 15:54:08.077116+00	archivos/cv/LEYLA__PALADINO__.pdf
+22	Milagros Obregon	obregonmilagros56@gmail.com	3624037153	2023-10-26 00:09:10.020019+00	archivos/cv/CURRÍCULUM_VITAE.pdf
+23	Yasmin Ivone Soledad	yasmiinivone@gmail.com	3644157384	2023-10-26 00:14:11.33033+00	archivos/cv/Yasmin_Ibañez_Curriculum_of-1_1.docx
+24	Pedrozo Matias Ezequiel	matiaspedrozo910@gmail.com	3644525053	2023-10-26 20:19:40.568245+00	archivos/cv/Curriculum_Matias_Pedrozo.pdf
+25	Barrios Lurdes lutmila	barrioslurdes5@gmail.com	3624108254	2023-11-01 01:44:15.122027+00	archivos/cv/IMG_20230929_202910_692.webp
+26	Nelson Eliel Aguirre	aguirrenelson054@gmail.com	3624048781	2023-11-01 13:19:13.897199+00	archivos/cv/curriculum_de_nelsonn.docx
+27	Moreyra Sara Noemi	saranoe76@gmail.com	3777724215	2023-11-01 14:34:56.608237+00	archivos/cv/Moreyra_Sara_CV.pdf
+28	Lopez Edgar Eduardo	edgeduardolopez90@gmail.com	3644641904	2023-11-02 03:51:28.431314+00	archivos/cv/Edgar_Eduardo_Lopez.pdf
+29	Sebastian Oscar Toledo	sebastiantoledook@gmail.com	3644332274	2023-11-06 19:19:21.259114+00	archivos/cv/Sebast_Oscar_Toledo.pdf
+30	Sebastian Oscar Toledo	sebastiantoledook@gmail.com	3644332274	2023-11-06 19:20:20.732831+00	archivos/cv/CV_Sebastian_Oscar_Toledo.docx
+31	Agustina Mariela Vera	agusmvera2002@gmail.com	3624554634	2023-11-06 20:29:54.945588+00	archivos/cv/Screenshot_20231106_172911_OneDrive.jpg
+32	Hanacek Johana Natalia	nataliahanacek85@outlook.com	3644582757	2023-11-08 22:20:13.86417+00	archivos/cv/Image_to_pdf_23102023_132752.pdf
+33	Pablo Agustin Vilte	pagustin_18@hotmail.com	3624687199	2023-11-12 01:18:00.050808+00	archivos/cv/Currículum_Vitae_Pablo_A_Vilte_word_1.docx
+34	Rocio Elizabeth Machuca	rocio.machuca1000@gmail.com	3795345021	2023-11-12 19:22:51.722112+00	archivos/cv/CV_Rocio_Elizabeth_Machuca.pdf
+35	Maximo Joel Penayo	maximojpenayo@gmail.com	3794936259	2023-11-16 07:00:53.122913+00	archivos/cv/PENAYO_MAXIMO_CV.pdf
+36	Sebastian Oscar Toledo	sebastiantoledook@gmail.com	3644332274	2023-11-22 20:01:23.531044+00	archivos/cv/cv_Toledo_Sebastian.docx
+37	RUBEN OSMAR ALMIRON	ruben_almiron@hotmail.com	3624147336	2023-11-23 12:34:52.497381+00	archivos/cv/CV_Ruben_Almiron.doc
+38	Alberto Rabossi	albertoangelrabossi@outlook.com	3624926626	2023-11-23 19:35:18.842469+00	archivos/cv/inbound2154506484532318935.pdf
+39	Mariel Saucedo	marielitasaucedo@hotmail.com	3624850527	2023-11-23 19:35:49.244798+00	archivos/cv/inbound4535106085136018183.pdf
+40	Portillo Tatiana dagna	tportillo917@gmail.com	3625459730	2023-11-24 05:54:59.896005+00	archivos/cv/curriculum.pdf
+41	Motter karen	karen123.motter@gmail.com	3624115082	2023-11-24 14:07:49.393569+00	archivos/cv/Screenshot_20231121-081723.png
+42	CAMILA MARISEL GOMEZ	cg6137160@gmail.com	1130986303	2023-11-24 22:55:29.946959+00	archivos/cv/20231124_183019.jpg
+43	Raul omar silveira	rosraul123@gmail.com	3624625781	2023-11-27 15:49:41.046249+00	archivos/cv/Currículum__raul_silveira_03.05.20221.pdf
+44	Adriana Patricia Dambra	adri_apd@hotmail.com	3644570713	2023-11-27 19:52:23.428758+00	archivos/cv/Adriana_Dambra_CV.pdf
+45	Karen Melisa Molina	karenmelissa.km@gmail.com	3625152349	2023-11-29 23:13:21.773986+00	archivos/cv/Azul_y_Negro_Foto_Currículum_20230902_090314_0000.pdf
+46	Gabriela Etelvina Rodriguez	gabrielarodriguez065@gmail.com	3786619612	2023-12-01 14:34:36.129264+00	archivos/cv/RODRIGUEZ_GABRIELA_ETELVINA.pdf
+47	ezequiel tapponier	ezequiel_tapp@hotmail.com	3731630613	2023-12-04 23:23:53.970762+00	archivos/cv/Curriculum-Victor-Jose-Ezequiel-Tapponier-27-11-2023-23-01-13_1.pdf
+48	Escobar Nicolas Jose Rodrigo	nicoescbressan@gmail.com	3482242573	2023-12-18 21:20:07.955134+00	archivos/cv/CV-_Escobar_Nicolas.pdf
+49	Angel Antonio Reyes	angelreyescabj779@gmail.com	3777246698	2023-12-20 15:04:03.858311+00	archivos/cv/Curriculum_Reyes.pdf
+50	Varela Marcelo Ramon	marcevarella08@gmail.com	3624335766	2023-12-22 15:20:31.8736+00	archivos/cv/CV_ACTUALIZADO_MARCEVARELLA08GMAIL.COM.pdf
+51	Alexis Gaston Ortiz Godoy	alexisgastoon@gmail.com	3794292584	2023-12-25 01:40:59.457523+00	archivos/cv/Screenshot_20231224-223848.png
+52	Cardozo Marina Johana	marijcardozo18@gmail.com	3624640240	2023-12-31 00:06:36.964835+00	archivos/cv/Johana.pdf
+53	Cardozo Marina Johana	marijcardozo18@gmail.com	3624640240	2024-01-02 16:10:56.350684+00	archivos/cv/Johana_p9BBcXR.pdf
+54	Maria Alejandra Romero	romeromariaalejandra294@gmail.com	3777287860	2024-01-02 23:20:22.906052+00	archivos/cv/Maria.pdf
+55	Daniel Armando Notta	negronotta@gmail.com	3764159046	2024-01-06 01:19:22.024149+00	archivos/cv/cv_actualizado2023.pdf
+56	Alan Daniel Acevedo	alanacevedo0098@gmail.com	3644154883	2024-01-07 16:15:07.645922+00	archivos/cv/CV_Alan_Acevedo.pdf
+57	Giuliana Guadalupe   Tevez	yulianatevez25@gmail.com	3731443928	2024-01-08 17:00:20.038619+00	archivos/cv/Screenshot_20231123-110433.png
+58	Ulises Maximiliano Freyre Ayala	ulisesfreyre06@hotmail.com	3624083704	2024-01-10 19:54:05.574946+00	archivos/cv/F2FFD9E3-53CD-4BF2-8DB0-ECA4EC795AC5.png
+59	Jorge Gabriel Barrios	bigkoki98@gmail.com	3755217900	2024-01-11 02:30:29.230051+00	archivos/cv/CV_Jorge_G._Barrios.pdf
+60	Lucrecia Elisabet Enriquez	Lucreciaelisabetenriquez@hotmail.com	3777284732	2024-01-11 16:28:41.906478+00	archivos/cv/Curriculum_Vitae_de_Mujer_Profesional_con_Foto_Femenino_Rosa_20230913_182853_0000.pdf
+61	Guadalupe Agostina Olid	lupee.olid@gmail.com	3644363092	2024-01-12 14:59:23.341855+00	archivos/cv/Cv_curriculum__con_foto_trabajo_formal_joven_20240106_070203_0000.pdf
+62	Mendoza Ruth Milagros	mendozaruth889@gmail.com	3624237532	2024-01-12 22:27:20.360038+00	archivos/cv/CV_MILI.docx
+63	Moreno Guillermo Ariel	guillemoreno995@gmail.com	3624208408	2024-01-19 13:36:14.048088+00	archivos/cv/MORENO_GUILLERMO.pdf
+64	Contreras Lucas Leonel	lucascontrerasl18@hotmail.com	3644151539	2024-01-22 20:41:22.130863+00	archivos/cv/CV_ACTUALIZADO_LUCAS.pdf
+65	Diego Ivan Ramos	diegoramos200300@gmail.com	3765100419	2024-01-23 04:19:30.220982+00	archivos/cv/CV-Diegoramos.jpg
+66	Luis Alberto duarte	luisduarteagro@gmail.com	3644504793	2024-01-29 13:00:36.479173+00	archivos/cv/CURRICULUM_VITAE.pdf
+67	GOMEZ FATIMA NOEMI	fatimag_22@hotmail.com	3764376271	2024-01-29 19:24:58.398019+00	archivos/cv/Curriculum_vitae_FATIMA.docx
+68	Mendoza Ruth Milagros	mendozaruth889@gmail.com	3624237532	2024-01-29 23:30:26.678364+00	archivos/cv/CV_MILI...docx
+69	Romero Aldana Magali	Aldialex41@gmail.com	3624858411	2024-01-30 12:24:51.061543+00	archivos/cv/Cv.pdf
+70	Aldana Magali Romero	Aldialex41@gmail.com	3624858411	2024-01-31 19:58:11.026297+00	archivos/cv/Cv_4cSrDno.pdf
+71	Agustina Urunaga	agustinaurunaga25@gmail.com	3764102424	2024-02-01 12:41:57.143852+00	archivos/cv/Curriculum_Vitae_de_Mujer_Profesional_con_Foto_Femenino_Rosa_20240122_201740_0000.pdf
+72	Agustina urunaga	agustinaurunaga25@gmail.com	3764102424	2024-02-01 12:42:42.734831+00	archivos/cv/Curriculum_Vitae_de_Mujer_Profesional_con_Foto_Femenino_Rosa_20240122_201740_tT5Rgso.pdf
+73	Gonzalez Galeano Oscar Augusto Danilo	deylondanilo@gmail.com	3764932831	2024-02-02 04:39:40.581804+00	archivos/cv/cv_actualizado.pdf
+74	Nieli patricia Belen	nielibelen0@gmail.com	3625143076	2024-02-02 13:38:26.57784+00	archivos/cv/IMG_20240202_103747_273.jpg
+75	Mambrin Braian Andres	mambrinb5@gmail.com	3624265185	2024-02-06 00:39:13.324602+00	archivos/cv/inbound1363281832599097398.pdf
+76	Pasquini Rodrigo Ezequiel	pasquinirodrigo097@gmail.com	3624971580	2024-02-07 22:09:13.875519+00	archivos/cv/curriculum_RODRIGO_PASQUINI.pdf
+77	Fabricio Nahuel Sebastian Pereyra	nague43@gmail.com	3765123313	2024-02-17 14:09:23.110001+00	archivos/cv/DOC-20231212-WA0039..pdf
+78	Adriana Balcar	balcaradriana@gmail.com	3434741352	2024-02-22 15:12:02.527298+00	archivos/cv/ADRIANA_SILVINA_BALCAR_CV_19_DE_FEBRERO_2024.pdf
+79	Adrian Alanis Alfredo	adrian.alanis023@gmail.com	3765035098	2024-02-28 22:01:26.522412+00	archivos/cv/Archivo_17_20240228_185927_0000.pdf
+\.
+
+
+--
+-- Data for Name: market_post; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.market_post (id, titulo, descripcion, imagen_portada, tamano) FROM stdin;
+\.
+
+
+--
+-- Data for Name: market_postimagenes; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.market_postimagenes (id, imagen, descripcion, producto_id) FROM stdin;
+\.
+
+
+--
+-- Data for Name: market_soluciondineraria; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.market_soluciondineraria (id, monto, descripcion, cuota) FROM stdin;
+1	150000.00	{"delta":"","html":""}	24
+2	200000.00	{"delta":"","html":""}	24
+3	250000.00	{"delta":"","html":""}	24
+4	300000.00	{"delta":"","html":""}	24
+5	350000.00	{"delta":"","html":""}	24
+6	400000.00	{"delta":"","html":""}	24
+7	450000.00	{"delta":"","html":""}	24
+8	500000.00	{"delta":"","html":""}	24
+9	550000.00	{"delta":"","html":""}	24
+10	600000.00	{"delta":"","html":""}	24
+11	650000.00	{"delta":"","html":""}	24
+12	700000.00	{"delta":"","html":""}	24
+13	750000.00	{"delta":"","html":""}	24
+14	800000.00	{"delta":"","html":""}	24
+15	850000.00	{"delta":"","html":""}	24
+16	900000.00	{"delta":"","html":""}	24
+17	950000.00	{"delta":"","html":""}	24
+18	1000000.00	{"delta":"","html":""}	24
+\.
+
+
+--
+-- Name: auth_group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.auth_group_id_seq', 1, false);
+
+
+--
+-- Name: auth_group_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.auth_group_permissions_id_seq', 1, false);
+
+
+--
+-- Name: auth_permission_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.auth_permission_id_seq', 68, true);
+
+
+--
+-- Name: auth_user_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.auth_user_groups_id_seq', 1, false);
+
+
+--
+-- Name: auth_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.auth_user_id_seq', 4, true);
+
+
+--
+-- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.auth_user_user_permissions_id_seq', 1, false);
+
+
+--
+-- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.django_admin_log_id_seq', 58, true);
+
+
+--
+-- Name: django_content_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.django_content_type_id_seq', 17, true);
+
+
+--
+-- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.django_migrations_id_seq', 44, true);
+
+
+--
+-- Name: market_beneficioparacliente_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.market_beneficioparacliente_id_seq', 1, false);
+
+
+--
+-- Name: market_cliente_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.market_cliente_id_seq', 235, true);
+
+
+--
+-- Name: market_imagenelectrodomestico_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.market_imagenelectrodomestico_id_seq', 96, true);
+
+
+--
+-- Name: market_imagenmoto_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.market_imagenmoto_id_seq', 97, true);
+
+
+--
+-- Name: market_moto_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.market_moto_id_seq', 16, true);
+
+
+--
+-- Name: market_numadjudicado_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.market_numadjudicado_id_seq', 1, false);
+
+
+--
+-- Name: market_personal_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.market_personal_id_seq', 79, true);
+
+
+--
+-- Name: market_post_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.market_post_id_seq', 1, false);
+
+
+--
+-- Name: market_postimagenes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.market_postimagenes_id_seq', 1, false);
+
+
+--
+-- Name: market_soluciondineraria_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.market_soluciondineraria_id_seq', 18, true);
+
+
+--
+-- Name: auth_group auth_group_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_group
+    ADD CONSTRAINT auth_group_name_key UNIQUE (name);
+
+
+--
+-- Name: auth_group_permissions auth_group_permissions_group_id_permission_id_0cd325b0_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_group_permissions
+    ADD CONSTRAINT auth_group_permissions_group_id_permission_id_0cd325b0_uniq UNIQUE (group_id, permission_id);
+
+
+--
+-- Name: auth_group_permissions auth_group_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_group_permissions
+    ADD CONSTRAINT auth_group_permissions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_group auth_group_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_group
+    ADD CONSTRAINT auth_group_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_permission auth_permission_content_type_id_codename_01ab375a_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_permission
+    ADD CONSTRAINT auth_permission_content_type_id_codename_01ab375a_uniq UNIQUE (content_type_id, codename);
+
+
+--
+-- Name: auth_permission auth_permission_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_permission
+    ADD CONSTRAINT auth_permission_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_user_groups auth_user_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_user_groups
+    ADD CONSTRAINT auth_user_groups_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_user_groups auth_user_groups_user_id_group_id_94350c0c_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_user_groups
+    ADD CONSTRAINT auth_user_groups_user_id_group_id_94350c0c_uniq UNIQUE (user_id, group_id);
+
+
+--
+-- Name: auth_user auth_user_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_user
+    ADD CONSTRAINT auth_user_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_user_user_permissions auth_user_user_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_user_user_permissions
+    ADD CONSTRAINT auth_user_user_permissions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_user_user_permissions auth_user_user_permissions_user_id_permission_id_14a6b632_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_user_user_permissions
+    ADD CONSTRAINT auth_user_user_permissions_user_id_permission_id_14a6b632_uniq UNIQUE (user_id, permission_id);
+
+
+--
+-- Name: auth_user auth_user_username_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_user
+    ADD CONSTRAINT auth_user_username_key UNIQUE (username);
+
+
+--
+-- Name: django_admin_log django_admin_log_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.django_admin_log
+    ADD CONSTRAINT django_admin_log_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: django_content_type django_content_type_app_label_model_76bd3d3b_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.django_content_type
+    ADD CONSTRAINT django_content_type_app_label_model_76bd3d3b_uniq UNIQUE (app_label, model);
+
+
+--
+-- Name: django_content_type django_content_type_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.django_content_type
+    ADD CONSTRAINT django_content_type_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: django_migrations django_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.django_migrations
+    ADD CONSTRAINT django_migrations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: django_session django_session_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.django_session
+    ADD CONSTRAINT django_session_pkey PRIMARY KEY (session_key);
+
+
+--
+-- Name: market_beneficioparacliente market_beneficioparacliente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.market_beneficioparacliente
+    ADD CONSTRAINT market_beneficioparacliente_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: market_cliente market_cliente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.market_cliente
+    ADD CONSTRAINT market_cliente_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: market_electrodomestico market_electrodomestico_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.market_electrodomestico
+    ADD CONSTRAINT market_electrodomestico_pkey PRIMARY KEY (slug);
+
+
+--
+-- Name: market_imagenelectrodomestico market_imagenelectrodomestico_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.market_imagenelectrodomestico
+    ADD CONSTRAINT market_imagenelectrodomestico_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: market_imagenmoto market_imagenmoto_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.market_imagenmoto
+    ADD CONSTRAINT market_imagenmoto_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: market_moto market_moto_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.market_moto
+    ADD CONSTRAINT market_moto_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: market_moto market_moto_slug_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.market_moto
+    ADD CONSTRAINT market_moto_slug_key UNIQUE (slug);
+
+
+--
+-- Name: market_numadjudicado market_numadjudicado_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.market_numadjudicado
+    ADD CONSTRAINT market_numadjudicado_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: market_personal market_personal_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.market_personal
+    ADD CONSTRAINT market_personal_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: market_post market_post_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.market_post
+    ADD CONSTRAINT market_post_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: market_postimagenes market_postimagenes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.market_postimagenes
+    ADD CONSTRAINT market_postimagenes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: market_soluciondineraria market_soluciondineraria_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.market_soluciondineraria
+    ADD CONSTRAINT market_soluciondineraria_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_group_name_a6ea08ec_like; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX auth_group_name_a6ea08ec_like ON public.auth_group USING btree (name varchar_pattern_ops);
+
+
+--
+-- Name: auth_group_permissions_group_id_b120cbf9; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX auth_group_permissions_group_id_b120cbf9 ON public.auth_group_permissions USING btree (group_id);
+
+
+--
+-- Name: auth_group_permissions_permission_id_84c5c92e; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX auth_group_permissions_permission_id_84c5c92e ON public.auth_group_permissions USING btree (permission_id);
+
+
+--
+-- Name: auth_permission_content_type_id_2f476e4b; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX auth_permission_content_type_id_2f476e4b ON public.auth_permission USING btree (content_type_id);
+
+
+--
+-- Name: auth_user_groups_group_id_97559544; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX auth_user_groups_group_id_97559544 ON public.auth_user_groups USING btree (group_id);
+
+
+--
+-- Name: auth_user_groups_user_id_6a12ed8b; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX auth_user_groups_user_id_6a12ed8b ON public.auth_user_groups USING btree (user_id);
+
+
+--
+-- Name: auth_user_user_permissions_permission_id_1fbb5f2c; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX auth_user_user_permissions_permission_id_1fbb5f2c ON public.auth_user_user_permissions USING btree (permission_id);
+
+
+--
+-- Name: auth_user_user_permissions_user_id_a95ead1b; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX auth_user_user_permissions_user_id_a95ead1b ON public.auth_user_user_permissions USING btree (user_id);
+
+
+--
+-- Name: auth_user_username_6821ab7c_like; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX auth_user_username_6821ab7c_like ON public.auth_user USING btree (username varchar_pattern_ops);
+
+
+--
+-- Name: django_admin_log_content_type_id_c4bce8eb; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX django_admin_log_content_type_id_c4bce8eb ON public.django_admin_log USING btree (content_type_id);
+
+
+--
+-- Name: django_admin_log_user_id_c564eba6; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX django_admin_log_user_id_c564eba6 ON public.django_admin_log USING btree (user_id);
+
+
+--
+-- Name: django_session_expire_date_a5c62663; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX django_session_expire_date_a5c62663 ON public.django_session USING btree (expire_date);
+
+
+--
+-- Name: django_session_session_key_c0390e0f_like; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX django_session_session_key_c0390e0f_like ON public.django_session USING btree (session_key varchar_pattern_ops);
+
+
+--
+-- Name: market_electrodomestico_slug_dbd5ee2c_like; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX market_electrodomestico_slug_dbd5ee2c_like ON public.market_electrodomestico USING btree (slug varchar_pattern_ops);
+
+
+--
+-- Name: market_imagenelectrodomestico_producto_id_034fb983; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX market_imagenelectrodomestico_producto_id_034fb983 ON public.market_imagenelectrodomestico USING btree (producto_id);
+
+
+--
+-- Name: market_imagenelectrodomestico_producto_id_034fb983_like; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX market_imagenelectrodomestico_producto_id_034fb983_like ON public.market_imagenelectrodomestico USING btree (producto_id varchar_pattern_ops);
+
+
+--
+-- Name: market_imagenmoto_producto_id_b70e2795; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX market_imagenmoto_producto_id_b70e2795 ON public.market_imagenmoto USING btree (producto_id);
+
+
+--
+-- Name: market_moto_slug_de73ca03_like; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX market_moto_slug_de73ca03_like ON public.market_moto USING btree (slug varchar_pattern_ops);
+
+
+--
+-- Name: market_postimagenes_producto_id_3e0713fb; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX market_postimagenes_producto_id_3e0713fb ON public.market_postimagenes USING btree (producto_id);
+
+
+--
+-- Name: auth_group_permissions auth_group_permissio_permission_id_84c5c92e_fk_auth_perm; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_group_permissions
+    ADD CONSTRAINT auth_group_permissio_permission_id_84c5c92e_fk_auth_perm FOREIGN KEY (permission_id) REFERENCES public.auth_permission(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: auth_group_permissions auth_group_permissions_group_id_b120cbf9_fk_auth_group_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_group_permissions
+    ADD CONSTRAINT auth_group_permissions_group_id_b120cbf9_fk_auth_group_id FOREIGN KEY (group_id) REFERENCES public.auth_group(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: auth_permission auth_permission_content_type_id_2f476e4b_fk_django_co; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_permission
+    ADD CONSTRAINT auth_permission_content_type_id_2f476e4b_fk_django_co FOREIGN KEY (content_type_id) REFERENCES public.django_content_type(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: auth_user_groups auth_user_groups_group_id_97559544_fk_auth_group_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_user_groups
+    ADD CONSTRAINT auth_user_groups_group_id_97559544_fk_auth_group_id FOREIGN KEY (group_id) REFERENCES public.auth_group(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: auth_user_groups auth_user_groups_user_id_6a12ed8b_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_user_groups
+    ADD CONSTRAINT auth_user_groups_user_id_6a12ed8b_fk_auth_user_id FOREIGN KEY (user_id) REFERENCES public.auth_user(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: auth_user_user_permissions auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_user_user_permissions
+    ADD CONSTRAINT auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm FOREIGN KEY (permission_id) REFERENCES public.auth_permission(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: auth_user_user_permissions auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_user_user_permissions
+    ADD CONSTRAINT auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id FOREIGN KEY (user_id) REFERENCES public.auth_user(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: django_admin_log django_admin_log_content_type_id_c4bce8eb_fk_django_co; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.django_admin_log
+    ADD CONSTRAINT django_admin_log_content_type_id_c4bce8eb_fk_django_co FOREIGN KEY (content_type_id) REFERENCES public.django_content_type(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: django_admin_log django_admin_log_user_id_c564eba6_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.django_admin_log
+    ADD CONSTRAINT django_admin_log_user_id_c564eba6_fk_auth_user_id FOREIGN KEY (user_id) REFERENCES public.auth_user(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: market_postimagenes market_postimagenes_producto_id_3e0713fb_fk_market_post_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.market_postimagenes
+    ADD CONSTRAINT market_postimagenes_producto_id_3e0713fb_fk_market_post_id FOREIGN KEY (producto_id) REFERENCES public.market_post(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- PostgreSQL database dump complete
+--
+

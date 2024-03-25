@@ -8,6 +8,7 @@ services:
       - static_volume:/app/staticfiles
       - media_volume:/app/media
       - certbot_conf:/etc/letsencrypt/:rw
+
     expose:
       - 8000
     env_file:
@@ -29,6 +30,8 @@ services:
     volumes:
       - static_volume:/app/staticfiles
       - media_volume:/app/media
+      - certbot_conf:/etc/letsencrypt/:rw
+      - certbot_data:/var/www/certbot/:rw
     depends_on:
       - web
 
@@ -37,11 +40,15 @@ services:
     volumes:
       - certbot_conf:/etc/letsencrypt/:rw
       - certbot_data:/var/www/certbot/:rw
+    command: certonly --webroot -w /var/www/certbot --force-renewal --email lautaro.rodriguez553@gmail.com -d elanelsys.com --agree-tos 
     depends_on:
       - nginx
+
 volumes:
   postgres_data:
   static_volume:
   media_volume:
   certbot_conf:
   certbot_data:
+ 
+ 
