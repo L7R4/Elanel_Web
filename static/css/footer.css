@@ -1,0 +1,124 @@
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    padding: 3rem 2rem;
+    width: 100%;
+    background-color: var(--bgColor);
+    align-items: center;
+    justify-content: center;
+  }
+  
+  footer > div{
+    flex: 1 1 20%;
+    box-sizing: border-box;
+    min-width: 22rem;
+    padding: 2rem;
+    font-family: raleway;
+  }
+  footer > div > h3{
+    font-family: raleway;
+    font-size: 1.6rem;
+    position: relative;
+    color: var(--sColor);
+  }
+  
+  footer > div > h3::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -4%;
+    width: 3px;
+    height: 2rem;
+    background-color: var(--sColor);
+  }
+  footer > div > ul{
+    list-style: none;
+    margin-top: 1rem;
+  }
+  
+  .footer__social-media {
+    display: flex;
+  }
+  
+  .footer__social-media a {
+    width: 2.3rem;
+    margin-right: 1rem;
+  }
+  
+  .footer__social-media a img {
+    width: 100%;
+  }
+  
+  .footer__encuentranos > ul > .footer__direccion p {
+    font-family: raleway ;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 0.6rem;
+    color: var(--secondBgColor);
+  }
+  .footer__encuentranos ul .footer__direccion p strong {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--secondBgColor);
+  }
+  
+  .footer__categorias ul li {
+    margin-bottom: 0.9rem;
+  }
+  
+  .footer__categorias > ul > li > a {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--secondBgColor);
+    text-decoration: none;
+  }
+  
+  .footer__quienes-somos > ul > li {
+    margin-bottom: 0.9rem;
+  }
+  .footer__quienes-somos > ul > li > a {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--secondBgColor);
+    text-decoration: none;
+  }
+  
+  .footer__contactanos > ul > .footer__contactanos-item {
+    margin-bottom: 1rem;
+  }
+  
+  .footer__contactanos > ul > .footer__contactanos-item > h5{
+    font-family: raleway ;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--secondBgColor);
+    margin-bottom: .8rem;
+  }
+  
+  .footer__contactanos > ul > .footer__contactanos-item > div > div{
+    display: flex;
+    column-gap: .4rem;
+    margin-bottom: .5rem;
+  }
+  .footer__contactanos > ul > .footer__contactanos-item > div > div > p {
+    font-family: raleway;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--secondBgColor);
+  }
+  
+  .footer__contactanos > ul > .footer__contactanos-item > div > div > img {
+    width: 1.7rem;
+  }
+  
+  
+  .footer__logo {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .footer__logo > img {
+    width: 100%;
+    max-width: 35rem;
+  }

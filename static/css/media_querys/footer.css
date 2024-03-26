@@ -1,88 +1,20 @@
-@media screen and (max-width:875px) {
-    footer{
-        grid-template-columns: 2fr 2fr 1.5fr;
-        justify-items: flex-start;
-        padding: 3% 0;
-    }
-
-    .footer__quienes-somos{
-        grid-column: 1/2;
-        grid-row: 2/3;
-    }
-    .footer__encuentranos{
-        grid-column: 2/3;
-        grid-row: 2/3;
-    }
-
-    .footer__logo{
-        grid-column: 3/4;
-        grid-row: span 2;
-    } 
-
-
-    .footer__encuentranos{
-        margin-left: 0;
-    }
-    .footer__categorias,.footer__quienes-somos{
-        margin-left: 6%;
-        
-    }
-}
-
-@media screen and (max-width:620px){
-    footer{
-        grid-template-columns:repeat(1,minmax(100%,1fr));
-        /* justify-items: flex-start; */
-        grid-auto-rows: auto;
-        height: auto;
-        justify-items: center;
-        row-gap: 3rem;
-    }
-
-    .footer__quienes-somos{
-        grid-column: unset;
-        grid-row: unset;
-    }
-    .footer__encuentranos{
-        margin-top: 10%;
-        grid-column: unset;
-        grid-row: unset;
+@media screen and (max-width:580px){
+    footer > div{
+        flex: 1 0 100%;
         text-align: center;
     }
-    .footer__contactanos{
-        text-align: center;
+    footer > div > h3::after{
+        display: none;
     }
 
-    .footer__contactanos ul li{
+    .footer__social-media {
         justify-content: center;
     }
 
-    .footer__logo{
-        grid-column: unset;
-        grid-row: unset;
-        margin: 0;
-    } 
-
-    .footer__logo img{
-        width: 50%;
-        margin-bottom: 10%;
-    }
-
-    .footer__categorias,.footer__quienes-somos{
-        margin-left: 0%;
-        text-align: center;
-    }
-    .footer__encuentranos h3,.footer__quienes-somos h3,.footer__contactanos h3{
-        color: var(--sColor);
-    }
-
-    .footer__encuentranos h3::after,.footer__quienes-somos h3::after,.footer__contactanos h3::after{
-            display: none;
-    }
-
-
-    .footer__social-media{
-        justify-content: center;
+    .footer__contactanos > ul > .footer__contactanos-item > div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
 

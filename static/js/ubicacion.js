@@ -18,6 +18,10 @@ const saenzPenia_map = document.querySelector("#mapa_saenzPenia");
 const saenzPenia_name = document.querySelector("#ubicacion__direccion_saenzPenia");
 const text_saenzPenia = document.querySelector(".ubicacion__text_container.saenzPenia")
 
+const goyaCorrientes_map = document.querySelector("#mapa_goyaCorrientes");
+const goyaCorrientes_name = document.querySelector("#ubicacion__direccion_goyaCorrientes");
+const text_goyaCorrientes = document.querySelector(".ubicacion__text_container.goyaCorrientes")
+
 ubications.forEach(function(ubication){
     ubication.addEventListener("click",function(){
         desactiveUbicationButton()
@@ -49,6 +53,12 @@ ubications.forEach(function(ubication){
         text_saenzPenia.classList.add("active_provincia")
         saenzPenia_map.classList.add("active_provincia")
         saenzPenia_name.classList.add("active_provincia")
+    }else if(ubication.classList.contains("goyaCorrientes")){
+        // alert("corre")
+        desactiveUbication() 
+        text_goyaCorrientes.classList.add("active_provincia")
+        goyaCorrientes_map.classList.add("active_provincia")
+        goyaCorrientes_name.classList.add("active_provincia")
     }
     })
 })

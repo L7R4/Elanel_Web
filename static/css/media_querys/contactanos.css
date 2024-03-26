@@ -1,48 +1,10 @@
 @media screen and (max-width:900px) {
-    .wrapper_comunicate
-    {
-        flex-flow: column;
-        height: auto;
-    }
-    .contactanos
-    {
-        width: 100%;
-        padding: 4rem 0;
-        padding-top: 3rem;
-        flex-wrap: wrap;
-        height: fit-content;
-    }
-    .preguntas_frecuentes
-    {
-        width: 100%;
-        height: auto;
-        overflow-y: unset;
-    }
-    .contactanos >h1
-    {
-        margin-top: 0;
-        margin-bottom: 2rem;
-    }
-    .contactanos > div
-    {
-        max-height: 40rem;
-    }
+    
     
 }
 
 @media screen and (max-width:620px)
 {   
-    .contactanos
-    {
-        justify-content: center;
-    }
-
-    .contactanos > div
-    {
-        min-width: 90%;
-        /* height: fit-content; */
-        margin: 0;
-        margin-top: 2rem;
-    }
+    
     
 }

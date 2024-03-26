@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/navStyles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="{% static 'css/media_querys/nav_bar.css' %}">
     <link rel="stylesheet" href="{% static 'css/media_querys/main.css' %}">
@@ -307,6 +308,12 @@
            <h4>Av. Rodríguez Peña 1055</h4>
          </div>
          <iframe class="mapa" id="mapa_saenzPenia" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.3322256084484!2d-58.54246152502927!3d-34.59575967295718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb79104214ad9%3A0x8062ec539b08a27f!2sAv.%20Rodr%C3%ADguez%20Pe%C3%B1a%201055%2C%20B1676BTC%20S%C3%A1enz%20Pe%C3%B1a%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1702612633917!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+         
+         <div class="ubicacion__direccion " id="ubicacion__direccion_goyaCorrientes">
+           <h1>Encuentranos en</h1>
+           <h4>25 de Mayo 915</h4>
+         </div>
+         <iframe class="mapa" id="mapa_goyaCorrientes" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3484.672945884391!2d-59.27318172539104!3d-29.144835575388864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x944e84beac820073%3A0xd35fda745eba6568!2s25%20de%20Mayo%20915%2C%20W3450%20Goya%2C%20Corrientes!5e0!3m2!1ses-419!2sar!4v1711396534596!5m2!1ses-419!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         
         </div>
         
@@ -347,6 +354,16 @@
               <strong class="horarios-decoration">Sabados</strong> 9:00 a 13:00hs
             </h6>
           </div>
+
+          <div class="ubicacion__text_container goyaCorrientes">
+            <h5 id="ubicacion__text__title"> Nuestras oficinas se encuentran abiertas</h5>
+            <h6 id="ubicacion__horarios">
+              <strong class="horarios-decoration">Lunes a Viernes</strong>
+              8:30 a 12:30hs <br>
+              16:30 a 20:30hs <br>
+              <strong class="horarios-decoration">Sabados</strong> 9:00 a 13:00hs
+            </h6>
+          </div>
           
           <div class="locales">
             <h4>Nuestros locales</h4>
@@ -355,6 +372,7 @@
                 <button id="corrientes" class="corrientes">Corrientes Capital</button>
                 <button id="posadas" class="posadas">Posadas, Misiones</button>
                 <button id="saenzPenia" class="saenzPenia">Sáenz Peña, Chaco</button>
+                <button id="goyaCorrientes" class="goyaCorrientes">Goya, Corrientes</button>
             </div>
           </div>
         </div>
@@ -389,90 +407,7 @@
       </article>
     </section>
   
-    <footer>
-      <div class="footer__encuentranos">
-        <h3>Encuentranos</h3>
-        <ul>
-          <li class="footer__direccion"> 
-            <p><strong>Corrientes:</strong> 9 de Julio 1687 Local 2</p>
-            <p><strong>Resistencia:</strong> Obligado 841 Local B</p>
-          </li>
-          <li class="footer__social-media"> 
-            <a href="https://m.facebook.com/elanelsys" target=”_blank”>
-              <img src="{% static 'images/icons/social_face.png' %}" alt="">
-            </a>
-            <a href="https://www.instagram.com/elanel.servicios/?hl=es-la" target=”_blank”>
-              <img src="{% static 'images/icons/social_insta.png' %}" alt="">
-            </a>
-            <a href="https://www.tiktok.com/@elaneloficial" target=”_blank”>
-              <img src="{% static 'images/icons/tiktok_icon.svg' %}" alt="">
-            </a>
-            <a href="whatsapp.com" target=”_blank”>
-              <img src="{% static 'images/icons/social_whatsapp.png' %}" alt="">
-            </a>
-          </li>
-        </ul>
-      </div>
-        <div class="footer__categorias">
-          <ul>
-            <li class="footer__motos"> 
-              <a href="{% url 'market:motos' %}">Motos</a>
-            </li>
-            <li class="footer__soluciones-dinerarias"> 
-              <a href="{% url 'market:soluciones_dinerarias' %}">Soluciones Dinerarias</a>
-            </li>
-            <li class="footer__electrodomesticos"> 
-              <a href="{% url 'market:electrodomesticos' %}">Electrodomesticos</a>
-            </li>
-            <li class="footer__beneficios-para-cliente"> 
-              <a href="{% url 'market:beneficios' %}">Beneficios para cliente</a>
-            </li>
-          </ul>
-        </div>
-        <div class="footer__quienes-somos">
-          <h3>Quienes Somos</h3>
-          <ul>
-            <li class="footer__mision"> 
-              <a href="{% url 'nosotros' %}">Mision</a>
-            </li>
-            <li class="footer__vision"> 
-              <a href="{% url 'nosotros' %}">Vision</a>
-            </li>
-            <li class="footer__vision"> 
-              <a href="{% url 'privacidad' %}">Politicas de privacidad</a>
-            </li>
-            {% comment %} <li class="footer__adjudicados"> 
-              <a href="">Adjudicados</a>
-            </li> {% endcomment %}
-          </ul>
-        </div>
-        
-        <div class="footer__contactanos">
-          <h3>Contactanos</h3>
-          <ul>
-            <li class="footer__num-telefono"> 
-              <img src="{% static 'images/icons/social_tel.png' %}" alt="">
-              <p>Chaco: 362 524-5484</p> 
-            </li>
-            <li class="footer__correo-resistencia"> 
-              <img src="{% static 'images/icons/social_mail.png' %}" alt="">
-              <p>admin.chaco@elanelsys.com</p>
-            </li>
-            <p>_____________________________________</p>
-            <li class="footer__num-telefono"> 
-              <img src="{% static 'images/icons/social_tel.png' %}" alt="">
-              <p>Corrientes: 3795 16-1905</p> 
-            </li>
-            <li class="footer__correo-corrientes"> 
-              <img src="{% static 'images/icons/social_mail.png' %}" alt="">
-              <p>admin.ctes@elanelsys.com</p>
-            </li>
-          </ul>
-        </div>
-        <div class="footer__logo">
-            <img src="{% static 'images/icons/icono_arreglado_blanco.png' %}" alt="">
-        </div>
-    </footer>
+    {% include 'footer.html' %}
   
 </body>
 <script src="{% static 'js/scrollreveal_librery.js' %}"></script>
