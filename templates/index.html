@@ -26,19 +26,25 @@
        <div class="sliderContainer">
           <div class="slides">
             {% for post in posts %}
-                <div class="slideElement">
-                    <img src="{{ post.imagen_portada.url }}" alt="" />
-                </div>
+              {% if  post.postImage_computadora.url != ""%}
+                  <div class="slideElement desktop">
+                      <img src="{{ post.postImage_computadora.url }}"/>
+                  </div>
+              {% else %}
+                  <div class="slideElement phone">
+                      <img src="{{ post.postImage_celular.url }}"/>
+                  </div>
+              {% endif %}
             {% endfor %} 
 
           </div>
       </div>
-      <button id="prevButton" class="prev">
+      {% comment %} <button id="prevButton" class="prev">
           <img src="{% static 'images/icons/previous.svg' %}" alt="">
       </button>
        <button id="nextButton" class="next">
           <img src="{% static 'images/icons/next.svg' %}" alt="">
-      </button>
+      </button> {% endcomment %}
   
     </div>
   

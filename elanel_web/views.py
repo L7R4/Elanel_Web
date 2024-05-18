@@ -35,10 +35,11 @@ class IndexView2(View):
 
 
     def get(self, request, *args, **kwargs):
-        posts = Post.objects.all() 
+        posts = Post.objects.all()
         motos_slider = Moto.objects.all()[5:10]
         nums_adjudicados = NumAdjudicado.objects.all()
-
+        for post in posts:
+            print(post.postImage_computadora == "")
         context = {
             "posts": posts,
             "motos_slider": motos_slider,

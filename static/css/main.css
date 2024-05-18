@@ -222,9 +222,6 @@ html {
   position: relative;
   display: flex;
   align-items: center;
-  height: 30vh;
-  max-height: 600px;
-  min-height: 400px;
 }
 /*#region MAIN SLIDER*/
 .sliderContainer {
@@ -243,7 +240,9 @@ html {
   flex-shrink: 0;
   transition: transform 0.5s ease-in-out;
 }
-
+.slideElement.phone{
+  display: none;
+}
 .slideElement {
   box-sizing: border-box;
   height: 100%;
@@ -251,9 +250,10 @@ html {
   display: flex;
 }
 
-.slideElement > img {
+.slideElement > img  {
   width: 100%;
   display: block;
+  object-fit: scale-down;
 }
 
 .wrapper__slider__botones > button {
@@ -263,7 +263,7 @@ html {
   background: rgba(0, 0, 0, 0.5);
   border: none;
   color: white;
-  padding: 10px;
+  padding: .5rem;
   cursor: pointer;
   border-radius: .5rem;
 }
@@ -277,15 +277,15 @@ html {
 }
 .wrapper__slider__botones > button#prevButton > img{
   width: 20%;
-  min-width: 2rem;
-  max-width: 4rem;
+  min-width: 1rem;
+  max-width: 3rem;
   filter: invert(1);
 }
 
 .wrapper__slider__botones > button#nextButton > img{
   width: 20%;
-  min-width: 2rem;
-  max-width: 4rem;
+  min-width: 1rem;
+  max-width: 3rem;
   filter: invert(1);
 
 }

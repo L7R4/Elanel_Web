@@ -140,18 +140,8 @@ class Personal(models.Model):
     cv = models.FileField(upload_to="archivos/cv/", default=None, blank=False)
 
 class Post(models.Model):
-    dispositivos = (
-        ('Celular','Celular'),
-        ('Computadoras','Computadoras'),
-    )
-    titulo = models.CharField(max_length=60,blank=True)
-    descripcion = models.TextField(blank=True)
-    tamano = models.CharField(max_length=50, choices=dispositivos)
-    imagen_portada = models.ImageField(upload_to= "images/posts", default=None)
-class PostImagenes(models.Model):
-    imagen = models.ImageField(upload_to="images/posts", default=None)
-    descripcion = models.CharField(max_length=255, blank=True)
-    producto = models.ForeignKey(Post, on_delete=models.CASCADE, related_name= "imagenes")
+    postImage_celular = models.ImageField("Post de celular",upload_to= "images/posts", default=None, blank=True,null=True)
+    postImage_computadora = models.ImageField("Post de computadora",upload_to= "images/posts", default=None,blank=True,null=True)
 
 
 class NumAdjudicado(models.Model):
