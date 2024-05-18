@@ -23,49 +23,22 @@
     {% include 'nav.html' %}
   
     <div class="wrapper__slider__botones">
-  
-      <div id="slider-container" class="slider-container">
-        <div class="slider" id="slider">
-            <div class="slider__element">
-              <video src="{% static 'images/video_index.mp4' %}" type="video/mp4" autoplay muted loop preload="auto"></video>
-            </div>
+       <div class="sliderContainer">
+          <div class="slides">
             {% for post in posts %}
-              {% if post.tamano == "Computadoras" %}
-                <div class="slider__element">
-                  <img
-                    src="{{post.imagen_portada.url}}"
-                    alt=""
-                  />
+                <div class="slideElement">
+                    <img src="{{ post.imagen_portada.url }}" alt="" />
                 </div>
-              {% endif %}
-            {%endfor%} 
-        </div>
-      </div>
-  
-      <div class="slider_cel" id="slider_cel">
-          <div class="slider__element_cel">
-              <video src="{% static 'images/video_index.mp4' %}" type="video/mp4" autoplay muted loop preload="auto"></video>
+            {% endfor %} 
+
           </div>
-          {% for post in posts %}
-              {% if post.tamano == "Celular" %}
-                <div class="slider__element_cel">
-                  <img
-                    src="{{post.imagen_portada.url}}"
-                    alt=""
-                  />
-                </div>
-              {% endif %}
-          {%endfor%}
       </div>
-      
-      <div class="slider-buttons">
-        <button id="button-left" class="button">
+      <button id="prevButton" class="prev">
           <img src="{% static 'images/icons/previous.svg' %}" alt="">
-        </button>
-        <button id="button-right" class="button">
+      </button>
+       <button id="nextButton" class="next">
           <img src="{% static 'images/icons/next.svg' %}" alt="">
-        </button>
-      </div>
+      </button>
   
     </div>
   
@@ -416,7 +389,8 @@
 <script src="{% static 'js/fetch_form_index.js' %}"></script>
 <script src="{% static 'js/ubicacion.js' %}"></script>
 <script src ="{% static 'js/categoria.js' %}"></script>
-<script src="{% static 'js/slider_posts.js' %}"></script> 
+{% comment %} <script src="{% static 'js/slider_posts.js' %}"></script>  {% endcomment %}
+<script src="{% static 'js/silderNew.js' %}"></script> 
 <script src="{% static 'js/slider_adjudicados.js' %}"></script> 
 <script src="{% static 'js/header.js' %}"></script>
 <script src ="{% static 'js/slider_motos.js' %}"></script>
