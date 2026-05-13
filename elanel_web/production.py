@@ -7,7 +7,7 @@ allowed_hosts_str = os.environ.get('ALLOWED_HOSTS')
 ALLOWED_HOSTS = allowed_hosts_str.split(",") if allowed_hosts_str else []
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
-DEBUG =False
+DEBUG = os.environ.get('DEBUG_D', 'False') == 'True'
 
 DATABASES ={
 	'default':{

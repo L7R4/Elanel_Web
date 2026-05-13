@@ -1,20 +1,31 @@
-version: '3.8'
-
 services:
   web:
-    build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: >
+      sh -c "until python -c 'import socket; s = socket.socket(socket.AF_INET, socket.SOCK_STREAM); s.connect((\"postgres\", 5432)); s.close()' 2>/dev/null; do
+               echo 'Esperando a PostgreSQL...';
+               sleep 1;
+             done;
+             python manage.py migrate --no-input &&
+             python manage.py collectstatic --no-input --clear &&
+             python manage.py runserver 0.0.0.0:8000"
     ports:
-      - 8000:8000
+      - "8001:8000"
+    volumes:
+      - .:/app
     env_file:
       - ./.env
     depends_on:
       - postgres
 
   postgres:
-    image: postgres:latest
+    image: postgres:16
+    ports:
+      - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data/
+      - postgres_data:/var/lib/postgresql/data
     env_file:
       - ./.env
 

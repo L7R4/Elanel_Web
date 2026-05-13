@@ -439,3 +439,21 @@
         --marquee-height: 8vh;
     }
 }
+
+/* Hot Sale Banner Responsivo */
+@media screen and (max-width: 768px) {
+    .hot-sale-banner {
+        height: 250px;
+    }
+    .banner-text h2 {
+        font-size: 2.8rem;
+    }
+    .banner-text p {
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+    }
+    .banner-btn-wa {
+        font-size: 1.3rem;
+        padding: 10px 20px;
+    }
+}
