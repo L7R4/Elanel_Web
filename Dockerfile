@@ -22,12 +22,11 @@ RUN apt-get update && apt-get install -y netcat-traditional
 
 
 
-# copy entrypoint.sh
-COPY ./entrypoint.sh .
-RUN sed -i 's/\r$//g' /app/entrypoint.sh
-RUN chmod +x /app/entrypoint.sh
-
 # copy project
 COPY . .
+
+# fix line endings and permissions for entrypoint.sh after copying project
+RUN sed -i 's/\r$//g' /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
 
 ENTRYPOINT ["/app/entrypoint.sh"]
