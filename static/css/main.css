@@ -16,7 +16,7 @@
   width: 100%;
   position: relative;
   overflow: hidden;
-  height: 75vh;
+  height: 60vh;
   margin-bottom: 2rem;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
   border-bottom-left-radius: 20px;
@@ -37,6 +37,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   position: absolute;
   top: 0;
   left: 0;
@@ -128,9 +129,21 @@
   letter-spacing: 0.8px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) and (min-width: 992px) {
+  .hot-sale-banner {
+    height: 40vh;
+  }
+}
+
+@media (max-width: 991px) and (min-width: 769px) {
   .hot-sale-banner {
     height: 35vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .hot-sale-banner {
+    height: 25vh;
   }
 
   .banner-img {
