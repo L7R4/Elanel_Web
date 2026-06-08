@@ -443,7 +443,7 @@
 /* Hot Sale Banner Responsivo */
 @media screen and (max-width: 768px) {
     .hot-sale-banner {
-        height: 250px;
+        height: 180px;
     }
     .banner-text h2 {
         font-size: 2.8rem;
