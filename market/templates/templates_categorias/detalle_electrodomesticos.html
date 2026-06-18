@@ -1,4 +1,4 @@
-{% load static %}
+{% load static humanize %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,6 +20,11 @@
       rel="shortcut icon"
       href="{% static 'images/fwd/icon_page4.png' %}"
     />
+    <style>
+      .global_whatsapp_float {
+        display: none !important;
+      }
+    </style>
   </head>
   <body>
     {% include 'nav.html' %}
@@ -36,7 +41,7 @@
         </aside>
   
         <article class="complete__image">
-          <img src="" alt="" />
+          <img src="{{ object.imagen_portada.url }}" alt="{{ object.nombre }}" />
         </article>
   
         <div class="title_producto_responsive">
@@ -68,6 +73,14 @@
           {% else %}
           <br>
           {% endif %}
+          {% comment %}
+          {% if object.precio %}
+          <div id="valor_nominal">
+            <h2>V.N. Total</h2>
+            <h2>${{object.precio|floatformat:"0"|intcomma}}</h2>
+          </div>
+          {% endif %}
+          {% endcomment %}
         </div>
         {% if object.ficha_tecnica.url != '' %}
           <div class="detalles">
@@ -87,10 +100,10 @@
         {% endif %}
         <div class="contact">
           <h3>¿Te ha interesado este producto?</h3>
-          <h3>Completa el siguiente formulario para hacérnolo saber</h3>
-          <button class="display_form" type="button">
-              Completar formulario
-          </button>
+          <a href="https://wa.me/543625170890?text=Hola!%0AMe%20interesa%20el%20combo%20*{{object.nombre}}*%0A%0A%C2%BFMe%20podr%C3%ADan%20asesorar%3F" target="_blank" class="whatsapp_btn_cta">
+            <img src="{% static 'images/icons/whatsapp_icon.svg' %}" alt="WhatsApp" class="wa_icon_btn" />
+            <span>Consultar por WhatsApp</span>
+          </a>
         </div>
       </aside>
 

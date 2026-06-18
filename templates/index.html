@@ -289,147 +289,256 @@
   </section>
 
   <section class="ubicacion">
-    <article class="mapa__container" id="mapa__container">
-      <div class="wrapper_ubicacion">
-        <div class="ubicacion__direccion active_provincia" id="ubicacion__direccion_resistencia">
-          <h1>Encuentranos en</h1>
-          <h4>Obligado 841 Local B</h4>
+    <div class="ubicacion__grid">
+      <!-- Columna Izquierda: Mapa en foco y Botones/Sucursales debajo -->
+      <div class="ubicacion__col-left">
+        <div class="ubicacion__title-wrapper">
+          <img src="{% static 'images/icons/location.png' %}" alt="ubicacion" class="ubicacion__icon">
+          <div>
+            <h1 class="ubicacion__title">Ubicaciones</h1>
+            <h3 class="ubicacion__subtitle">Presencia Nacional</h1>
+          </div>
         </div>
-        <iframe class="mapa active_provincia" id="mapa_resistencia"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3540.298199016263!2d-58.983624984976636!3d-27.459974282894965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94450ceee646f275%3A0x77559d941a7c7581!2sC.%20Obligado%20841%2C%20H3504APB%20Resistencia%2C%20Chaco!5e0!3m2!1ses!2sar!4v1660695784285!5m2!1ses!2sar"
-          width="60%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="ubicacion__map-wrapper">
+          <!-- Resistencia -->
+          <iframe class="mapa active_provincia" id="mapa_resistencia"
+            src="https://maps.google.com/maps?q=Obligado%20841%20Local%20B%2C%20Resistencia%2C%20Chaco%2C%20Argentina&t=&z=16&ie=UTF8&iwloc=&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-        <div class="ubicacion__direccion " id="ubicacion__direccion_corrientes">
-          <h1>Encuentranos en</h1>
-          <h4>9 de Julio 1687 Local 2</h4>
-        </div>
-        <iframe class="mapa" id="mapa_corrientes"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3540.0744162103942!2d-58.83147708541187!3d-27.46694252316063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94456ca0a671163f%3A0xaf0071abbe4ad709!2s9%20de%20Julio%201687%2C%20W3400AZF%20Corrientes!5e0!3m2!1ses-419!2sar!4v1678984007965!5m2!1ses-419!2sar"
-          width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <!-- Corrientes -->
+          <iframe class="mapa" id="mapa_corrientes"
+            src="https://maps.google.com/maps?q=9%20de%20Julio%201687%2C%20Corrientes%2C%20Argentina&t=&z=16&ie=UTF8&iwloc=&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-        <div class="ubicacion__direccion " id="ubicacion__direccion_posadas">
-          <h1>Encuentranos en</h1>
-          <h4>Avenida Cabred 1053</h4>
-        </div>
-        <iframe class="mapa" id="mapa_posadas"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3542.6824374773696!2d-55.891852025373716!3d-27.38563137636844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9457bfab655c9fa3%3A0x87ee38968c465098!2sAv.%20Domingo%20Cabred%201053%2C%20N3300NCB%20Posadas%2C%20Misiones!5e0!3m2!1ses!2sar!4v1702612496820!5m2!1ses!2sar"
-          width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <!-- Posadas -->
+          <iframe class="mapa" id="mapa_posadas"
+            src="https://maps.google.com/maps?q=Felix%20de%20Azara%201236%2C%20Posadas%2C%20Misiones%2C%20Argentina&t=&z=16&ie=UTF8&iwloc=&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-        <div class="ubicacion__direccion " id="ubicacion__direccion_saenzPenia">
-          <h1>Encuentranos en</h1>
-          <h4>Av. Rodríguez Peña 1055</h4>
-        </div>
-        <iframe class="mapa" id="mapa_saenzPenia"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.3322256084484!2d-58.54246152502927!3d-34.59575967295718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb79104214ad9%3A0x8062ec539b08a27f!2sAv.%20Rodr%C3%ADguez%20Pe%C3%B1a%201055%2C%20B1676BTC%20S%C3%A1enz%20Pe%C3%B1a%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1702612633917!5m2!1ses!2sar"
-          width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <!-- Saenz Peña -->
+          <iframe class="mapa" id="mapa_saenzPenia"
+            src="https://maps.google.com/maps?q=Rodriguez%20Pe%C3%B1a%201055%2C%20Presidencia%20Roque%20S%C3%A1enz%20Pe%C3%B1a%2C%20Chaco%2C%20Argentina&t=&z=16&ie=UTF8&iwloc=&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-        <div class="ubicacion__direccion " id="ubicacion__direccion_goyaCorrientes">
-          <h1>Encuentranos en</h1>
-          <h4>25 de Mayo 915</h4>
-        </div>
-        <iframe class="mapa" id="mapa_goyaCorrientes"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3484.672945884391!2d-59.27318172539104!3d-29.144835575388864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x944e84beac820073%3A0xd35fda745eba6568!2s25%20de%20Mayo%20915%2C%20W3450%20Goya%2C%20Corrientes!5e0!3m2!1ses-419!2sar!4v1711396534596!5m2!1ses-419!2sar"
-          width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <!-- Goya -->
+          <iframe class="mapa" id="mapa_goyaCorrientes"
+            src="https://maps.google.com/maps?q=Mariano%20I.%20Loza%2041%2C%20Goya%2C%20Corrientes%2C%20Argentina&t=&z=16&ie=UTF8&iwloc=&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-      </div>
+          <!-- Paso de los Libres -->
+          <iframe class="mapa" id="mapa_pasoDeLosLibres"
+            src="https://maps.google.com/maps?q=Yatay%201036%2C%20Paso%20de%20los%20Libres%2C%20Corrientes%2C%20Argentina&t=&z=16&ie=UTF8&iwloc=&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-      <div class="ubicacion__text">
-        <div class="ubicacion__text_container resistencia active_provincia">
-          <h5 id="ubicacion__text__title"> Nuestras oficinas se encuentran abiertas</h5>
-          <h6 id="ubicacion__horarios">
-            <strong class="horarios-decoration">Lunes a Viernes</strong>
-            8:30 a 12:30hs <br>
-            17:00 a 21:00hs <br>
-            <strong class="horarios-decoration">Sabados</strong> 9:00 a 13:00hs
-          </h6>
-        </div>
-        <div class="ubicacion__text_container corrientes">
-          <h5 id="ubicacion__text__title"> Nuestras oficinas se encuentran abiertas</h5>
-          <h6 id="ubicacion__horarios">
-            <strong class="horarios-decoration">Lunes a Viernes</strong>
-            8:30 a 12:30hs <br>
-            16:30 a 20:30hs <br>
-            <strong class="horarios-decoration">Sabados</strong> 9:00 a 13:00hs
-          </h6>
-        </div>
-        <div class="ubicacion__text_container posadas">
-          <h5 id="ubicacion__text__title"> Nuestras oficinas se encuentran abiertas</h5>
-          <h6 id="ubicacion__horarios">
-            <strong class="horarios-decoration">Lunes a Viernes</strong>
-            8:30 a 12:30hs <br>
-            16:30 a 21:00hs <br>
-            <strong class="horarios-decoration">Sabados</strong> 9:00 a 13:00hs
-          </h6>
-        </div>
-        <div class="ubicacion__text_container saenzPenia">
-          <h5 id="ubicacion__text__title"> Nuestras oficinas se encuentran abiertas</h5>
-          <h6 id="ubicacion__horarios">
-            <strong class="horarios-decoration">Lunes a Viernes</strong>
-            8:30 a 12:30hs <br>
-            16:30 a 20:30hs <br>
-            <strong class="horarios-decoration">Sabados</strong> 9:00 a 13:00hs
-          </h6>
+          <!-- Concordia -->
+          <iframe class="mapa" id="mapa_concordia"
+            src="https://maps.google.com/maps?q=Mitre%20466%2C%20Concordia%2C%20Entre%20R%C3%ADos%2C%20Argentina&t=&z=16&ie=UTF8&iwloc=&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+          <!-- Formosa -->
+          <iframe class="mapa" id="mapa_formosa"
+            src="https://maps.google.com/maps?q=Maip%C3%BA%20111%2C%20Formosa%2C%20Argentina&t=&z=16&ie=UTF8&iwloc=&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+          <!-- Santiago del Estero -->
+          <iframe class="mapa" id="mapa_santiagoDelEstero"
+            src="https://maps.google.com/maps?q=24%20de%20Septiembre%20579%2C%20Santiago%20del%20Estero%2C%20Argentina&t=&z=16&ie=UTF8&iwloc=&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+          <!-- Oberá -->
+          <iframe class="mapa" id="mapa_obera"
+            src="https://maps.google.com/maps?q=Mendoza%2046%2C%20Ober%C3%A1%2C%20Misiones%2C%20Argentina&t=&z=16&ie=UTF8&iwloc=&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
 
-        <div class="ubicacion__text_container goyaCorrientes">
-          <h5 id="ubicacion__text__title"> Nuestras oficinas se encuentran abiertas</h5>
-          <h6 id="ubicacion__horarios">
-            <strong class="horarios-decoration">Lunes a Viernes</strong>
-            8:30 a 12:30hs <br>
-            16:30 a 20:30hs <br>
-            <strong class="horarios-decoration">Sabados</strong> 9:00 a 13:00hs
-          </h6>
-        </div>
-
+        <!-- Selector de locales -->
         <div class="locales">
-          <h4>Nuestros locales</h4>
+          <h4>Nuestras Sucursales</h4>
           <div class="buttonsWrapper">
-            <button id="resistencia" class="resistencia active_ubication">Resistencia, Chaco</button>
-            <button id="corrientes" class="corrientes">Corrientes Capital</button>
-            <button id="posadas" class="posadas">Posadas, Misiones</button>
-            <button id="saenzPenia" class="saenzPenia">Sáenz Peña, Chaco</button>
-            <button id="goyaCorrientes" class="goyaCorrientes">Goya, Corrientes</button>
+            <button id="resistencia" class="resistencia active_ubication">Resistencia</button>
+            <button id="corrientes" class="corrientes">Corrientes</button>
+            <button id="posadas" class="posadas">Posadas</button>
+            <button id="saenzPenia" class="saenzPenia">Sáenz Peña</button>
+            <button id="goyaCorrientes" class="goyaCorrientes">Goya</button>
+            <button id="pasoDeLosLibres" class="pasoDeLosLibres">Paso de los Libres</button>
+            <button id="concordia" class="concordia">Concordia</button>
+            <button id="formosa" class="formosa">Formosa</button>
+            <button id="santiagoDelEstero" class="santiagoDelEstero">Santiago del Estero</button>
+            <button id="obera" class="obera">Oberá</button>
           </div>
         </div>
       </div>
-    </article>
 
-    <article class="ubicacion__redes">
-      <div class="ubicacion__redes__text">
-        <h3>Ademas puedes encontrarnos en nuestras redes</h5>
-          <h6>Siguenos para mas informacion</h6>
+      <!-- Columna Derecha: Detalles (Dirección, Horarios) y Redes Sociales -->
+      <div class="ubicacion__col-right">
+        <!-- Detalles de Sucursal -->
+        <div class="ubicacion__details-card">
+          <!-- Direcciones -->
+          <div class="ubicacion__direccion-wrapper">
+            <div class="ubicacion__direccion active_provincia" id="ubicacion__direccion_resistencia">
+              <h1>Resistencia, Chaco</h1>
+              <h4>Obligado 841 Local B</h4>
+            </div>
+            <div class="ubicacion__direccion" id="ubicacion__direccion_corrientes">
+              <h1>Corrientes Capital</h1>
+              <h4>9 de Julio 1687</h4>
+            </div>
+            <div class="ubicacion__direccion" id="ubicacion__direccion_posadas">
+              <h1>Posadas, Misiones</h1>
+              <h4>Félix de Azara 1236</h4>
+            </div>
+            <div class="ubicacion__direccion" id="ubicacion__direccion_saenzPenia">
+              <h1>Sáenz Peña, Chaco</h1>
+              <h4>Rodríguez Peña 1055</h4>
+            </div>
+            <div class="ubicacion__direccion" id="ubicacion__direccion_goyaCorrientes">
+              <h1>Goya, Corrientes</h1>
+              <h4>Mariano I. Loza 41</h4>
+            </div>
+            <div class="ubicacion__direccion" id="ubicacion__direccion_pasoDeLosLibres">
+              <h1>Paso de los Libres</h1>
+              <h4>Yatay 1036</h4>
+            </div>
+            <div class="ubicacion__direccion" id="ubicacion__direccion_concordia">
+              <h1>Concordia, Entre Ríos</h1>
+              <h4>Mitre 466</h4>
+            </div>
+            <div class="ubicacion__direccion" id="ubicacion__direccion_formosa">
+              <h1>Formosa</h1>
+              <h4>Maipú 111</h4>
+            </div>
+            <div class="ubicacion__direccion" id="ubicacion__direccion_santiagoDelEstero">
+              <h1>Santiago del Estero</h1>
+              <h4>24 de Septiembre 579</h4>
+            </div>
+            <div class="ubicacion__direccion" id="ubicacion__direccion_obera">
+              <h1>Oberá, Misiones</h1>
+              <h4>Mendoza 46</h4>
+            </div>
+          </div>
+
+          <!-- Horarios -->
+          <div class="ubicacion__horarios-wrapper">
+            <div class="ubicacion__text_container resistencia active_provincia">
+              <h5>Horarios de Atención</h5>
+              <h6 class="ubicacion__horarios">
+                <strong class="horarios-decoration">Lunes a Viernes</strong>
+                8:30 a 12:30hs / 17:00 a 21:00hs <br>
+                <strong class="horarios-decoration">Sábados</strong> 9:00 a 13:00hs
+              </h6>
+            </div>
+            <div class="ubicacion__text_container corrientes">
+              <h5>Horarios de Atención</h5>
+              <h6 class="ubicacion__horarios">
+                <strong class="horarios-decoration">Lunes a Viernes</strong>
+                8:30 a 12:30hs / 16:30 a 20:30hs <br>
+                <strong class="horarios-decoration">Sábados</strong> 9:00 a 13:00hs
+              </h6>
+            </div>
+            <div class="ubicacion__text_container posadas">
+              <h5>Horarios de Atención</h5>
+              <h6 class="ubicacion__horarios">
+                <strong class="horarios-decoration">Lunes a Viernes</strong>
+                8:30 a 12:30hs / 16:30 a 21:00hs <br>
+                <strong class="horarios-decoration">Sábados</strong> 9:00 a 13:00hs
+              </h6>
+            </div>
+            <div class="ubicacion__text_container saenzPenia">
+              <h5>Horarios de Atención</h5>
+              <h6 class="ubicacion__horarios">
+                <strong class="horarios-decoration">Lunes a Viernes</strong>
+                8:30 a 12:30hs / 16:30 a 20:30hs <br>
+                <strong class="horarios-decoration">Sábados</strong> 9:00 a 13:00hs
+              </h6>
+            </div>
+            <div class="ubicacion__text_container goyaCorrientes">
+              <h5>Horarios de Atención</h5>
+              <h6 class="ubicacion__horarios">
+                <strong class="horarios-decoration">Lunes a Viernes</strong>
+                8:30 a 12:30hs / 16:30 a 20:30hs <br>
+                <strong class="horarios-decoration">Sábados</strong> 9:00 a 13:00hs
+              </h6>
+            </div>
+            <div class="ubicacion__text_container pasoDeLosLibres">
+              <h5>Horarios de Atención</h5>
+              <h6 class="ubicacion__horarios">
+                <strong class="horarios-decoration">Lunes a Viernes</strong>
+                8:30 a 12:30hs / 16:30 a 20:30hs <br>
+                <strong class="horarios-decoration">Sábados</strong> 9:00 a 13:00hs
+              </h6>
+            </div>
+            <div class="ubicacion__text_container concordia">
+              <h5>Horarios de Atención</h5>
+              <h6 class="ubicacion__horarios">
+                <strong class="horarios-decoration">Lunes a Viernes</strong>
+                8:30 a 12:30hs / 16:30 a 20:30hs <br>
+                <strong class="horarios-decoration">Sábados</strong> 9:00 a 13:00hs
+              </h6>
+            </div>
+            <div class="ubicacion__text_container formosa">
+              <h5>Horarios de Atención</h5>
+              <h6 class="ubicacion__horarios">
+                <strong class="horarios-decoration">Lunes a Viernes</strong>
+                8:30 a 12:30hs / 16:30 a 20:30hs <br>
+                <strong class="horarios-decoration">Sábados</strong> 9:00 a 13:00hs
+              </h6>
+            </div>
+            <div class="ubicacion__text_container santiagoDelEstero">
+              <h5>Horarios de Atención</h5>
+              <h6 class="ubicacion__horarios">
+                <strong class="horarios-decoration">Lunes a Viernes</strong>
+                8:30 a 12:30hs / 16:30 a 20:30hs <br>
+                <strong class="horarios-decoration">Sábados</strong> 9:00 a 13:00hs
+              </h6>
+            </div>
+            <div class="ubicacion__text_container obera">
+              <h5>Horarios de Atención</h5>
+              <h6 class="ubicacion__horarios">
+                <strong class="horarios-decoration">Lunes a Viernes</strong>
+                8:30 a 12:30hs / 16:30 a 20:30hs <br>
+                <strong class="horarios-decoration">Sábados</strong> 9:00 a 13:00hs
+              </h6>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta de Redes Sociales -->
+        <div class="ubicacion__social-card">
+          <div class="ubicacion__redes__text">
+            <h3>Conectá con nosotros</h3>
+            <h6>Seguinos en nuestras redes oficiales y enterate de todas las novedades.</h6>
+          </div>
+          <div class="wrapper__icons__social">
+            <ol>
+              <li id="ubicacion__facebook">
+                <a href="https://m.facebook.com/elanelsys" target="_blank">
+                  <img src="{% static 'images/icons/face_icon.svg' %}" alt="Facebook">
+                  <span>Facebook</span>
+                </a>
+              </li>
+              <li id="ubicacion__twitter">
+                <a href="https://www.tiktok.com/@elaneloficial" target="_blank">
+                  <img src="{% static 'images/icons/tiktok_icon.svg' %}" alt="TikTok">
+                  <span>TikTok</span>
+                </a>
+              </li>
+              {% comment %} <li id="ubicacion__instagram">
+                <a href="https://www.instagram.com/elanelserviciosok/" target="_blank">
+                  <img src="{% static 'images/icons/insta_icon.svg' %}" alt="Instagram">
+                  <span>Instagram</span>
+                </a>
+              </li> {% endcomment %}
+              <li id="ubicacion__whatsapp">
+                <a href="https://wa.me/543625170890?text=Hola!%20Me%20interesa%20recibir%20informaci%C3%B3n%20sobre%20los%20planes%20de%20ahorro%20de%20Elanel." target="_blank">
+                  <img src="{% static 'images/icons/whatsapp_icon.svg' %}" alt="WhatsApp">
+                  <span>WhatsApp</span>
+                </a>
+              </li>
+            </ol>
+          </div>
+        </div>
       </div>
-      <div class="wrapper__icons__social">
-        <ol>
-          <li id="ubicacion__facebook">
-            <a href="https://m.facebook.com/elanelsys" target=”_blank” class="ubicacion__icon"><img
-                src="{% static 'images/icons/face_icon.svg' %}" alt="">
-            </a>
-          </li>
-          <li id="ubicacion__twitter">
-            <a href="https://www.tiktok.com/@elaneloficial" target=”_blank” class="ubicacion__icon"><img
-                src="{% static 'images/icons/tiktok_icon.svg' %}" alt="">
-            </a>
-          </li>
-          <li id="ubicacion__instagram">
-            <a href="https://www.instagram.com/elanelserviciosok/" target=”_blank” class="ubicacion__icon"><img
-                src="{% static 'images/icons/insta_icon.svg' %}" alt="">
-            </a>
-          </li>
-          <li id="ubicacion__whatsapp">
-            <!-- <p>¡Escribenos!</p> -->
-            <a href="https://wa.me/543625170890?text=Vi%20esto%20en%20la%20web,%20me%20podrias%20brindar%20mas%20informacion?"
-              target=”_blank” class="ubicacion__icon"><img src="{% static 'images/icons/whatsapp_icon.svg' %}" alt="">
-            </a>
-          </li>
-        </ol>
-      </div>
-    </article>
+    </div>
   </section>
 
   {% include 'footer.html' %}
