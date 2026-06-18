@@ -22,6 +22,11 @@
       rel="shortcut icon"
       href="{% static 'images/fwd/icon_page4.png' %}"
     />
+    <style>
+      .global_whatsapp_float {
+        display: none !important;
+      }
+    </style>
   </head>
   <body>
     {% include 'nav.html' %}
@@ -32,6 +37,7 @@
               <h1 id="precio_product"> $100.000</h1>
           </div> -->
 
+        {% comment %}
         <article class="monto_container">
           <img src="{% static 'images/icons/dollar.svg' %}" alt="" />
           <div class="monto_text">
@@ -39,72 +45,14 @@
             <!-- <h3>{{object.cuota}} Cuotas</h3> -->
           </div>
         </article>
+        {% endcomment %}
         <aside class="resumen">
           <div class="contact">
             <h3>¿Te ha interesado este servicio?</h3>
-            <h3>Completa el siguiente formulario para hacérnolo saber</h3>
-            <form action="" method="POST" id="form_fetch_post" name="form_fetch_post">
-              {% csrf_token %}
-              <<input
-              type="text"
-              name="objetivo"
-              id="objetivo"
-              value=""
-              autocomplete="off"
-              readonly
-            />
-            <div class="nombre_completo_container">
-              <input
-                type="text"
-                name="nombre_completo"
-                id="nombre"
-                placeholder="Nombre y apeliido"
-                autocomplete="off"
-                onkeypress='return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122)|| (event.charCode == 241 || event.charCode == 209) || (event.charCode == 32)'
-              />
-              
-            </div>
-            <div class="num_telefono_container">
-              <input
-                type="text"
-                name="num_telefono"
-                id="numero"
-                pattern="[0-9]*"
-                placeholder="Telefono"
-                autocomplete="off"
-                onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="10"
-              />
-            </div>
-  
-            <div class="email_container">
-              <input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="Email"
-                autocomplete="off"
-              />
-              <p>Formato de email no valido</p>
-            </div>
-  
-            <div class="provincia_container">
-              <input 
-              type= "text"
-              name= "provincia"
-              id= "provincia"
-              placeholder= "Provincia"
-              autocomplete= "off"
-              />
-            </div>
-            
-            <button type="button" id="form_product_button" class="desactive">
-              Enviar
-              <div class="wrapper__loader">
-                <div id="loader"></div>
-              </div>
-            </button>
-            
-            </form>
+            <a href="https://wa.me/543625170890?text=Hola!%0AMe%20interesa%20la%20Soluci%C3%B3n%20Dineraria%0A%0A%C2%BFMe%20podr%C3%ADan%20brindar%20m%C3%A1s%20informaci%C3%B3n%3F" target="_blank" class="whatsapp_btn_cta">
+              <img src="{% static 'images/icons/whatsapp_icon.svg' %}" alt="WhatsApp" class="wa_icon_btn" />
+              <span>Consultar por WhatsApp</span>
+            </a>
           </div>
         </aside>
         <div class="message_success_wrapper">

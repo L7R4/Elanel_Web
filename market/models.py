@@ -42,6 +42,17 @@ class Moto(models.Model):
     def __str__(self):
         return self.nombre
     
+    @property
+    def cuota_mensual(self):
+        if self.precio and self.cuota:
+            try:
+                num_cuotas = int(self.cuota)
+                if num_cuotas > 0:
+                    return round(self.precio / num_cuotas)
+            except ValueError:
+                pass
+        return None
+    
     def save(self, *args, **kwargs):
         self.url = slugify(self.nombre)
         super(Moto, self).save(*args, **kwargs)
@@ -86,6 +97,17 @@ class Electrodomestico(models.Model):
 
     def __str__(self):
         return self.nombre
+    
+    @property
+    def cuota_mensual(self):
+        if self.precio and self.cuota:
+            try:
+                num_cuotas = int(self.cuota)
+                if num_cuotas > 0:
+                    return round(self.precio / num_cuotas)
+            except ValueError:
+                pass
+        return None
     
     def save(self, *args, **kwargs):
         self.url = slugify(self.nombre)

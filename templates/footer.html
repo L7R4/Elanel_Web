@@ -1,135 +1,136 @@
 {% load static %}
-<footer>
+<footer class="footer_premium">
+  <!-- Fila Superior: Marca e Info General de Navegación -->
+  <div class="footer__top">
+    <!-- Bloque de Marca -->
+    <div class="footer__brand">
+      <a href="{% url 'index' %}" class="footer__brand-logo">
+        <img src="{% static 'images/icons/icono_arreglado_blanco.png' %}" alt="Elanel Servicios Logo">
+      </a>
+      <p class="footer__brand-desc">
+        Líderes en capitalización y planes de ahorro programados en las regiones NEA y NOA. Tu futuro y tu tranquilidad, planificados paso a paso.
+      </p>
+      <div class="footer__socials">
+        <a href="https://m.facebook.com/elanelsys" target="_blank" aria-label="Facebook">
+          <img src="{% static 'images/icons/social_face.png' %}" alt="Facebook">
+        </a>
+        <a href="https://www.instagram.com/elanelserviciosok/" target="_blank" aria-label="Instagram">
+          <img src="{% static 'images/icons/social_insta.png' %}" alt="Instagram">
+        </a>
+        <a href="https://www.tiktok.com/@elaneloficial" target="_blank" aria-label="TikTok">
+          <img src="{% static 'images/icons/tiktok_icon.svg' %}" alt="TikTok">
+        </a>
+        <a href="https://wa.me/543625170890?text=Hola!%20Estoy%20visitando%20la%20web%20de%20Elanel%20y%20me%20gustaría%20hacer%20una%20consulta." target="_blank" aria-label="WhatsApp">
+          <img src="{% static 'images/icons/social_whatsapp.png' %}" alt="WhatsApp">
+        </a>
+      </div>
+    </div>
 
-        <div class="footer__encuentranos">
-          <h3>Encuentranos</h3>
-          <ul>
-            <li class="footer__direccion"> 
-              <p><strong>Corrientes:</strong> 9 de Julio 1687 Local 2</p>
-              <p><strong>Resistencia:</strong> Obligado 841 Local B</p>
-            </li>
-            <li class="footer__social-media"> 
-              <a href="https://m.facebook.com/elanelsys" target=”_blank”>
-                <img src="{% static 'images/icons/social_face.png' %}" alt="">
-              </a>
-              <a href="https://www.instagram.com/elanelserviciosok/" target=”_blank”>
-                <img src="{% static 'images/icons/social_insta.png' %}" alt="">
-              </a>
-              <a href="https://www.tiktok.com/@elaneloficial" target=”_blank”>
-                <img src="{% static 'images/icons/tiktok_icon.svg' %}" alt="">
-              </a>
-              <a href="whatsapp.com" target=”_blank”>
-                <img src="{% static 'images/icons/social_whatsapp.png' %}" alt="">
-              </a>
-            </li>
-          </ul>
-        </div>
+    <!-- Bloque de Categorías -->
+    <div class="footer__nav-col">
+      <h3>Nuestros Planes</h3>
+      <ul>
+        <li><a href="{% url 'market:motos' %}">Motos 0km</a></li>
+        <li><a href="{% url 'market:soluciones_dinerarias' %}">Soluciones Dinerarias</a></li>
+        <li><a href="{% url 'market:electrodomesticos' %}">Electrodomésticos</a></li>
+        <li><a href="{% url 'market:motos' %}?status=True">Motos Usadas</a></li>
+      </ul>
+    </div>
 
-        <div class="footer__categorias">
-          <ul>
-            <li class="footer__motos"> 
-              <a href="{% url 'market:motos' %}">Motos</a>
-            </li>
-            <li class="footer__soluciones-dinerarias"> 
-              <a href="{% url 'market:soluciones_dinerarias' %}">Soluciones Dinerarias</a>
-            </li>
-            <li class="footer__electrodomesticos"> 
-              <a href="{% url 'market:electrodomesticos' %}">Electrodomesticos</a>
-            </li>
-            <li class="footer__beneficios-para-cliente"> 
-              <a href="{% url 'market:beneficios' %}">Beneficios para cliente</a>
-            </li>
-          </ul>
-        </div>
+    <!-- Bloque Institucional -->
+    <div class="footer__nav-col">
+      <h3>Compañía</h3>
+      <ul>
+        <li><a href="{% url 'nosotros' %}">Sobre Nosotros</a></li>
+        <li><a href="{% url 'market:beneficios' %}">Beneficios para Clientes</a></li>
+        <li><a href="{% url 'market:trabaja' %}">Trabaja con Nosotros</a></li>
+        <li><a href="{% url 'contactanos' %}">Contactanos</a></li>
+      </ul>
+    </div>
+  </div>
 
-        <div class="footer__quienes-somos">
-          <h3>Quienes Somos</h3>
-          <ul>
-            <li class="footer__mision"> 
-              <a href="{% url 'nosotros' %}">Mision</a>
-            </li>
-            <li class="footer__vision"> 
-              <a href="{% url 'nosotros' %}">Vision</a>
-            </li>
-            <li class="footer__vision"> 
-              <a href="{% url 'privacidad' %}">Politicas de privacidad</a>
-            </li>
-          </ul>
-        </div>
+  <!-- Fila Intermedia: Red de Agencias Organizada -->
+  <div class="footer__middle">
+    <div class="footer__agencies-header">
+      <h3>Nuestra Red de Agencias</h3>
+      <div class="footer__agencies-line"></div>
+    </div>
+    <div class="footer__agencies-grid">
+      <!-- Resistencia -->
+      <div class="footer__agency-card">
+        <h5>Resistencia, Chaco</h5>
+        <p>Obligado 841, Local B</p>
+        <span><a href="mailto:agenciachaco@elanelsys.com">agenciachaco@elanelsys.com</a></span>
+      </div>
 
-        <div class="footer__contactanos">
-          <h3>Contactanos</h3>
-          <ul>
-            <li class="footer__contactanos-item">
-              <h5>Resistencia, Chaco</h5>
-              <div class="info">
-                <div class="tel">
-                  <img src="{% static 'images/icons/social_tel.png' %}" alt="">
-                  <p>362 524-5484</p> 
-                </div>
-                <div class="email">
-                  <img src="{% static 'images/icons/social_mail.png' %}" alt="">
-                  <p>agenciachaco@elanelsys.com	</p>
-                </div>
-              </div>
-            </li>
+      <!-- Sáenz Peña -->
+      <div class="footer__agency-card">
+        <h5>Sáenz Peña, Chaco</h5>
+        <p>Rodríguez Peña 1055</p>
+        <span><a href="mailto:agenciasaenzpenia@elanelsys.com">agenciasaenzpenia@elanelsys.com</a></span>
+      </div>
 
-            <li class="footer__contactanos-item">
-              <h5>Corrientes Capital</h5>
-              <div class="info">
-                <div class="tel">
-                  <img src="{% static 'images/icons/social_tel.png' %}" alt="">
-                  <p>3795 16-1905</p> 
-                </div>
-                <div class="email">
-                  <img src="{% static 'images/icons/social_mail.png' %}" alt="">
-                  <p>agenciacorrientes@elanelsys.com</p>
-                </div>
-              </div>
-            </li>
+      <!-- Corrientes -->
+      <div class="footer__agency-card">
+        <h5>Corrientes Capital</h5>
+        <p>9 de Julio 1687</p>
+        <span><a href="mailto:agenciacorrientes@elanelsys.com">agenciacorrientes@elanelsys.com</a></span>
+      </div>
 
-            <li class="footer__contactanos-item">
-              <h5>Saenz Peña, Chaco</h5>
-              <div class="info">
-                <div class="tel">
-                  <img src="{% static 'images/icons/social_tel.png' %}" alt="">
-                  <p>364 491-4025</p> 
-                </div>
-                <div class="email">
-                  <img src="{% static 'images/icons/social_mail.png' %}" alt="">
-                  <p>agenciasaenzpenia@elanelsys.com</p>
-                </div>
-              </div>
-            </li>
+      <!-- Posadas -->
+      <div class="footer__agency-card">
+        <h5>Posadas, Misiones</h5>
+        <p>Félix de Azara 1236</p>
+        <span><a href="mailto:agenciaposadas@elanelsys.com">agenciaposadas@elanelsys.com</a></span>
+      </div>
 
-            <li class="footer__contactanos-item">
-              <h5>Posadas, Misiones</h5>
-              <div class="info">
-                <div class="tel">
-                  <img src="{% static 'images/icons/social_tel.png' %}" alt="">
-                  <p>3765 10-4719</p> 
-                </div>
-                <div class="email">
-                  <img src="{% static 'images/icons/social_mail.png' %}" alt="">
-                  <p>agenciaposadas@elanelsys.com</p>
-                </div>
-              </div>
-            </li>
+      <!-- Goya -->
+      <div class="footer__agency-card">
+        <h5>Goya, Corrientes</h5>
+        <p>Mariano I. Loza 41</p>
+        <span><a href="mailto:agenciagoya@elanelsys.com">agenciagoya@elanelsys.com</a></span>
+      </div>
 
-            <li class="footer__contactanos-item">
-              <h5>Goya, Corrientes</h5>
-              <div class="info">
-                <div class="email">
-                  <img src="{% static 'images/icons/social_mail.png' %}" alt="">
-                  <p>agenciagoya@elanelsys.com	</p>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
+      <!-- Paso de los Libres -->
+      <div class="footer__agency-card">
+        <h5>Paso de los Libres</h5>
+        <p>Yatay 1036</p>
+        <span><a href="mailto:agencialibres@elanelsys.com">agencialibres@elanelsys.com</a></span>
+      </div>
 
-        <div class="footer__logo">
-            <img src="{% static 'images/icons/icono_arreglado_blanco.png' %}" alt="">
-        </div>
+      <!-- Concordia -->
+      <div class="footer__agency-card">
+        <h5>Concordia, Entre Ríos</h5>
+        <p>Mitre 466</p>
+        <span><a href="mailto:agenciaconcordia@elanelsys.com">agenciaconcordia@elanelsys.com</a></span>
+      </div>
 
+      <!-- Formosa -->
+      <div class="footer__agency-card">
+        <h5>Formosa</h5>
+        <p>Maipú 111</p>
+        <span><a href="mailto:agenciaformosa@elanelsys.com">agenciaformosa@elanelsys.com</a></span>
+      </div>
+
+      <!-- Santiago del Estero -->
+      <div class="footer__agency-card">
+        <h5>Santiago del Estero</h5>
+        <p>24 de Septiembre 579</p>
+        <span><a href="mailto:agenciasantiago@elanelsys.com">agenciasantiago@elanelsys.com</a></span>
+      </div>
+
+      <!-- Oberá -->
+      <div class="footer__agency-card">
+        <h5>Oberá, Misiones</h5>
+        <p>Mendoza 46</p>
+        <span><a href="mailto:agenciaobera@elanelsys.com">agenciaobera@elanelsys.com</a></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fila Inferior: Copyright y Políticas -->
+  <div class="footer__bottom">
+    <p>&copy; {% now "Y" %} Elanel Servicios S.R.L. Todos los derechos reservados. Confidencial - Uso interno.</p>
+    <a href="{% url 'privacidad' %}">Políticas de Privacidad</a>
+  </div>
 </footer>
