@@ -70,25 +70,7 @@
     <h6>¡Escribenos!</h6>
   </a>
 
-  <div class="wrapper_adjudicado">
-    <button id="back">
-      <img src="{% static 'images/icons/next.svg' %}" alt="">
-    </button>
-    <div class="slider_adjudicado">
 
-      {% for item in nums_adjudicados %}
-      <div class="item_adjudicado2">
-        <h3>N° Adjudicado</h3>
-        <h1>{{item.numero}}</h1>
-        <h2>{{item.mes}}</h2>
-      </div>
-      {% endfor %}
-
-    </div>
-    <button id="forward">
-      <img src="{% static 'images/icons/next.svg' %}" alt="">
-    </button>
-  </div>
 
   <section class="categoria">
     <h2>¡Elige lo que deseas!</h2>
@@ -756,7 +738,7 @@
 {% comment %}
 <script src="{% static 'js/slider_posts.js' %}"></script> {% endcomment %}
 <script src="{% static 'js/silderNew.js' %}"></script>
-<script src="{% static 'js/slider_adjudicados.js' %}"></script>
+
 <script src="{% static 'js/header.js' %}"></script>
 <script src="{% static 'js/slider_motos.js' %}"></script>
 <script src="{% static 'js/menu_hamburguer.js' %}"></script>
