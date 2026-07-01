@@ -359,3 +359,65 @@
         padding: 10px 20px;
     }
 }
+
+/* ==========================================================================
+   SECCION ADJUDICADOS RESPONSIVA
+   ========================================================================== */
+@media screen and (max-width: 1024px) {
+    .adjudicados-showcase {
+        padding: 6rem 1.5rem;
+    }
+    .adjudicado-card {
+        flex: 0 0 calc((100% - 30px) / 2) !important;
+        min-width: calc((100% - 30px) / 2) !important;
+        max-width: calc((100% - 30px) / 2) !important;
+    }
+    .adjudicados-title {
+        font-size: 3rem;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .adjudicados-showcase {
+        padding: 5rem 1rem;
+    }
+    .adjudicados-header {
+        margin-bottom: 3rem;
+    }
+    .adjudicados-title {
+        font-size: 2.4rem;
+    }
+    .adjudicados-subtitle {
+        font-size: 1.4rem;
+    }
+    .adjudicado-card {
+        flex: 0 0 100% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+    }
+    .adjudicados-carousel-container {
+        gap: 1rem;
+    }
+    .adjudicados-arrow {
+        width: 40px;
+        height: 40px;
+    }
+    .adjudicado-img-container {
+        height: 200px;
+    }
+    .adjudicado-info {
+        padding: 2rem;
+    }
+    .adjudicado-name {
+        font-size: 1.8rem;
+    }
+    .adjudicados-cta {
+        margin-top: 3.5rem;
+    }
+    .adjudicados-btn {
+        padding: 1.2rem 3rem;
+        font-size: 1.4rem;
+        width: 90%;
+        text-align: center;
+    }
+}

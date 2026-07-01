@@ -5,7 +5,7 @@
   --transition_moto: transform 1s;
 
   --bgColor: #12131b;
-  --secondBgColor: #e8e8e8;
+  --secondBgColor: #d9dbe3;
   --pColor: #212436;
   --sColor: #027cf1;
   --tColor: #02e3f5;
@@ -1196,7 +1196,8 @@ img.active {
   justify-content: space-evenly;
   width: 100%;
   overflow: hidden;
-  position: relative;
+  padding: 4rem 2rem;
+  box-sizing: border-box;
 }
 
 .style__palabra__eslogan {
@@ -1207,80 +1208,83 @@ img.active {
   position: absolute;
   width: 100%;
   background: linear-gradient(90deg,
-      rgba(33, 36, 54, 1) 0%,
-      rgba(33, 36, 54, 1) 20%,
-      rgb(27, 36, 88) 100%);
-  height: 20rem;
+      rgba(20, 22, 38, 1) 0%,
+      rgba(15, 17, 28, 1) 50%,
+      rgba(33, 36, 54, 1) 100%);
+  height: 24rem;
   z-index: -1;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .formulario__eslogan {
   position: relative;
-  font-family: babapro;
-  font-size: 3.6rem;
+  font-family: babapro, sans-serif;
+  font-size: 4rem;
   width: 40%;
   max-width: 550px;
   text-align: center;
-  color: #eee;
+  color: #ffffff;
+  line-height: 1.3;
 }
 
 .formulario h5 {
-  /* width: 20%; */
-  font-family: raleway-semibold;
-  font-weight: 500;
-  font-size: 1.8rem;
+  font-family: raleway-bold, sans-serif;
+  font-weight: 700;
+  font-size: 2.2rem;
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 2.5rem;
+  color: #ffffff;
+  width: 100%;
 }
 
 .formulario form {
-  background-color: var(--secondBgColor);
+  background-color: #1c1f30; /* Sleek dark card container matching the brands premium design */
+  border: 1px solid rgba(255, 255, 255, 0.08);
   margin-right: 1rem;
   min-width: 300px;
-  box-shadow: 0px 0px 20px 2px #027cf130;
-  /* min-height: 25rem; */
+  box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.4);
   padding: 4rem;
-  border-radius: 6px;
+  border-radius: 16px;
   max-width: 600px;
-  border-color: transparent;
   display: flex;
   flex-wrap: wrap;
   column-gap: 4%;
-  row-gap: 1.3rem;
+  row-gap: 2rem;
   width: 50%;
+  box-sizing: border-box;
 }
 
 .formulario form>div {
   position: relative;
   padding: 0.3rem 0;
-  /* overflow: hidden; */
-
-
 }
-
 
 .formulario form>div>input {
   font-weight: 600;
   font-size: 1.6rem;
-  border-color: transparent;
-
-  font-family: raleway;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  font-family: raleway, sans-serif;
   outline: none;
-  /* padding: .8rem; */
-  height: 3.4rem;
+  height: 4rem;
   padding-left: 1.5rem;
-  width: calc(100% - 1.5rem);
+  width: 100%;
   border-radius: 8px;
-  box-shadow: 0px 0px 10px 0px #23252647;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
 }
 
+.formulario form>div>input:focus {
+  border: solid 1px var(--sColor);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 12px rgba(2, 124, 241, 0.3);
+}
 
 .container_objetivo,
 .container_email {
   min-width: 100%;
 }
-
-
 
 .container_nombre_completo,
 .container_num_telefono,
@@ -1289,9 +1293,8 @@ img.active {
   min-width: 48%;
 }
 
-
 .formulario form #email.invalid {
-  border: 1px red solid;
+  border: 1px red solid !important;
 }
 
 .formulario form #email.invalid~p {
@@ -1301,52 +1304,52 @@ img.active {
 .formulario form>div>p {
   display: none;
   position: absolute;
-  font-family: raleway;
+  font-family: raleway, sans-serif;
   font-size: 1.2rem;
-  color: red;
-  bottom: -1.3rem;
+  color: #ff4a4a;
+  bottom: -1.8rem;
   left: .4rem;
 }
 
 .formulario form #form_product_button {
   grid-area: form_product_button;
-  border-color: transparent;
-  width: 30%;
-  font-weight: 600;
-  background-color: #1c2457;
+  border: 1px solid var(--sColor);
+  width: 35%;
+  min-width: 120px;
+  font-weight: 700;
+  font-family: raleway-bold, sans-serif;
+  background-color: #ffffff;
   font-size: 1.7rem;
-  color: #ece7e7;
+  color: var(--bgColor);
   cursor: pointer;
-  padding: .7rem 0;
+  padding: 1rem 0;
   border-radius: 8px;
   position: relative;
+  transition: all 0.3s ease;
+  box-shadow: none;
+  box-sizing: border-box;
 }
 
 .formulario form #form_product_button.desactive {
-  background-color: #111842bd;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.3);
   pointer-events: none;
 }
 
 .formulario form #form_product_button:hover {
-  transition: all 0.4s ease;
-  background-color: #fff;
-  color: #12131b;
-  box-shadow: 0px 0px 20px 2px #027cf130;
-  border-color: #027df15d;
+  background-color: var(--sColor);
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0px 0px 12px 3px rgba(42, 135, 224, 0.7);
+  transform: translateY(-2px);
 }
-
-
-
 
 .formulario form>div>input::placeholder {
   font-weight: 500;
   font-size: 1.5rem;
-  border-color: #12131b37;
-  font-family: raleway;
-}
-
-.formulario form>div>input:focus {
-  border: solid 1px var(--sColor);
+  color: rgba(255, 255, 255, 0.4);
+  font-family: raleway, sans-serif;
 }
 
 /* --------------------------------------SECCION DE UBICACION-------------------------------------- */
@@ -1864,4 +1867,229 @@ img.active {
   100% {
     transform: rotate(360deg);
   }
+}
+
+/* ==========================================================================
+   SECCION ADJUDICADOS SHOWCASE
+   ========================================================================== */
+.adjudicados-showcase {
+  background: transparent;
+  padding: 8rem 2rem;
+  overflow: hidden;
+}
+
+.adjudicados-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 5rem auto;
+}
+
+.adjudicados-title {
+  font-family: raleway-bold, sans-serif;
+  font-size: 3.6rem;
+  color: #212436; /* Dark brand color for high contrast against light grey background */
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.adjudicados-subtitle {
+  font-family: raleway, sans-serif;
+  font-size: 1.6rem;
+  color: #555866; /* Readable dark grey for subtitle */
+  line-height: 1.6;
+}
+
+.adjudicados-carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1240px;
+  margin: 0 auto;
+  position: relative;
+  gap: 2rem;
+}
+
+.adjudicados-slider-wrapper {
+  overflow: hidden;
+  width: 100%;
+  padding: 5.5rem 0.5rem;
+}
+
+.adjudicados-track {
+  display: flex;
+  gap: 30px;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+.adjudicado-card {
+  flex: 0 0 calc((100% - 60px) / 3); /* 3 cards per view on desktop */
+  min-width: calc((100% - 60px) / 3);
+  max-width: calc((100% - 60px) / 3);
+  flex-shrink: 0 !important; /* prevent cards from squeezing inside flex track */
+  background: #212436 !important; /* Solid dark background to ensure perfect text readability and contrast */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.adjudicado-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(37, 211, 102, 0.4);
+  box-shadow: 0 20px 40px rgba(37, 211, 102, 0.15);
+}
+
+.adjudicado-img-container {
+  position: relative;
+  width: 100%;
+  height: 230px;
+  overflow: hidden;
+}
+
+.adjudicado-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.adjudicado-card:hover .adjudicado-img-container img {
+  transform: scale(1.08);
+}
+
+.adjudicado-badge {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  padding: 0.6rem 1.4rem;
+  border-radius: 50px;
+  font-family: raleway-bold, sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+.adjudicado-info {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex-grow: 1;
+}
+
+.adjudicado-name {
+  font-family: raleway-bold, sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.adjudicado-detail {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  font-family: raleway, sans-serif;
+  font-size: 1.4rem;
+  color: #a0a4b8;
+}
+
+.adjudicado-detail .icon-svg {
+  width: 1.8rem;
+  height: 1.8rem;
+  color: #007bff;
+  opacity: 0.85;
+  flex-shrink: 0;
+}
+
+.adjudicado-detail.font-highlight {
+  color: #ffffff;
+  font-family: raleway-semibold, sans-serif;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.adjudicado-detail.font-highlight .icon-svg {
+  color: #10b981;
+}
+
+.adjudicados-arrow {
+  background: #212436 !important; /* match the card color */
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important; /* white arrow */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.adjudicados-arrow svg {
+  width: 24px;
+  height: 24px;
+}
+
+.adjudicados-arrow:hover {
+  background: #2e324d !important;
+  color: #ffffff !important;
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+  border-color: rgba(255, 255, 255, 0.22) !important;
+}
+
+.adjudicados-arrow:active {
+  transform: scale(0.95);
+}
+
+.adjudicados-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+}
+
+.adjudicados-btn {
+  text-align: center;
+  min-width: 120px;
+  cursor: pointer;
+  color: var(--bgColor) !important;
+  border-radius: 7px;
+  border: 1px solid var(--sColor);
+  outline: none;
+  background-color: #fff !important;
+  font-family: raleway-bold, sans-serif;
+  font-weight: 700;
+  font-size: 1.6rem;
+  padding: 1.5rem 4rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: none;
+  display: inline-block;
+}
+
+.adjudicados-btn:hover {
+  background-color: var(--sColor) !important;
+  color: #fff !important;
+  border-color: transparent !important;
+  box-shadow: 0px 0px 10px 3px #2a87e0c2 !important;
+  transform: translateY(-2px);
+}
+
+.adjudicados-btn:active {
+  transform: scale(0.98);
 }
