@@ -16,76 +16,116 @@
   </head>
   <body>
     {% include 'nav.html' %}
+    <div class="espace_header_categories"></div>
+
+    <div class="categorias__header">
+      <h1>Categorías</h1>
+      <p>Descubrí todos los planes y soluciones que tenemos para ofrecerte</p>
+    </div>
 
     <section class="categorias">
-      <article class="motos">
-        <figure>
-          <img src="{% static 'images/icons/moto_icon.png' %}" alt="" />
-        </figure>
-        <a href="{% url 'market:motos' %}"><h1>Motos</h1></a>
-        <ul>
-          <li>
-            <a href="" id="moto_yamaha"><h2>Yamaha</h2></a>
-          </li>
-          <li>
-            <a href="" id="moto_honda"><h2>Honda</h2></a>
-          </li>
-          <li>
-            <a href="" id="moto_motomel"><h2>Motomel</h2></a>
-          </li>
-          <li>
-            <a href="" id="moto_rouser"><h2>Rouser</h2></a>
-          </li>
-          <li>
-            <a href="{% url 'market:motos' %}"><h2>Ver más...</h2> </a>
-          </li>
-        </ul>
+      <article class="motos motos__diagonal-card">
+        <!-- Nuevas -->
+        <a href="{% url 'market:motos' %}?status=False" class="motos__half motos__half--nuevas">
+          <div class="motos__bg" style="background-image: url('{% static 'images/moto__example3.png' %}');"></div>
+          <div class="motos__overlay"></div>
+          <div class="motos__corner-title corner--left">Nuevos</div>
+        </a>
+
+        <!-- Usadas -->
+        <a href="{% url 'market:motos' %}?status=True" class="motos__half motos__half--usadas">
+          <div class="motos__bg" style="background-image: url('{% static 'images/moto_example2.png' %}');"></div>
+          <div class="motos__overlay"></div>
+          <div class="motos__corner-title corner--right">Usados</div>
+        </a>
+
+        <!-- Centered button -->
+        <a href="{% url 'market:motos' %}" class="motos__center-badge">Ver todos</a>
       </article>
 
-      <article class="electrodomesticos">
-        <figure>
-          <img
-            src="{% static 'images/icons/icon_electrodo_relleno.png' %}"
-            alt=""
-          />
-        </figure>
-        <a href="{% url 'market:electrodomesticos' %}"
-          ><h1>Electrodomesticos</h1></a
-        >
-        <ul>
-          <li>
-            <a href="" id="combo_cocina"><h2>Combo cocina</h2></a>
-          </li>
-          <li>
-            <a href="" id="combo_gamer"><h2>Combo gamer</h2></a>
-          </li>
-          <li>
-            <a href="" id="combo_musica"><h2>Combo música</h2></a>
-          </li>
-          <li>
-            <a href="" id="combo_tv"><h2>Combo TV</h2></a>
-          </li>
-          <li>
-            <a href="{% url 'market:motos' %}"><h2>Ver más...</h2> </a>
-          </li>
-        </ul>
+      <article class="electrodomesticos electrodomesticos__diagonal-card">
+        <!-- Info Left -->
+        <a href="{% url 'market:electrodomesticos' %}" class="electrodomesticos__half electrodomesticos__half--info">
+          <div class="electrodomesticos__info-content">
+            <h1>Electrodomésticos</h1>
+            <p>Equipá tu hogar con la mejor tecnología y financiación a tu medida.</p>
+            <div class="electrodomesticos__badges">
+              <span class="electro__badge">Cocina</span>
+              <span class="electro__badge">Gamer</span>
+              <span class="electro__badge">Música</span>
+              <span class="electro__badge">Televisores</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Image Right -->
+        <a href="{% url 'market:electrodomesticos' %}" class="electrodomesticos__half electrodomesticos__half--image">
+          <div class="electrodomesticos__bg" style="background-image: url('{% static 'images/refri.png' %}');"></div>
+          <div class="electrodomesticos__overlay"></div>
+        </a>
+
+        <!-- Bottom right button -->
+        <a href="{% url 'market:electrodomesticos' %}" class="electro__btn-link">Ver todos</a>
       </article>
 
-      <article class="soluciones_dinerarias">
-        <figure>
-          <img
-            src="{% static 'images/icons/icon_solu_dineraria.png' %}"
-            alt=""
-          />
-        </figure>
-        <a href="{% url 'market:soluciones_dinerarias' %}"
-          ><h1>Soluciones Dinerarias</h1></a
-        >
+      <article class="soluciones_dinerarias soluciones__diagonal-card">
+        <!-- Image Left -->
+        <a href="{% url 'market:soluciones_dinerarias' %}" class="soluciones__half soluciones__half--image">
+          <div class="soluciones__bg" style="background-image: url('{% static 'images/dinero.png' %}');"></div>
+          <div class="soluciones__overlay"></div>
+        </a>
+
+        <!-- Info Right -->
+        <a href="{% url 'market:soluciones_dinerarias' %}" class="soluciones__half soluciones__half--info">
+          <div class="soluciones__info-content">
+            <h1>Soluciones Dinerarias</h1>
+            <p>Planes de capitalización y préstamos programados diseñados a tu medida.</p>
+            <div class="soluciones__limit-badge">De 1 a 10 Millones</div>
+          </div>
+        </a>
+
+        <!-- Bottom left button -->
+        <a href="{% url 'market:soluciones_dinerarias' %}" class="solu__btn-link">Ver todos</a>
       </article>
 
     </section>
     <script src="{% static 'js/header.js' %}"></script>
     <script src="{% static 'js/menu_hamburguer.js' %}"></script>
     <script src="{% static 'js/redirect_alternative.js' %}"></script>
+
+    <script>
+      // GSAP Entrance Animations
+      document.addEventListener('DOMContentLoaded', () => {
+        if (typeof gsap !== 'undefined') {
+          const tl = gsap.timeline();
+
+          // Hide elements initially to avoid FOUC (flash of unstyled content)
+          gsap.set(['.categorias__header h1', '.categorias__header p', '.categorias article'], { opacity: 0 });
+
+          tl.to('.categorias__header h1', {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            startAt: { y: -20 },
+            ease: 'power3.out'
+          })
+          .to('.categorias__header p', {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            startAt: { y: -10 },
+            ease: 'power3.out'
+          }, '-=0.4')
+          .to('.categorias article', {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.15,
+            startAt: { y: 40 },
+            ease: 'power3.out'
+          }, '-=0.3');
+        }
+      });
+    </script>
   </body>
 </html>

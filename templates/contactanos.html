@@ -25,121 +25,214 @@
     <section class="wrapper_comunicate">
       <article class="contactanos">
         <h1>Comunicate</h1>
-        <div class="locales">
-
-          <div id="resistencia" class="local">
-            <div class="text_provincia_container">
-              <h1>Casa Central - Resistencia, Chaco</h1>
-            </div>
-            <div class="secciones">
-              <ol>
-                <li class="sector">
-                  <h3>Administracion</h3>
-                  <div class="sector_info">
-                    <h5 class="number_phone">362 517-0890</h5>
-                    <h5 class="correo">atencionaclientes@elanelsys.com</h5>
-                  </div>
-                </li>
-                <li class="sector">
-                  <h3>Ventas</h3>
-                  <div class="sector_info">
-                    <h5 class="correo">ventas@elanelsys.com</h5>
-                  </div>
-                </li>
-                <li class="sector">
-                  <h3>Cobranzas</h3>
-                  <div class="sector_info">
-                    <h5 class="correo">cobranzas@elanelsys.com</h5>
-                  </div>
-                </li>
-              </ol>
-            </div>
+        
+        <div class="contactanos__container">
+          <div class="branches__selector">
+            <button class="branch__tab active" onclick="showBranch(this, 'resistencia')">Resistencia</button>
+            <button class="branch__tab" onclick="showBranch(this, 'corrientes_capital')">Corrientes</button>
+            <button class="branch__tab" onclick="showBranch(this, 'saenz_penia')">Sáenz Peña</button>
+            <button class="branch__tab" onclick="showBranch(this, 'posadas')">Posadas</button>
+            <button class="branch__tab" onclick="showBranch(this, 'goya')">Goya</button>
+            <button class="branch__tab" onclick="showBranch(this, 'paso_de_los_libres')">Paso de los Libres</button>
+            <button class="branch__tab" onclick="showBranch(this, 'concordia')">Concordia</button>
+            <button class="branch__tab" onclick="showBranch(this, 'formosa')">Formosa</button>
+            <button class="branch__tab" onclick="showBranch(this, 'santiago_del_estero')">Santiago del Estero</button>
+            <button class="branch__tab" onclick="showBranch(this, 'obera')">Oberá</button>
           </div>
 
-          <div id="corrientes_capital" class="local">
-            <div class="text_provincia_container">
-              <h1>Corrientes Capital</h1>
+          <div class="locales">
+            <div id="resistencia" class="local active">
+              <div class="text_provincia_container">
+                <h1>Casa Central - Resistencia, Chaco</h1>
+              </div>
+              <div class="secciones">
+                <ol>
+                  <li class="sector">
+                    <h3>Administracion</h3>
+                    <div class="sector_info">
+                      <h5 class="number_phone">362 517-0890</h5>
+                      <h5 class="correo">atencionaclientes@elanelsys.com</h5>
+                    </div>
+                  </li>
+                  <li class="sector">
+                    <h3>Ventas</h3>
+                    <div class="sector_info">
+                      <h5 class="correo">ventas@elanelsys.com</h5>
+                    </div>
+                  </li>
+                  <li class="sector">
+                    <h3>Cobranzas</h3>
+                    <div class="sector_info">
+                      <h5 class="correo">cobranzas@elanelsys.com</h5>
+                    </div>
+                  </li>
+                </ol>
+              </div>
             </div>
-            <div class="secciones">
-              <ol>
-                <li class="sector">
-                  <h3>Telefono:</h3>
-                  <div class="sector_info">
-                    <h5 class="number_phone">379 516-1905</h5>
-                  </div>
-                </li>
-                <li class="sector">
-                  <h3>Correo electronico</h3>
-                  <div class="sector_info">
-                    <h5 class="correo">agenciacorrientes@elanelsys.com</h5>
-                  </div>
-                </li>
-              </ol>
+
+            <div id="corrientes_capital" class="local">
+              <div class="text_provincia_container">
+                <h1>Corrientes Capital</h1>
+              </div>
+              <div class="secciones">
+                <ol>
+                  <li class="sector">
+                    <h3>Telefono:</h3>
+                    <div class="sector_info">
+                      <h5 class="number_phone">379 516-1905</h5>
+                    </div>
+                  </li>
+                  <li class="sector">
+                    <h3>Correo electronico</h3>
+                    <div class="sector_info">
+                      <h5 class="correo">agenciacorrientes@elanelsys.com</h5>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+            </div>
+
+            <div id="saenz_penia" class="local">
+              <div class="text_provincia_container">
+                <h1>Saenz Peña, Chaco</h1>
+              </div>
+              <div class="secciones">
+                <ol>
+                  <li class="sector">
+                    <h3>Telefono:</h3>
+                    <div class="sector_info">
+                      <h5 class="number_phone">364 491-4025</h5>
+                    </div>
+                  </li>
+                  <li class="sector">
+                    <h3>Correo electronico</h3>
+                    <div class="sector_info">
+                      <h5 class="correo">agenciasaenzpenia@elanelsys.com</h5>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+            </div>
+
+            <div id="posadas" class="local">
+              <div class="text_provincia_container">
+                <h1>Posadas, Misiones</h1>
+              </div>
+              <div class="secciones">
+                <ol>
+                  <li class="sector">
+                    <h3>Telefono:</h3>
+                    <div class="sector_info">
+                      <h5 class="number_phone">3765 10-4719</h5>
+                    </div>
+                  </li>
+                  <li class="sector">
+                    <h3>Correo electronico</h3>
+                    <div class="sector_info">
+                      <h5 class="correo">agenciaposadas@elanelsys.com</h5>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+            </div>
+
+            <div id="goya" class="local">
+              <div class="text_provincia_container">
+                <h1>Goya, Corrientes</h1>
+              </div>
+              <div class="secciones">
+                <ol>
+                  <li class="sector">
+                    <h3>Correo electronico</h3>
+                    <div class="sector_info">
+                      <h5 class="correo">agenciagoya@elanelsys.com</h5>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+            </div>
+
+            <div id="paso_de_los_libres" class="local">
+              <div class="text_provincia_container">
+                <h1>Paso de los Libres, Corrientes</h1>
+              </div>
+              <div class="secciones">
+                <ol>
+                  <li class="sector">
+                    <h3>Correo electronico</h3>
+                    <div class="sector_info">
+                      <h5 class="correo">agencialibres@elanelsys.com</h5>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+            </div>
+
+            <div id="concordia" class="local">
+              <div class="text_provincia_container">
+                <h1>Concordia, Entre Ríos</h1>
+              </div>
+              <div class="secciones">
+                <ol>
+                  <li class="sector">
+                    <h3>Correo electronico</h3>
+                    <div class="sector_info">
+                      <h5 class="correo">agenciaconcordia@elanelsys.com</h5>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+            </div>
+
+            <div id="formosa" class="local">
+              <div class="text_provincia_container">
+                <h1>Formosa</h1>
+              </div>
+              <div class="secciones">
+                <ol>
+                  <li class="sector">
+                    <h3>Correo electronico</h3>
+                    <div class="sector_info">
+                      <h5 class="correo">agenciaformosa@elanelsys.com</h5>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+            </div>
+
+            <div id="santiago_del_estero" class="local">
+              <div class="text_provincia_container">
+                <h1>Santiago del Estero</h1>
+              </div>
+              <div class="secciones">
+                <ol>
+                  <li class="sector">
+                    <h3>Correo electronico</h3>
+                    <div class="sector_info">
+                      <h5 class="correo">agenciasantiago@elanelsys.com</h5>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+            </div>
+
+            <div id="obera" class="local">
+              <div class="text_provincia_container">
+                <h1>Oberá, Misiones</h1>
+              </div>
+              <div class="secciones">
+                <ol>
+                  <li class="sector">
+                    <h3>Correo electronico</h3>
+                    <div class="sector_info">
+                      <h5 class="correo">agenciaobera@elanelsys.com</h5>
+                    </div>
+                  </li>
+                </ol>
+              </div>
             </div>
           </div>
-
-          <div id="saenz_penia" class="local">
-            <div class="text_provincia_container">
-              <h1>Saenz Peña, Chaco</h1>
-            </div>
-            <div class="secciones">
-              <ol>
-                <li class="sector">
-                  <h3>Telefono:</h3>
-                  <div class="sector_info">
-                    <h5 class="number_phone">364 491-4025</h5>
-                  </div>
-                </li>
-                <li class="sector">
-                  <h3>Correo electronico</h3>
-                  <div class="sector_info">
-                    <h5 class="correo">agenciasaenzpenia@elanelsys.com</h5>
-                  </div>
-                </li>
-              </ol>
-            </div>
-          </div>
-
-          <div id="posadas" class="local">
-            <div class="text_provincia_container">
-              <h1>Posadas, Misiones</h1>
-            </div>
-            <div class="secciones">
-              <ol>
-                <li class="sector">
-                  <h3>Telefono:</h3>
-                  <div class="sector_info">
-                    <h5 class="number_phone">3765 10-4719</h5>
-                  </div>
-                </li>
-                <li class="sector">
-                  <h3>Correo electronico</h3>
-                  <div class="sector_info">
-                    <h5 class="correo">agenciaposadas@elanelsys.com</h5>
-                  </div>
-                </li>
-              </ol>
-            </div>
-          </div>
-
-          <div id="goya" class="local">
-            <div class="text_provincia_container">
-              <h1>Goya, Corrientes</h1>
-            </div>
-            <div class="secciones">
-              <ol>
-                <li class="sector">
-                  <h3>Correo electronico</h3>
-                  <div class="sector_info">
-                    <h5 class="correo">agenciagoya@elanelsys.com</h5>
-                  </div>
-                </li>
-              </ol>
-            </div>
-          </div>
-
         </div>
-  
       </article>
      {% comment %} <article class="preguntas_frecuentes">
         <h1>Preguntas Frecuentes</h1>
@@ -191,6 +284,21 @@
         </ul>
       </article>{% endcomment %}
     </section>
+    <script>
+      function showBranch(btn, branchId) {
+        document.querySelectorAll('.contactanos__container .local').forEach(el => {
+          el.classList.remove('active');
+        });
+        document.querySelectorAll('.branch__tab').forEach(el => {
+          el.classList.remove('active');
+        });
+        const selectedLocal = document.getElementById(branchId);
+        if (selectedLocal) {
+          selectedLocal.classList.add('active');
+        }
+        btn.classList.add('active');
+      }
+    </script>
     <script src="{% static 'js/header.js' %}"></script>
     <script src="{% static 'js/preguntas_frecuentes.js' %}"></script>
     <script src="{% static 'js/menu_hamburguer.js' %}"></script>  

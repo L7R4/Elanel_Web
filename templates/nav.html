@@ -5,7 +5,9 @@
       <a class="logo_container" href="{% url 'index' %}">
         <img
           src="{% static 'images/icons/icono_header_blanco_arreglado.png' %}"
-          alt=""
+          data-default-logo="{% static 'images/icons/icono_header_blanco_arreglado.png' %}"
+          data-scrolled-logo="{% static 'images/icons/icon_invertido_sin_fondo_fixed.png' %}"
+          alt="Logo"
           class="logo"
         />
       </a>
@@ -109,3 +111,174 @@
     }
   }
 </style>
+
+<!-- GSAP & Lenis CDN Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+
+<script>
+  // Initialize Lenis Smooth Scroll
+  const lenis = new Lenis({
+    duration: 1.1,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+    smoothTouch: false,
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+
+  // GSAP Category Dropdown Hover Animation
+  document.addEventListener('DOMContentLoaded', () => {
+    const navbar = document.querySelector('.header__nav');
+    const menuTrigger = document.querySelector('.items__menu');
+    const dropdownMenu = document.querySelector('.menu_categoria');
+    const arrow = document.querySelector('.items__menu img');
+
+    // Toggle scrolled state on navbar for pill effect
+    if (navbar) {
+      const logoImg = document.querySelector('.logo_container .logo');
+      const defaultLogo = logoImg ? logoImg.getAttribute('data-default-logo') : '';
+      const scrolledLogo = logoImg ? logoImg.getAttribute('data-scrolled-logo') : '';
+
+      const handleScroll = () => {
+        const isDesktop = window.innerWidth > 940;
+        const forceCompact = window.innerWidth >= 1024 && window.innerWidth <= 1440;
+
+        if (forceCompact) {
+          if (logoImg && scrolledLogo && logoImg.src !== scrolledLogo) {
+            logoImg.src = scrolledLogo;
+          }
+        } else {
+          if (window.scrollY > 50 && isDesktop) {
+            if (logoImg && scrolledLogo && logoImg.src !== scrolledLogo) {
+              logoImg.src = scrolledLogo;
+            }
+          } else {
+            if (logoImg && defaultLogo && logoImg.src !== defaultLogo) {
+              logoImg.src = defaultLogo;
+            }
+          }
+        }
+
+        // Handle scrolled class (only active on desktop)
+        if (window.scrollY > 50 && isDesktop) {
+          navbar.classList.add('is-scrolled');
+        } else {
+          navbar.classList.remove('is-scrolled');
+        }
+      };
+      window.addEventListener('scroll', handleScroll);
+      window.addEventListener('resize', handleScroll);
+      handleScroll(); // Run once on init
+    }
+
+    if (menuTrigger && dropdownMenu) {
+      // Set initial styles for GSAP animation
+      gsap.set(dropdownMenu, { y: 12, opacity: 0, autoAlpha: 0 });
+
+      menuTrigger.addEventListener('mouseenter', () => {
+        gsap.to(dropdownMenu, {
+          y: 0,
+          opacity: 1,
+          autoAlpha: 1,
+          duration: 0.35,
+          ease: 'power3.out',
+          overwrite: 'auto'
+        });
+        if (arrow) {
+          gsap.to(arrow, { rotate: 180, duration: 0.3, ease: 'power2.out' });
+        }
+      });
+
+      menuTrigger.addEventListener('mouseleave', () => {
+        gsap.to(dropdownMenu, {
+          y: 12,
+          opacity: 0,
+          autoAlpha: 0,
+          duration: 0.25,
+          ease: 'power3.in',
+          overwrite: 'auto'
+        });
+        if (arrow) {
+          gsap.to(arrow, { rotate: 0, duration: 0.3, ease: 'power2.out' });
+        }
+      });
+    }
+
+    // GSAP Mobile Menu Animations
+    const checkBtn = document.getElementById('check');
+    const navItems = document.querySelector('.nav__items');
+    const menuLinks = document.querySelectorAll('.nav__items > li');
+
+    if (checkBtn && navItems) {
+      const isMobile = () => window.innerWidth <= 940;
+
+      // Set initial state on resize / load if mobile
+      const checkNavInit = () => {
+        if (isMobile()) {
+          navItems.style.transition = 'none';
+          if (!checkBtn.checked) {
+            gsap.set(navItems, { y: '-100%', opacity: 0, autoAlpha: 0 });
+            gsap.set(menuLinks, { opacity: 0, y: 15 });
+          } else {
+            gsap.set(navItems, { y: '0%', opacity: 1, autoAlpha: 1 });
+            gsap.set(menuLinks, { opacity: 1, y: 0 });
+          }
+        } else {
+          // Reset desktop styles
+          gsap.set(navItems, { clearProps: 'all' });
+          gsap.set(menuLinks, { clearProps: 'all' });
+        }
+      };
+
+      window.addEventListener('resize', checkNavInit);
+      checkNavInit();
+
+      checkBtn.addEventListener('change', () => {
+        if (isMobile()) {
+          navItems.style.transition = 'none';
+
+          if (checkBtn.checked) {
+            gsap.killTweensOf([navItems, menuLinks]);
+            
+            gsap.to(navItems, {
+              y: '0%',
+              opacity: 1,
+              autoAlpha: 1,
+              duration: 0.4,
+              ease: 'power3.out'
+            });
+
+            gsap.fromTo(menuLinks, 
+              { opacity: 0, y: 15 },
+              { opacity: 1, y: 0, duration: 0.3, stagger: 0.05, ease: 'power2.out', delay: 0.1 }
+            );
+          } else {
+            gsap.killTweensOf([navItems, menuLinks]);
+
+            gsap.to(menuLinks, {
+              opacity: 0,
+              y: -10,
+              duration: 0.2,
+              stagger: 0.03,
+              ease: 'power2.in'
+            });
+
+            gsap.to(navItems, {
+              y: '-100%',
+              opacity: 0,
+              autoAlpha: 0,
+              duration: 0.35,
+              ease: 'power3.in',
+              delay: 0.05
+            });
+          }
+        }
+      });
+    }
+  });
+</script>

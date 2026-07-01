@@ -156,11 +156,11 @@
         </div>
       </div> {% endcomment %}
       <div class="beneficios__table">
-        <article class="beneficios__table__item">
+        <article class="beneficios__table__item" data-service="Servicio Mecanico Básico">
           <h2 class="beneficios__table__item__title">
             Servicio Mecanico Básico
           </h2>
-          <h2 class="beneficios__table__item__price">
+          <h2 class="beneficios__table__item__price" style="display: none;">
             ¡Seleccione el producto para ver su precio!
           </h2>
           <div class="beneficios__table__item__products">
@@ -178,20 +178,26 @@
               {% endfor %}
             </ul>
           </div>
+          
+          <a href="#" target="_blank" class="beneficios__whatsapp-btn disabled">
+            <img src="{% static 'images/icons/whatsapp_icon.svg' %}" alt="WhatsApp" style="width:16px; height:16px; margin-right:8px; vertical-align:middle; filter:brightness(0) invert(1);" />
+            <span>Consultar por WhatsApp</span>
+          </a>
+
           <ol class="beneficios__table__servicios_list">
             <li>
               <p>2 Servicios de Asistencia Técnica o Mecánica por año.</p>
             </li>
             <li>
-              <p>Valor del servicio a reconocer hasta $ 3000 cada uno.</p>
+              <p>Valor de cobertura a reconocer en cada servicio.</p>
             </li>
           </ol>
         </article>
-        <article class="beneficios__table__item">
+        <article class="beneficios__table__item" data-service="Servicio Mecanico Estándar">
           <h2 class="beneficios__table__item__title">
             Servicio Mecanico Estándar
           </h2>
-          <h2 class="beneficios__table__item__price">
+          <h2 class="beneficios__table__item__price" style="display: none;">
             ¡Seleccione el producto para ver su precio!
           </h2>
 
@@ -210,20 +216,26 @@
               {% endfor %}
             </ul>
           </div>
+
+          <a href="#" target="_blank" class="beneficios__whatsapp-btn disabled">
+            <img src="{% static 'images/icons/whatsapp_icon.svg' %}" alt="WhatsApp" style="width:16px; height:16px; margin-right:8px; vertical-align:middle; filter:brightness(0) invert(1);" />
+            <span>Consultar por WhatsApp</span>
+          </a>
+
           <ol class="beneficios__table__servicios_list">
             <li>
               <p>3 Servicios de Asistencia Técnica o Mecánica por año.</p>
             </li>
             <li>
-              <p>Valor del servicio a reconocer hasta $ 4000 cada uno.</p>
+              <p>Valor de cobertura a reconocer en cada servicio.</p>
             </li>
           </ol>
         </article>
-        <article class="beneficios__table__item">
+        <article class="beneficios__table__item" data-service="Servicio Mecanico Premium">
           <h2 class="beneficios__table__item__title">
             Servicio Mecanico Premium
           </h2>
-          <h2 class="beneficios__table__item__price">
+          <h2 class="beneficios__table__item__price" style="display: none;">
             ¡Seleccione el producto para ver su precio!
           </h2>
 
@@ -242,12 +254,18 @@
               {% endfor %}
             </ul>
           </div>
+
+          <a href="#" target="_blank" class="beneficios__whatsapp-btn disabled">
+            <img src="{% static 'images/icons/whatsapp_icon.svg' %}" alt="WhatsApp" style="width:16px; height:16px; margin-right:8px; vertical-align:middle; filter:brightness(0) invert(1);" />
+            <span>Consultar por WhatsApp</span>
+          </a>
+
           <ol class="beneficios__table__servicios_list">
             <li>
               <p>4 Servicios de Asistencia Técnica o Mecánica por año.</p>
             </li>
             <li>
-              <p>Valor del servicio a reconocer hasta $ 5000 cada uno.</p>
+              <p>Valor de cobertura a reconocer en cada servicio.</p>
             </li>
           </ol>
         </article>

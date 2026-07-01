@@ -12,13 +12,20 @@ window.addEventListener('load',()=>{
     ).then(data =>{
         all_products.forEach(element => {
             element.addEventListener("click",() =>{
-                product = element.children[0].textContent
-                producto_seleccionado = data.filter((producto)=> producto.nombre == product)
-                monto_del_producto = producto_seleccionado[0].monto_total
-    
-                element.parentElement.parentElement.previousElementSibling.textContent = "$" + Math.trunc(monto_del_producto) + "/mes"
+                const product = element.children[0].textContent.trim();
+                const parentItem = element.closest(".beneficios__table__item");
+                const serviceName = parentItem.getAttribute("data-service") || "Servicio Mecánico";
                 
-                element.parentElement.previousElementSibling.children[0].textContent = producto_seleccionado[0].nombre
+                // Update select title label
+                element.parentElement.previousElementSibling.children[0].textContent = product;
+                
+                // Enable and configure WhatsApp button
+                const waBtn = parentItem.querySelector(".beneficios__whatsapp-btn");
+                if (waBtn) {
+                    waBtn.classList.remove("disabled");
+                    const textMessage = `Hola! Me interesa el *${serviceName}* para el producto *${product}*.\n\n¿Me podrían asesorar?`;
+                    waBtn.href = `https://wa.me/543625170890?text=${encodeURIComponent(textMessage)}`;
+                }
             })
         });
     })

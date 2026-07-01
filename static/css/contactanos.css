@@ -1,251 +1,244 @@
 :root {
-    --slide-transform: 0;
-    --transition: transform 1s;
-    --slide-transform_moto: 0;
-    --transition_moto: transform 1s;
-  
-    --bgColor : #12131b;
-    --secondBgColor: #e8e8e8;
-    --pColor: #212436;
-    --sColor: #027cf1;
-    --tColor: #02e3f5;
-    
-    
-  }
-  @font-face {
-    font-family: babapro;
-    src: url("../fonts/Babapro-Ea4rr.otf");
-  }
-  
-  @font-face{
-    font-family: raleway;
-    src: url("../fonts/Raleway-Regular.ttf")
-  }
-  @font-face{
-    font-family: raleway-bold;
-    src: url("../fonts/Raleway-Bold.ttf")
-  }
-  @font-face{
-    font-family: raleway-semibold;
-    src: url("../fonts/Raleway-SemiBold.ttf")
-  }
-  
-  *{
-      margin: 0;
-      padding: 0;
-      font-feature-settings: "pnum" on, "lnum" on;
-    }
-    html{
-      box-sizing: border-box;
-      font-size: 62.5%; 
-      background-color: var(--secondBgColor);
-  }
-
-.wrapper_comunicate{
-    display: flex;
-    height: calc(100vh - 65px);
-}
-.contactanos{
-    width: 100%;
-}
-.contactanos > h1{
-    font-family: raleway-bold;
-    font-size:  clamp(3rem, 4vw, 4.4rem);
-    color: var(--sColor);
-    margin-left: 2rem;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-}
-.preguntas_frecuentes > h1
-{
-    font-family: raleway-bold;
-    font-size: 3rem;
-    color: var(--sColor);
-    margin-left: 4rem;
-    margin-top: 5rem;
-    margin-bottom: 3rem;
+  --bgColor: #0b0d17;
+  --cardBg: rgba(255, 255, 255, 0.02);
+  --borderColor: rgba(255, 255, 255, 0.08);
+  --borderColorHover: rgba(255, 255, 255, 0.18);
+  --primaryColor: #027cf1;
+  --textPrimary: #ffffff;
+  --textSecondary: #a0a4b8;
 }
 
-.contactanos > .locales{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    box-sizing: border-box;
-    padding: 2rem;
-    gap: 1rem;
-    justify-content: center;
+@font-face {
+  font-family: babapro;
+  src: url("../fonts/Babapro-Ea4rr.otf");
 }
 
-.contactanos > .locales > .local{
-    width: 45%;
-    border-radius: 8px;
-    
-    position: relative;
-    flex-flow: column;
-    overflow: hidden;
-    height: fit-content;
-}
-.contactanos > .locales > .local  *
-{
-    position: relative;
-    z-index: 1;
-}
-.contactanos > .locales > .local::after
-{
-    content: "";
-    background-color: rgba(33, 36, 55, 0.91);
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-}
-.secciones
-{
-    height: 75%;
-    padding: 2rem;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-.contactanos > .locales > .local > .text_provincia_container
-{
-    width: 100%;
-    height: 20%;
-    padding: 1.8rem;
-    box-sizing: border-box;
-    background: rgba(0, 0, 0,0.46);
-    display: flex;
-    /* justify-content: center; */
-    align-items: center;
-}
-.contactanos > .locales > .local > .text_provincia_container > h1{
-    font-family: raleway-bold;
-    font-size: clamp(1.8rem, 3vw, 2.6rem);
-    text-align: center;
-    color: #fff;
-    /* margin-left: 3rem; */
+@font-face {
+  font-family: raleway;
+  src: url("../fonts/Raleway-Regular.ttf");
 }
 
-.secciones ol
-{
-    list-style: none;
-    display: flex;
-    row-gap: 3rem;
-    justify-content: space-around;
-    flex-flow: column;
-    width: 100%;
+@font-face {
+  font-family: raleway-bold;
+  src: url("../fonts/Raleway-Bold.ttf");
 }
 
-.secciones .sector{
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
+@font-face {
+  font-family: raleway-semibold;
+  src: url("../fonts/Raleway-SemiBold.ttf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-feature-settings: "pnum" on, "lnum" on;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+html {
+  font-size: 62.5%;
+  background-color: var(--bgColor);
+  font-family: 'raleway', sans-serif;
+  color: var(--textPrimary);
+}
+
+.wrapper_comunicate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: calc(100vh - 65px);
+  margin-top: 65px;
+  background-color: var(--bgColor);
+  padding: 3rem 2rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+.contactanos {
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.contactanos > h1 {
+  font-family: babapro, sans-serif;
+  font-size: clamp(2.8rem, 4vw, 4rem);
+  color: var(--textPrimary);
+  text-align: center;
+  margin-bottom: 2.5rem;
+  letter-spacing: 1px;
+  flex-shrink: 0;
+}
+
+.contactanos > h1::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: var(--primaryColor);
+  margin: 1rem auto 0 auto;
+  border-radius: 2px;
+}
+
+.contactanos__container {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 3rem;
+  flex-grow: 1;
+  min-height: 0; /* Ensures inner scroll works instead of expanding parent */
+  margin-bottom: 2rem;
+}
+
+.branches__selector {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow-y: auto;
+  padding-right: 0.8rem;
+}
+
+/* Custom scrollbar for selector */
+.branches__selector::-webkit-scrollbar {
+  width: 4px;
+}
+.branches__selector::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.01);
+}
+.branches__selector::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+.branch__tab {
+  background: var(--cardBg);
+  border: 1px solid var(--borderColor);
+  border-radius: 8px;
+  color: var(--textSecondary);
+  padding: 1.6rem 2rem;
+  font-family: raleway-semibold, sans-serif;
+  font-size: 1.5rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  outline: none;
+}
+
+.branch__tab:hover {
+  border-color: var(--borderColorHover);
+  color: var(--textPrimary);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.branch__tab.active {
+  background: rgba(2, 124, 241, 0.08);
+  border-color: var(--primaryColor);
+  color: var(--textPrimary);
+  box-shadow: 0 0 12px rgba(2, 124, 241, 0.15);
+}
+
+.contactanos__container .locales {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  min-height: 0;
+}
+
+.contactanos__container .locales > .local {
+  display: none;
+  width: 100%;
+  background: var(--cardBg);
+  border: 1px solid var(--borderColor);
+  border-radius: 10px;
+  padding: 4rem;
+  flex-direction: column;
+  gap: 3rem;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* Custom scrollbar for detail card */
+.contactanos__container .locales > .local::-webkit-scrollbar {
+  width: 6px;
+}
+.contactanos__container .locales > .local::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.01);
+}
+.contactanos__container .locales > .local::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.contactanos__container .locales > .local.active {
+  display: flex;
+}
+
+.contactanos__container .locales > .local > .text_provincia_container {
+  border-bottom: 1px solid var(--borderColor);
+  padding-bottom: 1.8rem;
+  flex-shrink: 0;
+}
+
+.contactanos__container .locales > .local > .text_provincia_container > h1 {
+  font-family: raleway-bold, sans-serif;
+  font-size: clamp(2.2rem, 3vw, 2.8rem);
+  color: var(--textPrimary);
+}
+
+.secciones {
+  width: 100%;
+  flex-grow: 1;
+}
+
+.secciones ol {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 3rem;
+}
+
+.secciones .sector {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.secciones > ol > .sector > h3 {
+  font-family: raleway-semibold, sans-serif;
+  font-size: 1.5rem;
+  color: var(--primaryColor);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
 }
 
 .sector_info {
-    /* text-align: center; */
-    font-size: clamp(1.6rem, 2vw, 2rem);
-    color: #fff;
-    font-family: raleway;
-    font-feature-settings: 'pnum' on, 'lnum' on;
-    border-left-style: outset;
-    padding-left: 1rem;
-    margin-left: 1rem;
-    letter-spacing: 0.08rem;
+  font-size: 1.5rem;
+  color: var(--textSecondary);
+  font-family: raleway, sans-serif;
+  border-left: 2px solid var(--borderColor);
+  padding-left: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
 }
 
-.secciones > ol > .sector > h3
-{
-    font-family: raleway-bold;
-    font-size: clamp(1.6rem, 2.3vw, 2.3rem);
-    /* text-align: center; */
-    margin-bottom: 2%;
-    color: #037BEC;
+.sector_info .number_phone {
+  font-size: 1.7rem;
+  color: var(--textPrimary);
+  font-family: raleway-bold, sans-serif;
 }
-.secciones > ol > .sector > h5
-{
-    font-family: raleway;
-    text-align: center;
+
+.sector_info .correo {
+  font-size: 1.45rem;
+  color: var(--textSecondary);
+  word-break: break-all;
 }
 
 
-article.contactanos > .locales > .local{
-    background-image: url(../images/icons/icon_solo_color.png);
-    background-size: 50%;
-    background-blend-mode: hue;
-    background-repeat: no-repeat;
-    background-position: right;
-    flex: 1 0 40%;
-    min-width: 33rem;
-}
-article.contactanos > .locales > .local:nth-child(1){
-    flex: 1 0 100%;
-}
-.preguntas_frecuentes{
-    background-color: #212436;
-    width: 40%;
-    height: 100%;
-    overflow-y: auto;
-}
-
-.preguntas_frecuentes > ul{
-    list-style: none;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    margin-top: 4rem;
-}
-
-.preguntas_frecuentes > ul > li
-{
-    width: 80%;
-    /* margin-top: 4rem; */
-    cursor: pointer;
-    position: relative;
-    height: auto;
- 
-}
-
-.preguntas_frecuentes > ul > li > h2
-{
-    background-color: #e8e8e8;
-    font-family: raleway-bold;
-    font-size: 1.8rem;
-    color: var(--pColor);
-    padding: .7rem 2rem .7rem 2rem;
-    vertical-align:middle;
-    border-radius: 8px;
-    font-feature-settings: 'pnum' on, 'lnum' on;
-    display: flex;
-    align-items: center;
-}
-
-.preguntas_frecuentes > ul > li > h2::after{
-    content: '+';
-    font-family: raleway;
-    font-size: 2.4rem;
-    margin-left: auto;
-}
-.question h2.active::after{
-    content: '-';
-    font-family: raleway;
-    font-size: 2.4rem;
-    margin-left: auto;
-}
-
-.preguntas_frecuentes > ul > li > .texts
-{
-    font-family: raleway;
-    position: relative;
-    font-size: 1.4rem;
-    color: white;
-    width: 98%;
-    margin: 2% 1%;
-    /* padding: 3% 0; */
-    max-height: 0;
-    overflow: hidden;
-    transition: all .4s ease;
-}

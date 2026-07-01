@@ -1,129 +1,605 @@
-:root{
-    --bgColor : #12131b;
-    --secondBgColor: #e8e8e8;
-    --pColor: rgb(33, 36, 54);
-    --sColor: rgb(2, 124, 241);
-    --tColor: #02e3f5;
-
-    --slide-transform: 0;
-    --transition: transform 1s;
-    --slide-transform_moto: 0;
-    --transition_moto: transform 1s;
+:root {
+  --bgColor: #0b0d17;
+  --cardBg: rgba(255, 255, 255, 0.02);
+  --borderColor: rgba(255, 255, 255, 0.08);
+  --borderColorHover: rgba(255, 255, 255, 0.18);
+  --primaryColor: #027cf1;
+  --textPrimary: #ffffff;
+  --textSecondary: #a0a4b8;
 }
-@font-face{
-    font-family: raleway;
-    src: url("../fonts/Raleway-Regular.ttf")
+
+@font-face {
+  font-family: raleway;
+  src: url("../fonts/Raleway-Regular.ttf");
+}
+
+@font-face {
+  font-family: raleway-bold;
+  src: url("../fonts/Raleway-Bold.ttf");
+}
+
+@font-face {
+  font-family: raleway-semibold;
+  src: url("../fonts/Raleway-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: raleway-extrabold;
+  src: url("../fonts/Raleway-ExtraBold.ttf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  background-color: var(--bgColor);
+  font-family: 'raleway', sans-serif;
+  color: var(--textPrimary);
+}
+
+.espace_header_categories {
+  width: 100%;
+  height: 65px;
+}
+
+.categorias {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 5rem;
+  max-width: 1000px;
+  margin: 6rem auto 6vh auto;
+  width: 90%;
+}
+
+.categorias__header {
+  text-align: center;
+  margin-top: 6vh;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.categorias__header h1 {
+  font-family: raleway-extrabold, sans-serif;
+  font-size: clamp(3.2rem, 5vw, 4.2rem);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #ffffff;
+  position: relative;
+  padding-bottom: 1.5rem;
+}
+
+.categorias__header h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--primaryColor);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(2, 124, 241, 0.6);
+}
+
+.categorias__header p {
+  font-family: raleway, sans-serif;
+  font-size: clamp(1.4rem, 2vw, 1.6rem);
+  color: var(--textSecondary);
+  max-width: 600px;
+  line-height: 1.5;
+  margin: 0 auto;
+}
+
+.categorias article {
+  background: var(--cardBg);
+  border: 1px solid var(--borderColor);
+  border-radius: 12px;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+.categorias article:hover {
+  border-color: var(--borderColorHover);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.categorias article figure img {
+  width: 50%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* --- Motos Diagonal Card Layout --- */
+.motos__diagonal-card {
+  height: 300px;
+  display: flex;
+  overflow: hidden;
+  border-radius: 12px;
+  position: relative;
+}
+
+.motos__half {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.motos__half--nuevas {
+  left: 0;
+  clip-path: polygon(0 0, 54% 0, 46% 100%, 0 100%);
+  z-index: 2;
+}
+
+.motos__half--usadas {
+  left: 0;
+  clip-path: polygon(54% 0, 100% 0, 100% 100%, 46% 100%);
+  z-index: 1;
+}
+
+.motos__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.motos__half--nuevas .motos__bg {
+  background-position: 30% center;
+}
+.motos__half--usadas .motos__bg {
+  background-position: 70% center;
+}
+
+.motos__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.5s ease;
+}
+
+.motos__half--nuevas .motos__overlay {
+  background: #21243ae0;
+}
+.motos__half--usadas .motos__overlay {
+  background: rgba(11, 13, 23, 0.95);
+}
+
+.motos__corner-title {
+  position: absolute;
+  top: 3rem;
+  z-index: 3;
+  font-family: raleway-extrabold, sans-serif;
+  font-size: clamp(2rem, 2.5vw, 2.6rem);
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+}
+
+.corner--left {
+  left: 4rem;
+}
+
+.corner--right {
+  right: 4rem;
+}
+
+.motos__center-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--bgColor);
+  border: 2px solid var(--primaryColor);
+  color: #ffffff;
+  font-family: raleway-bold, sans-serif;
+  font-size: 1.5rem;
+  padding: 1.4rem 3.5rem;
+  border-radius: 50px;
+  z-index: 10;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.motos__center-badge:hover {
+  background: var(--primaryColor);
+  border-color: var(--primaryColor);
+  box-shadow: 0 8px 30px rgba(2, 124, 241, 0.5);
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+/* Motos Hover states */
+.motos__half:hover .motos__overlay {
+  opacity: 0.15;
+}
+
+.motos__half:hover .motos__bg {
+  transform: scale(1.08);
+}
+
+.motos__half:hover .motos__btn-link {
+  background: #ffffff;
+  color: var(--bgColor);
+  border-color: #ffffff;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+/* --- Electrodomesticos Diagonal Card Styles --- */
+.electrodomesticos__diagonal-card {
+  height: 300px;
+  display: flex;
+  overflow: hidden;
+  border-radius: 12px;
+  position: relative;
+}
+
+.electrodomesticos__half {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.electrodomesticos__half--info {
+  left: 0;
+  clip-path: polygon(0 0, 70% 0, 60% 100%, 0 100%);
+  z-index: 1;
+  background: rgba(11, 13, 23, 0.4);
+}
+
+.electrodomesticos__half--image {
+  left: 0;
+  clip-path: polygon(70% 0, 100% 0, 100% 100%, 60% 100%);
+  z-index: 2;
+}
+
+.electrodomesticos__info-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding-left: 4rem;
+  padding-right: 10rem;
+  text-align: left;
+  gap: 1rem;
+  max-width: 600px;
+}
+
+.electrodomesticos__info-content h1 {
+  font-family: raleway-extrabold, sans-serif;
+  font-size: clamp(2.2rem, 3vw, 2.8rem);
+  color: #ffffff;
+}
+
+.electrodomesticos__info-content p {
+  font-family: raleway, sans-serif;
+  font-size: 1.35rem;
+  color: var(--textSecondary);
+  line-height: 1.4;
+}
+
+.electrodomesticos__badges {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-top: 0.8rem;
+}
+
+.electro__badge {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--textSecondary);
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  font-family: raleway-semibold, sans-serif;
+  transition: all 0.25s ease;
+}
+
+.electro__badge:hover {
+  background: rgba(2, 124, 241, 0.1);
+  border-color: var(--primaryColor);
+  color: #ffffff;
+}
+
+.electrodomesticos__bg,
+.soluciones__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.electrodomesticos__half--image .electrodomesticos__bg {
+  background-size: 30%;
+  background-repeat: no-repeat;
+  background-position: 90% center;
+}
+.soluciones__half--image .soluciones__bg {
+  background-position: 0% center;
+}
+
+.electrodomesticos__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.5s ease;
+}
+
+.soluciones__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.5s ease;
+  background: rgba(11, 13, 23, 0.85);
+}
+
+/* Hover reveal effect */
+.electrodomesticos:hover .electrodomesticos__overlay,
+.soluciones_dinerarias:hover .soluciones__overlay {
+  opacity: 0.15;
+}
+.electrodomesticos:hover .electrodomesticos__bg,
+.soluciones_dinerarias:hover .soluciones__bg {
+  transform: scale(1.08);
+}
+
+/* --- Soluciones Dinerarias Diagonal Card Styles --- */
+.soluciones__diagonal-card {
+  height: 300px;
+  display: flex;
+  overflow: hidden;
+  border-radius: 12px;
+  position: relative;
+}
+
+.soluciones__half {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.soluciones__half--image {
+  left: 0;
+  clip-path: polygon(0 0, 30% 0, 40% 100%, 0% 100%);
+  z-index: 2;
+}
+
+.soluciones__half--info {
+  left: 0;
+  clip-path: polygon(30% 0, 100% 0, 100% 100%, 40% 100%);
+  z-index: 1;
+  background: rgba(11, 13, 23, 0.4);
+  justify-content: flex-end;
+}
+
+.soluciones__info-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  text-align: right;
+  gap: 1rem;
+  margin-left: auto;
+  max-width: 600px;
+}
+
+.soluciones__info-content h1 {
+  font-family: raleway-extrabold, sans-serif;
+  font-size: clamp(2.2rem, 3vw, 2.8rem);
+  color: #ffffff;
+  text-align: right;
+  width: 100%;
+}
+
+.soluciones__info-content p {
+  font-family: raleway, sans-serif;
+  font-size: 1.35rem;
+  color: var(--textSecondary);
+  line-height: 1.4;
+  text-align: right;
+  width: 100%;
+}
+
+.soluciones__limit-badge {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--textSecondary);
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  font-family: raleway-semibold, sans-serif;
+  transition: all 0.25s ease;
+  margin-top: 0.8rem;
+  align-self: flex-end;
+}
+
+.soluciones__limit-badge:hover {
+  background: rgba(2, 124, 241, 0.1);
+  border-color: var(--primaryColor);
+  color: #ffffff;
+}
+
+/* Individual Diagonal Button Styles */
+.electro__btn-link,
+.solu__btn-link {
+  position: absolute;
+  bottom: 3.5rem;
+  z-index: 3;
+  background: var(--primaryColor);
+  color: #ffffff;
+  padding: 1.2rem 3rem;
+  border-radius: 8px;
+  font-size: 1.45rem;
+  font-family: raleway-bold, sans-serif;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(2, 124, 241, 0.25);
+}
+
+.electro__btn-link {
+  right: 4rem;
+}
+
+.solu__btn-link {
+  left: 4rem;
+}
+
+.electro__btn-link:hover,
+.solu__btn-link:hover {
+  background: transparent;
+  border-color: var(--primaryColor);
+  box-shadow: 0 0 15px rgba(2, 124, 241, 0.45);
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+/* Media Queries */
+@media screen and (max-width: 850px) {
+  .categorias {
+    grid-template-columns: 1fr;
+    max-width: 450px;
+    gap: 5rem;
+    margin: 10vh auto 4vh auto;
   }
-  @font-face{
-    font-family: raleway-bold;
-    src: url("../fonts/Raleway-Bold.ttf")
+
+  /* Motos mobile stack */
+  .motos__diagonal-card {
+    height: 400px;
+    flex-direction: column;
   }
-  @font-face{
-    font-family: raleway-semibold;
-    src: url("../fonts/Raleway-SemiBold.ttf")
+  .motos__half--nuevas {
+    height: 50%;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
   }
-  @font-face{
-    font-family: raleway-extrabold;
-    src: url("../fonts/Raleway-ExtraBold.ttf")
+  .motos__half--usadas {
+    height: 50%;
+    top: 50%;
+    clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+  }
+  .motos__half--nuevas .motos__content {
+    transform: translateY(-5%);
+  }
+  .motos__half--usadas .motos__content {
+    transform: translateY(5%);
   }
 
-*{
-    margin: 0;
-    padding: 0;
-}
-html{
-    box-sizing: border-box;
-    font-size: 62.5%;
-    background-color: var(--secondBgColor);
-}
-
-.espace_header_categories{
-    width: 100%;
-    height: 65px;
-}
-
-.categorias{
-    
-    display: grid;
-    grid-auto-rows: 27rem;
-    grid-auto-flow: dense;
-    grid-template-columns: repeat(auto-fill,minmax(28rem,1fr));
-    gap: 2rem;
-    row-gap: 5rem;
-    margin: 9vh auto 3vh auto;
-    width: 80%;
-}
-
-.categorias article{
-    background-color: var(--secondBgColor);
-    box-shadow: 1px 1px 12px 3px rgba(2,124,241,0.27);
-}
-.categorias article >figure{
-    width: 28%;
-    height: 28%;
-    shape-outside: circle();
-    clip-path: circle();
-    background-color: var(--bgColor);
-    display: flex;
-    justify-content: center;
+  /* Electrodomesticos mobile stack */
+  .electrodomesticos__diagonal-card {
+    height: 480px;
+  }
+  .electrodomesticos__half--info {
+    height: 50%;
+    top: 0;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+  }
+  .electrodomesticos__half--image {
+    height: 50%;
+    top: 50%;
+    clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+  }
+  .electrodomesticos__info-content {
+    padding: 2rem 2rem 3rem 2rem;
     align-items: center;
-    top: -14%;
-    left: 34%;
-    position:relative;
-}
-
-.categorias article >figure> img{
-    width: 100%;
-    max-width: 110px;
-    /* height: 120%; */
-
-}
-.categorias article > a{
-    text-decoration: none;
-}
-.categorias article > a> h1{
-    font-size: 2rem;
-    font-family: raleway-extrabold;
-    margin-left: 4%;
-    color: var(--bgColor);
-}
-
-.categorias article > ul{
-    list-style: none;
-   
-    margin-top: 1%;
-}
-
-.categorias article > ul > li{
-    height: 2.8rem;
-}
-.categorias article > ul > li:hover{
-    background-color: rgba(25, 36, 96, .9);;
-}
-
-.categorias article > ul > li > a{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-}
-.categorias article > ul > li > a > h2{
-    margin-left: 5%;
-    font-size: 1.4rem;
-    font-family: raleway;
-    color: var(--pColor);
-    font-weight: 700;
-    
-    font-feature-settings: 'pnum' on, 'lnum' on;
-}
-.categorias article > ul > li > a:hover h2{
-    color: var(--secondBgColor);
-}
-.soluciones_dinerarias> a > h1, .beneficios_cliente > a > h1
-{
     text-align: center;
-    margin: 0 !important;
-}
+    max-width: 100%;
+  }
+  .electrodomesticos__half--image .electrodomesticos__bg {
+    background-size: contain;
+    background-position: center center;
+  }
+  .electro__btn-link {
+    position: absolute;
+    bottom: 2.5rem;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    z-index: 10;
+  }
 
+  /* Soluciones mobile stack */
+  .soluciones__diagonal-card {
+    height: 480px;
+  }
+  .soluciones__half--info {
+    height: 50%;
+    top: 0;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+  }
+  .soluciones__half--image {
+    height: 50%;
+    top: 50%;
+    clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+  }
+  .soluciones__info-content {
+    padding: 2rem 2rem 3rem 2rem;
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+    margin-left: 0;
+  }
+  .soluciones__half--image .soluciones__bg {
+    background-size: contain;
+    background-position: center center;
+  }
+  .solu__btn-link {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    z-index: 10;
+  }
+}
 
