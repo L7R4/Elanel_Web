@@ -21,109 +21,113 @@
   <body>
     {% include 'nav.html' %}
     <div class="wrapper">
-      <section class="one_section">
-        <video src="{% static 'images/images_sobre_nosotros/video_elanel.mp4' %}"  type="video/mp4" autoplay muted loop preload="auto">
-        </video>
+      <!-- Section 1: Hero -->
+      <section class="sobrenosotros__hero">
+        <video src="{% static 'images/images_sobre_nosotros/video_elanel.mp4' %}" type="video/mp4" autoplay muted loop preload="auto" class="hero__video"></video>
+        <div class="hero__overlay"></div>
+        <div class="hero__card">
+          <h1>Quiénes <strong>Somos</strong></h1>
+          <p>
+            Somos una empresa sólida y competitiva dedicada a comercializar productos y servicios de alta calidad, con alcance nacional y un fuerte compromiso con el desarrollo de nuestro país. Ofrecemos una experiencia diferente basada en la excelencia de servicio, innovación y calidez en la atención.
+          </p>
+        </div>
+      </section>
 
-        {% comment %} <figure>
-          <img
-            src="{% static 'images/images_sobre_nosotros/section_1.jpg' %}"
-            alt=""
-          />
-        </figure> {% endcomment %}
-        <h1>Quienes <strong>Somos</strong></h1>
-        <p>
-          Bienvenidos a Elanel, tu tienda en línea de confianza. Aquí encontrarás una amplia variedad de productos de alta calidad, desde motocicletas hasta electrodomésticos, y también ofrecemos ayuda dineraria y servicio técnico. Además, nuestros clientes disfrutan de beneficios exclusivos y ofertas especiales. <br><strong>¡Compra con confianza en Elanel!</strong>
-        </p>
+      <!-- Section 2: El Sistema Elanel (Planes y Capitalización) -->
+      <section class="sobrenosotros__sistema">
+        <h2 class="section__title-main">El Sistema <strong>Elanel</strong></h2>
+        <p class="section__subtitle">Conocé cómo funciona nuestro sistema de ahorro, capitalización y adjudicaciones.</p>
+        
+        <div class="sistema__grid">
+          <div class="sistema__card">
+            <span class="sistema__number">01</span>
+            <h3>Suscripción al Plan</h3>
+            <p>Elegís el producto o servicio que querés obtener (motocicletas, electrodomésticos, soluciones dinerarias) y te suscribís a un plan a tu medida con cuotas accesibles.</p>
+          </div>
+          <div class="sistema__card">
+            <span class="sistema__number">02</span>
+            <h3>Ahorro y Capitalización</h3>
+            <p>Mes a mes tus aportes se capitalizan bajo un sistema seguro y transparente, respaldado por la solidez y trayectoria de nuestra compañía a nivel nacional.</p>
+          </div>
+          <div class="sistema__card">
+            <span class="sistema__number">03</span>
+            <h3>Sorteo y Adjudicación</h3>
+            <p>Participás activamente en sorteos y licitaciones mensuales. Al resultar adjudicado, obtenés tu bien de forma ágil y con mínimos requisitos.</p>
+          </div>
+        </div>
       </section>
-      <section class="two_section">
-        <p>
-          Somos una Empresa que comercializa productos y servicios fundada en la
-          provincia del chaco que presenta un sistema original, moderno y
-          exitoso, brindamos atención personalizada e inmediatez a la demanda de
-          nuestros clientes con alcance nacional
-        </p>
-        <br />
-        <p>
-          Nos caracteriza el compromiso y la pasión por el trabajo constante, el
-          desarrollo humano y profesional de nuestros colaboradores, Una
-          compañía sólida y competitiva que brinda el mejor servicio, con
-          innovación y creatividad, a través de la excelencia.
-        </p>
-      </section>
-      <section class="three_section">
-        <div class="mision">
-          <h3>MISION</h3>
+
+      <!-- Section 3: Filosofía (Misión, Visión) -->
+      <section class="sobrenosotros__filosofia">
+        <div class="filosofia__card">
+          <h3>Misión</h3>
           <p>
-            Cumplir totalmente las necesidades de nuestros clientes a través de
-            la excelencia en el servicio, el desarrollo profesional de nuestros
-            colaboradores y el compromiso con nuestro país.
+            Cumplir totalmente las necesidades de nuestros clientes a través de la excelencia en el servicio, el desarrollo profesional de nuestros colaboradores y el compromiso constante con el crecimiento de nuestra comunidad.
           </p>
         </div>
-        <div class="vision">
-          <h3>VISION</h3>
+        <div class="filosofia__card">
+          <h3>Visión</h3>
           <p>
-            Nuestra visión es ser una empresa líder en la comercialización de
-            productos y servicios logrando la satisfacción y excediendo las
-            expectativas de los clientes. Creando una cultura con huella de
-            liderazgo que nos permita ser percibidos como primera opción del
-            mercado
+            Ser una empresa líder en la comercialización de productos y servicios a nivel país, excediendo las expectativas de los clientes y consolidándonos como su primera opción de confianza en el mercado.
           </p>
         </div>
       </section>
-      <section class="four_section">
-        <figure>
-          <img
-            src="{% static '/images/images_sobre_nosotros/section_4.jpg' %}"
-            alt=""
-          />
-        </figure>
-        <h3 class="title_valores">NUESTROS VALORES</h3>
-        <div class="text_1">
-          <p>
-            Lideramos con el ejemplo de una empresa que crea emociones,
-            transforma el sueño y enriquece la vida de las personas en todo el
-            pais, por medio de la sabiduría y la pasión, dispuesta a
-            proporcionar siempre nuevas emociones.
-          </p>
-          <ul>
-            <li>Trabajo en equipo</li>
-            <li>Innovación</li>
-            <li>Integridad(Honestos y Rectos)</li>
-            <li>
-              Profesionalismo (luchar por la excelencia y la mejora continua)
-            </li>
-            <li>Calidez (en nuestras relaciones)</li>
-            <li>Lealtad(leal a la empresa)</li>
-          </ul>
+
+      <!-- Section 4: Valores y Estrategia -->
+      <section class="sobrenosotros__valores-estrategia">
+        <div class="valores__col">
+          <h3 class="side__title">Nuestros Valores</h3>
+          <div class="valores__list">
+            <div class="valor__item">
+              <span class="valor__icon">✓</span>
+              <div>
+                <h4>Trabajo en equipo</h4>
+                <p>Potenciamos el esfuerzo colectivo para lograr metas comunes.</p>
+              </div>
+            </div>
+            <div class="valor__item">
+              <span class="valor__icon">✓</span>
+              <div>
+                <h4>Innovación</h4>
+                <p>Buscamos constantemente soluciones creativas y eficientes.</p>
+              </div>
+            </div>
+            <div class="valor__item">
+              <span class="valor__icon">✓</span>
+              <div>
+                <h4>Integridad y Calidez</h4>
+                <p>Actuamos con honestidad, rectitud y empatía en cada relación.</p>
+              </div>
+            </div>
+            <div class="valor__item">
+              <span class="valor__icon">✓</span>
+              <div>
+                <h4>Profesionalismo y Lealtad</h4>
+                <p>Buscamos la excelencia continua y mantenemos una relación de lealtad.</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <h3 class="title_estrategia">ESTRATEGIA</h3>
-        <div class="text_2">
-          <ul>
-            <li>
-              <strong>Crecer:</strong> A través de la expansión nacional con
-              resultados sostenibles
-            </li>
-            <li>
-              <strong>Ofrecer:</strong> A nuestros clientes una experiencia
-              diferente, basada en Servicios, comunicación innovadora, con
-              calidad y calidez.
-            </li>
-            <li>
-              <strong>Crear:</strong> Relaciones amigables con nuestros clientes
-              y la comunidad.
-            </li>
-            <li>
-              <strong>Desarrollar:</strong> Procesos simples y eficientes.
-            </li>
-            <li>
-              <strong>Promover:</strong> El desarrollo continuo de nuestros
-              colaboradores. Fomentar un clima de alegría, participación y
-              trabajo en equipo. Proveer las mejores herramientas para
-              gestionar.
-            </li>
-          </ul>
+
+        <div class="estrategia__col">
+          <h3 class="side__title">Nuestra Estrategia</h3>
+          <div class="estrategia__list">
+            <div class="estrategia__item">
+              <span class="estrategia__num">I</span>
+              <p><strong>Crecer:</strong> Expandir nuestra red nacional logrando resultados sostenibles en el tiempo.</p>
+            </div>
+            <div class="estrategia__item">
+              <span class="estrategia__num">II</span>
+              <p><strong>Ofrecer:</strong> Brindar una experiencia diferente basada en la comunicación innovadora y calidad humana.</p>
+            </div>
+            <div class="estrategia__item">
+              <span class="estrategia__num">III</span>
+              <p><strong>Desarrollar y Promover:</strong> Simplificar procesos internos y fomentar el desarrollo profesional continuo de nuestro equipo.</p>
+            </div>
+          </div>
         </div>
+      </section>
+    </div>
       </section>
     </div>
 
