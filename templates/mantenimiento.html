@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estamos en Mantenimiento | Elanel Servicios y Soluciones</title>
+    <link rel="shortcut icon" href="{% static 'images/fwd/icon_page4.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/mantenimiento.css' %}">
+</head>
+<body>
+    <div class="bg-glow-orb-1"></div>
+    <div class="bg-glow-orb-2"></div>
+    <div class="bg-grid-overlay"></div>
+
+    <main class="mantenimiento-wrapper">
+        <img src="{% static 'images/icons/icono_header_blanco_arreglado.png' %}" alt="Elanel Logo" class="brand-logo">
+        
+        <div class="status-badge">
+            <span class="status-dot"></span>
+            <span>Modo Mantenimiento</span>
+        </div>
+
+        <div class="icon-container">
+            <div class="gear-outer"></div>
+            <div class="gear-inner">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                </svg>
+            </div>
+        </div>
+
+        <h1 class="mantenimiento-title">Estamos realizando mantenimiento</h1>
+        <p class="mantenimiento-description">
+            Estamos trabajando en actualizar y optimizar nuestra plataforma para ofrecerte una mejor experiencia. Volveremos a estar disponibles muy pronto.
+        </p>
+
+        <div class="actions-group">
+            <a href="https://wa.me/543625170890?text=Hola!%20necesito%20información%20mientras%20la%20web%20está%20en%20mantenimiento." target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.763.459 3.486 1.332 5.003l-1.416 5.17 5.292-1.387c1.464.799 3.117 1.22 4.779 1.221h.004c5.505 0 9.988-4.478 9.989-9.984 0-2.668-1.037-5.176-2.923-7.062-1.886-1.886-4.393-2.924-7.067-2.925zm0 1.666c2.226 0 4.318.867 5.891 2.44 1.573 1.573 2.438 3.665 2.437 5.892-.001 4.59-3.734 8.322-8.324 8.323h-.003c-1.47 0-2.912-.394-4.172-1.14l-.3-.178-3.097.811.826-3.018-.195-.31c-.82-1.306-1.254-2.825-1.253-4.377.001-4.59 3.734-8.322 8.324-8.323zm-3.559 4.606c-.201 0-.525.076-.8.375-.276.3-.1.054-1.05 1.05-.95 1.05-.95 2.756.225 3.931 1.175 1.175 2.425 2.375 5.275 3.6 2.85 1.225 3.025 1.025 3.575.975.55-.05 1.775-.725 2.025-1.425.25-.7.25-1.3.175-1.425-.075-.125-.275-.2-.575-.35s-1.775-.875-2.05-1c-.275-.125-.475-.175-.675.125s-.775 1.025-.95 1.225c-.175.2-.35.225-.65.075s-1.275-.47-2.43-1.498c-.9-.801-1.507-1.79-1.684-2.09-.175-.3-.019-.463.131-.612.135-.134.3-.35.45-.525.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525s-.675-1.625-.925-2.225c-.244-.583-.491-.504-.675-.513z"/>
+                </svg>
+                <span>Contáctanos por WhatsApp</span>
+            </a>
+        </div>
+
+        <div class="footer-info">
+            <p>&copy; <span>Elanel</span> Servicios y Soluciones. Todos los derechos reservados.</p>
+        </div>
+    </main>
+</body>
+</html>
