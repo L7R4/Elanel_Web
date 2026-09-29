@@ -99,6 +99,10 @@ header{
     width: inherit;
     display: flex;
     list-style: none;
+    /* Sin esto toma el margen y la sangría por defecto del navegador en las
+       páginas que no cargan un reset, y el contenido baja fuera de la barra. */
+    margin: 0;
+    padding: 0;
 }
 .nav__items{
   width: 80%;
@@ -245,6 +249,7 @@ header{
   list-style: none;
   display: flex;
   flex-direction: column;
+  margin: 0;
   padding: 1rem 0;
   z-index: 99;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
