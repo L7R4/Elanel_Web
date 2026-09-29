@@ -160,3 +160,9 @@ cython_debug/
 # /media/
 /media/
 /staticfiles/
+# Archivos locales que no deben subirse
+# - scratch/: scripts de uso personal (el de deploy tiene credenciales)
+# - volcados de base de datos: contienen datos de clientes
+scratch/
+*.dump
+*.sql
