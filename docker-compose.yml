@@ -17,6 +17,8 @@ services:
       - .:/app
     env_file:
       - ./.env
+    environment:
+      - MAINTENANCE_MODE=False
     depends_on:
       - postgres
 
