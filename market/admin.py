@@ -38,10 +38,10 @@ class ImagenMotoAdmin(admin.TabularInline):
 
 @admin.register(Moto)
 class MotoAdmin(admin.ModelAdmin):
-    list_display= ["nombre", "precio", "modelo","marca", "usado", "destacado"]
+    list_display= ["nombre", "precio", "modelo","marca", "version", "usado", "destacado"]
     search_fields = ["nombre","marca"]
-    list_filter=["destacado", "usado", "marca"]
-    list_editable = ["precio", "usado", "destacado"]
+    list_filter=["destacado", "usado", "version", "marca"]
+    list_editable = ["precio", "version", "usado", "destacado"]
     inlines = [ImagenMotoAdmin]
     prepopulated_fields = {'slug': ['nombre']}
 

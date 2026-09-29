@@ -30,6 +30,7 @@
         {% if object.marca %}<div><dt>Marca</dt><dd>{{ object.marca|title }}</dd></div>{% endif %}
         {% if object.modelo %}<div><dt>Modelo</dt><dd>{{ object.modelo }}</dd></div>{% endif %}
         <div><dt>Condición</dt><dd>{% if object.usado %}Usada{% else %}0 km{% endif %}</dd></div>
+        {% if object.version %}<div><dt>Versión</dt><dd>{{ object.get_version_display }}</dd></div>{% endif %}
         {% if object.año %}<div><dt>Año</dt><dd>{{ object.año }}</dd></div>{% endif %}
         {% if object.usado and object.kilometros is not None %}<div><dt>Kilómetros</dt><dd>{{ object.kilometros }} km</dd></div>{% endif %}
       </dl>
@@ -67,6 +68,7 @@
       <figure>
         <img src="{{ moto.imagen_portada.url }}" alt="{{ moto.nombre }}" loading="lazy">
         <span class="el-product__badge">{% if moto.usado %}Usada{% else %}0 km{% endif %}</span>
+        {% if moto.version %}<span class="el-product__badge el-product__badge--version">{{ moto.get_version_display }}</span>{% endif %}
       </figure>
       <div class="el-product__body">
         {% if moto.marca %}<span class="el-product__brand">{{ moto.marca }}</span>{% endif %}

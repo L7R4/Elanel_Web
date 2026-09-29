@@ -37,6 +37,12 @@ class Moto(models.Model):
 
     usado = models.BooleanField()
     destacado = models.BooleanField(default=False, help_text="Aparece primero en «Destacados de este mes» del inicio.")
+    versiones = (
+        ('base', 'Base'),
+        ('full', 'Full'),
+    )
+    version = models.CharField("Versión", max_length=4, choices=versiones, blank=True, default="",
+                               help_text="Solo para los modelos que se venden en versión Base y Full. Se muestra como etiqueta en la tarjeta.")
     cuota = models.CharField(max_length=2, choices=cuotas,default='24')
     ficha_tecnica = models.FileField(upload_to="f_tecnicas/motos/",default=None,blank=True,null=True)
 
