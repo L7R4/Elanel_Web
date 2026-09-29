@@ -19,42 +19,41 @@
       </label>
 
       <div class="nav__items">
+        <li class="items">
+          <a href="{% url 'servicios' %}">Servicios</a>
+        </li>
+        <li class="items">
+          <a href="{% url 'cobertura' %}">Cobertura</a>
+        </li>
+        <li class="items">
+          <a href="{% url 'beneficios' %}">Beneficios</a>
+        </li>
         <li class="items__menu">
-          <a href="{% url 'market:categorias' %}">Categorias</a>
+          <a href="{% url 'market:categorias' %}">Venta directa</a>
           <img
             src="{% static 'images/icons/icon_expand.png' %}"
             alt=""
           />
           <ul class="menu_categoria">
             <li>
-              <a href="{% url 'market:motos' %}">Motos</a>
+              <a href="{% url 'market:motos' %}?status=False">Motos 0 km</a>
             </li>
             <li>
-              <a href="{% url 'market:soluciones_dinerarias' %}"
-                >Soluciones dinerias</a
-              >
+              <a href="{% url 'market:motos' %}?status=True">Motos usadas</a>
             </li>
             <li>
-              <a href="{% url 'market:electrodomesticos' %}"
-                >Electrodomesticos</a
-              >
-            </li>
-            <li>
-              <a href="{% url 'market:motos'%}?status=True">Usados</a>
+              <a href="{% url 'market:electrodomesticos' %}">Electrodomésticos</a>
             </li>
           </ul>
         </li>
-        <li class ="items">
-          <a href="{% url 'market:beneficios' %}">Beneficios para clientes</a>
+        <li class="items">
+          <a href="{% url 'market:soluciones_dinerarias' %}">Soluciones Comerciales</a>
         </li>
         <li class="items">
-          <a href="{% url 'nosotros' %}">Sobre Nosotros</a>
+          <a href="{% url 'nosotros' %}">Nosotros</a>
         </li>
         <li class="items">
-          <a href="{% url 'market:trabaja' %}">Trabaja con nosotros</a>
-        </li>
-        <li class="items">
-          <a href="{% url 'contactanos' %}">Contactanos</a>
+          <a href="{% url 'contactanos' %}">Contacto</a>
         </li>
       </div>
     </ol>
@@ -66,7 +65,7 @@
 <a href="https://wa.me/543625170890?text=Hola!%20Estoy%20visitando%20la%20web%20de%20Elanel%20y%20me%20gustaría%20hacer%20una%20consulta."
    class="global_whatsapp_float" target="_blank" rel="noopener noreferrer">
   <img src="{% static 'images/icons/whatsapp_icon.svg' %}" alt="WhatsApp" />
-  <span>¡Escríbenos!</span>
+  <span>¡Escribinos!</span>
 </a>
 
 <style>

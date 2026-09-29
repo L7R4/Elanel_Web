@@ -36,6 +36,7 @@ class Moto(models.Model):
     monto_servicio_por_couta = models.FloatField(blank=True,null=True)
 
     usado = models.BooleanField()
+    destacado = models.BooleanField(default=False, help_text="Aparece primero en «Destacados de este mes» del inicio.")
     cuota = models.CharField(max_length=2, choices=cuotas,default='24')
     ficha_tecnica = models.FileField(upload_to="f_tecnicas/motos/",default=None,blank=True,null=True)
 
@@ -94,6 +95,7 @@ class Electrodomestico(models.Model):
     servicio = models.CharField(choices=servicios, max_length=50, default="Basico",blank=True,null=True)
     monto_servicio_por_couta = models.FloatField(blank=True,null=True)
     ficha_tecnica = models.FileField(upload_to="f_tecnicas/electrodomesticos/",default=None,blank=True,null=True)
+    destacado = models.BooleanField(default=False, help_text="Aparece primero en «Destacados de este mes» del inicio.")
 
     def __str__(self):
         return self.nombre
@@ -190,6 +192,42 @@ class NumAdjudicado(models.Model):
 
     def __str__(self):
         return 'Numero: ' + str(self.numero) + ' de ' + self.mes + ' del ' + str(self.año)
+
+
+class CuadroCobertura(models.Model):
+    version = models.CharField("Versión", max_length=20)
+    vigente_desde = models.DateField("Vigente desde")
+    archivo = models.FileField("PDF del cuadro", upload_to="cobertura/", blank=True, null=True)
+    publicado = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ["-vigente_desde"]
+        verbose_name = "Cuadro de cobertura"
+        verbose_name_plural = "Cuadros de cobertura"
+
+    def __str__(self):
+        return 'Versión ' + self.version + ' - vigente desde ' + self.vigente_desde.strftime('%d/%m/%Y')
+
+
+class CoberturaPack(models.Model):
+    packs = (
+        ('Basico', 'Básico'),
+        ('Estandar', 'Estándar'),
+        ('Premium', 'Premium'),
+    )
+
+    cuadro = models.ForeignKey(CuadroCobertura, on_delete=models.CASCADE, related_name="packs")
+    pack = models.CharField(choices=packs, max_length=10)
+    servicios_anuales = models.PositiveSmallIntegerField()
+    cobertura_por_servicio = models.DecimalField(max_digits=15, decimal_places=2)
+
+    class Meta:
+        ordering = ["servicios_anuales"]
+        verbose_name = "Pack"
+        verbose_name_plural = "Packs"
+
+    def __str__(self):
+        return self.get_pack_display()
 
 
 

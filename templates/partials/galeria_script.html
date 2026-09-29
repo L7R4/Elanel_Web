@@ -1,0 +1,9 @@
+<script>
+  document.querySelectorAll('.el-gallery__thumb').forEach(function (thumb) {
+    thumb.addEventListener('click', function () {
+      document.getElementById('el-gallery-main').src = thumb.dataset.src;
+      document.querySelectorAll('.el-gallery__thumb').forEach(function (t) { t.classList.remove('is-active'); });
+      thumb.classList.add('is-active');
+    });
+  });
+</script>

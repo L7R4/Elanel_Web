@@ -1,0 +1,127 @@
+{% extends 'base_info.html' %}
+{% load static %}
+
+{% block title %}Packs de Asistencia Técnica y Mecánica | Elanel{% endblock %}
+{% block description %}Packs Básico, Estándar y Premium de asistencia técnica y mecánica para motos y electrodomésticos. Qué incluye cada uno y cómo solicitar asistencia.{% endblock %}
+
+{% block content %}
+<section class="el-hero">
+  <span class="el-eyebrow">Servicios</span>
+  <h1>Packs de Asistencia <strong>Técnica y Mecánica</strong></h1>
+  <p>Con un Pack de Servicios Elanel tus motos y electrodomésticos tienen respaldo técnico. Cada Pack incluye una cantidad de servicios por año y un valor de cobertura por servicio, publicado en el Cuadro de Cobertura vigente.</p>
+  <div class="el-actions">
+    <a class="el-btn" href="#packs">Ver los Packs</a>
+    <a class="el-btn el-btn--ghost" href="{% url 'cobertura' %}">Ver cobertura vigente</a>
+  </div>
+</section>
+
+<section class="el-section" id="packs">
+  <div class="el-section__head">
+    <span class="el-eyebrow">Packs de Servicios</span>
+    <h2>Elegí la cobertura que mejor se adapta a vos</h2>
+    <p>Hay tres Packs, según la cantidad de servicios de asistencia por año que necesitás. Escribinos por WhatsApp y un asesor te cuenta qué incluye cada uno.</p>
+  </div>
+
+  <div class="el-packs">
+    <article class="el-pack">
+      <span class="el-pack__name">Básico</span>
+      <div class="el-pack__count"><strong>2</strong><span>servicios de asistencia técnica o mecánica por año</span></div>
+      <p class="el-pack__ideal">Consultanos qué incluye este Pack y el valor de cobertura vigente.</p>
+      <a class="el-btn el-btn--wa" href="https://wa.me/543625170890?text=Hola!%20Quiero%20saber%20qu%C3%A9%20incluye%20el%20Pack%20B%C3%A1sico%20de%20Asistencia%20T%C3%A9cnica." target="_blank" rel="noopener noreferrer">
+        <img src="{% static 'images/icons/whatsapp_icon.svg' %}" alt="" />Consultar por WhatsApp
+      </a>
+    </article>
+
+    <article class="el-pack el-pack--destacado">
+      <span class="el-pack__name">Estándar</span>
+      <div class="el-pack__count"><strong>3</strong><span>servicios de asistencia técnica o mecánica por año</span></div>
+      <p class="el-pack__ideal">Consultanos qué incluye este Pack y el valor de cobertura vigente.</p>
+      <a class="el-btn el-btn--wa" href="https://wa.me/543625170890?text=Hola!%20Quiero%20saber%20qu%C3%A9%20incluye%20el%20Pack%20Est%C3%A1ndar%20de%20Asistencia%20T%C3%A9cnica." target="_blank" rel="noopener noreferrer">
+        <img src="{% static 'images/icons/whatsapp_icon.svg' %}" alt="" />Consultar por WhatsApp
+      </a>
+    </article>
+
+    <article class="el-pack">
+      <span class="el-pack__name">Premium</span>
+      <div class="el-pack__count"><strong>4</strong><span>servicios de asistencia técnica o mecánica por año</span></div>
+      <p class="el-pack__ideal">Consultanos qué incluye este Pack y el valor de cobertura vigente.</p>
+      <a class="el-btn el-btn--wa" href="https://wa.me/543625170890?text=Hola!%20Quiero%20saber%20qu%C3%A9%20incluye%20el%20Pack%20Premium%20de%20Asistencia%20T%C3%A9cnica." target="_blank" rel="noopener noreferrer">
+        <img src="{% static 'images/icons/whatsapp_icon.svg' %}" alt="" />Consultar por WhatsApp
+      </a>
+    </article>
+  </div>
+
+  <p class="el-fine" style="margin-top: 1.6rem;">El valor de cobertura de cada servicio es el del Cuadro de Cobertura vigente al momento de solicitar la asistencia. <a class="el-link" href="{% url 'cobertura' %}">Consultar cuadro vigente</a></p>
+</section>
+
+{% include 'partials/situaciones.html' %}
+
+<section class="el-section" id="como-funciona">
+  <div class="el-section__head">
+    <span class="el-eyebrow">Cómo funciona</span>
+    <h2>De la adhesión a la reparación</h2>
+  </div>
+  <ol class="el-steps">
+    <li><strong>Elegís tu Pack</strong><p>Básico, Estándar o Premium, según cuántos servicios por año necesitás.</p></li>
+    <li><strong>Declarás tus bienes</strong><p>Registrás las motos y electrodomésticos que querés cubrir. Podés sumar o reemplazar equipos más adelante, con tu cuota al día.</p></li>
+    <li><strong>Solicitás asistencia</strong><p>A partir de la 4ª cuota abonada, y con tu cuota al día, pedís turno en tu sucursal o por WhatsApp.</p></li>
+    <li><strong>Diagnóstico y reparación</strong><p>Un técnico diagnostica la falla y te la entrega por escrito. Tu Pack cubre la mano de obra; los repuestos corren por tu cuenta.</p></li>
+  </ol>
+</section>
+
+<section class="el-section" id="que-incluye">
+  <div class="el-section__head">
+    <span class="el-eyebrow">Alcance del servicio</span>
+    <h2>Qué incluye y qué no</h2>
+  </div>
+  <div class="el-cols">
+    <div class="el-box el-box--si">
+      <h3>Incluye</h3>
+      <ul>
+        <li><strong>Diagnóstico por escrito:</strong> detalle de la falla y de las características del repuesto a reemplazar.</li>
+        <li><strong>Acondicionamiento:</strong> si la falla no requiere cambiar piezas, se acondiciona el equipo.</li>
+        <li><strong>Reparación:</strong> reemplazo de la pieza dañada por una nueva, en tu domicilio o en el taller que designe Elanel, según la complejidad.</li>
+        <li><strong>Mano de obra</strong> hasta el valor de cobertura de tu Pack.</li>
+      </ul>
+    </div>
+    <div class="el-box el-box--no">
+      <h3>No incluye</h3>
+      <ul>
+        <li>Repuestos, piezas, materiales e insumos. Siempre te informamos antes y los aceptás vos.</li>
+        <li>Traslados y otros conceptos que no figuren en el Cuadro de Cobertura.</li>
+        <li>Equipos que no estén declarados en tu solicitud.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+{% include 'partials/cta_packs.html' %}
+
+<section class="el-section" id="solicitar-asistencia">
+  <div class="el-section__head">
+    <span class="el-eyebrow">Solicitar asistencia</span>
+    <h2>Condiciones para usar tu Pack</h2>
+  </div>
+  <div class="el-box">
+    <ul>
+      <li>Tener la cuota del servicio al día.</li>
+      <li>El servicio está disponible desde la 4ª cuota abonada.</li>
+      <li>Los servicios no utilizados en el año no se acumulan.</li>
+      <li>Los turnos están sujetos a la disponibilidad de técnicos y a las reservas ya tomadas.</li>
+      <li>Después del diagnóstico, tenés 30 días corridos para pedir el turno de reparación.</li>
+    </ul>
+  </div>
+
+  <div class="el-banner" style="margin-top: 3rem;">
+    <div>
+      <h3>¿Ya tenés un Pack y necesitás asistencia?</h3>
+      <p>Escribinos con tu número de solicitud y el equipo que tiene la falla.</p>
+    </div>
+    <a class="el-btn el-btn--wa" href="https://wa.me/543625170890?text=Hola!%20Soy%20cliente%20y%20quiero%20solicitar%20una%20asistencia%20t%C3%A9cnica.%20Mi%20n%C3%BAmero%20de%20solicitud%20es%3A%20" target="_blank" rel="noopener noreferrer">
+      <img src="{% static 'images/icons/whatsapp_icon.svg' %}" alt="" />Solicitar asistencia
+    </a>
+  </div>
+
+  <p class="el-fine" style="margin-top: 2rem;">Los Packs de Servicios pueden incluir beneficios complementarios sujetos a condiciones. <a class="el-link" href="{% url 'beneficios' %}">Conocer beneficios para clientes</a></p>
+</section>
+{% endblock %}

@@ -1,118 +1,70 @@
-{% load static humanize %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'css/categorias_details.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/navStyles.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/media_querys/nav_bar.css' %}" />
-    <link
-      rel="stylesheet"
-      href="{% static 'css/media_querys/categorias_motos.css' %}"
-    />
-    <title>Elanel Servicios y Soluciones</title>
-    <link
-      rel="shortcut icon"
-      href="{% static 'images/fwd/icon_page4.png' %}"
-    />
-  </head>
-  <body>
-    {% include 'nav.html' %}
+{% extends 'base_info.html' %}
+{% load static %}
 
-    <div class="wrapper_catalogo_aside">
-      <aside class="filters_container">
-        <form action="" method="GET">
-          <h1>Marcas</h1>
-          <div class="marcas">
-            <input type="radio" name="marca" id="yamaha" value="yamaha" />
-            <label for="yamaha">
-              <h3>Yamaha</h3>
-            </label>
+{% block title %}Motos 0 km y usadas | Elanel{% endblock %}
+{% block description %}Motos 0 km y usadas en venta directa en las sucursales de Elanel. Consultá precio y medios de pago por WhatsApp.{% endblock %}
 
-            <input type="radio" name="marca" id="honda" value="honda" />
-            <label for="honda">
-              <h3>Honda</h3>
-            </label>
+{% block content %}
+<section class="el-hero el-hero--catalog">
+  <span class="el-eyebrow el-eyebrow--vd">Venta directa</span>
+  <h1>Motos</h1>
+  <p>0 km y usadas, en tu sucursal. Consultá precio y medios de pago con un asesor.</p>
+</section>
 
-            <input type="radio" name="marca" id="motomel" value="motomel" />
-            <label for="motomel">
-              <h3>Motomel</h3>
-            </label>
-
-            <input type="radio" name="marca" id="rouser" value="rouser" />
-            <label for="rouser">
-              <h3>Rouser</h3>
-            </label>
-
-            <input type="radio" name="marca" id="corven" value="corven" />
-            <label for="corven">
-              <h3>Corven</h3>
-            </label>
-
-            <input type="radio" name="marca" id="zanella" value="zanella" />
-            <label for="zanella">
-              <h3>Zanella</h3>
-            </label>
-          </div>
-
-          <h1>Condición</h1>
-          <div class="estado">
-            <input type="radio" name="status" id="nuevo" value="False" />
-            <label for="nuevo"><h3>Nuevo</h3></label>
-
-            <input type="radio" name="status" id="usado" value="True" />
-            <label for="usado"><h3>Usado</h3></label>
-          </div>
-
-          <h1>Precio</h1>
-          <div class="precio">
-            <input
-              type="text"
-              pattern="[0-9]*"
-              name="minimo"
-              id="minimo"
-              placeholder="Minimo"
-            />
-            <input
-              type="text"
-              pattern="[0-9]*"
-              name="maximo"
-              id="maximo"
-              placeholder="Maximo"
-            />
-          </div>
-          <button type="submit" id="button_filter">Buscar</button>
-        </form>
-        <a id="clear" href="{%  url 'market:clear' %}">Limpiar filtros</a>
-      </aside>
-      <button type="button" id="filter_button">Filtrar</button>
-
-      <section class="catalogo">
-        {% if motos.count != 0 %} {% for moto in motos %}
-        <a href="{% url 'market:moto' moto.slug %}">
-          <article>
-            <img src="{{moto.imagen_portada.url}}" alt="" />
-            <div>
-              <h2>{{moto.nombre}}</h2>
-              <h3>Consultar precio</h3>
-            </div>
-          </article>
-        </a>
-        {% endfor %} {% elif motos.count == 0 %}
-        <div class="not_found">
-          <figure>
-            <img src="{% static 'images/icons/nothing-found.png' %}" alt="" />
-          </figure>
-          <h1>¡Ups! Al parecer no se encuentran productos disponibles</h1>
-        </div>
-        {% endif %}
-      </section>
+<section class="el-section el-catalog">
+  <nav class="el-filters" aria-label="Filtrar motos">
+    <div class="el-filters__group">
+      <span class="el-filters__label">Condición</span>
+      <a class="el-chip{% if not status_actual %} is-active{% endif %}" href="?marca={{ marca_actual|urlencode }}">Todas</a>
+      <a class="el-chip{% if status_actual == 'False' %} is-active{% endif %}" href="?status=False&amp;marca={{ marca_actual|urlencode }}">0 km</a>
+      <a class="el-chip{% if status_actual == 'True' %} is-active{% endif %}" href="?status=True&amp;marca={{ marca_actual|urlencode }}">Usadas</a>
     </div>
-  </body>
-  <script src="{% static 'js/header.js' %}"></script>
-  <script src="{% static 'js/filter_button.js' %}"></script>
-  <script src="{% static 'js/menu_hamburguer.js' %}"></script>
-  <script src="{% static 'js/clear_filters_motos.js' %}"></script>
-</html>
+    {% if marcas %}
+    <div class="el-filters__group">
+      <span class="el-filters__label">Marca</span>
+      <a class="el-chip{% if not marca_actual %} is-active{% endif %}" href="?status={{ status_actual }}">Todas</a>
+      {% for marca, etiqueta in marcas %}
+      <a class="el-chip{% if marca_actual == marca %} is-active{% endif %}" href="?status={{ status_actual }}&amp;marca={{ marca|urlencode }}">{{ etiqueta }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </nav>
+
+  <p class="el-catalog__count">{{ motos|length }} moto{{ motos|length|pluralize }}</p>
+
+  {% if motos %}
+  <div class="el-products el-products--catalog">
+    {% for moto in motos %}
+    <a class="el-product" href="{% url 'market:moto' moto.slug %}">
+      <figure>
+        <img src="{{ moto.imagen_portada.url }}" alt="{{ moto.nombre }}" loading="lazy">
+        <span class="el-product__badge">{% if moto.usado %}Usada{% else %}0 km{% endif %}</span>
+      </figure>
+      <div class="el-product__body">
+        {% if moto.marca %}<span class="el-product__brand">{{ moto.marca }}</span>{% endif %}
+        <h4>{{ moto.nombre }}</h4>
+        {% if moto.usado and moto.año %}<span class="el-product__meta">{{ moto.año }}{% if moto.kilometros %} · {{ moto.kilometros }} km{% endif %}</span>{% endif %}
+        <span class="el-product__cta">Consultar precio</span>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="el-empty">
+    <h3>No encontramos motos con esos filtros</h3>
+    <p>Probá con otra marca o condición, o escribinos y te contamos qué hay disponible en tu sucursal.</p>
+    <a class="el-link el-link--vd" href="{% url 'market:motos' %}">Ver todas las motos</a>
+  </div>
+  {% endif %}
+
+  <div class="el-shop__bar">
+    <div>
+      <h3>¿No encontrás la que buscás?</h3>
+      <p>Decinos qué moto querés y te pasamos precio, disponibilidad y medios de pago.</p>
+    </div>
+    <a class="el-btn el-btn--wa" href="https://wa.me/543625170890?text=Hola!%20Quiero%20consultar%20por%20una%20moto%20en%20venta%20directa." target="_blank" rel="noopener noreferrer">
+      <img src="{% static 'images/icons/whatsapp_icon.svg' %}" alt="" />Consultar por WhatsApp
+    </a>
+  </div>
+</section>
+{% endblock %}

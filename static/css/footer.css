@@ -21,7 +21,7 @@
 }
 
 .footer__brand {
-  flex: 1 1 40%;
+  flex: 1 1 30%;
   min-width: 28rem;
   display: flex;
   flex-direction: column;
@@ -84,7 +84,7 @@
 
 /* Columnas de Navegación */
 .footer__nav-col {
-  flex: 1 1 20%;
+  flex: 1 1 18%;
   min-width: 18rem;
   display: flex;
   flex-direction: column;

@@ -1,0 +1,87 @@
+{% extends 'base_info.html' %}
+{% load static humanize %}
+
+{% block title %}Cuadro de Cobertura Vigente A.T.E.M. | Elanel{% endblock %}
+{% block description %}Cuadro de Cobertura Vigente de Asistencia Técnica de Electrodomésticos y Motovehículos (A.T.E.M.) de Elanel Servicios S.R.L.{% endblock %}
+
+{% block content %}
+<section class="el-hero">
+  <span class="el-eyebrow">Cobertura</span>
+  <h1>Cuadro de Cobertura <strong>Vigente A.T.E.M.</strong></h1>
+  <p>Asistencia Técnica de Electrodomésticos y Motovehículos. Este es el importe máximo que se reconoce por cada servicio, según el Pack contratado.</p>
+</section>
+
+<section class="el-section">
+  {% if cuadro %}
+  <div class="el-meta">
+    <div><span>Vigente desde</span><strong>{{ cuadro.vigente_desde|date:"d/m/Y" }}</strong></div>
+    <div><span>Versión</span><strong>{{ cuadro.version }}</strong></div>
+  </div>
+
+  <div class="el-table-wrap">
+    <table class="el-table">
+      <thead>
+        <tr><th>Pack</th><th>Servicios anuales</th><th>Cobertura por servicio</th></tr>
+      </thead>
+      <tbody>
+        {% for pack in cuadro.packs.all %}
+        <tr>
+          <td>{{ pack.get_pack_display }}</td>
+          <td class="num">{{ pack.servicios_anuales }}</td>
+          <td class="num">${{ pack.cobertura_por_servicio|floatformat:"0"|intcomma }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  {% if cuadro.archivo %}
+  <div class="el-actions" style="margin-top: 2.4rem;">
+    <a class="el-btn" href="{{ cuadro.archivo.url }}" target="_blank" rel="noopener">Descargar Cuadro de Cobertura (PDF)</a>
+  </div>
+  {% endif %}
+  {% else %}
+  <div class="el-note">
+    <p>Estamos actualizando el Cuadro de Cobertura publicado en la web. Mientras tanto, podés consultar los valores vigentes en tu sucursal o por WhatsApp.</p>
+  </div>
+  <div class="el-actions" style="margin-top: 2.4rem;">
+    <a class="el-btn el-btn--wa" href="https://wa.me/543625170890?text=Hola!%20Quiero%20consultar%20el%20Cuadro%20de%20Cobertura%20vigente." target="_blank" rel="noopener noreferrer">
+      <img src="{% static 'images/icons/whatsapp_icon.svg' %}" alt="" />Consultar cobertura
+    </a>
+  </div>
+  {% endif %}
+</section>
+
+<section class="el-section">
+  <div class="el-section__head">
+    <span class="el-eyebrow">Condiciones</span>
+    <h2>Qué comprende la cobertura</h2>
+  </div>
+  <div class="el-box">
+    <ul>
+      <li>La cobertura comprende exclusivamente mano de obra, según las condiciones del Pack contratado.</li>
+      <li>Los repuestos, piezas, materiales, insumos, traslados y otros conceptos no incluidos quedan a cargo del cliente, previa información y aceptación.</li>
+      <li>El importe que se reconoce es el del cuadro vigente al momento de solicitar la asistencia.</li>
+      <li>Los valores de cobertura pueden actualizarse periódicamente según la evolución de los costos de los servicios técnicos y mecánicos. Cada actualización se publica en esta página.</li>
+    </ul>
+  </div>
+  <p class="el-fine" style="margin-top: 1.6rem;"><a class="el-link" href="{% url 'servicios' %}">Ver qué incluye cada Pack</a></p>
+</section>
+
+{% if anteriores %}
+<section class="el-section">
+  <div class="el-section__head">
+    <span class="el-eyebrow">Historial</span>
+    <h2>Versiones anteriores</h2>
+  </div>
+  <ul class="el-history">
+    {% for anterior in anteriores %}
+    <li>
+      <p>Versión {{ anterior.version }} · vigente desde {{ anterior.vigente_desde|date:"d/m/Y" }}</p>
+      {% if anterior.archivo %}<a class="el-link" href="{{ anterior.archivo.url }}" target="_blank" rel="noopener">Ver PDF</a>{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+{% endblock %}

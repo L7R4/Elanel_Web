@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="{% static 'css/categorias.css' %}" />
     <link rel="stylesheet" href="{% static 'css/navStyles.css' %}" />
     <link rel="stylesheet" href="{% static 'css/media_querys/nav_bar.css' %}" />
-    <title>Elanel Servicios y Soluciones</title>
+    <title>Elanel SRL</title>
+    {% include 'partials/og.html' %}
     <link
       rel="shortcut icon"
       href="{% static 'images/fwd/icon_page4.png' %}"
@@ -19,8 +20,8 @@
     <div class="espace_header_categories"></div>
 
     <div class="categorias__header">
-      <h1>Categorías</h1>
-      <p>Descubrí todos los planes y soluciones que tenemos para ofrecerte</p>
+      <h1>Venta directa</h1>
+      <p>Comprá tu moto 0 km o usada y equipá tu hogar en nuestras sucursales, con los medios de pago disponibles. La venta directa es una operación independiente de los Packs de Servicios: no requiere contratar un Pack y no forma parte de él.</p>
     </div>
 
     <section class="categorias">
@@ -48,7 +49,7 @@
         <a href="{% url 'market:electrodomesticos' %}" class="electrodomesticos__half electrodomesticos__half--info">
           <div class="electrodomesticos__info-content">
             <h1>Electrodomésticos</h1>
-            <p>Equipá tu hogar con la mejor tecnología y financiación a tu medida.</p>
+            <p>Equipá tu hogar con heladeras, lavarropas, televisores y más.</p>
             <div class="electrodomesticos__badges">
               <span class="electro__badge">Cocina</span>
               <span class="electro__badge">Gamer</span>
@@ -68,30 +69,9 @@
         <a href="{% url 'market:electrodomesticos' %}" class="electro__btn-link">Ver todos</a>
       </article>
 
-      <article class="soluciones_dinerarias soluciones__diagonal-card">
-        <!-- Image Left -->
-        <a href="{% url 'market:soluciones_dinerarias' %}" class="soluciones__half soluciones__half--image">
-          <div class="soluciones__bg" style="background-image: url('{% static 'images/dinero.png' %}');"></div>
-          <div class="soluciones__overlay"></div>
-        </a>
-
-        <!-- Info Right -->
-        <a href="{% url 'market:soluciones_dinerarias' %}" class="soluciones__half soluciones__half--info">
-          <div class="soluciones__info-content">
-            <h1>Soluciones Dinerarias</h1>
-            <p>Planes de capitalización y préstamos programados diseñados a tu medida.</p>
-            <div class="soluciones__limit-badge">De 1 a 10 Millones</div>
-          </div>
-        </a>
-
-        <!-- Bottom left button -->
-        <a href="{% url 'market:soluciones_dinerarias' %}" class="solu__btn-link">Ver todos</a>
-      </article>
-
     </section>
     <script src="{% static 'js/header.js' %}"></script>
     <script src="{% static 'js/menu_hamburguer.js' %}"></script>
-    <script src="{% static 'js/redirect_alternative.js' %}"></script>
 
     <script>
       // GSAP Entrance Animations

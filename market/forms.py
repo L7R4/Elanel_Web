@@ -1,4 +1,4 @@
-from market.models import Personal,BeneficioParaCliente,Cliente
+from market.models import Personal
 from django import forms
 class FormPersonal(forms.ModelForm):
     class Meta:
@@ -8,47 +8,4 @@ class FormPersonal(forms.ModelForm):
             'email',
             'num_telefono',
             'cv',
-        ]
-
-class FormBeneficios(forms.ModelForm):
-    class Meta:
-        model = BeneficioParaCliente
-        fields =[
-            'nombre_completo',
-            'email',
-            'num_telefono',
-            'servicio',
-            'producto',
-            'monto'
-        ]
-class FormDinero(forms.ModelForm):
-    class Meta:
-        model = Cliente
-        fields =[
-            'nombre_completo',
-            'email',
-            'provincia',
-            'num_telefono',
-            'objetivo',
-        ]
-        
-class FormMotos(forms.ModelForm):
-    class Meta:
-        model = Cliente
-        fields =[
-            'nombre_completo',
-            'email',
-            'provincia',
-            'num_telefono',
-            'objetivo',
-        ]
-class FormElec(forms.ModelForm):
-    class Meta:
-        model = Cliente
-        fields =[
-            'nombre_completo',
-            'email',
-            'provincia',
-            'num_telefono',
-            'objetivo',
         ]

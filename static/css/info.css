@@ -1,0 +1,1999 @@
+/* Estilos compartidos: Servicios, Cobertura, Beneficios, Preguntas frecuentes
+   y los bloques institucionales del inicio. Todas las clases usan el prefijo "el-". */
+
+@font-face {
+  font-family: raleway;
+  src: url("../fonts/Raleway-Regular.ttf");
+}
+@font-face {
+  font-family: raleway-semibold;
+  src: url("../fonts/Raleway-SemiBold.ttf");
+}
+@font-face {
+  font-family: raleway-bold;
+  src: url("../fonts/Raleway-Bold.ttf");
+}
+@font-face {
+  font-family: raleway-extrabold;
+  src: url("../fonts/Raleway-ExtraBold.ttf");
+}
+
+:root {
+  --el-bg: #0b0d17;
+  --el-card: rgba(255, 255, 255, 0.035);
+  --el-border: rgba(255, 255, 255, 0.09);
+  --el-primary: #027cf1;
+  --el-primary-soft: rgba(2, 124, 241, 0.14);
+  --el-text: #ffffff;
+  --el-text-2: #b4b8cc;
+  --el-muted: #7c8199;
+  --el-srv: #3d9bff;
+  --el-ben: #f0b44c;
+  --el-vd: #3d9bff;
+}
+
+.el-page {
+  margin: 0;
+  background-color: var(--el-bg);
+  color: var(--el-text);
+  font-family: raleway, 'Segoe UI', sans-serif;
+}
+
+.el-page *,
+.el-page *::before,
+.el-page *::after {
+  box-sizing: border-box;
+}
+
+html:has(.el-page) {
+  font-size: 62.5%;
+  background-color: var(--el-bg);
+}
+
+.espace_header_categories {
+  width: 100%;
+  height: 65px;
+}
+
+/* ---------- Estructura ---------- */
+
+.el-section {
+  width: 90%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 6rem 0 0;
+}
+
+.el-section h2,
+.el-hero h1 {
+  font-family: raleway-extrabold, sans-serif;
+  text-wrap: balance;
+  margin: 0;
+}
+
+.el-section h2 {
+  font-size: clamp(2.6rem, 3.4vw, 3.4rem);
+  line-height: 1.2;
+}
+
+.el-section h3 {
+  font-family: raleway-bold, sans-serif;
+  font-size: 1.9rem;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.el-section p,
+.el-section li {
+  font-size: 1.6rem;
+  line-height: 1.65;
+  color: var(--el-text-2);
+}
+
+.el-section p {
+  margin: 0;
+}
+
+.el-section__head {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 3.2rem;
+  max-width: 68rem;
+}
+
+.el-eyebrow {
+  font-family: raleway-bold, sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--el-primary);
+}
+
+/* ---------- Hero de páginas internas ---------- */
+
+.el-hero {
+  width: 90%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 7rem 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  max-width: 1120px;
+}
+
+.el-hero h1 {
+  font-size: clamp(3.2rem, 5vw, 5rem);
+  line-height: 1.1;
+  max-width: 20ch;
+}
+
+.el-hero h1 strong {
+  color: inherit;
+}
+
+.el-hero p {
+  font-size: clamp(1.6rem, 1.8vw, 1.9rem);
+  line-height: 1.6;
+  color: var(--el-text-2);
+  max-width: 62ch;
+  margin: 0;
+}
+
+/* ---------- Franja oscura del inicio (el resto del home es claro) ---------- */
+
+.el-home {
+  background-color: var(--el-bg);
+  color: var(--el-text);
+  font-family: raleway, 'Segoe UI', sans-serif;
+  padding-bottom: 7rem;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+  margin-bottom: 4rem;
+}
+
+.el-home *,
+.el-home *::before,
+.el-home *::after {
+  box-sizing: border-box;
+}
+
+/* ---------- Hero del inicio ---------- */
+
+.el-home-hero {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 0 2rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: center;
+  gap: 4rem;
+}
+
+.el-home-hero__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.el-home-hero h1 {
+  font-family: raleway-extrabold, sans-serif;
+  font-size: clamp(3.4rem, 5.2vw, 5.6rem);
+  line-height: 1.08;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.el-home-hero h1 strong {
+  color: inherit;
+}
+
+.el-home-hero p {
+  font-size: clamp(1.6rem, 1.9vw, 2rem);
+  line-height: 1.6;
+  color: var(--el-text-2);
+  margin: 0;
+  max-width: 52ch;
+}
+
+.el-home-hero figure {
+  margin: 0;
+}
+
+.el-home-hero img {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  display: block;
+  margin-left: auto;
+}
+
+@media (max-width: 860px) {
+  .el-home-hero {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .el-home-hero figure {
+    order: -1;
+  }
+  .el-home-hero img {
+    max-width: 260px;
+    margin: 0 auto;
+  }
+}
+
+/* ---------- Botones ---------- */
+
+.el-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-top: 0.8rem;
+}
+
+.el-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: raleway-bold, sans-serif;
+  font-size: 1.5rem;
+  line-height: 1;
+  padding: 1.4rem 2.4rem;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #fff;
+  background: var(--el-primary);
+  border: 1.5px solid var(--el-primary);
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.el-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(2, 124, 241, 0.35);
+}
+
+.el-btn:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.el-btn--ghost {
+  background: transparent;
+  color: var(--el-text);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.el-btn--ghost:hover {
+  border-color: var(--el-primary);
+  box-shadow: none;
+}
+
+.el-btn--wa {
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+  border-color: transparent;
+}
+
+.el-btn--wa img {
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) invert(1);
+}
+
+.el-link {
+  font-family: raleway-bold, sans-serif;
+  font-size: 1.5rem;
+  color: var(--el-primary);
+  text-decoration: none;
+}
+
+.el-link:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Los tres pilares ---------- */
+
+.el-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.el-pillar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 2.8rem 2.4rem;
+  background: var(--el-card);
+  border: 1px solid var(--el-border);
+  border-top: 3px solid var(--el-accent, var(--el-primary));
+  border-radius: 4px;
+}
+
+.el-pillar--srv { --el-accent: var(--el-srv); }
+.el-pillar--ben { --el-accent: var(--el-ben); }
+.el-pillar--vd { --el-accent: var(--el-vd); }
+
+.el-pillar .el-tag {
+  color: var(--el-accent);
+}
+
+.el-pillar p {
+  flex: 1;
+}
+
+.el-tag {
+  font-family: raleway-bold, sans-serif;
+  font-size: 1.15rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 860px) {
+  .el-pillars {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Packs ---------- */
+
+.el-packs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.el-pack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  padding: 3rem 2.6rem;
+  background: var(--el-card);
+  border: 1px solid var(--el-border);
+  border-radius: 4px;
+}
+
+.el-pack--destacado {
+  border-color: rgba(2, 124, 241, 0.6);
+  background: linear-gradient(180deg, rgba(2, 124, 241, 0.12) 0%, var(--el-card) 60%);
+}
+
+.el-pack__name {
+  font-family: raleway-extrabold, sans-serif;
+  font-size: 2.4rem;
+}
+
+.el-pack__count {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding-bottom: 1.6rem;
+  border-bottom: 1px solid var(--el-border);
+}
+
+.el-pack__count strong {
+  font-family: raleway-extrabold, sans-serif;
+  font-size: 5.2rem;
+  line-height: 1;
+  color: var(--el-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.el-pack__count span {
+  font-size: 1.5rem;
+  line-height: 1.35;
+  color: var(--el-text-2);
+}
+
+.el-pack ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  flex: 1;
+}
+
+.el-pack li {
+  font-size: 1.5rem;
+  padding-left: 2.2rem;
+  position: relative;
+}
+
+.el-pack li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--el-primary);
+  font-family: raleway-bold, sans-serif;
+}
+
+.el-pack .el-btn {
+  justify-content: center;
+}
+
+@media (max-width: 860px) {
+  .el-packs {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Pasos ---------- */
+
+.el-steps {
+  list-style: none;
+  counter-reset: paso;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.el-steps li {
+  counter-increment: paso;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--el-border);
+}
+
+.el-steps li::before {
+  content: counter(paso);
+  font-family: raleway-extrabold, sans-serif;
+  font-size: 1.5rem;
+  width: 3.6rem;
+  height: 3.6rem;
+  border-radius: 4px;
+  display: grid;
+  place-items: center;
+  background: var(--el-primary-soft);
+  color: var(--el-primary);
+}
+
+.el-steps strong {
+  font-family: raleway-bold, sans-serif;
+  color: var(--el-text);
+  font-size: 1.7rem;
+}
+
+@media (max-width: 960px) {
+  .el-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .el-steps {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Listas en dos columnas ---------- */
+
+.el-cols {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.el-box {
+  padding: 2.6rem;
+  background: var(--el-card);
+  border: 1px solid var(--el-border);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.el-box ul {
+  margin: 0;
+  padding-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.el-box--si h3 { color: var(--el-vd); }
+.el-box--no h3 { color: var(--el-ben); }
+
+@media (max-width: 760px) {
+  .el-cols {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Notas y letra chica ---------- */
+
+.el-note {
+  margin-top: 2.4rem;
+  padding: 2rem 2.4rem;
+  border-radius: 4px;
+  background: var(--el-primary-soft);
+  border: 1px solid rgba(2, 124, 241, 0.3);
+}
+
+.el-note p {
+  color: var(--el-text);
+}
+
+.el-fine {
+  font-size: 1.35rem !important;
+  color: var(--el-muted) !important;
+  line-height: 1.6;
+}
+
+.el-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 3.2rem;
+  border-radius: 4px;
+  background: linear-gradient(120deg, rgba(2, 124, 241, 0.22) 0%, rgba(2, 124, 241, 0.05) 100%);
+  border: 1px solid rgba(2, 124, 241, 0.35);
+}
+
+.el-banner > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  max-width: 60ch;
+}
+
+/* ---------- Tabla de cobertura ---------- */
+
+.el-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--el-border);
+  border-radius: 4px;
+}
+
+.el-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.6rem;
+}
+
+@media (max-width: 560px) {
+  .el-table {
+    font-size: 1.4rem;
+  }
+  .el-table th,
+  .el-table td {
+    padding: 1.2rem 1.2rem;
+  }
+  .el-table th {
+    font-size: 1.05rem;
+    letter-spacing: 0.06em;
+  }
+}
+
+.el-table th,
+.el-table td {
+  text-align: left;
+  padding: 1.6rem 2rem;
+  border-bottom: 1px solid var(--el-border);
+}
+
+.el-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.el-table th {
+  font-family: raleway-bold, sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--el-muted);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.el-table td {
+  color: var(--el-text);
+}
+
+.el-table .num {
+  font-variant-numeric: tabular-nums;
+  font-family: raleway-semibold, sans-serif;
+}
+
+.el-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 3rem;
+  margin-bottom: 2rem;
+}
+
+.el-meta div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.el-meta span {
+  font-size: 1.2rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--el-muted);
+}
+
+.el-meta strong {
+  font-family: raleway-bold, sans-serif;
+  font-size: 1.9rem;
+}
+
+.el-history {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.el-history li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--el-border);
+}
+
+/* ---------- Preguntas frecuentes ---------- */
+
+.el-faq {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--el-border);
+}
+
+.el-faq details {
+  border-bottom: 1px solid var(--el-border);
+}
+
+.el-faq summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: 2.2rem 0;
+  font-family: raleway-bold, sans-serif;
+  font-size: 1.8rem;
+  color: var(--el-text);
+}
+
+.el-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.el-faq summary::after {
+  content: "+";
+  font-family: raleway, sans-serif;
+  font-size: 2.6rem;
+  line-height: 1;
+  color: var(--el-primary);
+  transition: transform 0.2s ease;
+}
+
+.el-faq details[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.el-faq summary:focus-visible {
+  outline: 2px solid var(--el-primary);
+  outline-offset: 4px;
+}
+
+.el-faq details > div {
+  padding: 0 0 2.2rem;
+  max-width: 72ch;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .el-btn,
+  .el-faq summary::after {
+    transition: none;
+  }
+}
+
+/* ---------- Toque comercial ---------- */
+
+.el-trust {
+  list-style: none;
+  padding: 0;
+  margin: 1.2rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2.4rem;
+}
+
+.el-trust li {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: raleway-semibold, sans-serif;
+  font-size: 1.4rem;
+  color: var(--el-text-2);
+}
+
+.el-trust li::before {
+  content: "";
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  background: var(--el-primary);
+  box-shadow: 0 0 10px rgba(2, 124, 241, 0.7);
+}
+
+.el-trust strong {
+  font-family: raleway-extrabold, sans-serif;
+  color: var(--el-text);
+}
+
+/* Situaciones que resuelve el servicio */
+.el-problems {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.6rem;
+}
+
+.el-problem {
+  display: grid;
+  grid-template-columns: 4.8rem minmax(0, 1fr);
+  gap: 0.4rem 1.6rem;
+  align-items: start;
+  padding: 2.2rem;
+  background: var(--el-card);
+  border: 1px solid var(--el-border);
+  border-radius: 4px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.el-problem:hover {
+  border-color: rgba(2, 124, 241, 0.5);
+  transform: translateY(-3px);
+}
+
+.el-problem svg {
+  grid-row: span 2;
+  width: 4.8rem;
+  height: 4.8rem;
+  padding: 1rem;
+  border-radius: 4px;
+  background: var(--el-primary-soft);
+  color: var(--el-primary);
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.el-problem h3 {
+  font-size: 1.7rem;
+}
+
+.el-problem p {
+  font-size: 1.45rem !important;
+}
+
+@media (max-width: 960px) {
+  .el-problems {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .el-problems {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Por qué Elanel */
+.el-why {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2.4rem;
+}
+
+.el-why div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.el-why strong {
+  font-family: raleway-extrabold, sans-serif;
+  font-size: 3.6rem;
+  line-height: 1;
+  color: var(--el-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.el-why h3 {
+  font-size: 1.7rem;
+}
+
+.el-why p {
+  font-size: 1.45rem !important;
+}
+
+@media (max-width: 960px) {
+  .el-why {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .el-why {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Etiqueta y "ideal para" en cada Pack */
+.el-pack__head {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.el-pack__tag {
+  font-family: raleway-bold, sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  background: var(--el-primary-soft);
+  color: var(--el-primary);
+}
+
+.el-pack--destacado .el-pack__tag {
+  background: var(--el-primary);
+  color: #fff;
+}
+
+.el-pack__ideal {
+  font-size: 1.45rem !important;
+  color: var(--el-text-2);
+  margin: 0;
+}
+
+.el-pack__ideal strong {
+  color: var(--el-text);
+  font-family: raleway-semibold, sans-serif;
+}
+
+.el-pack__links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.el-pack__links .el-link {
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+/* Cierre comercial */
+.el-cta {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 3rem;
+  padding: clamp(3rem, 5vw, 5.6rem);
+  border-radius: 4px;
+  background:
+    radial-gradient(circle at 90% 10%, rgba(2, 227, 245, 0.25) 0%, transparent 45%),
+    linear-gradient(125deg, #0356b0 0%, #027cf1 55%, #04a4f4 100%);
+  box-shadow: 0 20px 50px rgba(2, 124, 241, 0.25);
+}
+
+.el-cta h2 {
+  color: #fff;
+  font-size: clamp(2.8rem, 3.8vw, 4rem) !important;
+}
+
+.el-cta p {
+  color: rgba(255, 255, 255, 0.88) !important;
+  margin-top: 1.2rem !important;
+  max-width: 48ch;
+}
+
+.el-cta__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1.2rem;
+}
+
+.el-cta__actions .el-btn {
+  justify-content: center;
+  font-size: 1.6rem;
+  padding: 1.6rem 2.4rem;
+}
+
+.el-btn--light {
+  background: #fff;
+  color: #0356b0;
+  border-color: #fff;
+}
+
+.el-btn--light:hover {
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+}
+
+.el-btn--outline-light {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.el-btn--outline-light:hover {
+  border-color: #fff;
+  box-shadow: none;
+}
+
+@media (max-width: 760px) {
+  .el-cta {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .el-problem {
+    transition: none;
+  }
+}
+
+/* ---------- Vidriera de venta directa ---------- */
+
+.el-eyebrow--vd {
+  color: var(--el-vd);
+}
+
+.el-link--vd {
+  color: var(--el-vd);
+}
+
+.el-shop__head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+  margin-bottom: 3.2rem;
+}
+
+.el-shop__head .el-section__head {
+  margin-bottom: 0;
+}
+
+.el-shop__cats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.el-chip {
+  font-family: raleway-semibold, sans-serif;
+  font-size: 1.4rem;
+  padding: 1rem 1.8rem;
+  border-radius: 4px;
+  border: 1px solid rgba(2, 124, 241, 0.45);
+  color: var(--el-text);
+  text-decoration: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.el-chip:hover {
+  background: rgba(2, 124, 241, 0.12);
+  border-color: var(--el-primary);
+}
+
+.el-chip:focus-visible {
+  outline: 2px solid var(--el-vd);
+  outline-offset: 3px;
+}
+
+.el-shop__row + .el-shop__row {
+  margin-top: 3.6rem;
+}
+
+.el-shop__row-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.6rem;
+}
+
+.el-products {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.6rem;
+}
+
+.el-product {
+  display: flex;
+  flex-direction: column;
+  background: var(--el-card);
+  border: 1px solid var(--el-border);
+  border-radius: 4px;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--el-text);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.el-product:hover {
+  border-color: rgba(2, 124, 241, 0.6);
+  transform: translateY(-3px);
+}
+
+.el-product:focus-visible {
+  outline: 2px solid var(--el-vd);
+  outline-offset: 3px;
+}
+
+.el-product figure {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 4 / 3;
+  min-height: 0;
+  overflow: hidden;
+  background: #f1f3f7;
+}
+
+/* La foto se ubica sobre el marco: nunca estira la tarjeta, y se ve completa sin deformarse. */
+.el-product figure img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 1.2rem;
+  object-fit: contain;
+  display: block;
+}
+
+.el-product__badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-family: raleway-bold, sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.5rem 0.9rem;
+  border-radius: 4px;
+  background: var(--el-primary);
+  color: #fff;
+}
+
+.el-product__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.6rem 1.8rem 1.8rem;
+  flex: 1;
+}
+
+.el-product__brand {
+  font-size: 1.15rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--el-muted);
+}
+
+.el-product h4 {
+  font-family: raleway-bold, sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.3;
+  margin: 0;
+  flex: 1;
+}
+
+.el-product__cta {
+  font-family: raleway-bold, sans-serif;
+  font-size: 1.35rem;
+  color: var(--el-vd);
+}
+
+.el-shop__bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 3.2rem;
+  padding: 2.8rem 3.2rem;
+  border-radius: 4px;
+  background: linear-gradient(120deg, rgba(2, 124, 241, 0.16) 0%, rgba(2, 124, 241, 0.04) 100%);
+  border: 1px solid rgba(2, 124, 241, 0.35);
+}
+
+.el-shop__bar > div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  max-width: 56ch;
+}
+
+.el-hero-shop {
+  font-size: 1.5rem !important;
+  color: var(--el-text-2);
+  margin: 0.4rem 0 0 !important;
+}
+
+.el-hero-shop a {
+  color: var(--el-vd);
+  font-family: raleway-bold, sans-serif;
+  text-decoration: none;
+}
+
+.el-hero-shop a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 960px) {
+  .el-products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .el-product,
+  .el-chip {
+    transition: none;
+  }
+}
+
+/* ---------- Packs compactos del inicio ---------- */
+
+.el-packs-compact {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  grid-template-areas:
+    "text counts"
+    "actions counts";
+  align-items: center;
+  gap: 2rem 4rem;
+  padding: clamp(2.8rem, 4vw, 4.4rem);
+  border-radius: 4px;
+  background: linear-gradient(135deg, rgba(2, 124, 241, 0.16) 0%, rgba(2, 124, 241, 0.03) 100%);
+  border: 1px solid rgba(2, 124, 241, 0.35);
+}
+
+.el-packs-compact > div:first-child {
+  grid-area: text;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.el-packs-compact .el-actions {
+  grid-area: actions;
+  margin-top: 0;
+}
+
+.el-packs-compact__counts {
+  grid-area: counts;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+
+.el-packs-compact__counts div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 2.2rem 1rem;
+  border-radius: 4px;
+  background: var(--el-card);
+  border: 1px solid var(--el-border);
+}
+
+.el-packs-compact__counts strong {
+  font-family: raleway-extrabold, sans-serif;
+  font-size: 4.6rem;
+  line-height: 1;
+  color: var(--el-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.el-packs-compact__counts span {
+  font-family: raleway-semibold, sans-serif;
+  font-size: 1.4rem;
+  color: var(--el-text-2);
+}
+
+@media (max-width: 860px) {
+  .el-packs-compact {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "text"
+      "counts"
+      "actions";
+  }
+}
+
+/* ---------- Soluciones Comerciales ---------- */
+
+.el-range {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 2rem;
+}
+
+.el-range__amount,
+.el-range__cta {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  padding: clamp(2.8rem, 4vw, 4.4rem);
+  border-radius: 4px;
+}
+
+.el-range__amount {
+  justify-content: center;
+  background:
+    radial-gradient(circle at 85% 15%, rgba(2, 227, 245, 0.22) 0%, transparent 50%),
+    linear-gradient(125deg, #0356b0 0%, #027cf1 60%, #04a4f4 100%);
+  box-shadow: 0 20px 50px rgba(2, 124, 241, 0.25);
+}
+
+.el-range__amount .el-eyebrow {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.el-range__values {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin: 0;
+}
+
+.el-range__values div {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  align-items: baseline;
+  gap: 1.6rem;
+}
+
+.el-range__values dt {
+  font-family: raleway-bold, sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.el-range__values dd {
+  margin: 0;
+  font-family: raleway-extrabold, sans-serif;
+  font-size: clamp(3.2rem, 4.4vw, 5rem);
+  line-height: 1.1;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+}
+
+.el-range__note {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.el-range__cta {
+  justify-content: center;
+  background: var(--el-card);
+  border: 1px solid var(--el-border);
+}
+
+.el-range__cta .el-btn {
+  align-self: flex-start;
+}
+
+.el-steps--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 860px) {
+  .el-range {
+    grid-template-columns: 1fr;
+  }
+  .el-steps--3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Catálogo de venta directa ---------- */
+
+.el-hero--catalog {
+  padding-bottom: 0;
+}
+
+.el-hero--catalog h1 {
+  font-size: clamp(3.6rem, 5vw, 5.2rem);
+}
+
+.el-catalog {
+  padding-top: 3.2rem;
+}
+
+.el-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  padding: 2rem 2.4rem;
+  border-radius: 4px;
+  background: var(--el-card);
+  border: 1px solid var(--el-border);
+}
+
+.el-filters__group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.el-filters__label {
+  flex: 0 0 9rem;
+  font-family: raleway-bold, sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--el-muted);
+}
+
+.el-chip.is-active {
+  background: var(--el-primary);
+  border-color: var(--el-primary);
+  color: #fff;
+}
+
+.el-catalog__count {
+  margin: 2.4rem 0 1.6rem !important;
+  font-size: 1.4rem !important;
+  color: var(--el-muted) !important;
+}
+
+.el-products--catalog {
+  grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
+}
+
+.el-product__meta {
+  font-size: 1.3rem;
+  color: var(--el-text-2);
+}
+
+.el-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 3.2rem;
+  border-radius: 4px;
+  border: 1px dashed var(--el-border);
+}
+
+@media (max-width: 600px) {
+  .el-filters {
+    padding: 1.6rem;
+  }
+  .el-filters__label {
+    flex-basis: 100%;
+  }
+  .el-products--catalog {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.2rem;
+  }
+  .el-products--catalog .el-product__body {
+    padding: 1.2rem;
+  }
+  .el-products--catalog .el-product h4 {
+    font-size: 1.4rem;
+  }
+}
+
+/* ---------- Ficha de producto ---------- */
+
+.el-detail {
+  padding-top: 4rem;
+}
+
+.el-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 2.4rem;
+  font-size: 1.35rem;
+  color: var(--el-muted);
+}
+
+.el-breadcrumb a {
+  color: var(--el-text-2);
+  text-decoration: none;
+}
+
+.el-breadcrumb a:hover {
+  color: var(--el-vd);
+}
+
+.el-breadcrumb span:last-child {
+  color: var(--el-text);
+}
+
+.el-detail__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 4rem;
+  align-items: start;
+}
+
+.el-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.el-gallery__main {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 4 / 3;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #f1f3f7;
+}
+
+.el-gallery__main img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  object-fit: contain;
+  display: block;
+}
+
+.el-gallery__main .el-product__badge {
+  top: 1.6rem;
+  left: 1.6rem;
+  font-size: 1.2rem;
+}
+
+.el-gallery__thumbs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+  gap: 1rem;
+}
+
+.el-gallery__thumb {
+  padding: 0;
+  aspect-ratio: 1;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #f1f3f7;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.el-gallery__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.el-gallery__thumb.is-active {
+  border-color: var(--el-primary);
+}
+
+.el-gallery__thumb:focus-visible {
+  outline: 2px solid var(--el-vd);
+  outline-offset: 2px;
+}
+
+.el-detail__info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.el-detail__info h1 {
+  font-family: raleway-extrabold, sans-serif;
+  font-size: clamp(3rem, 3.6vw, 4.2rem);
+  line-height: 1.1;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.el-detail__price {
+  font-family: raleway-bold, sans-serif;
+  font-size: 2rem !important;
+  color: var(--el-vd) !important;
+  margin: 0 !important;
+}
+
+.el-specs {
+  margin: 0.8rem 0 0;
+  border-top: 1px solid var(--el-border);
+}
+
+.el-specs div {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--el-border);
+  font-size: 1.5rem;
+}
+
+.el-specs dt {
+  color: var(--el-muted);
+}
+
+.el-specs dd {
+  margin: 0;
+  font-family: raleway-semibold, sans-serif;
+  color: var(--el-text);
+  text-align: right;
+}
+
+.el-detail__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.el-detail__actions .el-btn {
+  justify-content: center;
+  font-size: 1.6rem;
+  padding: 1.6rem 2.4rem;
+}
+
+.el-detail__notes {
+  list-style: none;
+  padding: 1.6rem 1.8rem;
+  margin: 0.4rem 0 0;
+  border-radius: 4px;
+  background: rgba(2, 124, 241, 0.08);
+  border: 1px solid rgba(2, 124, 241, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.el-detail__notes li {
+  font-size: 1.4rem !important;
+  padding-left: 2rem;
+  position: relative;
+}
+
+.el-detail__notes li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--el-vd);
+  font-family: raleway-bold, sans-serif;
+}
+
+.el-detail__desc {
+  margin-top: 1rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--el-border);
+  font-size: 1.5rem;
+  line-height: 1.7;
+  color: var(--el-text-2);
+}
+
+.el-detail__desc p,
+.el-detail__desc li {
+  font-size: 1.5rem;
+}
+
+.el-detail__related-title {
+  font-size: clamp(2.2rem, 2.6vw, 2.8rem) !important;
+}
+
+@media (max-width: 860px) {
+  .el-detail__grid {
+    grid-template-columns: 1fr;
+    gap: 2.4rem;
+  }
+}
+
+/* ---------- Hero de venta directa (inicio) ---------- */
+
+.el-shop-hero {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 0 1rem;
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  align-items: center;
+  gap: 4.8rem;
+}
+
+/* Fondo: foto real del frente de la sucursal, a todo el ancho y oscurecida para que el texto se lea. */
+.el-shop-hero {
+  position: relative;
+  isolation: isolate;
+}
+
+.el-shop-hero::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: -4rem;
+  left: calc(50% - 50vw);
+  width: 100vw;
+  background:
+    linear-gradient(180deg, rgba(11, 13, 23, 0) 70%, var(--el-bg) 100%),
+    linear-gradient(90deg, rgba(11, 13, 23, 0.94) 0%, rgba(11, 13, 23, 0.82) 45%, rgba(11, 13, 23, 0.6) 100%),
+    url("../images/background_image_contactanos.jpg") center 72% / cover no-repeat;
+}
+
+.el-shop-hero__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.el-shop-hero h1 {
+  font-family: raleway-extrabold, sans-serif;
+  font-size: clamp(3.2rem, 3.6vw, 5.4rem);
+  line-height: 1.05;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.el-shop-hero h1 strong {
+  color: inherit;
+}
+
+.el-shop-hero p {
+  font-size: clamp(1.6rem, 1.9vw, 2rem);
+  line-height: 1.6;
+  color: var(--el-text-2);
+  margin: 0;
+  max-width: 46ch;
+}
+
+.el-btn--vd {
+  background: var(--el-primary);
+  border-color: var(--el-primary);
+  color: #fff;
+}
+
+.el-btn--vd:hover {
+  box-shadow: 0 8px 22px rgba(2, 124, 241, 0.35);
+}
+
+.el-trust--vd li::before {
+  background: var(--el-primary);
+  box-shadow: 0 0 10px rgba(2, 124, 241, 0.7);
+}
+
+/* Mosaico de categorías */
+.el-bento {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  grid-template-rows: 20rem 20rem auto;
+  grid-template-areas:
+    "big electro"
+    "big sol"
+    "wa  wa";
+  gap: 1.4rem;
+}
+
+.el-tile {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #f1f3f7;
+  text-decoration: none;
+  color: var(--el-text);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.el-tile:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+}
+
+.el-tile:focus-visible {
+  outline: 2px solid var(--el-vd);
+  outline-offset: 3px;
+}
+
+.el-tile--big { grid-area: big; }
+.el-tile--electro { grid-area: electro; }
+.el-tile--sol { grid-area: sol; }
+
+.el-tile > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 1.6rem 1.6rem 7rem;
+  object-fit: contain;
+  transition: transform 0.35s ease;
+}
+
+.el-tile:hover > img {
+  transform: scale(1.04);
+}
+
+.el-tile__label {
+  position: absolute;
+  left: 1.2rem;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  padding: 1.1rem 1.4rem;
+  border-radius: 4px;
+  background: rgba(11, 13, 23, 0.88);
+  backdrop-filter: blur(6px);
+}
+
+.el-tile__label strong {
+  font-family: raleway-bold, sans-serif;
+  font-size: 1.6rem;
+}
+
+.el-tile__label span {
+  font-family: raleway-semibold, sans-serif;
+  font-size: 1.3rem;
+  color: var(--el-vd);
+  white-space: nowrap;
+}
+
+.el-tile__label span::after {
+  content: " →";
+}
+
+.el-tile--big .el-tile__label strong {
+  font-size: 2rem;
+}
+
+/* Tarjeta de Soluciones Comerciales: sin foto de producto, el rango de montos es la imagen. */
+.el-tile--sol {
+  display: flex;
+  align-items: flex-start;
+  padding: 2rem 2rem 7rem;
+  background:
+    linear-gradient(135deg, rgba(2, 124, 241, 0.22) 0%, rgba(2, 124, 241, 0.06) 100%),
+    var(--el-bg);
+  border: 1px solid rgba(2, 124, 241, 0.4);
+}
+
+.el-tile__sol-range {
+  font-family: raleway-extrabold, sans-serif;
+  font-size: clamp(2.6rem, 3vw, 3.4rem);
+  line-height: 1.1;
+  color: var(--el-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.el-tile__sol-range small {
+  font-family: raleway-semibold, sans-serif;
+  font-size: 0.55em;
+  color: var(--el-text-2);
+}
+
+.el-tile--wa {
+  grid-area: wa;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  padding: 1.8rem 2rem;
+  background: linear-gradient(135deg, rgba(37, 211, 102, 0.18) 0%, rgba(18, 140, 126, 0.12) 100%);
+  border: 1px solid rgba(37, 211, 102, 0.4);
+}
+
+.el-tile--wa > img.el-tile__icon {
+  position: static;
+  flex: 0 0 4.4rem;
+  width: 4.4rem;
+  height: 4.4rem;
+  padding: 1rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+  object-fit: contain;
+  transform: none;
+}
+
+.el-tile--wa > span {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.el-tile--wa strong {
+  font-family: raleway-bold, sans-serif;
+  font-size: 1.6rem;
+}
+
+.el-tile--wa > span > span {
+  font-size: 1.35rem;
+  color: var(--el-text-2);
+}
+
+@media (max-width: 960px) {
+  .el-shop-hero {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding-top: 3.2rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .el-bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: 22rem 20rem auto;
+    grid-template-areas:
+      "big big"
+      "electro sol"
+      "wa wa";
+    gap: 1rem;
+  }
+  .el-tile__label {
+    padding: 0.9rem 1.1rem;
+  }
+  .el-tile__label strong {
+    font-size: 1.4rem;
+  }
+  .el-tile__label span {
+    white-space: normal;
+  }
+  .el-tile--sol {
+    padding: 1.4rem 1.4rem 9rem;
+  }
+  .el-tile__sol-range {
+    font-size: 2.2rem;
+  }
+  .el-tile > img {
+    padding-bottom: 6.4rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .el-tile,
+  .el-tile > img {
+    transition: none;
+  }
+}
+
+/* ---------- Asistencia como sección del inicio ---------- */
+
+.el-assist {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: center;
+  gap: 4rem;
+  padding: clamp(3rem, 5vw, 5.6rem);
+  border-radius: 4px;
+  background:
+    radial-gradient(circle at 85% 20%, rgba(2, 124, 241, 0.28) 0%, transparent 55%),
+    linear-gradient(135deg, rgba(2, 124, 241, 0.14) 0%, rgba(2, 124, 241, 0.02) 100%);
+  border: 1px solid rgba(2, 124, 241, 0.3);
+}
+
+.el-assist h2 {
+  font-size: clamp(3rem, 4.2vw, 4.6rem) !important;
+  line-height: 1.1 !important;
+}
+
+.el-assist h2 strong {
+  color: inherit;
+}
+
+.el-assist figure {
+  margin: 0;
+}
+
+.el-assist img {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  display: block;
+  margin-left: auto;
+}
+
+@media (max-width: 860px) {
+  .el-assist {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .el-assist figure {
+    order: -1;
+  }
+  .el-assist img {
+    max-width: 240px;
+    margin: 0 auto;
+  }
+}
+
+/* ---------- Separador de sección (banda de los formularios Elanel) ----------
+   La etiqueta de cada encabezado se convierte en la banda azul con corte diagonal,
+   sobre una franja gris translúcida que cruza todo el ancho de la pantalla. */
+
+:root {
+  --el-band: #2f5f9e;
+  --el-band-vd: var(--el-band);
+  --el-band-strip: rgba(255, 255, 255, 0.07);
+  --el-band-h: 5.2rem;
+  /* Distancia entre el borde de la pantalla y el contenido (.el-section mide 90% hasta 1120px). */
+  --el-gutter: max(5vw, calc((100vw - 1120px) / 2));
+}
+
+/* La banda llega a los bordes de la pantalla: se recorta lo que sobra. */
+.el-home,
+.el-page {
+  overflow-x: clip;
+}
+
+.el-section__head {
+  position: relative;
+}
+
+.el-section__head:has(> .el-eyebrow:first-child)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: calc(-1 * var(--el-gutter));
+  width: 100vw;
+  height: var(--el-band-h);
+  background: var(--el-band-strip);
+}
+
+.el-section__head > .el-eyebrow:first-child {
+  position: relative;
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  min-height: var(--el-band-h);
+  margin: 0 0 1.6rem calc(-1 * var(--el-gutter));
+  padding: 0 7rem 0 var(--el-gutter);
+  background: var(--el-band);
+  clip-path: polygon(0 0, 100% 0, calc(100% - 4.4rem) 100%, 0 100%);
+  color: #fff;
+  font-family: raleway-extrabold, sans-serif;
+  font-size: clamp(1.5rem, 1.8vw, 2rem);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.el-section__head > .el-eyebrow--vd:first-child {
+  background: var(--el-band-vd);
+}
+
+@media (max-width: 600px) {
+  .el-section__head > .el-eyebrow:first-child {
+    white-space: normal;
+    padding-right: 5.6rem;
+    padding-block: 1rem;
+    font-size: 1.4rem;
+    max-width: calc(100% + var(--el-gutter));
+  }
+}

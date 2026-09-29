@@ -1,0 +1,65 @@
+{% extends 'base_info.html' %}
+
+{% block title %}Preguntas Frecuentes | Elanel{% endblock %}
+{% block description %}Respuestas sobre los Packs de Asistencia Técnica y Mecánica, la cobertura, los beneficios para clientes y la venta directa de Elanel.{% endblock %}
+
+{% block content %}
+<section class="el-hero">
+  <span class="el-eyebrow">Ayuda</span>
+  <h1>Preguntas <strong>frecuentes</strong></h1>
+  <p>Lo que más nos consultan sobre los Packs de Servicios, la cobertura, los beneficios y la venta directa.</p>
+</section>
+
+<section class="el-section">
+  <div class="el-faq">
+    <details>
+      <summary>¿Qué es un Pack de Servicios?</summary>
+      <div><p>Es un servicio de asistencia técnica y mecánica para las motos y electrodomésticos que declares al adherirte. Según el Pack, tenés una cantidad de servicios por año y un valor de cobertura por cada servicio.</p></div>
+    </details>
+    <details>
+      <summary>¿Qué diferencia hay entre Básico, Estándar y Premium?</summary>
+      <div><p>La cantidad de servicios por año (2, 3 o 4) y el valor de cobertura de cada servicio, que está publicado en el <a class="el-link" href="{% url 'cobertura' %}">Cuadro de Cobertura vigente</a>.</p></div>
+    </details>
+    <details>
+      <summary>¿Desde cuándo puedo usar el servicio?</summary>
+      <div><p>Desde la 4ª cuota abonada, siempre que tengas la cuota al día.</p></div>
+    </details>
+    <details>
+      <summary>¿Qué cubre y qué no?</summary>
+      <div><p>Cubre la mano de obra hasta el valor del cuadro vigente. Los repuestos, piezas, materiales, insumos y traslados quedan a cargo del cliente, y siempre se informan antes.</p></div>
+    </details>
+    <details>
+      <summary>¿Cómo pido una asistencia?</summary>
+      <div><p>En tu sucursal o por WhatsApp, con tu número de solicitud. Te damos turno según la disponibilidad de técnicos. <a class="el-link" href="{% url 'servicios' %}#solicitar-asistencia">Ver condiciones</a></p></div>
+    </details>
+    <details>
+      <summary>¿Puedo agregar o cambiar los equipos cubiertos?</summary>
+      <div><p>Sí. Podés declarar o reemplazar equipos con tu cuota al día, pidiéndolo personalmente en tu sucursal.</p></div>
+    </details>
+    <details>
+      <summary>¿Qué es un acto de adjudicación?</summary>
+      <div><p>Es un sorteo mensual que se realiza ante Escribano Público Nacional y que Elanel ofrece como beneficio complementario a los clientes que tienen su cuota al día. <a class="el-link" href="{% url 'beneficios' %}">Ver cómo funciona</a></p></div>
+    </details>
+    <details>
+      <summary>¿Es un plan de ahorro?</summary>
+      <div><p>No. Lo que contratás es un servicio de asistencia técnica y mecánica. La participación en actos de adjudicación es un beneficio adicional y no garantiza la adjudicación de ningún bien.</p></div>
+    </details>
+    <details>
+      <summary>¿Puedo comprar una moto o un electrodoméstico sin contratar un Pack?</summary>
+      <div><p>Sí. La <a class="el-link" href="{% url 'market:categorias' %}">venta directa</a> es una operación independiente de los Packs de Servicios y se paga con los medios de pago disponibles en cada sucursal.</p></div>
+    </details>
+    <details>
+      <summary>¿Puedo darme de baja?</summary>
+      <div><p>Sí. Tenés que estar al día con los pagos y avisar de forma fehaciente con al menos 30 días de anticipación. Las condiciones de la rescisión figuran en la Cláusula 6 de tu contrato.</p></div>
+    </details>
+  </div>
+
+  <div class="el-banner" style="margin-top: 4rem;">
+    <div>
+      <h3>¿No encontraste tu respuesta?</h3>
+      <p>Escribinos y te responde un asesor de tu sucursal.</p>
+    </div>
+    <a class="el-btn" href="{% url 'contactanos' %}">Contactanos</a>
+  </div>
+</section>
+{% endblock %}

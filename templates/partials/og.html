@@ -1,0 +1,11 @@
+{% load static %}
+{# Vista previa al compartir el link (WhatsApp, Facebook, etc.). La imagen necesita URL absoluta. #}
+<meta property="og:site_name" content="Elanel SRL">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Elanel SRL">
+<meta property="og:description" content="Venta directa de motos y electrodomésticos, soluciones comerciales y asistencia técnica y mecánica en 10 sucursales del norte argentino.">
+<meta property="og:url" content="https://{{ request.get_host }}{{ request.path }}">
+<meta property="og:image" content="https://{{ request.get_host }}{% static 'images/background_image_contactanos.jpg' %}">
+<meta property="og:image:alt" content="Frente de una sucursal Elanel">
+<meta property="og:locale" content="es_AR">
+<meta name="twitter:card" content="summary_large_image">

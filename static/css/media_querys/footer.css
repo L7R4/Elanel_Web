@@ -7,6 +7,12 @@
         display: none;
     }
 
+    /* El texto del footer se centra en mobile: la línea bajo cada título también. */
+    .footer__nav-col h3::after{
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
     .footer__social-media {
         justify-content: center;
     }

@@ -53,7 +53,7 @@ JAZZMIN_SETTINGS ={
 }
 
 
-MAINTENANCE_MODE = True
+MAINTENANCE_MODE = os.environ.get('MAINTENANCE_MODE', 'True') == 'True'
 
 MIDDLEWARE = [
     'elanel_web.middleware.MaintenanceMiddleware',

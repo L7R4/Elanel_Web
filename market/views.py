@@ -5,8 +5,8 @@ from django.views.generic import View
 from django.views import generic
 from django.conf import settings
 from django.http import HttpResponseRedirect, HttpResponse
-from market.models import Electrodomestico,Cliente ,ImagenMoto,ImagenElectrodomestico, Post, Moto, Personal,BeneficioParaCliente,SolucionDineraria
-from .forms import FormPersonal,FormBeneficios,FormDinero,FormMotos,FormElec
+from market.models import Electrodomestico,ImagenMoto,ImagenElectrodomestico, Moto, Personal
+from .forms import FormPersonal
 import os
 
 
@@ -21,28 +21,43 @@ class Categorias(generic.ListView):
 def is_valid_query(param):
         return param != "" and param is not None
 
+
+def nombre_archivo(archivo):
+    """Nombre del archivo subido, o cadena vacía si no hay archivo."""
+    return os.path.basename(archivo.name) if archivo else ""
+
+
+def marcas_para_filtro(marcas):
+    """Lista de (valor, etiqueta) sin duplicados; la etiqueta respeta cómo se cargó la marca."""
+    unicas = {}
+    for m in marcas:
+        if m and m.strip():
+            unicas.setdefault(m.strip().lower(), m.strip())
+    return sorted(unicas.items())
+
 class CategoriaMotos(generic.ListView):
     template_name = "templates_categorias/categorias_motos.html"
     model = Moto
     context_object_name ="motos"
 
     def get_queryset(self):
-        qs = super().get_queryset()
+        qs = super().get_queryset().exclude(imagen_portada="").order_by("usado", "marca", "nombre")
         marca = self.request.GET.get("marca")
         status = self.request.GET.get("status")
-        minimo = self.request.GET.get("minimo")
-        maximo = self.request.GET.get("maximo")
-        # status = self.request.GET.get("status")
         if is_valid_query(marca):
-            qs = qs.filter(marca = marca)
-        if is_valid_query(status):
-            qs = qs.filter(usado = status)
-        if is_valid_query(minimo):
-            qs = qs.filter(precio__gte = minimo)
-        if is_valid_query(maximo):
-            qs = qs.filter(precio__lte = maximo)
-            
+            qs = qs.filter(marca__iexact = marca)
+        if status in ("True", "False"):
+            qs = qs.filter(usado = status == "True")
         return qs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        marcas = Moto.objects.exclude(imagen_portada="").values_list("marca", flat=True)
+        context["marcas"] = marcas_para_filtro(marcas)
+        context["marca_actual"] = (self.request.GET.get("marca") or "").lower()
+        status = self.request.GET.get("status")
+        context["status_actual"] = status if status in ("True", "False") else ""
+        return context
     
 
 class DetalleMoto(generic.DetailView):
@@ -51,46 +66,26 @@ class DetalleMoto(generic.DetailView):
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        moto = self.object
+        context["imagenes"] = ImagenMoto.objects.filter(producto = moto)
+        context["ficha_tecnica"] = nombre_archivo(moto.ficha_tecnica)
+        context["relacionados"] = (Moto.objects.exclude(pk = moto.pk)
+                                   .exclude(imagen_portada = "")
+                                   .filter(usado = moto.usado)[:4])
+        return context
 
-    def get(self,request,*args,**kwargs):
-        self.object = self.get_object()
-        context ={}
-        context["moto_images"] = ImagenMoto.objects.filter(producto = self.object)
-        context["object"] = self.object
-        try:
-            model = Moto.objects.filter(slug = self.object.slug)
-            archivo =os.path.split(str(model[0].ficha_tecnica))[1]
-            context["ficha_tecnica"] = archivo
-        except ValueError:
-            print("No existe ficha tecnica")
 
-        return render(request,self.template_name,context)
-    
-    def post(self,request,*args, **kwargs):
-        self.object = self.get_object()
-        form = FormMotos()
-        if request.method == "POST":
-            form = FormMotos(request.POST)
-            if form.is_valid():
-                print("es valido")
-                form_moto = Cliente()
-                form_moto.nombre_completo = form.cleaned_data['nombre_completo']
-                form_moto.email = form.cleaned_data['email']
-                form_moto.num_telefono = form.cleaned_data['num_telefono']
-                form_moto.provincia = form.cleaned_data['provincia']
-                form_moto.objetivo = form.cleaned_data['objetivo']
-                form_moto.save()
-                
-            else:
-                message_error = {"message": "No valido"}
-                data = json.dumps(message_error)
-                return HttpResponse(data,"application/json")
 
-        return redirect('market:moto',self.object.slug)
+TIPOS_ELECTRO = (
+    ("cocina", "Cocina"),
+    ("tecnologia", "Tecnología"),
+    ("dormitorio", "Dormitorio"),
+    ("living", "Living"),
+    ("hogar", "Hogar"),
+)
 
-    
-
-        
 
 class CategoriaElectrodemesticos(generic.ListView):
     model = Electrodomestico
@@ -98,21 +93,26 @@ class CategoriaElectrodemesticos(generic.ListView):
     context_object_name ="electrodomesticos"
 
     def get_queryset(self):
-        qs = super().get_queryset()
-        cuota = self.request.GET.get("cuota")
+        qs = super().get_queryset().exclude(imagen_portada="").order_by("combo", "marca", "nombre")
         combo = self.request.GET.get("combo")
-        minimo = self.request.GET.get("minimo")
-        maximo = self.request.GET.get("maximo")
-        if is_valid_query(cuota):
-            qs = qs.filter(cuota = cuota)
+        marca = self.request.GET.get("marca")
         if is_valid_query(combo):
             qs = qs.filter(combo = combo)
-        if is_valid_query(minimo):
-            qs = qs.filter(precio__gte = minimo)
-        if is_valid_query(maximo):
-            qs = qs.filter(precio__lte = maximo)
-            
+        if is_valid_query(marca):
+            qs = qs.filter(marca__iexact = marca)
         return qs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        disponibles = Electrodomestico.objects.exclude(imagen_portada="")
+        usados = set(disponibles.values_list("combo", flat=True))
+        context["tipos"] = [(valor, nombre) for valor, nombre in TIPOS_ELECTRO if valor in usados]
+        marcas = disponibles.values_list("marca", flat=True)
+        context["marcas"] = marcas_para_filtro(marcas)
+        combo = self.request.GET.get("combo") or ""
+        context["tipo_actual"] = combo if combo in usados else ""
+        context["marca_actual"] = (self.request.GET.get("marca") or "").lower()
+        return context
 
 
 
@@ -122,153 +122,22 @@ class DetalleElec(generic.DetailView):
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
 
-    def get(self,request,*args,**kwargs):
-        self.object = self.get_object()
-        context ={}
-        context["electrodomesticos_images"] = ImagenElectrodomestico.objects.filter(producto = self.object)
-        context["object"] = self.object
-        try:
-            model = Moto.objects.filter(slug = self.object.slug)
-            archivo =os.path.split(str(model[0].ficha_tecnica))[1]
-            context["ficha_tecnica"] = archivo
-        except:
-            print("No existe ficha tecnica")
-
-        return render(request,self.template_name,context)
-
-    def post(self,request,*args, **kwargs):
-        self.object = self.get_object()
-        form = FormElec()
-        if request.method == "POST":
-            form = FormElec(request.POST)
-            if form.is_valid():
-                print("es valido")
-                form_elec = Cliente()
-                form_elec.nombre_completo = form.cleaned_data['nombre_completo']
-                form_elec.email = form.cleaned_data['email']
-                form_elec.num_telefono = form.cleaned_data['num_telefono']
-                form_elec.provincia = form.cleaned_data['provincia']
-                form_elec.objetivo = form.cleaned_data['objetivo']
-                form_elec.save()
-            else:
-                message_error = {"message": "No valido"}
-                data = json.dumps(message_error)
-                return HttpResponse(data,"application/json")
-
-        return redirect('market:electrodomestico',self.object.slug)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        electro = self.object
+        context["imagenes"] = ImagenElectrodomestico.objects.filter(producto = electro)
+        context["ficha_tecnica"] = nombre_archivo(electro.ficha_tecnica)
+        context["tipo"] = dict(TIPOS_ELECTRO).get(electro.combo, "")
+        context["relacionados"] = (Electrodomestico.objects.exclude(pk = electro.pk)
+                                   .exclude(imagen_portada = "")
+                                   .filter(combo = electro.combo)[:4])
+        return context
 
 
-class CategoriaSolucionesDinerarias(generic.ListView):
+
+class CategoriaSolucionesDinerarias(generic.TemplateView):
     template_name = "templates_categorias/categorias_soluciones_dinerarias.html"
-    model = SolucionDineraria
-    context_object_name ="dineros"
 
-    def get_queryset(self):
-        qs = super().get_queryset()
-        cuota = self.request.GET.get("cuota")
-        if is_valid_query(cuota):
-            qs = qs.filter(cuota = cuota)
-        return qs
-    
-
-class DetalleSolucion(generic.DetailView):
-    model = SolucionDineraria
-    template_name = "templates_categorias/detalle_soluciones.html"
-
-    
-            
-    def post(self,request,*args, **kwargs):
-        self.object = self.get_object()
-        form = FormDinero()
-        if request.method == "POST":
-            print("Entre POST")
-            form = FormDinero(request.POST)
-            if form.is_valid():
-                print("es valido")
-                solu_dine = Cliente()
-                solu_dine.nombre_completo = form.cleaned_data['nombre_completo']
-                solu_dine.email = form.cleaned_data['email']
-                solu_dine.num_telefono = form.cleaned_data['num_telefono']
-                solu_dine.provincia = form.cleaned_data['provincia']
-                solu_dine.objetivo = form.cleaned_data['objetivo']
-                solu_dine.save()
-            else:
-                message_error = {"message": "No valido"}
-                data = json.dumps(message_error)
-                return HttpResponse(data,"application/json")
-        return redirect('market:solucione_detail',self.object.id)
-
-    
-
-    def get(self,request,*args,**kwargs):
-        self.object = self.get_object()
-        context ={}
-        
-        context["object"] = self.object
-
-        return render(request,self.template_name,context)
-
-
-class CategoriaBeneficiosCliente(generic.ListView):
-    template_name = "templates_categorias/categorias_beneficios_cliente.html"
-
-    def post(self,request,*args, **kwargs):
-        form = FormBeneficios()
-        if request.method == "POST":
-            print("Entre POST")
-            form = FormBeneficios(request.POST)
-            if form.is_valid():
-                print("es valido")
-                beneficio = BeneficioParaCliente()
-                beneficio.nombre_completo = form.cleaned_data['nombre_completo']
-                beneficio.email = form.cleaned_data['email']
-                beneficio.num_telefono = form.cleaned_data['num_telefono']
-                beneficio.servicio = form.cleaned_data['servicio']
-                beneficio.producto = form.cleaned_data['producto']
-                beneficio.monto = form.cleaned_data['monto']
-                beneficio.save()
-            else:
-                message_error = {"message": "No valido"}
-                data = json.dumps(message_error)
-                return HttpResponse(data,"application/json")
-
-        return(render(request,self.template_name))
-
-    def get(self, request, *args, **kwargs):
-        context = {}
-        productos_basico =  list(Moto.objects.filter(servicio="Basico")) + list(Electrodomestico.objects.filter(servicio="Basico"))
-        productos_estandar = list(Moto.objects.filter(servicio="Estandar"))+ list(Electrodomestico.objects.filter(servicio="Estandar"))
-        productos_premium = list(Moto.objects.filter(servicio="Premium"))+ list(Electrodomestico.objects.filter(servicio="Premium"))
-        
-        all_products = productos_estandar + productos_premium + productos_basico
-
-
-        context["productos_basico"]  = productos_basico
-        context["productos_estandar"]  = productos_estandar
-        context["productos_premium"]  = productos_premium
-
-        
-        products_list =[]
-        for product in all_products:
-            data_product = {}
-            data_product['nombre'] = product.nombre
-            data_product['servicio'] = product.servicio
-            if product.monto_servicio_por_couta == None:
-                data_product['monto_mensual'] = 0
-                data_product['monto_total'] = 0
-            else:
-                data_product['monto_mensual'] = product.monto_servicio_por_couta
-                data_product['monto_total'] = product.monto_servicio_por_couta*12
-            products_list.append(data_product)
-        data = json.dumps(products_list)
-
-        if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-            return HttpResponse(data, 'application/json')
-
-        return(render(request,self.template_name,context))
-
-
-    
 
 class TrabajaConNosotros(View):
     template_name="trabaja_con_nosotros.html"

@@ -1,94 +1,46 @@
+{% extends 'base_info.html' %}
 {% load static %}
-{% load humanize %}
-{% load i18n %}
-{% load l10n %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'css/categorias_details.css' %}" />
-    <link
-      rel="stylesheet"
-      href="{% static 'css/categorias_soluciones.css' %}"
-    />
-    <link rel="stylesheet" href="{% static 'css/navStyles.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/media_querys/nav_bar.css' %}" />
-    <link
-      rel="stylesheet"
-      href="{% static 'css/media_querys/categorias_motos.css' %}"
-    />
 
-    <title>Elanel Servicios y Soluciones</title>
-    <link
-      rel="shortcut icon"
-      href="{% static 'images/fwd/icon_page4.png' %}"
-    />
-  </head>
-  <body>
-    {% include 'nav.html' %}
+{% block title %}Soluciones Comerciales | Elanel{% endblock %}
+{% block description %}Soluciones Comerciales de Elanel de $1.000.000 a $10.000.000, sujetas a evaluación, condiciones de contratación y disponibilidad. Consultá por WhatsApp.{% endblock %}
 
-    <div class="wrapper_catalogo_aside">
-      <!-- <aside class="filters_container">
-        <form action="" method="get">
-          <h1>Coutas</h1>
-          <div class="cuotas">
-            <input type="radio" name="cuota" id="venticuatro" value="24" />
-            <label for="venticuatro">
-              <h3>24</h3>
-            </label>
+{% block content %}
+<section class="el-hero">
+  <span class="el-eyebrow">Soluciones Comerciales</span>
+  <h1>Soluciones para tus <strong>proyectos</strong></h1>
+  <p>Alternativas económicas pensadas para acompañar tus proyectos y necesidades, con condiciones claras y atención personalizada en tu sucursal.</p>
+</section>
 
-            <input type="radio" name="cuota" id="treinta" value="30" />
-            <label for="treinta">
-              <h3>30</h3>
-            </label>
-
-            <input type="radio" name="cuota" id="cuarentaocho" value="48" />
-            <label for="cuarentaocho">
-              <h3>48</h3>
-            </label>
-
-            <input type="radio" name="cuota" id="sesenta" value="60" />
-            <label for="sesenta">
-              <h3>60</h3>
-            </label>
-          </div>
-          <button type="submit" id="button_filter">Buscar</button>
-        </form>
-        <a id="clear" href="{%  url 'market:clear_soluciones' %}"
-          >Limpiar filtros</a
-        >
-      </aside> -->
-      <!-- <button type="button" id="filter_button">Filtrar</button> -->
-      <section class="catalogo">
-        {% if dineros.count != 0 %} 
-          {% for monto in dineros %}
-            <a href="{% url 'market:solucione_detail' monto.id %}">
-              <article>
-                <img src="{% static 'images/icons/dollar.svg' %}" alt="" />
-                <div>
-                  <h2>${{monto.monto|floatformat:0|intcomma}}</h2>
-                  <h3>{{monto.cuota}} Cuotas</h3>
-                </div>
-              </article>
-            </a>
-          {% endfor %} 
-        {% elif dineros.count == 0 %}
-        <div class="not_found">
-          <figure>
-            <img src="{% static 'images/icons/nothing-found.png' %}" alt="" />
-          </figure>
-          <h1>¡Ups! Al parecer no se encuentran productos disponibles</h1>
-        </div>
-        {% endif %}
-      </section>
+<section class="el-section">
+  <div class="el-range">
+    <div class="el-range__amount">
+      <span class="el-eyebrow">Montos disponibles</span>
+      <dl class="el-range__values">
+        <div><dt>Desde</dt><dd>$1.000.000</dd></div>
+        <div><dt>Hasta</dt><dd>$10.000.000</dd></div>
+      </dl>
+      <p class="el-range__note">Montos sujetos a evaluación, condiciones de contratación y disponibilidad.</p>
     </div>
+    <div class="el-range__cta">
+      <h2>Consultá tu solución</h2>
+      <p>Contanos qué necesitás y un asesor te informa montos, condiciones y requisitos.</p>
+      <a class="el-btn el-btn--wa" href="https://wa.me/543625170890?text=Hola!%20Quiero%20consultar%20por%20las%20Soluciones%20Comerciales%20de%20Elanel." target="_blank" rel="noopener noreferrer">
+        <img src="{% static 'images/icons/whatsapp_icon.svg' %}" alt="" />Consultar por WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
 
-    
-  </body>
-  <script src="{% static 'js/header.js' %}"></script>
-  <script src="{% static 'js/filter_button.js' %}"></script>
-  <script src="{% static 'js/menu_hamburguer.js' %}"></script>
-  <script src="{% static 'js/clear_filter_dinero.js' %}"></script>
-</html>
+<section class="el-section">
+  <div class="el-section__head">
+    <span class="el-eyebrow">Cómo consultar</span>
+    <h2>Simple y con atención personalizada</h2>
+  </div>
+  <ol class="el-steps el-steps--3">
+    <li><strong>Escribinos</strong><p>Consultá por WhatsApp o acercate a tu sucursal y contanos qué necesitás.</p></li>
+    <li><strong>Te asesoramos</strong><p>Un asesor te explica las alternativas disponibles, las condiciones y los requisitos.</p></li>
+    <li><strong>Evaluación</strong><p>Cada solución está sujeta a evaluación, condiciones de contratación y disponibilidad.</p></li>
+  </ol>
+  <p class="el-fine" style="margin-top: 2.4rem;">Las Soluciones Comerciales son independientes de los Packs de Servicios y de la venta directa. Montos, condiciones y requisitos sujetos a evaluación y disponibilidad.</p>
+</section>
+{% endblock %}
