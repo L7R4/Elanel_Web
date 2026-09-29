@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="{% block description %}Elanel Servicios S.R.L.: asistencia técnica y mecánica para motos y electrodomésticos a través de Packs de Servicios.{% endblock %}" />
+    <link rel="stylesheet" href="{% static 'css/navStyles.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/info.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/media_querys/nav_bar.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/media_querys/footer.css' %}" />
+    <title>{% block title %}Elanel SRL{% endblock %}</title>
+    {% include 'partials/og.html' %}
+    <link rel="shortcut icon" href="{% static 'images/fwd/icon_page4.png' %}" />
+  </head>
+  <body class="el-page">
+    {% include 'nav.html' %}
+
+    {% block content %}{% endblock %}
+
+    {% include 'footer.html' %}
+
+    <script src="{% static 'js/header.js' %}"></script>
+    <script src="{% static 'js/menu_hamburguer.js' %}"></script>
+    {% block scripts %}{% endblock %}
+  </body>
+</html>

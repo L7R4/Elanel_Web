@@ -1,0 +1,18 @@
+<div class="el-gallery">
+  <figure class="el-gallery__main">
+    <img id="el-gallery-main" src="{{ object.imagen_portada.url }}" alt="{{ object.nombre }}">
+    {% if badge %}<span class="el-product__badge">{{ badge }}</span>{% endif %}
+  </figure>
+  {% if imagenes %}
+  <div class="el-gallery__thumbs" role="list">
+    <button type="button" class="el-gallery__thumb is-active" data-src="{{ object.imagen_portada.url }}" aria-label="Ver foto 1" role="listitem">
+      <img src="{{ object.imagen_portada.url }}" alt="">
+    </button>
+    {% for imagen in imagenes %}
+    <button type="button" class="el-gallery__thumb" data-src="{{ imagen.imagen.url }}" aria-label="Ver foto {{ forloop.counter|add:1 }}" role="listitem">
+      <img src="{{ imagen.imagen.url }}" alt="" loading="lazy">
+    </button>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>

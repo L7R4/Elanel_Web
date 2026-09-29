@@ -1,6 +1,7 @@
+import datetime
 from django.views.generic import View
 from django.shortcuts import render,redirect, HttpResponseRedirect
-from market.models import Post, Moto, NumAdjudicado
+from market.models import Post, CuadroCobertura, Moto, Electrodomestico
 from django.views import generic
 from django.http import HttpResponseRedirect, HttpResponse
 from .forms import FormIndex
@@ -36,14 +37,39 @@ class IndexView2(View):
 
     def get(self, request, *args, **kwargs):
         posts = Post.objects.all()
-        motos_slider = Moto.objects.all()[5:10]
-        nums_adjudicados = NumAdjudicado.objects.all()
-        for post in posts:
-            print(post.postImage_computadora == "")
         context = {
             "posts": posts,
-            "motos_slider": motos_slider,
-            "nums_adjudicados": nums_adjudicados,
+            # "Destacados de este mes": primero los tildados como destacados en el admin,
+            # y si hay menos de 4 se completa con los últimos cargados.
+            "motos_venta": Moto.objects.exclude(imagen_portada="").order_by("-destacado", "usado", "-id")[:4],
+            "electro_venta": Electrodomestico.objects.exclude(imagen_portada="").order_by("-destacado", "nombre")[:4],
+            # Una foto real por categoría para el mosaico del hero (si no hay, se usa una imagen fija).
+            "foto_moto_0km": Moto.objects.exclude(imagen_portada="").filter(usado=False).order_by("-id").first(),
+            "foto_electro": Electrodomestico.objects.exclude(imagen_portada="").first(),
+        }
+        return(render(request,self.template_name,context))
+
+
+class Servicios(generic.TemplateView):
+    template_name = "servicios.html"
+
+
+class Beneficios(generic.TemplateView):
+    template_name = "beneficios.html"
+
+
+class PreguntasFrecuentes(generic.TemplateView):
+    template_name = "preguntas_frecuentes.html"
+
+
+class Cobertura(View):
+    template_name = "cobertura.html"
+
+    def get(self, request, *args, **kwargs):
+        publicados = CuadroCobertura.objects.filter(publicado=True, vigente_desde__lte=datetime.date.today())
+        context = {
+            "cuadro": publicados.first(),
+            "anteriores": publicados[1:],
         }
         return(render(request,self.template_name,context))
 

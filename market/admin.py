@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import BeneficioParaCliente, Cliente, Electrodomestico, ImagenMoto, ImagenElectrodomestico, Moto, SolucionDineraria, Personal, Post, NumAdjudicado
+from .models import BeneficioParaCliente, Cliente, Electrodomestico, ImagenMoto, ImagenElectrodomestico, Moto, SolucionDineraria, Personal, Post, NumAdjudicado, CuadroCobertura, CoberturaPack
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 from rangefilter.filter import DateRangeFilter, DateTimeRangeFilter
@@ -38,10 +38,10 @@ class ImagenMotoAdmin(admin.TabularInline):
 
 @admin.register(Moto)
 class MotoAdmin(admin.ModelAdmin):
-    list_display= ["nombre", "precio", "modelo","marca", "usado"]
+    list_display= ["nombre", "precio", "modelo","marca", "usado", "destacado"]
     search_fields = ["nombre","marca"]
-    list_filter=["usado", "marca"]
-    list_editable = ["precio", "usado"]
+    list_filter=["destacado", "usado", "marca"]
+    list_editable = ["precio", "usado", "destacado"]
     inlines = [ImagenMotoAdmin]
     prepopulated_fields = {'slug': ['nombre']}
 
@@ -51,10 +51,10 @@ class ImagenElectrodomesticoAdmin(admin.TabularInline):
 
 @admin.register(Electrodomestico)
 class ElectrodomesticoAdmin(admin.ModelAdmin):
-    list_display= ["nombre", "precio","combo"]
+    list_display= ["nombre", "precio","combo", "destacado"]
     search_fields = ["nombre","marca"]
-    list_filter=["marca","combo"]
-    list_editable = ["precio"]
+    list_filter=["destacado", "marca","combo"]
+    list_editable = ["precio", "destacado"]
     inlines = [ImagenElectrodomesticoAdmin]
     prepopulated_fields = {'slug': ['nombre']}
 
@@ -64,6 +64,17 @@ class BeneficioParaClienteAdmin(ImportExportModelAdmin):
     list_filter=["servicio","fecha"]
     search_fields = ["producto"]
     resource_class = BeneficioParaClienteResource
+
+class CoberturaPackAdmin(admin.TabularInline):
+    extra = 3
+    max_num = 3
+    model = CoberturaPack
+
+@admin.register(CuadroCobertura)
+class CuadroCoberturaAdmin(admin.ModelAdmin):
+    list_display = ["version", "vigente_desde", "publicado"]
+    list_editable = ["publicado"]
+    inlines = [CoberturaPackAdmin]
 
 admin.site.register(SolucionDineraria)
 admin.site.register(Post)

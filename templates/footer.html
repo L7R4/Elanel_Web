@@ -8,7 +8,7 @@
         <img src="{% static 'images/icons/icono_arreglado_blanco.png' %}" alt="Elanel Servicios Logo">
       </a>
       <p class="footer__brand-desc">
-        Empresa regional especializada en planes programados para la movilidad, el hogar y proyectos personales, con distintas alternativas de adjudicación y atención cercana. Con presencia en seis provincias argentinas.
+        ELANEL SERVICIOS S.R.L. es una empresa regional dedicada a la venta directa de motos, electrodomésticos y soluciones comerciales para acompañar los proyectos de nuestros clientes. También brindamos asistencia técnica y mecánica a través de Packs de Servicios, que pueden incluir beneficios complementarios sujetos a condiciones. Con presencia en seis provincias argentinas.
       </p>
       <div class="footer__socials">
         <a href="https://m.facebook.com/elanelsys" target="_blank" aria-label="Facebook">
@@ -26,25 +26,37 @@
       </div>
     </div>
 
-    <!-- Bloque de Categorías -->
+    <!-- Servicios y soluciones -->
     <div class="footer__nav-col">
-      <h3>Nuestros Planes</h3>
+      <h3>Servicios y Soluciones</h3>
       <ul>
-        <li><a href="{% url 'market:motos' %}">Motos 0km</a></li>
-        <li><a href="{% url 'market:soluciones_dinerarias' %}">Soluciones Dinerarias</a></li>
+        <li><a href="{% url 'market:motos' %}">Motos</a></li>
         <li><a href="{% url 'market:electrodomesticos' %}">Electrodomésticos</a></li>
-        <li><a href="{% url 'market:motos' %}?status=True">Motos Usadas</a></li>
+        <li><a href="{% url 'market:soluciones_dinerarias' %}">Soluciones Comerciales</a></li>
+        <li><a href="{% url 'servicios' %}">Asistencia Técnica y Mecánica</a></li>
+        <li><a href="{% url 'beneficios' %}">Beneficios para Clientes</a></li>
+        <li><a href="{% url 'servicios' %}#solicitar-asistencia">Atención al Cliente</a></li>
       </ul>
     </div>
 
-    <!-- Bloque Institucional -->
+    <!-- Información -->
+    <div class="footer__nav-col">
+      <h3>Información</h3>
+      <ul>
+        <li><a href="{% url 'cobertura' %}">Cuadro de Cobertura Vigente</a></li>
+        <li><a href="{% url 'servicios' %}#que-incluye">Condiciones de los Packs</a></li>
+        <li><a href="{% url 'beneficios' %}#actos-de-adjudicacion">Actos de Adjudicación</a></li>
+        <li><a href="{% url 'faq' %}">Preguntas Frecuentes</a></li>
+      </ul>
+    </div>
+
+    <!-- Compañía -->
     <div class="footer__nav-col">
       <h3>Compañía</h3>
       <ul>
         <li><a href="{% url 'nosotros' %}">Sobre Nosotros</a></li>
-        <li><a href="{% url 'market:beneficios' %}">Beneficios para Clientes</a></li>
-        <li><a href="{% url 'market:trabaja' %}">Trabaja con Nosotros</a></li>
-        <li><a href="{% url 'contactanos' %}">Contactanos</a></li>
+        <li><a href="{% url 'market:trabaja' %}">Trabajá con Nosotros</a></li>
+        <li><a href="{% url 'contactanos' %}">Contacto</a></li>
       </ul>
     </div>
   </div>
@@ -130,7 +142,7 @@
 
   <!-- Fila Inferior: Copyright y Políticas -->
   <div class="footer__bottom">
-    <p>&copy; {% now "Y" %} Elanel Servicios S.R.L. Todos los derechos reservados. Confidencial - Uso interno.</p>
+    <p>&copy; {% now "Y" %} ELANEL SERVICIOS S.R.L. · CUIT 30-71804533-5 · Obligado 841, Local B, Resistencia, Chaco. Todos los derechos reservados.</p>
     <a href="{% url 'privacidad' %}">Políticas de Privacidad</a>
   </div>
 </footer>

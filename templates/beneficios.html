@@ -1,0 +1,59 @@
+{% extends 'base_info.html' %}
+{% load static %}
+
+{% block title %}Beneficios para Clientes | Elanel{% endblock %}
+{% block description %}Beneficios complementarios para clientes adheridos a un Pack de Servicios Elanel, entre ellos la participación en actos de adjudicación por sorteo.{% endblock %}
+
+{% block content %}
+<section class="el-hero">
+  <span class="el-eyebrow">Beneficios para clientes</span>
+  <h1>Beneficios por estar <strong>adherido</strong></h1>
+  <p>Además de la asistencia técnica y mecánica, los clientes con su Pack de Servicios al día pueden acceder a beneficios especiales que Elanel otorga. El principal es la participación mensual en actos de adjudicación por sorteo.</p>
+</section>
+
+<section class="el-section">
+  <div class="el-note" style="margin-top: 0;">
+    <p>Es un beneficio complementario del servicio de asistencia técnica y mecánica. No es un plan de ahorro, no genera ahorro ni capitalización y no garantiza la adjudicación de ningún bien.</p>
+  </div>
+</section>
+
+<section class="el-section" id="actos-de-adjudicacion">
+  <div class="el-section__head">
+    <span class="el-eyebrow">Actos de adjudicación</span>
+    <h2>¿Cómo funciona el sorteo?</h2>
+  </div>
+  <ol class="el-steps">
+    <li><strong>Tu número</strong><p>Al adherirte recibís un número aleatorio de 3 cifras que te identifica en los sorteos, desde la primera cuota hasta el final del contrato.</p></li>
+    <li><strong>El sorteo</strong><p>Se realiza ante Escribano Público Nacional el último día hábil de cada mes.</p></li>
+    <li><strong>Quiénes participan</strong><p>Los clientes que tienen la cuota del mes abonada al cierre de la lista.</p></li>
+    <li><strong>Si tu número sale</strong><p>Te avisamos dentro de los 15 días corridos. Tenés 30 días para presentarte y la entrega se hace dentro de los 90 días hábiles desde el sorteo.</p></li>
+  </ol>
+</section>
+
+<section class="el-section">
+  <div class="el-section__head">
+    <span class="el-eyebrow">Condiciones</span>
+    <h2>Lo que tenés que saber</h2>
+  </div>
+  <div class="el-box">
+    <ul>
+      <li>Para participar tenés que estar al día con la cuota del Pack de Servicios.</li>
+      <li>El monto abonado como derecho de ingreso no habilita a participar de los beneficios especiales.</li>
+      <li>Los gastos de instalación, patentamiento, transferencia, impuestos y honorarios profesionales necesarios para recibir el bien adjudicado corren por cuenta del beneficiario.</li>
+      <li>Elanel no otorga garantía sobre los bienes adjudicados. Los reclamos se dirigen al fabricante o importador.</li>
+      <li>Los productos disponibles para el beneficio pueden cambiar.</li>
+    </ul>
+  </div>
+  <p class="el-fine" style="margin-top: 1.6rem;">Las condiciones completas figuran en el Anexo Beneficio que firmás junto con tu Solicitud de Adhesión.</p>
+</section>
+
+<section class="el-section">
+  <div class="el-banner">
+    <div>
+      <h3>Primero, el servicio</h3>
+      <p>Los beneficios acompañan a los Packs de Asistencia Técnica y Mecánica. Conocé qué incluye cada uno.</p>
+    </div>
+    <a class="el-btn" href="{% url 'servicios' %}">Conocer los Packs</a>
+  </div>
+</section>
+{% endblock %}

@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
@@ -9,11 +9,13 @@
   <link rel="stylesheet" href="{% static 'css/navStyles.css' %}">
   <link rel="stylesheet" href="{% static 'css/footer.css' %}">
   <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'css/info.css' %}">
   <link rel="stylesheet" href="{% static 'css/media_querys/nav_bar.css' %}">
   <link rel="stylesheet" href="{% static 'css/media_querys/main.css' %}">
   <link rel="stylesheet" href="{% static 'css/media_querys/footer.css' %}">
 
-  <title>Elanel Servicios y Soluciones</title>
+  <title>Elanel SRL</title>
+    {% include 'partials/og.html' %}
   <link rel="shortcut icon" href="{% static 'images/fwd/icon_page4.png' %}">
 </head>
 
@@ -24,18 +26,127 @@
 
   {% include 'nav.html' %}
 
-  <section class="hot-sale-banner">
-    <div class="banner-container">
-      <img src="{% static 'images/banner.webp' %}" alt="Hot Sale" class="banner-img">
-      <div class="banner-content">
-        <a href="https://wa.me/543625170890?text=Hola!%20Quiero%20consultar%20por%20las%20ofertas%20del%20Hot%20Sale"
-          class="banner-btn-wa" target="_blank">
-          <img src="{% static 'images/icons/whatsapp_icon.svg' %}" alt="WA">
-          <span>Consultanos</span>
-        </a>
+  <div class="el-home">
+    {% include 'partials/hero_venta.html' %}
+    {% include 'partials/venta_directa.html' with compacto=True %}
+
+    <section class="el-section" id="asistencia">
+      <div class="el-section__head">
+        <span class="el-eyebrow">Asistencia técnica y mecánica</span>
       </div>
-    </div>
-  </section>
+      <div class="el-assist">
+      <div class="el-home-hero__text">
+        <h2>Asistencia para lo que <strong>usás todos los días</strong></h2>
+        <p>Packs de Asistencia Técnica y Mecánica para tu moto y tus electrodomésticos. Elegí la cobertura que mejor se adapta a vos.</p>
+        <div class="el-actions">
+          <a class="el-btn" href="{% url 'servicios' %}#packs">Conocé nuestros Packs</a>
+          <a class="el-btn el-btn--ghost" href="{% url 'cobertura' %}">Ver cobertura vigente</a>
+        </div>
+        <ul class="el-trust">
+          <li><span><strong>10</strong> sucursales</span></li>
+          <li><span><strong>6</strong> provincias</span></li>
+          <li>Motos y electrodomésticos</li>
+          <li>Diagnóstico por escrito</li>
+        </ul>
+      </div>
+      <figure>
+        <img src="{% static 'images/technical+logo.png' %}" alt="Técnico de Elanel">
+      </figure>
+      </div>
+    </section>
+
+    <section class="el-section">
+      <div class="el-pillars">
+        <article class="el-pillar el-pillar--vd">
+          <span class="el-tag">Venta directa</span>
+          <h3>Motos y electrodomésticos</h3>
+          <p>Comprá motos 0 km, usadas y electrodomésticos de forma directa, con los medios de pago disponibles en cada sucursal. Es una operación independiente de los Packs.</p>
+          <a class="el-link" href="{% url 'market:categorias' %}">Ver productos</a>
+        </article>
+        <article class="el-pillar el-pillar--srv">
+          <span class="el-tag">Servicios</span>
+          <h3>Asistencia Técnica y Mecánica</h3>
+          <p>Contratá un Pack y accedé a servicios de asistencia para tus motos y electrodomésticos, según el Cuadro de Cobertura vigente.</p>
+          <a class="el-link" href="{% url 'servicios' %}">Conocer Packs</a>
+        </article>
+        <article class="el-pillar el-pillar--ben">
+          <span class="el-tag">Beneficios para clientes</span>
+          <h3>Beneficios por estar adherido</h3>
+          <p>Los clientes adheridos que tienen su cuota al día pueden acceder a beneficios especiales, entre ellos la participación en actos de adjudicación por sorteo.</p>
+          <a class="el-link" href="{% url 'beneficios' %}">Conocer beneficios</a>
+        </article>
+      </div>
+    </section>
+
+    {% include 'partials/situaciones.html' %}
+
+    <section class="el-section" id="packs">
+      <div class="el-section__head">
+        <span class="el-eyebrow">Packs de Servicios</span>
+      </div>
+      <div class="el-packs-compact">
+        <div>
+          <h2>Básico, Estándar y Premium</h2>
+          <p>Tres Packs de asistencia técnica y mecánica, con 2, 3 o 4 servicios por año para tu moto y tus electrodomésticos. Un asesor te cuenta qué incluye cada uno.</p>
+        </div>
+        <div class="el-packs-compact__counts" aria-hidden="true">
+          <div><strong>2</strong><span>Básico</span></div>
+          <div><strong>3</strong><span>Estándar</span></div>
+          <div><strong>4</strong><span>Premium</span></div>
+        </div>
+        <div class="el-actions">
+          <a class="el-btn" href="{% url 'servicios' %}#packs">Conocer los Packs</a>
+          <a class="el-btn el-btn--wa" href="https://wa.me/543625170890?text=Hola!%20Quiero%20saber%20qu%C3%A9%20incluyen%20los%20Packs%20de%20Asistencia%20T%C3%A9cnica." target="_blank" rel="noopener noreferrer">
+            <img src="{% static 'images/icons/whatsapp_icon.svg' %}" alt="" />Consultar por WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="el-section">
+      <div class="el-section__head">
+        <span class="el-eyebrow">Por qué Elanel</span>
+        <h2>Respaldo técnico cerca tuyo</h2>
+      </div>
+      <div class="el-why">
+        <div>
+          <strong>10</strong>
+          <h3>Sucursales</h3>
+          <p>Atención cara a cara en Chaco, Corrientes, Misiones, Entre Ríos, Formosa y Santiago del Estero.</p>
+        </div>
+        <div>
+          <strong>Hasta 4</strong>
+          <h3>Servicios por año</h3>
+          <p>Elegís el Pack según cuánto usás tu moto y tus electrodomésticos.</p>
+        </div>
+        <div>
+          <strong>Por escrito</strong>
+          <h3>Diagnóstico claro</h3>
+          <p>Sabés qué falla tiene tu equipo y qué repuesto necesita antes de decidir.</p>
+        </div>
+        <div>
+          <strong>A.T.E.M.</strong>
+          <h3>Cobertura publicada</h3>
+          <p>El valor que se reconoce por cada servicio está en el Cuadro de Cobertura vigente.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="el-section">
+      <div class="el-section__head">
+        <span class="el-eyebrow">Cómo funciona</span>
+        <h2>De la adhesión a la reparación</h2>
+      </div>
+      <ol class="el-steps">
+        <li><strong>Elegís tu Pack</strong><p>Básico, Estándar o Premium, según cuántos servicios por año necesitás.</p></li>
+        <li><strong>Declarás tus bienes</strong><p>Registrás las motos y electrodomésticos que querés cubrir.</p></li>
+        <li><strong>Solicitás asistencia</strong><p>Desde la 4ª cuota abonada y con tu cuota al día, pedís turno en tu sucursal o por WhatsApp.</p></li>
+        <li><strong>Diagnóstico y reparación</strong><p>Un técnico diagnostica la falla por escrito. Tu Pack cubre la mano de obra.</p></li>
+      </ol>
+    </section>
+
+    {% include 'partials/cta_packs.html' %}
+  </div>
 
   <div class="wrapper__slider__botones">
     <div class="sliderContainer">
@@ -67,146 +178,19 @@
     href="https://wa.me/543625170890?text=Vi%20esto%20en%20la%20web,%20me%20podrias%20brindar%20mas%20informacion?"
     target="_blank">
     <img class="icon_whap" src="{% static 'images/icons/whatsapp_icon.svg' %}" alt="">
-    <h6>¡Escribenos!</h6>
+    <h6>¡Escribinos!</h6>
   </a>
 
 
 
-  <section class="categoria">
-    <h2>¡Elige lo que deseas!</h2>
-    <div class="naccs">
-      <div class="menu">
-        <div class="motos active">
-          <img src="{% static 'images/icons/moto_icon.png' %}" alt="Moto">
-          <h6>Motos</h6>
-        </div>
-
-        <div class="soluciones_dinerarias">
-          <img src="{% static 'images/icons/icon_solu_dineraria.png' %}" alt="bolsa_de_dinero">
-          <h6>Soluciones Dinerarias</h6>
-        </div>
-
-        <div class="electrodomesticos">
-          <img src="{% static 'images/icons/icon_electrodo_relleno.png' %}" alt="lavarropa/heladera">
-          <h6>Electrodomesticos</h6>
-        </div>
-
-        <div class="beneficios">
-          <img src="{% static 'images/icons/icon_beneficios.png' %}" alt="hombre_del_servicio_tecnico">
-          <h6>Beneficios de Cliente</h6>
-        </div>
-
-        <div class="usados">
-          <img src="{% static 'images/icons/icon_moto.png' %}" alt="hombre_del_servicio_tecnico">
-          <h6>Usados</h6>
-        </div>
-      </div>
-      <div class="detalle">
-        <div class="detalle__motos_contenido active">
-          <div class="text">
-            <h5>¡COMPRA TU MOTO 0KM!</h5>
-            <p>Disfruta de la mejor calidad y garantía. Además, nuestro servicio técnico altamente capacitado te ayudará
-              con cualquier problema que puedas tener. <br>¡Confía en nosotros para tu próximo paseo en moto!</p>
-            <a href="{% url 'market:motos' %}"><button> <span>Ver mas</span></button></a>
-          </div>
-
-          <div class="container_sliderMotos_buttons">
-            <div class="container_slider_motos">
-              <div class="slider__motos">
-                {% for moto in motos_slider %}
-                <a class="item" href="{% url 'market:moto' moto.slug %}">
-                  <img src="{{moto.imagen_portada.url}}" alt="{{moto.nombre}}" />
-                </a>
-                {% endfor %}
-
-
-              </div>
-            </div>
-            <nav class="slider__motos__nav">
-              <button class="btn-prev">
-                <img src="{% static 'images/icons/next.svg' %}" alt="">
-              </button>
-              <button class="btn-next">
-                <img src="{% static 'images/icons/next.svg' %}" alt="">
-              </button>
-            </nav>
-          </div>
-        </div>
-
-        <div class="detalle__soluciones_dinerarias_contenido">
-          <div class="container_text">
-            <div class="text">
-              <h5>SOLUCIONES DINERARIAS A SU MEDIDA</h5>
-              <p>En Elanel, no solo ofrecemos productos de alta calidad, sino que también ofrecemos soluciones
-                dinerarias y beneficios exclusivos para nuestros clientes. Ahora puedes disfrutar de nuestras opciones
-                de pago con beneficios en cuotas. ¡Haz tus compras con nosotros y disfruta de todos nuestros beneficios!
-              </p>
-              {% comment %} <img src="{% static 'images/nashe.png' %}" alt=""> {% endcomment %}
-              <a href="{% url 'market:soluciones_dinerarias' %}"><button> <span>Ver mas</span></button></a>
-
-            </div>
-            <figure>
-              <img src="{%static 'images/dinero_4.png' %}" alt="">
-            </figure>
-          </div>
-        </div>
-
-        <div class="detalle__electrodomesticos_contenido">
-          <div class="container_text">
-            <div class="text">
-              <h5>¡EQUIPA TU CASA CON NOSOTROS!</h5>
-              <p>Descubre nuestra selección de electrodomésticos de alta calidad en Elanel. También ofrecemos ayuda
-                dineraria, servicio técnico y beneficios exclusivos para nuestros clientes. Aprovecha nuestros combos y
-                compra todo lo que necesitas en un solo lugar. ¡Visítanos ahora!</p>
-              <a href="{% url 'market:electrodomesticos' %}"><button> <span>Ver mas</span></button></a>
-            </div>
-            <figure>
-              <img src="{%static 'images/electrodo_8.png' %}" alt="">
-            </figure>
-          </div>
-        </div>
-
-        <div class="detalle__beneficios_contenido">
-          <div class="container_text">
-            <div class="text">
-              <h5>ASISTENCIA TECNICA INMEDIATA</h5>
-              <p>En Elanel, nos preocupamos por nuestros clientes y por eso ofrecemos beneficios exclusivos para ellos.
-                Ya que contamos con un equipo de servicio técnico altamente capacitado. ¡Compra con confianza en Elanel
-                y disfruta de todos nuestros beneficios!</p>
-              <a href="{% url 'market:beneficios' %}"><button> <span>Ver mas</span></button></a>
-            </div>
-            <figure>
-              <img src="{%static 'images/beneficio.png' %}" alt="">
-            </figure>
-          </div>
-
-        </div>
-
-        <div class="detalle__usados">
-          <div class="text">
-            <h5>COMPRA TU MOTO USADA CON CONFIANZA</h5>
-            <p>Elanel es tu tienda en línea de confianza para motos usados de alta calidad. Además, nuestro equipo de
-              servicio técnico está listo para ayudarte con cualquier problema que puedas tener. ¡Compra con confianza
-              en Elanel y encuentra el vehículo usado perfecto para ti!</p>
-            <a href="{% url 'market:motos'%}?status=True"><button> <span>Ver mas</span></button></a>
-
-          </div>
-
-        </div>
-
-
-      </div>
-    </div>
-  </section>
-
   <section class="formulario">
-    <h1 class="formulario__eslogan">Todo lo que <strong class="style__palabra__eslogan">necesitas</strong><br> en un
-      solo <strong class="style__palabra__eslogan">lugar</strong></h1>
+    <h1 class="formulario__eslogan">¿Te <strong class="style__palabra__eslogan">asesoramos</strong>?<br> Dejanos
+      tus <strong class="style__palabra__eslogan">datos</strong></h1>
     <div class="barra">
     </div>
     <form method="POST" autocomplete="off" class="form_cliente" id="form_fetch_post">
       {% csrf_token %}
-      <h5>Envianos un correo contándonos lo que quieres</h5>
+      <h5>Te contactamos para contarte sobre los Packs de Servicios</h5>
       <div class="container_nombre_completo">
         <input type="text" name="nombre_completo" id="nombre_completo" placeholder="Nombre y Apellido"
           onkeypress='return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122)|| (event.charCode == 241 || event.charCode == 209) || (event.charCode == 32)'>
@@ -231,7 +215,7 @@
       </div>
 
       <div class="container_objetivo">
-        <input type="text" name="objetivo" id="objetivo" placeholder="Que buscas">
+        <input type="text" name="objetivo" id="objetivo" placeholder="¿Qué necesitás?">
       </div>
       <button type="button" value="Enviar" id="form_product_button" class="desactive">
         Enviar
@@ -245,7 +229,7 @@
       <div class="form_success">
         <div class="text_thanks">
           <h3>Muchas gracias por confiar en nosotros</h3>
-          <h4>Nos comunicaremos contigo mediante un correo</h4>
+          <h4>Te vamos a contactar por correo</h4>
         </div>
         <figure class="image_success">
           <img src="{% static 'images/icons/pulgar.svg' %}" alt="pulgar_aprovado">
@@ -258,7 +242,7 @@
       <div class="form_error">
         <div class="text_error">
           <h3>Algo ha salido mal</h3>
-          <h4>Al parecer has colacado mal algun campo. Vuelve a intentarlo</h4>
+          <h4>Revisá que todos los campos estén completos y volvé a intentarlo</h4>
         </div>
         <figure class="image_error">
           <img src="{% static 'images/icons/eliminar.svg' %}" alt="pulgar_aprovado">
@@ -513,7 +497,7 @@
                 </a>
               </li> {% endcomment %}
               <li id="ubicacion__whatsapp">
-                <a href="https://wa.me/543625170890?text=Hola!%20Me%20interesa%20recibir%20informaci%C3%B3n%20sobre%20los%20planes%20de%20ahorro%20de%20Elanel." target="_blank">
+                <a href="https://wa.me/543625170890?text=Hola!%20Me%20interesa%20recibir%20informaci%C3%B3n%20sobre%20los%20Packs%20de%20Asistencia%20T%C3%A9cnica%20de%20Elanel." target="_blank">
                   <img src="{% static 'images/icons/whatsapp_icon.svg' %}" alt="WhatsApp">
                   <span>WhatsApp</span>
                 </a>
@@ -533,13 +517,11 @@
 <script src="{% static 'js/validate_button_products.js' %}"></script>
 <script src="{% static 'js/fetch_form_index.js' %}"></script>
 <script src="{% static 'js/ubicacion.js' %}"></script>
-<script src="{% static 'js/categoria.js' %}"></script>
 {% comment %}
 <script src="{% static 'js/slider_posts.js' %}"></script> {% endcomment %}
 <script src="{% static 'js/silderNew.js' %}"></script>
 
 <script src="{% static 'js/header.js' %}"></script>
-<script src="{% static 'js/slider_motos.js' %}"></script>
 <script src="{% static 'js/menu_hamburguer.js' %}"></script>
 
 </html>

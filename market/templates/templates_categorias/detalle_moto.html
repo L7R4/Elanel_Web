@@ -1,217 +1,83 @@
-{% load static humanize %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'css/detail_moto.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/navStyles.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/media_querys/nav_bar.css' %}" />
-    <link
-      rel="stylesheet"
-      href="{% static 'css/media_querys/detalle_producto.css' %}"
-    />
-    {% comment %}
-    <script src="../js/sweetalert2.all.js"></script>
-    {% endcomment %}
-    <title>Elanel Servicios y Soluciones</title>
-    <link
-      rel="shortcut icon"
-      href="{% static 'images/fwd/icon_page4.png' %}"
-    />
-    <style>
-      .global_whatsapp_float {
-        display: none !important;
-      }
-    </style>
-  </head>
-  <body>
-    {% include 'nav.html' %}
-      <div class="wrapper">
+{% extends 'base_info.html' %}
+{% load static %}
 
-        <div class="products_images">
-          
-          <aside class="nav__images">
-            {% for moto_image in moto_images %}
-            <figure>
-              <img src="{{moto_image.imagen.url}}" alt="" />
-            </figure>
-            {% endfor %}
-          </aside>
+{% block title %}{{ object.nombre }} | Elanel{% endblock %}
+{% block description %}{{ object.nombre }}{% if object.usado %} usada{% else %} 0 km{% endif %} en venta directa en Elanel. Consultá precio y medios de pago por WhatsApp.{% endblock %}
 
-          <article class="complete__image">
-            <img src="{{ object.imagen_portada.url }}" alt="{{ object.nombre }}" />
-          </article>
+{% block content %}
+<section class="el-section el-detail">
+  <nav class="el-breadcrumb" aria-label="Ubicación">
+    <a href="{% url 'market:categorias' %}">Venta directa</a>
+    <span aria-hidden="true">/</span>
+    <a href="{% url 'market:motos' %}">Motos</a>
+    <span aria-hidden="true">/</span>
+    <span>{{ object.nombre }}</span>
+  </nav>
 
-          <div class="title_producto_responsive">
-            <h1 id="title_product">{{object.nombre|title}}</h1>
-            <h1 id="precio_product">Consultar precio</h1>
-          </div>
+  <div class="el-detail__grid">
+    {% if object.usado %}
+      {% include 'partials/galeria.html' with badge='Usada' %}
+    {% else %}
+      {% include 'partials/galeria.html' with badge='0 km' %}
+    {% endif %}
 
-        </div>
-        
-        <aside class="resumen">
+    <div class="el-detail__info">
+      {% if object.marca %}<span class="el-product__brand">{{ object.marca }}</span>{% endif %}
+      <h1>{{ object.nombre }}</h1>
+      <p class="el-detail__price">Consultar precio</p>
 
-          <div class="detalle_producto">
-            <h1 id="title_product">{{object.nombre|title}}</h1>
-            <h1 id="precio_product">Consultar precio</h1>
-          </div>
+      <dl class="el-specs">
+        {% if object.marca %}<div><dt>Marca</dt><dd>{{ object.marca|title }}</dd></div>{% endif %}
+        {% if object.modelo %}<div><dt>Modelo</dt><dd>{{ object.modelo }}</dd></div>{% endif %}
+        <div><dt>Condición</dt><dd>{% if object.usado %}Usada{% else %}0 km{% endif %}</dd></div>
+        {% if object.año %}<div><dt>Año</dt><dd>{{ object.año }}</dd></div>{% endif %}
+        {% if object.usado and object.kilometros is not None %}<div><dt>Kilómetros</dt><dd>{{ object.kilometros }} km</dd></div>{% endif %}
+      </dl>
 
-          <div class="resumen__detalle">
-            <div id="marca">
-              <h2>Marca</h2>
-              <h2>{{object.marca|title}}</h2>
-            </div>
-            <div id="modelo">
-              <h2>Modelo</h2>
-              <h2>{{object.modelo}}</h2>
-            </div>
-            {% if object.año %}
-            <div id="año">
-              <h2>Año</h2>
-              <h2>{{object.año}}</h2>
-            </div>
-            {% else %}
-            <p></p>
-            {% endif %}
-            <div id="km">
-              <h2>Kilómetros</h2>
-              <h2>{{object.kilometros}}KM</h2>
-            </div>
-            {% if object.cuota %}
-            <div id="plazo">
-              <h2>Plazo</h2>
-              <h2>{{object.cuota}} meses</h2>
-            </div>
-            {% endif %}
-            {% comment %}
-            {% if object.precio %}
-            <div id="valor_nominal">
-              <h2>V.N. Total</h2>
-              <h2>${{object.precio|floatformat:"0"|intcomma}}</h2>
-            </div>
-            {% endif %}
-            {% endcomment %}
-          </div>
-
-          {% if object.ficha_tecnica.url != '' %}
-          <div class="detalles">
-            <div class="text">
-              <h5> Ficha técnica </h5>
-            </div>
-    
-            <div class="ficha_tenica">
-              <img src="{% static 'images/icons/pdf_icon.svg' %}" alt="Icono de PDF" />
-              <a href="{{object.ficha_tecnica.url}}" target="_blank"
-                >{{ficha_tecnica|truncatechars:40}}</a
-              >
-            </div>
-          </div>
-
-          {% else %}
-          <p></p>
-          {% endif %}
-          <div class="contact">
-            <h3>¿Te ha interesado este producto?</h3>
-            <a href="https://wa.me/543625170890?text=Hola!%0AMe%20interesa%20la%20moto%20*{{object.nombre}}*%0A%0A%C2%BFMe%20podr%C3%ADan%20asesorar%3F" target="_blank" class="whatsapp_btn_cta">
-              <img src="{% static 'images/icons/whatsapp_icon.svg' %}" alt="WhatsApp" class="wa_icon_btn" />
-              <span>Consultar por WhatsApp</span>
-            </a>
-          </div>
-
-        </aside>
-
-      </div>
-      <div class="form_modal">
-        <form method="POST" id="form_fetch_post" name="form_fetch_post">
-          <i class="close_form" id="icon_close">
-            <img src="{% static 'images/icons/cancel.svg' %}" alt="">
-          </i>
-          <h3>INGRESA TUS DATOS</h3>
-          {% csrf_token %}
-          <input
-            type="text"
-            name="objetivo"
-            id="objetivo"
-            value=""
-            autocomplete="off"
-            readonly
-          />
-          <div class="nombre_completo_container">
-            <input
-              type="text"
-              name="nombre_completo"
-              id="nombre"
-              placeholder="Nombre y apeliido"
-              autocomplete="off"
-              onkeypress='return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122)|| (event.charCode == 241 || event.charCode == 209) || (event.charCode == 32)'
-            />
-            
-          </div>
-          <div class="num_telefono_container">
-            <input
-              type="text"
-              name="num_telefono"
-              id="numero"
-              pattern="[0-9]*"
-              placeholder="Telefono"
-              autocomplete="off"
-              onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="10"
-            />
-          </div>
-
-          <div class="email_container">
-            <input
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Email"
-              autocomplete="off"
-            />
-            <p>Formato de email no valido</p>
-          </div>
-
-          <div class="provincia_container">
-            <input 
-            type= "text"
-            name= "provincia"
-            id= "provincia"
-            placeholder= "Provincia"
-            autocomplete= "off"
-            />
-          </div>
-
-          <button type="button" id="form_product_button" class="desactive">
-            Enviar
-            <div class="wrapper__loader">
-              <div id="loader"></div>
-            </div>
-          </button>
-
-          <button class="close_form" id="button_close" type="button">
-            Cerrar
-          </button>
-
-          <div class="message_success hide">
-            <h3>¡Tu formulario se ha enviado correctamente!</h3>
-            <h4>Nos comunicaremos contigo mediante un correo</h4>
-          </div>
-          <div class="message_error hide">
-            <h3>Algo ha salido mal</h3>
-            <h4>Al parecer has colacado mal algun campo. Vuelve a intentarlo</h4>
-            <figure class="image_error">
-              <img src="{% static 'images/icons/eliminar.svg' %}" alt="pulgar_aprovado">
-            </figure>
-          </div>
-        </form>
+      <div class="el-detail__actions">
+        <a class="el-btn el-btn--wa" href="https://wa.me/543625170890?text=Hola!%0AQuiero%20comprar%20la%20moto%20*{{ object.nombre|urlencode }}*%20en%20venta%20directa.%0A%0A%C2%BFMe%20podr%C3%ADan%20pasar%20precio%20y%20medios%20de%20pago%3F" target="_blank" rel="noopener noreferrer">
+          <img src="{% static 'images/icons/whatsapp_icon.svg' %}" alt="" />Consultar precio por WhatsApp
+        </a>
+        {% if object.ficha_tecnica %}
+        <a class="el-btn el-btn--ghost" href="{{ object.ficha_tecnica.url }}" target="_blank" rel="noopener">Ver ficha técnica (PDF)</a>
+        {% endif %}
       </div>
 
-    <script src="{% static 'js/detail_product.js' %}"></script>
-    <script src="{% static 'js/header.js' %}"></script>
-    <script src="{% static 'js/validate_button_products.js' %}"></script>
-    <script src="{% static 'js/fetch_form_products.js' %}"></script>
-    <script src="{% static 'js/motos_form_set_value.js' %}"></script>
-    <script src="{% static 'js/menu_hamburguer.js' %}"></script>
-  </body>
-</html>
+      <ul class="el-detail__notes">
+        <li>Venta directa en tu sucursal, con los medios de pago disponibles.</li>
+        <li>Es una operación independiente de los Packs de Servicios.</li>
+      </ul>
+
+      {% if object.descripcion and object.descripcion.html %}
+      <div class="el-detail__desc">{{ object.descripcion.html|safe }}</div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% if relacionados %}
+<section class="el-section">
+  <div class="el-shop__row-head">
+    <h2 class="el-detail__related-title">{% if object.usado %}Otras motos usadas{% else %}Otras motos 0 km{% endif %}</h2>
+    <a class="el-link el-link--vd" href="{% url 'market:motos' %}?status={% if object.usado %}True{% else %}False{% endif %}">Ver todas</a>
+  </div>
+  <div class="el-products">
+    {% for moto in relacionados %}
+    <a class="el-product" href="{% url 'market:moto' moto.slug %}">
+      <figure>
+        <img src="{{ moto.imagen_portada.url }}" alt="{{ moto.nombre }}" loading="lazy">
+        <span class="el-product__badge">{% if moto.usado %}Usada{% else %}0 km{% endif %}</span>
+      </figure>
+      <div class="el-product__body">
+        {% if moto.marca %}<span class="el-product__brand">{{ moto.marca }}</span>{% endif %}
+        <h4>{{ moto.nombre }}</h4>
+        <span class="el-product__cta">Consultar precio</span>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}{% include 'partials/galeria_script.html' %}{% endblock %}

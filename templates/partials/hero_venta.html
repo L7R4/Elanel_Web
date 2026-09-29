@@ -1,0 +1,39 @@
+{% load static %}
+<section class="el-shop-hero">
+  <div class="el-shop-hero__text">
+    <span class="el-eyebrow el-eyebrow--vd">Venta directa</span>
+    <h1>Motos, electrodomésticos y soluciones, <strong>cerca tuyo</strong></h1>
+    <p>Motos 0 km, electrodomésticos y soluciones comerciales para tus proyectos. Consultá precio y medios de pago con un asesor de tu sucursal.</p>
+    <div class="el-actions">
+      <a class="el-btn el-btn--vd" href="{% url 'market:motos' %}">Ver motos</a>
+      <a class="el-btn el-btn--wa" href="https://wa.me/543625170890?text=Hola!%20Quiero%20consultar%20por%20una%20moto%20o%20electrodom%C3%A9stico%20en%20venta%20directa." target="_blank" rel="noopener noreferrer">
+        <img src="{% static 'images/icons/whatsapp_icon.svg' %}" alt="" />Consultar por WhatsApp
+      </a>
+    </div>
+    <ul class="el-trust el-trust--vd">
+      <li><span><strong>10</strong> sucursales</span></li>
+      <li><span><strong>6</strong> provincias</span></li>
+      <li>Motos 0 km</li>
+      <li>Medios de pago disponibles</li>
+    </ul>
+  </div>
+
+  <div class="el-bento">
+    <a class="el-tile el-tile--big" href="{% url 'market:motos' %}?status=False">
+      <img src="{% if foto_moto_0km %}{{ foto_moto_0km.imagen_portada.url }}{% else %}{% static 'images/moto__example3.png' %}{% endif %}" alt="">
+      <span class="el-tile__label"><strong>Motos 0 km</strong><span>Ver modelos</span></span>
+    </a>
+    <a class="el-tile el-tile--electro" href="{% url 'market:electrodomesticos' %}">
+      <img src="{% if foto_electro %}{{ foto_electro.imagen_portada.url }}{% else %}{% static 'images/refri.png' %}{% endif %}" alt="">
+      <span class="el-tile__label"><strong>Electrodomésticos</strong><span>Equipá tu casa</span></span>
+    </a>
+    <a class="el-tile el-tile--sol" href="{% url 'market:soluciones_dinerarias' %}">
+      <span class="el-tile__sol-range"><small>De</small> $1 <small>a</small> $10 <small>millones</small></span>
+      <span class="el-tile__label"><strong>Soluciones Comerciales</strong><span>Consultá condiciones</span></span>
+    </a>
+    <a class="el-tile el-tile--wa" href="https://wa.me/543625170890?text=Hola!%20Estoy%20buscando%20un%20producto%20en%20particular.%20%C2%BFMe%20ayudan%3F" target="_blank" rel="noopener noreferrer">
+      <img class="el-tile__icon" src="{% static 'images/icons/whatsapp_icon.svg' %}" alt="">
+      <span><strong>¿Buscás algo en particular?</strong><span>Escribinos y te pasamos precio y disponibilidad</span></span>
+    </a>
+  </div>
+</section>

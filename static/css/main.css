@@ -11,6 +11,12 @@
   --tColor: #02e3f5;
 }
 
+/* Franja detrás del menú en el inicio: el menú es semitransparente y, sin esto,
+   deja ver el fondo gris claro de la página. Azul institucional de Elanel. */
+.espace_header_categories {
+  background-color: #2f5f9e;
+}
+
 /* Hot Sale Banner (Hero Section) */
 .hot-sale-banner {
   width: 100%;
@@ -1356,6 +1362,7 @@ img.active {
 /* --------------------------------------SECCION DE UBICACION-------------------------------------- */
 .ubicacion {
   width: 100%;
+  box-sizing: border-box;
   padding: 12rem 0;
   background: linear-gradient(to bottom, rgba(11, 13, 23, 0) 0%, #0b0d17 80px, #0b0d17 calc(100% - 80px), rgba(11, 13, 23, 0) 100%);
   position: relative;

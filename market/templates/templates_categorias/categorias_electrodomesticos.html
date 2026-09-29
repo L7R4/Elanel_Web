@@ -1,134 +1,71 @@
-{% load static humanize %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'css/categorias_details.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/navStyles.css' %}" />
-    <link
-      rel="stylesheet"
-      href="{% static 'css/categorias_electrodomesticos.css' %}"
-    />
-    <link rel="stylesheet" href="{% static 'css/media_querys/nav_bar.css' %}" />
-    <link
-      rel="stylesheet"
-      href="{% static 'css/media_querys/categorias_motos.css' %}"
-    />
-    <title>Elanel Servicios y Soluciones</title>
-    <link
-      rel="shortcut icon"
-      href="{% static 'images/fwd/icon_page4.png' %}"
-    />
-  </head>
-  <body>
-    {% include 'nav.html' %}
+{% extends 'base_info.html' %}
+{% load static %}
 
-    <div class="wrapper_catalogo_aside">
-      <aside class="filters_container">
-        <form action="" method="get">
-          <h1>Combos</h1>
-          <div class="combos">
-            <input type="radio" name="combo" id="cocina" value="cocina" />
-            <label for="cocina">
-              <h3>Combos cocina</h3>
-            </label>
+{% block title %}Electrodomésticos | Elanel{% endblock %}
+{% block description %}Electrodomésticos en venta directa en las sucursales de Elanel. Consultá precio y medios de pago por WhatsApp.{% endblock %}
 
-            <input type="radio" name="combo" id="tecnologia" value="tecnologia" />
-            <label for="tecnologia">
-              <h3>Combos tecnologia</h3>
-            </label>
+{% block content %}
+<section class="el-hero el-hero--catalog">
+  <span class="el-eyebrow el-eyebrow--vd">Venta directa</span>
+  <h1>Electrodomésticos</h1>
+  <p>Todo para equipar tu casa, en tu sucursal. Consultá precio y medios de pago con un asesor.</p>
+</section>
 
-            <input type="radio" name="combo" id="dormitorio" value="dormitorio" />
-            <label for="dormitorio">
-              <h3>Combos dormitorio</h3>
-            </label>
-
-            <input type="radio" name="combo" id="living" value="living" />
-            <label for="living">
-              <h3>Combos living</h3>
-            </label>
-
-            <input type="radio" name="combo" id="hogar" value="hogar" />
-            <label for="hogar">
-              <h3>Combos hogar</h3>
-            </label>
-          </div>
-
-          <!-- <h1>Coutas</h1>
-          <div class="cuotas">
-            <input type="radio" name="cuota" id="venticuatro" value="24" />
-            <label for="venticuatro">
-              <h3>24</h3>
-            </label>
-
-            <input type="radio" name="cuota" id="treinta" value="30" />
-            <label for="treinta">
-              <h3>30</h3>
-            </label>
-
-            <input type="radio" name="cuota" id="cuarentaocho" value="48" />
-            <label for="cuarentaocho">
-              <h3>48</h3>
-            </label>
-
-            <input type="radio" name="cuota" id="sesenta" value="60" />
-            <label for="sesenta">
-              <h3>60</h3>
-            </label>
-          </div> -->
-
-          <h1>Precio</h1>
-          <div class="precio">
-            <input
-              type="text"
-              pattern="[0-9]*"
-              name="minimo"
-              id="minimo"
-              placeholder="Minimo"
-            />
-            <input
-              type="text"
-              pattern="[0-9]*"
-              name="Maximo"
-              id="maximo"
-              placeholder="Maximo"
-            />
-          </div>
-          <button type="submit" id="button_filter">Buscar</button>
-          <a id="clear" href="{%  url 'market:clear_electrodomesticos' %}"
-            >Limpiar filtros</a
-          >
-        </form>
-      </aside>
-      <button type="button" id="filter_button">Filtrar</button>
-      <section class="catalogo">
-        {% if electrodomesticos.count != 0 %} 
-          {% for electrodomestico in electrodomesticos %}
-          <a href="{% url 'market:electrodomestico' electrodomestico.slug %}">
-            <article>
-              <img src="{{electrodomestico.imagen_portada.url}}" alt="" />
-              <div>
-                <h2>{{electrodomestico.nombre}}</h2>
-                <h3>Consultar precio</h3>
-              </div>
-            </article>
-          </a>
-          {% endfor %} 
-        {% elif electrodomesticos.count == 0 %}
-        <div class="not_found">
-          <figure>
-            <img src="{% static 'images/icons/nothing-found.png' %}" alt="" />
-          </figure>
-          <h1>¡Ups! Al parecer no se encuentran productos disponibles</h1>
-        </div>
-        {% endif %}
-      </section>
+<section class="el-section el-catalog">
+  <nav class="el-filters" aria-label="Filtrar electrodomésticos">
+    {% if tipos %}
+    <div class="el-filters__group">
+      <span class="el-filters__label">Tipo</span>
+      <a class="el-chip{% if not tipo_actual %} is-active{% endif %}" href="?marca={{ marca_actual|urlencode }}">Todos</a>
+      {% for valor, nombre in tipos %}
+      <a class="el-chip{% if tipo_actual == valor %} is-active{% endif %}" href="?combo={{ valor }}&amp;marca={{ marca_actual|urlencode }}">{{ nombre }}</a>
+      {% endfor %}
     </div>
-  </body>
-  <script src="{% static 'js/header.js' %}"></script>
-  <script src="{% static 'js/filter_button.js' %}"></script>
-  <script src="{% static 'js/menu_hamburguer.js' %}"></script>
-  <script src="{% static 'js/clear_filter_elec.js' %}"></script>
-</html>
+    {% endif %}
+    {% if marcas %}
+    <div class="el-filters__group">
+      <span class="el-filters__label">Marca</span>
+      <a class="el-chip{% if not marca_actual %} is-active{% endif %}" href="?combo={{ tipo_actual }}">Todas</a>
+      {% for marca, etiqueta in marcas %}
+      <a class="el-chip{% if marca_actual == marca %} is-active{% endif %}" href="?combo={{ tipo_actual }}&amp;marca={{ marca|urlencode }}">{{ etiqueta }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </nav>
+
+  <p class="el-catalog__count">{{ electrodomesticos|length }} producto{{ electrodomesticos|length|pluralize }}</p>
+
+  {% if electrodomesticos %}
+  <div class="el-products el-products--catalog">
+    {% for electro in electrodomesticos %}
+    <a class="el-product" href="{% url 'market:electrodomestico' electro.slug %}">
+      <figure>
+        <img src="{{ electro.imagen_portada.url }}" alt="{{ electro.nombre }}" loading="lazy">
+      </figure>
+      <div class="el-product__body">
+        {% if electro.marca %}<span class="el-product__brand">{{ electro.marca }}</span>{% endif %}
+        <h4>{{ electro.nombre }}</h4>
+        <span class="el-product__cta">Consultar precio</span>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="el-empty">
+    <h3>No encontramos productos con esos filtros</h3>
+    <p>Probá con otro tipo o marca, o escribinos y te contamos qué hay disponible en tu sucursal.</p>
+    <a class="el-link el-link--vd" href="{% url 'market:electrodomesticos' %}">Ver todos los electrodomésticos</a>
+  </div>
+  {% endif %}
+
+  <div class="el-shop__bar">
+    <div>
+      <h3>¿No encontrás lo que buscás?</h3>
+      <p>Decinos qué electrodoméstico querés y te pasamos precio, disponibilidad y medios de pago.</p>
+    </div>
+    <a class="el-btn el-btn--wa" href="https://wa.me/543625170890?text=Hola!%20Quiero%20consultar%20por%20un%20electrodom%C3%A9stico%20en%20venta%20directa." target="_blank" rel="noopener noreferrer">
+      <img src="{% static 'images/icons/whatsapp_icon.svg' %}" alt="" />Consultar por WhatsApp
+    </a>
+  </div>
+</section>
+{% endblock %}

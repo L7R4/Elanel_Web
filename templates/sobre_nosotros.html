@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="{% static 'css/media_querys/nav_bar.css' %}" />
     <link rel="stylesheet" href="{% static 'css/media_querys/footer.css' %}" />
 
-    <title>Elanel Servicios y Soluciones</title>
+    <title>Elanel SRL</title>
+    {% include 'partials/og.html' %}
     <link
       rel="shortcut icon"
       href="{% static 'images/fwd/icon_page4.png' %}"
@@ -28,33 +29,39 @@
         <div class="hero__card">
           <h1>Quiénes <strong>Somos</strong></h1>
           <p>
-            Somos una empresa sólida y competitiva dedicada a comercializar productos y servicios de alta calidad, con alcance nacional y un fuerte compromiso con el desarrollo de nuestro país. Ofrecemos una experiencia diferente basada en la excelencia de servicio, innovación y calidez en la atención.
+            Somos ELANEL SERVICIOS S.R.L., una empresa del norte argentino con 10 sucursales en Chaco, Corrientes, Misiones, Entre Ríos, Formosa y Santiago del Estero. Brindamos asistencia técnica y mecánica para motos y electrodomésticos a través de Packs de Servicios, con técnicos que acompañan a cada cliente desde el diagnóstico hasta la reparación. Además, contamos con venta directa de motos y electrodomésticos.
           </p>
         </div>
       </section>
 
-      <!-- Section 2: El Sistema Elanel (Planes y Capitalización) -->
+      <!-- Section 2: Cómo funciona un Pack -->
       <section class="sobrenosotros__sistema">
-        <h2 class="section__title-main">El Sistema <strong>Elanel</strong></h2>
-        <p class="section__subtitle">Conocé cómo funciona nuestro sistema de ahorro, capitalización y adjudicaciones.</p>
-        
+        <h2 class="section__title-main">Tu <strong>Pack</strong>, paso a paso</h2>
+        <p class="section__subtitle">Asistencia técnica y mecánica para lo que usás todos los días.</p>
+
         <div class="sistema__grid">
           <div class="sistema__card">
             <span class="sistema__number">01</span>
-            <h3>Suscripción al Plan</h3>
-            <p>Elegís el producto o servicio que querés obtener (motocicletas, electrodomésticos, soluciones dinerarias) y te suscribís a un plan a tu medida con cuotas accesibles.</p>
+            <h3>Elegís tu Pack</h3>
+            <p>Básico, Estándar o Premium, según cuántos servicios de asistencia por año necesitás.</p>
           </div>
           <div class="sistema__card">
             <span class="sistema__number">02</span>
-            <h3>Ahorro y Capitalización</h3>
-            <p>Mes a mes tus aportes se capitalizan bajo un sistema seguro y transparente, respaldado por la solidez y trayectoria de nuestra compañía a nivel nacional.</p>
+            <h3>Declarás tus bienes</h3>
+            <p>Registrás las motos y electrodomésticos que querés cubrir. Podés sumar o reemplazar equipos más adelante.</p>
           </div>
           <div class="sistema__card">
             <span class="sistema__number">03</span>
-            <h3>Sorteo y Adjudicación</h3>
-            <p>Participás activamente en sorteos y licitaciones mensuales. Al resultar adjudicado, obtenés tu bien de forma ágil y con mínimos requisitos.</p>
+            <h3>Solicitás asistencia</h3>
+            <p>Desde la 4ª cuota abonada y con tu cuota al día, pedís turno en tu sucursal o por WhatsApp.</p>
+          </div>
+          <div class="sistema__card">
+            <span class="sistema__number">04</span>
+            <h3>Diagnóstico y reparación</h3>
+            <p>Un técnico diagnostica la falla por escrito. Tu Pack cubre la mano de obra; los repuestos corren por tu cuenta.</p>
           </div>
         </div>
+        <p class="section__subtitle" style="margin-top: 3rem; margin-bottom: 0;"><a href="{% url 'servicios' %}" style="color: var(--primaryColor);">Conocé los Packs de Servicios</a></p>
       </section>
 
       <!-- Section 3: Filosofía (Misión, Visión) -->
@@ -126,8 +133,6 @@
             </div>
           </div>
         </div>
-      </section>
-    </div>
       </section>
     </div>
 
