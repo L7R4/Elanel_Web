@@ -1,0 +1,28 @@
+/* Banner de campaña (partials/promo_banner.html): ocupa todo el ancho de la página */
+
+.el-promo {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* En los catálogos va debajo del título de la página: se separa un poco */
+.el-hero + .el-promo {
+  margin-top: 3rem;
+}
+
+.el-promo__link {
+  display: block;
+}
+
+.el-promo__link:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: -4px;
+}
+
+.el-promo picture,
+.el-promo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
